@@ -1,6 +1,6 @@
 # README #
 
-## Project title
+## reach52 Community edition
 reach52 Community edition is an open-source Node.js codebase aiming to support payments, mWallets, and other Healthcare e-commerce functionalities with an aim to grow and let others grow by laying a strong foundation.
 
 ### What is this repository for? ###
