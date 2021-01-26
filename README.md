@@ -25,12 +25,8 @@ More details on Node.js: https://nodejs.dev/
 For begineers on Node.js, checkout the [How do I start with Node.js after I installed it?](https://nodejs.org/en/docs/guides/getting-started-guide/)
 
 ## Contributing Guidelines
-* Writing unit tests for every method added is mandatory
-* Code review - It is advised to do a peer code review before raising a pull request. Once the pull request is raised, the moderator team will review the code and its relevance to the project before merging the same.
-* Stick to the standard coding best practices and avoid code smells (https://refactoring.guru/refactoring/smells)
-* Avoid adding in sensitive information like connection strings and so on so that sensitive details are not revealed
 
-Please refer to the [CONTRIBUTING.MD](https://bitbucket.org/reach52/reach52-community-edition/src/master/CONTRIBUTING.MD) file for more details on the coding standard and other measures to take.
+Please refer to the [CONTRIBUTING.MD](https://bitbucket.org/reach52/reach52-community-edition/src/master/CONTRIBUTING.md) file for more details on the coding standard and other measures to take.
 
 
 ## Features
