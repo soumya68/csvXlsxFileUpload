@@ -16,20 +16,21 @@ Build status of continus integration - reach52 Community edition
 
 [![Build Status](CI/CD Repo link: TBD](CI/CD Link: TBD)
 
-## Code style
-Please refer to the CONTRIBUTING.MD file for more details on the coding standard and other measures to take.
- 
-## Screenshots
-TBD
-
 ## Tech/framework used
-* Node.js
+Node.js is a cross-platform runtime library and environment for running JavaScript applications outside the browser. This is a free and open source tool used for creating server-side JS applications.
+Node.js applications are written in JavaScript. This application runs within the Node.js runtime on Linux and Microsoft Windows. This framework offers a rich library of various JavaScript modules to simplify web development process.
+
+More details on Node.js: https://nodejs.dev/
+
+For begineers on Node.js, checkout the [How do I start with Node.js after I installed it?](https://nodejs.org/en/docs/guides/getting-started-guide/)
 
 ## Contributing Guidelines
 * Writing unit tests for every method added is mandatory
 * Code review - It is advised to do a peer code review before raising a pull request. Once the pull request is raised, the moderator team will review the code and its relevance to the project before merging the same.
 * Stick to the standard coding best practices and avoid code smells (https://refactoring.guru/refactoring/smells)
 * Avoid adding in sensitive information like connection strings and so on so that sensitive details are not revealed
+
+Please refer to the [CONTRIBUTING.MD](https://bitbucket.org/reach52/reach52-community-edition/src/master/CONTRIBUTING.MD) file for more details on the coding standard and other measures to take.
 
 
 ## Features
@@ -38,20 +39,18 @@ TBD
 * Supplier Onboarding
 * Discounts/Points logics
 
-## Installation
-TBD
+## Installation/Deployment
+This is an API open source project built in Node.js and hence this project needs to be deployed on to a server.
+
+There are many ways of hosting the API but for the sake of simplicity, lets take the case of hosting this in AWS from where your endpoints are to be exposed. To do this, please follow the steps mentioned [here](https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/module-4/).
+
+***Once the hosting is done, you can test the end-points using any REST client like Postman***
 
 ## Tests
 Stpes on how to run the tests will be added once the tests are ready in the repo.
 
 ## How to use?
 Steps will be added here
-
-## Contribute
-Feel free to refer to the CONTRIBUTING.MD file to know more on the steps required to contribute to this repo effectively and make an impact.
-
-## Credits
-TBD
 
 ### Who do I talk to? ###
 
@@ -63,5 +62,6 @@ To know us and our social impact cause better, visit us at [reach52](https://rea
 
 ## License
 
-MIT License
-Copyright (c) 2021 reach52 Community edition
+MIT License.
+
+Copyright (c) 2021 reach52 Community edition.
