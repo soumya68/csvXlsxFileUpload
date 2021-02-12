@@ -51,7 +51,6 @@ module.exports = (app, connection) => {
             }
             // File path where file is saved
             var filepath = path.resolve('Product_Details_Import/' + req.file.filename);
-            // console.log('FILEPATH', filepath)
             const fileData = {
                 filename: req.file.filename,
                 user_id: req.body.user_id,
@@ -98,14 +97,41 @@ module.exports = (app, connection) => {
                                 catalogueFiles.findOneAndUpdate({ filename: req.file.filename },
                                     { $set: updates },
                                     { new: true }).then(response => {
-                                        res.status(200).json({
-                                            status: true,
-                                            message: "Data Inserted Successfully",
-                                            invalid_rows: invalid_datas,
-                                            invalid_rows_count: invalid_datas.length,
-                                            valid_rows_count: correct_entry_count,
-                                            total_rows_count: total_entry_count
-                                        })
+                                        if (invalid_datas.length > 0) {
+                                            product_module.failuer_file_upload(req.file.filename,
+                                                function (error) {
+                                                    if (error) {
+                                                        res.status(200).json({
+                                                            status: false,
+                                                            message: "Data Inserted Successfully",
+                                                            invalid_rows: invalid_datas,
+                                                            invalid_rows_count: invalid_datas.length,
+                                                            valid_rows_count: correct_entry_count,
+                                                            total_rows_count: total_entry_count
+                                                        })
+                                                    }
+                                                    else {
+                                                        res.status(200).json({
+                                                            status: true,
+                                                            message: "Data Inserted Successfully",
+                                                            invalid_rows: invalid_datas,
+                                                            invalid_rows_count: invalid_datas.length,
+                                                            valid_rows_count: correct_entry_count,
+                                                            total_rows_count: total_entry_count
+                                                        })
+                                                    }
+                                                })
+                                        }
+                                        else {
+                                            res.status(200).json({
+                                                status: true,
+                                                message: "Data Inserted Successfully",
+                                                invalid_rows: invalid_datas,
+                                                invalid_rows_count: invalid_datas.length,
+                                                valid_rows_count: correct_entry_count,
+                                                total_rows_count: total_entry_count
+                                            })
+                                        }
                                     })
                                     .catch(err => {
                                         return res.status(400).json({ status: false, message: err });
@@ -172,7 +198,6 @@ module.exports = (app, connection) => {
                                                 total_rows_count: total_entry_count
                                             })
                                         }
-
                                     })
                                     .catch(err => {
                                         return res.status(400).json({ status: false, message: err });
@@ -183,12 +208,10 @@ module.exports = (app, connection) => {
                 }
                 ////
             }).catch(err => {
-                console.log(err)
                 return res.status(400).json({ message: 'Error while uploading file', error: err });
             });
         }
         catch (er) {
-            console.log(er)
             res.json({ status: false, message: er });
         }
     });

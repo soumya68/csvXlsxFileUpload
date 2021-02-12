@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 const validator = require("validator");
-
 var catalougeSchema = new mongoose.Schema(
     {
         catalogue_number: {
@@ -9,7 +8,6 @@ var catalougeSchema = new mongoose.Schema(
             min: 6,
             trim: true,
         },
-
         supplier_catalogue_number: {
             type: String,
             required: true,
@@ -89,15 +87,12 @@ var catalougeSchema = new mongoose.Schema(
         status: {
             type: String
         },
-
         isDiscounted: {
             type: Boolean,
             require: true,
             min: 6,
             default: false,
         },
-       
-
     },
     {
         timestamps: {
@@ -106,6 +101,4 @@ var catalougeSchema = new mongoose.Schema(
         },
     }
 );
-
-
 module.exports = mongoose.model("products", catalougeSchema);

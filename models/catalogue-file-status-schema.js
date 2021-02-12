@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 const validator = require("validator");
-
 var catalogueFileStatusSchema = new mongoose.Schema(
     {
         filename: {
@@ -25,7 +24,6 @@ var catalogueFileStatusSchema = new mongoose.Schema(
         status: {
             type: Boolean
         },
-
     },
     {
         timestamps: {
@@ -34,9 +32,4 @@ var catalogueFileStatusSchema = new mongoose.Schema(
         },
     }
 );
-
-
-
-
-
 module.exports = mongoose.model("catalogueFiles", catalogueFileStatusSchema);

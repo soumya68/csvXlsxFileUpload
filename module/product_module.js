@@ -25,7 +25,8 @@ module.exports = function () {
                     || !data.TaxPercent
                     || !data.PricePerPackage
                     || !data.Status
-                    || !data.IsDiscountAvailable
+                    || !data.IsDiscountAvailable.toString()
+                    || !data.Manufacturer
                 ) {
                     callBack(false);
                 }
@@ -45,7 +46,6 @@ module.exports = function () {
                     .on('data', (row) => {
                         total_entry_count = total_entry_count + 1
                         product_module.excel_validation(row, function (status) {
-
                             if (status) {
                                 correct_entry_count = correct_entry_count + 1
                                 const productData = {
@@ -95,7 +95,6 @@ module.exports = function () {
         // Start of xlsx file upload
         xlsx_upload: function (filepath, correct_entry_count, invalid_datas, callBack) {
             try {
-                console.log(invalid_datas)
                 readXlsxFile(fs.createReadStream(filepath), { sheet: 2 }).then((rows) => {
                     var theRemovedElement = rows.shift();
                     if (rows.length !== 0) {
@@ -165,7 +164,36 @@ module.exports = function () {
                                     }
                                     else {
                                         /////// IF ANY ISSUE FOUND
-                                        invalid_datas.push(doc)
+                                        const invalidData = {
+                                            CatalougeNumber: doc[0],
+                                            SupplierUniqueCatalogueNumber: doc[1],
+                                            BrandName: doc[2],
+                                            Generic: doc[3],
+                                            Manufacturer: doc[4],
+                                            Description: doc[5],
+                                            Dosage: doc[6],
+                                            Form: doc[7],
+                                            PackSize: doc[8],
+                                            PackSizeUnits: doc[9],
+                                            ProductType: doc[10],
+                                            RequiresRx: doc[11],
+                                            TaxName: doc[12],
+                                            IsTaxExempt: doc[13],
+                                            IsTaxIncluded: doc[14],
+                                            TaxPercent: doc[15],
+                                            PricePerPackage: doc[16],
+                                            CatalogTag: doc[17],
+                                            Status: doc[18],
+                                            IsDiscountAvailable: doc[19],
+                                            SupplierName: doc[20]
+                                        };
+                                        invalid_datas.push(invalidData)
+                                        index++;
+                                        if (index < rows.length) {
+                                            insert_data(rows[index]);
+                                        } else {
+                                            callBack(false, rows.length, correct_entry_count, invalid_datas);
+                                        }
                                     }
                                 })
                             }
@@ -187,7 +215,6 @@ module.exports = function () {
                     }
                 })
                     .catch(err => {
-                        console.log(err)
                         callBack(true, rows.length, correct_entry_count, invalid_datas);
                     })
             } catch (e) {
@@ -195,59 +222,46 @@ module.exports = function () {
             }
         },
         // End of xlsx file upload
-
-
-
-
         /// Failuer data file create
-
-        failuer_file_upload: function (filename,callBack) {
+        failuer_file_upload: function (filename, callBack) {
             try {
-
-        const csvWriter = createCsvWriter({
-            path: 'Failure_Products_Details/Failed' + filename,
-            header: [
-                { id: 'CatalougeNumber', title: 'CatalougeNumber' },
-                { id: 'SupplierUniqueCatalogueNumber', title: 'SupplierUniqueCatalogueNumber' },
-                { id: 'BrandName', title: 'BrandName' },
-                { id: 'Generic', title: 'Generic' },
-                { id: 'Manufacturer', title: 'Manufacturer' },
-                { id: 'Description', title: 'Description' },
-                { id: 'Dosage', title: 'Dosage' },
-                { id: 'Form', title: 'Form' },
-                { id: 'PackSize', title: 'PackSize' },
-                { id: 'PackSizeUnits', title: 'PackSizeUnits' },
-                { id: 'ProductType', title: 'ProductType' },
-                { id: 'RequiresRx', title: 'RequiresRx' },
-                { id: 'TaxName', title: 'TaxName' },
-                { id: 'IsTaxExempt', title: 'IsTaxExempt' },
-                { id: 'IsTaxIncluded', title: 'IsTaxIncluded' },
-                { id: 'TaxPercent', title: 'TaxPercent' },
-                { id: 'PricePerPackage', title: 'PricePerPackage' },
-                { id: 'CatalogTag', title: 'CatalogTag' },
-                { id: 'Status', title: 'Status' },
-                { id: 'IsDiscountAvailable', title: 'IsDiscountAvailable' },
-                { id: 'SupplierName', title: 'SupplierName' },
-            ]
-        });
-
-
-
-        csvWriter.writeRecords(invalid_datas)
-            .then(() => {
-
-
-                callBack(false);
-               
-            })
-            .catch(err => {
+                const csvWriter = createCsvWriter({
+                    path: 'Failure_Products_Details/Failed' + filename,
+                    header: [
+                        { id: 'CatalougeNumber', title: 'CatalougeNumber' },
+                        { id: 'SupplierUniqueCatalogueNumber', title: 'SupplierUniqueCatalogueNumber' },
+                        { id: 'BrandName', title: 'BrandName' },
+                        { id: 'Generic', title: 'Generic' },
+                        { id: 'Manufacturer', title: 'Manufacturer' },
+                        { id: 'Description', title: 'Description' },
+                        { id: 'Dosage', title: 'Dosage' },
+                        { id: 'Form', title: 'Form' },
+                        { id: 'PackSize', title: 'PackSize' },
+                        { id: 'PackSizeUnits', title: 'PackSizeUnits' },
+                        { id: 'ProductType', title: 'ProductType' },
+                        { id: 'RequiresRx', title: 'RequiresRx' },
+                        { id: 'TaxName', title: 'TaxName' },
+                        { id: 'IsTaxExempt', title: 'IsTaxExempt' },
+                        { id: 'IsTaxIncluded', title: 'IsTaxIncluded' },
+                        { id: 'TaxPercent', title: 'TaxPercent' },
+                        { id: 'PricePerPackage', title: 'PricePerPackage' },
+                        { id: 'CatalogTag', title: 'CatalogTag' },
+                        { id: 'Status', title: 'Status' },
+                        { id: 'IsDiscountAvailable', title: 'IsDiscountAvailable' },
+                        { id: 'SupplierName', title: 'SupplierName' },
+                    ]
+                });
+                csvWriter.writeRecords(invalid_datas)
+                    .then(() => {
+                        callBack(false);
+                    })
+                    .catch(err => {
+                        callBack(true);
+                    });
+            } catch (e) {
                 callBack(true);
-            });
-        } catch (e) {
-            callBack(true);
+            }
         }
-    }
-
     }
     return product_module;
 }
