@@ -1,51 +1,7 @@
 var mongoose = require("mongoose");
 const validator = require("validator");
 
-// var productSchema = new mongoose.Schema(
-//     {
-//         productname: {
-//             type: String,
-//             required: true,
-//             min: 6,
-//             trim: true,
-//         },
-//         description: {
-//             type: String,
-//             min: 1,
-//         },
-
-//         price: {
-//             type: String
-//         },
-//         quantity: {
-//             type: String
-//         },
-
-//         isDiscounted: {
-//             type: Boolean,
-//             require: true,
-//             min: 6,
-//             default: false,
-//         },
-//         isAvailable: {
-//             type: Boolean,
-//             require: true,
-//             min: 6,
-//             default: false,
-//         },
-
-//     },
-//     {
-//         timestamps: {
-//             createdAt: "createdAt",
-//             updatedAt: "updatedAt",
-//         },
-//     }
-// );
-
-
-
-var productSchema = new mongoose.Schema(
+var catalougeSchema = new mongoose.Schema(
     {
         catalogue_number: {
             type: String,
@@ -60,24 +16,29 @@ var productSchema = new mongoose.Schema(
             min: 6,
             trim: true,
         },
-
-        brand_name: {
+        supplier_name: {
             type: String,
             // required: true,
             // min: 6,
             // trim: true,
+        },
+        brand_name: {
+            type: String,
+            required: true,
+            min: 6,
+            trim: true,
         },
         generic: {
             type: String,
-            // required: true,
-            // min: 6,
-            // trim: true,
+            required: true,
+            min: 6,
+            trim: true,
         },
         manufacturer_name: {
             type: String,
-            // required: true,
-            // min: 6,
-            // trim: true,
+            required: true,
+            min: 6,
+            trim: true,
         },
         description: {
             type: String,
@@ -120,7 +81,7 @@ var productSchema = new mongoose.Schema(
             type: String
         },
         price_per_pack: {
-            type: String
+            type: Number
         },
         catalog_tag: {
             type: String
@@ -135,6 +96,7 @@ var productSchema = new mongoose.Schema(
             min: 6,
             default: false,
         },
+       
 
     },
     {
@@ -146,4 +108,4 @@ var productSchema = new mongoose.Schema(
 );
 
 
-module.exports = mongoose.model("product", productSchema);
+module.exports = mongoose.model("products", catalougeSchema);

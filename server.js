@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 connectDB()
 
 app.get('/', (req, res) => {
-    res.send('Welcome to demo!')
+    res.send('Welcome to Unicef API!')
 })
 
 /*Incudes all API routes*/
