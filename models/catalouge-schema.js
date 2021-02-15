@@ -13,11 +13,16 @@ var catalougeSchema = new mongoose.Schema(
             min: 6,
             trim: true,
         },
-        supplier_name: {
-            type: String,
-            // required: true,
-            // min: 6,
-            // trim: true,
+        // supplier_name: {
+        //     type: String,
+        //     // required: true,
+        //     // min: 6,
+        //     // trim: true,
+        // },
+        supplier_id: {
+
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
         },
         brand_name: {
             type: String,

@@ -58,7 +58,7 @@ module.exports = function () {
         },
         // End of Check duplicate data 
         // Start of csv file upload
-        csvUpload: function (filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        csvUpload: function (supplierId,filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 rows = []
                 fs.createReadStream(filepath)
@@ -98,7 +98,7 @@ module.exports = function () {
                                                         catalog_tag: row.CatalogTag,
                                                         status: row.Status,
                                                         isDiscounted: row.IsDiscountAvailable,
-                                                        supplier_name: row.SupplierName,
+                                                        supplier_id:supplierId,
                                                         timestamp: new Date()
                                                     };
                                                     const product = new products(productData);
@@ -110,6 +110,7 @@ module.exports = function () {
                                                             callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                         }
                                                     }).catch(err => {
+                                                        
                                                         callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     });
                                                     //////////
@@ -160,7 +161,7 @@ module.exports = function () {
         },
         // End of csv file upload
         // Start of xlsx file upload
-        xlsxUpload: function (filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        xlsxUpload: function (supplierId,filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 readXlsxFile(fs.createReadStream(filepath), { sheet: 2 }).then((rows) => {
                     var theRemovedElement = rows.shift();
@@ -188,7 +189,7 @@ module.exports = function () {
                                     CatalogTag: doc[17],
                                     Status: doc[18],
                                     IsDiscountAvailable: doc[19],
-                                    SupplierName: doc[20]
+                                    supplier_id:supplierId
                                 };
                                 productModule.excelValidation(data, function (status) {
                                     if (status) {

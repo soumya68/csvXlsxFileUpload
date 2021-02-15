@@ -9,8 +9,8 @@ var catalogueFileStatusSchema = new mongoose.Schema(
             trim: true,
         },
         user_id: {
-            type: String,
-            min: 1,
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
         },
         successed_records_count: {
             type: Number

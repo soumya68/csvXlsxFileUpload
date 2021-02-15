@@ -49,6 +49,10 @@ module.exports = (app, connection) => {
                 res.json({ status: false, message: "No user_id passed" });
                 return;
             }
+            if (!req.body.supplier_id) {
+                res.json({ status: false, message: "No supplier_id passed" });
+                return;
+            }
             // File path where file is saved
             var filePath = path.resolve(DIR + req.file.filename);
             const fileData = {
@@ -65,7 +69,7 @@ module.exports = (app, connection) => {
                 //FILE DATA INSERT CODE WILL BE HERE
                 if (req.file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
                     ////// THIS IS FOR XLSX FILE 
-                    productModule.xlsxUpload(filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                    productModule.xlsxUpload(req.body.supplier_id,filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
                         function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                             if (totalEntryCount == 0) {
                                 return res.status(200).json({
@@ -145,7 +149,7 @@ module.exports = (app, connection) => {
                 }
                 else {
                     ////// THIS IS FOR CSV FILE 
-                    productModule.csvUpload(filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                    productModule.csvUpload(req.body.supplier_id,filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                         function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                             if (error) {
                                 res.status(200).json({
