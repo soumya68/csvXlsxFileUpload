@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-const validator = require("validator");
 var catalougeSchema = new mongoose.Schema(
     {
         catalogue_number: {

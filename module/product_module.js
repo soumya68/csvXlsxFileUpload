@@ -1,4 +1,4 @@
-const bodyParser = require('body-parser');
+
 const products = require('../models/catalouge-schema');
 const readXlsxFile = require('read-excel-file/node');
 const fs = require('fs');
@@ -6,9 +6,9 @@ const csv = require('csv-parser');
 const crypto = require("crypto");
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 module.exports = function () {
-    var product_module = {
+    var productModule = {
         //Start of Validation
-        excel_validation: function (data, callBack) {
+        excelValidation: function (data, callBack) {
             try {
                 if (
                     !data.SupplierUniqueCatalogueNumber
@@ -38,68 +38,135 @@ module.exports = function () {
             }
         },
         //End of Validation
-        // Start of csv file upload
-        csv_upload: function (filepath, total_entry_count, correct_entry_count, invalid_datas, callBack) {
+        // Start of Check duplicate data 
+        checkDuplicate: function (SupplierUniqueCatalogueNumber, callBack) {
             try {
+                products.findOne({ supplier_catalogue_number: SupplierUniqueCatalogueNumber }, function (err, doc) {
+                    if (err) {
+                        callBack(true, null);
+                    }
+                    if (doc) {
+                        callBack(false, true);
+                    }
+                    else {
+                        callBack(false, false);
+                    }
+                });
+            } catch (e) {
+                callBack(true, null);
+            }
+        },
+        // End of Check duplicate data 
+        // Start of csv file upload
+        csvUpload: function (filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
+            try {
+                rows = []
                 fs.createReadStream(filepath)
                     .pipe(csv())
-                    .on('data', (row) => {
-                        total_entry_count = total_entry_count + 1
-                        product_module.excel_validation(row, function (status) {
-                            if (status) {
-                                correct_entry_count = correct_entry_count + 1
-                                const productData = {
-                                    catalogue_number: crypto.randomBytes(6).toString('hex'),
-                                    supplier_catalogue_number: row.SupplierUniqueCatalogueNumber,
-                                    brand_name: row.BrandName,
-                                    generic: row.Generic,
-                                    manufacturer_name: row.Manufacturer,
-                                    description: row.Description,
-                                    dosage: row.Dosage,
-                                    form: row.Form,
-                                    pack_size: row.PackSize,
-                                    pack_size_unit: row.PackSizeUnits,
-                                    product_type: row.ProductType,
-                                    require_rx: row.RequiresRx,
-                                    tax_name: row.TaxName,
-                                    Is_tax_exempt: row.IsTaxExempt,
-                                    Is_tax_included: row.IsTaxIncluded,
-                                    tax_percent: row.TaxPercent,
-                                    price_per_pack: row.PricePerPackage,
-                                    catalog_tag: row.CatalogTag,
-                                    status: row.Status,
-                                    isDiscounted: row.IsDiscountAvailable,
-                                    supplier_name: row.SupplierName,
-                                    timestamp: new Date()
-                                };
-                                const product = new products(productData);
-                                product.save().then(response => {
-                                }).catch(err => {
-                                    callBack(true, total_entry_count, correct_entry_count, invalid_datas);
-                                });
-                            }
-                            else {
-                                /////// IF ANY ISSUE FOUND
-                                invalid_datas.push(row)
-                            }
-                        })
+                    .on('data', (rowData) => {
+                        rows.push(rowData)
                     })
                     .on('end', () => {
-                        callBack(false, total_entry_count, correct_entry_count, invalid_datas);
+                        if (rows.length !== 0) {
+                            var index = 0;
+                            var insertData = function (row) {
+                                if (row.length !== 0) {
+                                    productModule.excelValidation(row, function (status) {
+                                        if (status) {
+                                            /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
+                                            productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, function (error, isDuplicate) {
+                                                if (!isDuplicate) {
+                                                    correctEntryCount = correctEntryCount + 1
+                                                    const productData = {
+                                                        catalogue_number: crypto.randomBytes(6).toString('hex'),
+                                                        supplier_catalogue_number: row.SupplierUniqueCatalogueNumber,
+                                                        brand_name: row.BrandName,
+                                                        generic: row.Generic,
+                                                        manufacturer_name: row.Manufacturer,
+                                                        description: row.Description,
+                                                        dosage: row.Dosage,
+                                                        form: row.Form,
+                                                        pack_size: row.PackSize,
+                                                        pack_size_unit: row.PackSizeUnits,
+                                                        product_type: row.ProductType,
+                                                        require_rx: row.RequiresRx,
+                                                        tax_name: row.TaxName,
+                                                        Is_tax_exempt: row.IsTaxExempt,
+                                                        Is_tax_included: row.IsTaxIncluded,
+                                                        tax_percent: row.TaxPercent,
+                                                        price_per_pack: row.PricePerPackage,
+                                                        catalog_tag: row.CatalogTag,
+                                                        status: row.Status,
+                                                        isDiscounted: row.IsDiscountAvailable,
+                                                        supplier_name: row.SupplierName,
+                                                        timestamp: new Date()
+                                                    };
+                                                    const product = new products(productData);
+                                                    product.save().then(response => {
+                                                        index++;
+                                                        if (index < rows.length) {
+                                                            insertData(rows[index]);
+                                                        } else {
+                                                            callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                        }
+                                                    }).catch(err => {
+                                                        callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                    });
+                                                    //////////
+                                                }
+                                                else {
+                                                    duplicateData = duplicateData + 1
+                                                    index++;
+                                                    if (index < rows.length) {
+                                                        insertData(rows[index]);
+                                                    } else {
+                                                        callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                    }
+                                                }
+                                            })
+                                        }
+                                        else {
+                                            /////// IF ANY ISSUE FOUND
+                                            invalidDatas.push(row)
+                                            index++;
+                                            if (index < rows.length) {
+                                                insertData(rows[index]);
+                                            } else {
+                                                callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                            }
+                                        }
+                                    })
+                                }
+                                else {
+                                    index++;
+                                    if (index < rows.length) {
+                                        insertData(rows[index]);
+                                    } else {
+                                        callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                    }
+                                }
+                            }
+                            if (rows.length !== 0) {
+                                insertData(rows[index]);
+                            }
+                        }
+                        else {
+                            callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                        }
                     })
             } catch (e) {
-                callBack(true, total_entry_count, correct_entry_count, invalid_datas);
+                callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
             }
         },
         // End of csv file upload
         // Start of xlsx file upload
-        xlsx_upload: function (filepath, correct_entry_count, invalid_datas, callBack) {
+        xlsxUpload: function (filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 readXlsxFile(fs.createReadStream(filepath), { sheet: 2 }).then((rows) => {
                     var theRemovedElement = rows.shift();
                     if (rows.length !== 0) {
                         var index = 0;
-                        var insert_data = function (doc) {
+                        var insertData = function (doc) {
                             if (doc.length !== 0) {
                                 const data = {
                                     SupplierUniqueCatalogueNumber: doc[1],
@@ -123,44 +190,59 @@ module.exports = function () {
                                     IsDiscountAvailable: doc[19],
                                     SupplierName: doc[20]
                                 };
-                                product_module.excel_validation(data, function (status) {
+                                productModule.excelValidation(data, function (status) {
                                     if (status) {
-                                        correct_entry_count = correct_entry_count + 1
-                                        const productData = {
-                                            catalogue_number: crypto.randomBytes(6).toString('hex'),
-                                            supplier_catalogue_number: doc[1],
-                                            brand_name: doc[2],
-                                            generic: doc[3],
-                                            manufacturer_name: doc[4],
-                                            description: doc[5],
-                                            dosage: doc[6],
-                                            form: doc[7],
-                                            pack_size: doc[8],
-                                            pack_size_unit: doc[9],
-                                            product_type: doc[10],
-                                            require_rx: doc[11],
-                                            tax_name: doc[12],
-                                            Is_tax_exempt: doc[13],
-                                            Is_tax_included: doc[14],
-                                            tax_percent: doc[15],
-                                            price_per_pack: doc[16],
-                                            catalog_tag: doc[17],
-                                            status: doc[18],
-                                            isDiscounted: doc[19],
-                                            supplier_name: doc[20],
-                                            timestamp: new Date()
-                                        };
-                                        const product = new products(productData);
-                                        product.save().then(response => {
-                                            index++;
-                                            if (index < rows.length) {
-                                                insert_data(rows[index]);
-                                            } else {
-                                                callBack(false, rows.length, correct_entry_count, invalid_datas);
+                                        /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
+                                        productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, function (error, isDuplicate) {
+                                            if (!isDuplicate) {
+                                                correctEntryCount = correctEntryCount + 1
+                                                const productData = {
+                                                    catalogue_number: crypto.randomBytes(6).toString('hex'),
+                                                    supplier_catalogue_number: doc[1],
+                                                    brand_name: doc[2],
+                                                    generic: doc[3],
+                                                    manufacturer_name: doc[4],
+                                                    description: doc[5],
+                                                    dosage: doc[6],
+                                                    form: doc[7],
+                                                    pack_size: doc[8],
+                                                    pack_size_unit: doc[9],
+                                                    product_type: doc[10],
+                                                    require_rx: doc[11],
+                                                    tax_name: doc[12],
+                                                    Is_tax_exempt: doc[13],
+                                                    Is_tax_included: doc[14],
+                                                    tax_percent: doc[15],
+                                                    price_per_pack: doc[16],
+                                                    catalog_tag: doc[17],
+                                                    status: doc[18],
+                                                    isDiscounted: doc[19],
+                                                    supplier_name: doc[20],
+                                                    timestamp: new Date()
+                                                };
+                                                const product = new products(productData);
+                                                product.save().then(response => {
+                                                    index++;
+                                                    if (index < rows.length) {
+                                                        insertData(rows[index]);
+                                                    } else {
+                                                        callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                    }
+                                                }).catch(err => {
+                                                    callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                });
+                                                //////////
                                             }
-                                        }).catch(err => {
-                                            callBack(true, rows.length, correct_entry_count, invalid_datas);
-                                        });
+                                            else {
+                                                duplicateData = duplicateData + 1
+                                                index++;
+                                                if (index < rows.length) {
+                                                    insertData(rows[index]);
+                                                } else {
+                                                    callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                }
+                                            }
+                                        })
                                     }
                                     else {
                                         /////// IF ANY ISSUE FOUND
@@ -187,12 +269,12 @@ module.exports = function () {
                                             IsDiscountAvailable: doc[19],
                                             SupplierName: doc[20]
                                         };
-                                        invalid_datas.push(invalidData)
+                                        invalidDatas.push(invalidData)
                                         index++;
                                         if (index < rows.length) {
-                                            insert_data(rows[index]);
+                                            insertData(rows[index]);
                                         } else {
-                                            callBack(false, rows.length, correct_entry_count, invalid_datas);
+                                            callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                         }
                                     }
                                 })
@@ -200,33 +282,33 @@ module.exports = function () {
                             else {
                                 index++;
                                 if (index < rows.length) {
-                                    insert_data(rows[index]);
+                                    insertData(rows[index]);
                                 } else {
-                                    callBack(false, rows.length, correct_entry_count, invalid_datas);
+                                    callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                 }
                             }
                         }
                         if (rows.length !== 0) {
-                            insert_data(rows[index]);
+                            insertData(rows[index]);
                         }
                     }
                     else {
-                        callBack(false, rows.length, correct_entry_count, invalid_datas);
+                        callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                     }
                 })
                     .catch(err => {
-                        callBack(true, rows.length, correct_entry_count, invalid_datas);
+                        callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                     })
             } catch (e) {
-                callBack(true, rows.length, correct_entry_count, invalid_datas);
+                callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
             }
         },
         // End of xlsx file upload
-        /// Failuer data file create
-        failuer_file_upload: function (filename, callBack) {
+        // Start of Failuer data file create
+        failuerFileUpload: function (filename, callBack) {
             try {
                 const csvWriter = createCsvWriter({
-                    path: 'Failure_Products_Details/Failed' + filename,
+                    path: 'Failure_Catalogue/' + filename,
                     header: [
                         { id: 'CatalougeNumber', title: 'CatalougeNumber' },
                         { id: 'SupplierUniqueCatalogueNumber', title: 'SupplierUniqueCatalogueNumber' },
@@ -251,7 +333,7 @@ module.exports = function () {
                         { id: 'SupplierName', title: 'SupplierName' },
                     ]
                 });
-                csvWriter.writeRecords(invalid_datas)
+                csvWriter.writeRecords(invalidDatas)
                     .then(() => {
                         callBack(false);
                     })
@@ -262,6 +344,7 @@ module.exports = function () {
                 callBack(true);
             }
         }
+          // End of Failuer data file create
     }
-    return product_module;
+    return productModule;
 }

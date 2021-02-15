@@ -21,6 +21,9 @@ var catalogueFileStatusSchema = new mongoose.Schema(
         total_records_count: {
             type: Number
         },
+        duplicate_records_count: {
+            type: Number
+        },
         status: {
             type: Boolean
         },

@@ -1,25 +1,20 @@
 const bodyParser = require('body-parser');
-const products = require('../models/catalouge-schema');
 const catalogueFiles = require('../models/catalogue-file-status-schema');
 const path = require('path');
 const multer = require('multer');
-const readXlsxFile = require('read-excel-file/node');
-const fs = require('fs');
-const csv = require('csv-parser');
-const crypto = require("crypto");
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+
 module.exports = (app, connection) => {
     app.use(bodyParser.json());
-    var product_module = require('../module/product_module')();
+    var productModule = require('../module/product_module')();
     // File upload folder
-    const DIR = 'Product_Details_Import/';
+    const DIR = 'Catalouge_Import/';
     var storage = multer.diskStorage({
         destination: function (req, file, callback) {
             callback(null, DIR)
         },
         filename: function (req, file, callback) {
-            const randomdigit = Math.floor(Math.random() * 1000000)
-            const fileName = randomdigit + file.originalname.toLowerCase().split(' ').join('-');
+            const randomDigit = Math.floor(Math.random() * 1000000)
+            const fileName = randomDigit + file.originalname.toLowerCase().split(' ').join('-');
             callback(null, fileName)
         },
     });
@@ -36,21 +31,26 @@ module.exports = (app, connection) => {
             }
         }
     });
-    //API FOR PRODUCT DETAILS EXCELSHEET IMPORT
+    //START OF API FOR PRODUCT DETAILS EXCELSHEET IMPORT
     //Params: file
     //Response: status, message
     app.post('/api/upload_products', upload.single('file'), function (req, res) {
         try {
-            invalid_datas = [];
-            incorrect_entry_count = 0;
-            correct_entry_count = 0;
-            total_entry_count = 0;
+            invalidDatas = [];
+            incorrectEntryCount = 0;
+            correctEntryCount = 0;
+            totalEntryCount = 0;
+            duplicateEntryCount = 0;
             if (!req.file) {
                 res.json({ status: false, message: "No file passed" });
                 return;
             }
+            if (!req.body.user_id) {
+                res.json({ status: false, message: "No user_id passed" });
+                return;
+            }
             // File path where file is saved
-            var filepath = path.resolve('Product_Details_Import/' + req.file.filename);
+            var filePath = path.resolve(DIR + req.file.filename);
             const fileData = {
                 filename: req.file.filename,
                 user_id: req.body.user_id,
@@ -65,59 +65,62 @@ module.exports = (app, connection) => {
                 //FILE DATA INSERT CODE WILL BE HERE
                 if (req.file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
                     ////// THIS IS FOR XLSX FILE 
-                    product_module.xlsx_upload(filepath, correct_entry_count, invalid_datas,
-                        function (error, total_entry_count, correct_entry_count, invalid_datas) {
-                            if (total_entry_count == 0) {
+                    productModule.xlsxUpload(filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                        function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
+                            if (totalEntryCount == 0) {
                                 return res.status(200).json({
                                     status: false,
                                     message: "File is empty",
-                                    invalid_rows: invalid_datas,
-                                    invalid_rows_count: invalid_datas.length,
-                                    valid_rows_count: correct_entry_count,
-                                    total_rows_count: total_entry_count
+                                    invalid_rows: invalidDatas,
+                                    invalid_rows_count: invalidDatas.length,
+                                    valid_rows_count: correctEntryCount,
+                                    total_rows_count: totalEntryCount
                                 })
                             }
                             if (error) {
                                 res.status(200).json({
                                     status: false,
                                     message: error,
-                                    invalid_rows: invalid_datas,
-                                    invalid_rows_count: invalid_datas.length,
-                                    valid_rows_count: correct_entry_count,
-                                    total_rows_count: total_entry_count
+                                    invalid_rows: invalidDatas,
+                                    invalid_rows_count: invalidDatas.length,
+                                    valid_rows_count: correctEntryCount,
+                                    total_rows_count: totalEntryCount
                                 })
                             }
                             else {
                                 let updates = {
                                     status: true,
-                                    successed_records_count: correct_entry_count,
-                                    falied_records_count: invalid_datas.length,
-                                    total_records_count: total_entry_count
+                                    successed_records_count: correctEntryCount,
+                                    falied_records_count: invalidDatas.length,
+                                    total_records_count: totalEntryCount,
+                                    duplicate_records_count: duplicateEntryCount
                                 }
                                 catalogueFiles.findOneAndUpdate({ filename: req.file.filename },
                                     { $set: updates },
                                     { new: true }).then(response => {
-                                        if (invalid_datas.length > 0) {
-                                            product_module.failuer_file_upload(req.file.filename,
+                                        if (invalidDatas.length > 0) {
+                                            productModule.failuerFileUpload(req.file.filename,
                                                 function (error) {
                                                     if (error) {
                                                         res.status(200).json({
                                                             status: false,
                                                             message: "Data Inserted Successfully",
-                                                            invalid_rows: invalid_datas,
-                                                            invalid_rows_count: invalid_datas.length,
-                                                            valid_rows_count: correct_entry_count,
-                                                            total_rows_count: total_entry_count
+                                                            invalid_rows: invalidDatas,
+                                                            invalid_rows_count: invalidDatas.length,
+                                                            valid_rows_count: correctEntryCount,
+                                                            total_rows_count: totalEntryCount,
+                                                            duplicate_entry_count: duplicateEntryCount
                                                         })
                                                     }
                                                     else {
                                                         res.status(200).json({
                                                             status: true,
                                                             message: "Data Inserted Successfully",
-                                                            invalid_rows: invalid_datas,
-                                                            invalid_rows_count: invalid_datas.length,
-                                                            valid_rows_count: correct_entry_count,
-                                                            total_rows_count: total_entry_count
+                                                            invalid_rows: invalidDatas,
+                                                            invalid_rows_count: invalidDatas.length,
+                                                            valid_rows_count: correctEntryCount,
+                                                            total_rows_count: totalEntryCount,
+                                                            duplicate_entry_count: duplicateEntryCount
                                                         })
                                                     }
                                                 })
@@ -126,10 +129,11 @@ module.exports = (app, connection) => {
                                             res.status(200).json({
                                                 status: true,
                                                 message: "Data Inserted Successfully",
-                                                invalid_rows: invalid_datas,
-                                                invalid_rows_count: invalid_datas.length,
-                                                valid_rows_count: correct_entry_count,
-                                                total_rows_count: total_entry_count
+                                                invalid_rows: invalidDatas,
+                                                invalid_rows_count: invalidDatas.length,
+                                                valid_rows_count: correctEntryCount,
+                                                total_rows_count: totalEntryCount,
+                                                duplicate_entry_count: duplicateEntryCount
                                             })
                                         }
                                     })
@@ -141,49 +145,53 @@ module.exports = (app, connection) => {
                 }
                 else {
                     ////// THIS IS FOR CSV FILE 
-                    product_module.csv_upload(filepath, total_entry_count, correct_entry_count, invalid_datas,
-                        function (error, total_entry_count, correct_entry_count, invalid_datas) {
+                    productModule.csvUpload(filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                        function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                             if (error) {
                                 res.status(200).json({
                                     status: false,
                                     message: error,
-                                    invalid_rows: invalid_datas,
-                                    invalid_rows_count: invalid_datas.length,
-                                    valid_rows_count: correct_entry_count,
-                                    total_rows_count: total_entry_count
+                                    invalid_rows: invalidDatas,
+                                    invalid_rows_count: invalidDatas.length,
+                                    valid_rows_count: correctEntryCount,
+                                    total_rows_count: totalEntryCount,
+                                    duplicate_entry_count: duplicateEntryCount
                                 })
                             }
                             else {
                                 let updates = {
                                     status: true,
-                                    successed_records_count: correct_entry_count,
-                                    falied_records_count: invalid_datas.length,
-                                    total_records_count: total_entry_count
+                                    successed_records_count: correctEntryCount,
+                                    falied_records_count: invalidDatas.length,
+                                    total_records_count: totalEntryCount,
+                                    duplicate_records_count: duplicateEntryCount
                                 }
                                 catalogueFiles.findOneAndUpdate({ filename: req.file.filename },
                                     { $set: updates },
                                     { new: true }).then(response => {
-                                        if (invalid_datas.length > 0) {
-                                            product_module.failuer_file_upload(req.file.filename,
+                                        if (invalidDatas.length > 0) {
+                                            productModule.failuerFileUpload(req.file.filename,
                                                 function (error) {
                                                     if (error) {
                                                         res.status(200).json({
                                                             status: false,
                                                             message: "Data Inserted Successfully",
-                                                            invalid_rows: invalid_datas,
-                                                            invalid_rows_count: invalid_datas.length,
-                                                            valid_rows_count: correct_entry_count,
-                                                            total_rows_count: total_entry_count
+                                                            invalid_rows: invalidDatas,
+                                                            invalid_rows_count: invalidDatas.length,
+                                                            valid_rows_count: correctEntryCount,
+                                                            total_rows_count: totalEntryCount,
+                                                            duplicate_entry_count: duplicateEntryCount
                                                         })
                                                     }
                                                     else {
                                                         res.status(200).json({
                                                             status: true,
                                                             message: "Data Inserted Successfully",
-                                                            invalid_rows: invalid_datas,
-                                                            invalid_rows_count: invalid_datas.length,
-                                                            valid_rows_count: correct_entry_count,
-                                                            total_rows_count: total_entry_count
+                                                            invalid_rows: invalidDatas,
+                                                            invalid_rows_count: invalidDatas.length,
+                                                            valid_rows_count: correctEntryCount,
+                                                            total_rows_count: totalEntryCount,
+                                                            duplicate_entry_count: duplicateEntryCount
                                                         })
                                                     }
                                                 })
@@ -192,10 +200,11 @@ module.exports = (app, connection) => {
                                             res.status(200).json({
                                                 status: true,
                                                 message: "Data Inserted Successfully",
-                                                invalid_rows: invalid_datas,
-                                                invalid_rows_count: invalid_datas.length,
-                                                valid_rows_count: correct_entry_count,
-                                                total_rows_count: total_entry_count
+                                                invalid_rows: invalidDatas,
+                                                invalid_rows_count: invalidDatas.length,
+                                                valid_rows_count: correctEntryCount,
+                                                total_rows_count: totalEntryCount,
+                                                duplicate_entry_count: duplicateEntryCount
                                             })
                                         }
                                     })
@@ -208,6 +217,7 @@ module.exports = (app, connection) => {
                 }
                 ////
             }).catch(err => {
+                console.log(err)
                 return res.status(400).json({ message: 'Error while uploading file', error: err });
             });
         }
@@ -215,4 +225,5 @@ module.exports = (app, connection) => {
             res.json({ status: false, message: er });
         }
     });
+    //END OF API FOR PRODUCT DETAILS EXCELSHEET IMPORT
 };
