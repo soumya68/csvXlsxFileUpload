@@ -2,30 +2,35 @@ var mongoose = require("mongoose");
 const validator = require("validator");
 var catalogueFileStatusSchema = new mongoose.Schema(
     {
-        filename: {
+        fileName: {
             type: String,
             required: true,
             min: 6,
             trim: true,
         },
-        user_id: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
-        successed_records_count: {
-            type: Number
+        successedRecordsCount: {
+            type: Number,
+            default:0
         },
-        falied_records_count: {
-            type: Number
+        faliedRecordsCount: {
+            type: Number,
+            default:0
         },
-        total_records_count: {
-            type: Number
+        totalRecordsCount: {
+            type: Number,
+            default:0
         },
-        duplicate_records_count: {
-            type: Number
+        duplicateRecordsCount: {
+            type: Number,
+            default:0
         },
         status: {
-            type: Boolean
+            type: Boolean,
+            default:false
         },
     },
     {

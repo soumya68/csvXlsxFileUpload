@@ -1,9 +1,6 @@
 const bodyParser = require('body-parser');
-
-module.exports = (app, connection) => {
-    app.use(bodyParser.json());
+module.exports = (app) => {
     var supplierModule = require('../module/supplier_module')();
-
     //START OF API FOR ADD SUPPLIER DETAILS 
     //Params: file
     //Response: status, message
@@ -17,21 +14,17 @@ module.exports = (app, connection) => {
                 res.json({ status: false, message: "isoCountry parameter is missing" });
                 return;
             }
-            
             if (!req.body.userId) {
                 res.json({ status: false, message: "userId parameter is missing" });
                 return;
             }
-
-console.log('BODY',req.body)
-
             const supplierData = {
                 supplierName: JSON.parse(req.body.supplierName),
                 supplierCode: Math.floor(Math.random() * 1000000),
                 isoCountry: req.body.isoCountry,
-                catalogTags:  JSON.parse(req.body.catalogTags),
+                catalogTags: JSON.parse(req.body.catalogTags),
                 contact: {
-                    address:  JSON.parse(req.body.address),
+                    address: JSON.parse(req.body.address),
                     email: req.body.email,
                     phone: req.body.phone
                 },
@@ -49,16 +42,14 @@ console.log('BODY',req.body)
                 },
                 timestamp: new Date()
             };
-
-            console.log('DATA',supplierData)
-
             supplierModule.addSupplier(supplierData,
-                function (error, result) {
+                function (error, errData, result) {
                     if (error) {
                         res.status(200).json({
                             status: false,
                             message: "Error",
-                            supplierId: null
+                            supplierId: null,
+                            errData: errData.errors
                         })
                     }
                     else {
@@ -66,14 +57,11 @@ console.log('BODY',req.body)
                             status: true,
                             message: "Supplier details created successfully",
                             supplierId: result._id
-
                         })
                     }
                 })
-
         }
         catch (er) {
-            console.log(er)
             res.json({ status: false, message: er });
         }
     });

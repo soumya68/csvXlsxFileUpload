@@ -1,10 +1,8 @@
 const bodyParser = require('body-parser');
-const catalogueFiles = require('../models/catalogue-file-status-schema');
+const catalogueFiles = require('../models/catalogue-file-schema');
 const path = require('path');
 const multer = require('multer');
-
-module.exports = (app, connection) => {
-    app.use(bodyParser.json());
+module.exports = (app) => {
     var productModule = require('../module/product_module')();
     // File upload folder
     const DIR = 'Catalouge_Import/';
@@ -45,23 +43,26 @@ module.exports = (app, connection) => {
                 res.json({ status: false, message: "No file passed" });
                 return;
             }
-            if (!req.body.user_id) {
-                res.json({ status: false, message: "No user_id passed" });
+            if (!req.body.userId) {
+                res.json({ status: false, message: "userId parameter is missing" });
                 return;
             }
-            if (!req.body.supplier_id) {
-                res.json({ status: false, message: "No supplier_id passed" });
+            if (!req.body.supplierId) {
+                res.json({ status: false, message: "supplierId parameter is missing" });
                 return;
             }
             // File path where file is saved
             var filePath = path.resolve(DIR + req.file.filename);
+            var userId=req.body.userId;
+            var version=req.body.version;
+            var supplierId=req.body.supplierId
             const fileData = {
-                filename: req.file.filename,
-                user_id: req.body.user_id,
+                fileName: req.file.filename,
+                userId: userId,
                 status: false,
-                successed_records_count: 0,
-                falied_records_count: 0,
-                total_records_count: 0,
+                successedRecordsCount: 0,
+                faliedRecordsCount: 0,
+                totalRecordsCount: 0,
                 timestamp: new Date()
             };
             const fileDetails = new catalogueFiles(fileData);
@@ -69,62 +70,63 @@ module.exports = (app, connection) => {
                 //FILE DATA INSERT CODE WILL BE HERE
                 if (req.file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
                     ////// THIS IS FOR XLSX FILE 
-                    productModule.xlsxUpload(req.body.supplier_id,filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                    productModule.xlsxUpload(userId,version,supplierId,filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
                         function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                             if (totalEntryCount == 0) {
                                 return res.status(200).json({
                                     status: false,
                                     message: "File is empty",
-                                    invalid_rows: invalidDatas,
-                                    invalid_rows_count: invalidDatas.length,
-                                    valid_rows_count: correctEntryCount,
-                                    total_rows_count: totalEntryCount
+                                    invalidRows: invalidDatas,
+                                    invalidRowsCount: invalidDatas.length,
+                                    validRowsCount: correctEntryCount,
+                                    totalRowsCount: totalEntryCount,
+                                    duplicateEntryCount: duplicateEntryCount
                                 })
                             }
                             if (error) {
                                 res.status(200).json({
                                     status: false,
                                     message: error,
-                                    invalid_rows: invalidDatas,
-                                    invalid_rows_count: invalidDatas.length,
-                                    valid_rows_count: correctEntryCount,
-                                    total_rows_count: totalEntryCount
+                                    invalidRows: invalidDatas,
+                                    invalidRowsCount: invalidDatas.length,
+                                    validRowsCount: correctEntryCount,
+                                    totalRowsCount: totalEntryCount,
+                                    duplicateEntryCount: duplicateEntryCount
                                 })
                             }
                             else {
                                 let updates = {
                                     status: true,
-                                    successed_records_count: correctEntryCount,
-                                    falied_records_count: invalidDatas.length,
-                                    total_records_count: totalEntryCount,
-                                    duplicate_records_count: duplicateEntryCount
+                                    successedRecordsCount: correctEntryCount,
+                                    faliedRecordsCount: invalidDatas.length,
+                                    totalRecordsCount: totalEntryCount,
+                                    duplicateRecordsCount: duplicateEntryCount
                                 }
-                                catalogueFiles.findOneAndUpdate({ filename: req.file.filename },
+                                catalogueFiles.findOneAndUpdate({ fileName: req.file.filename },
                                     { $set: updates },
                                     { new: true }).then(response => {
                                         if (invalidDatas.length > 0) {
-                                            productModule.failuerFileUpload(req.file.filename,
+                                            productModule.failuerFileUpload(req.file.filename,invalidDatas,
                                                 function (error) {
                                                     if (error) {
                                                         res.status(200).json({
                                                             status: false,
-                                                            message: "Data Inserted Successfully",
-                                                            invalid_rows: invalidDatas,
-                                                            invalid_rows_count: invalidDatas.length,
-                                                            valid_rows_count: correctEntryCount,
-                                                            total_rows_count: totalEntryCount,
-                                                            duplicate_entry_count: duplicateEntryCount
+                                                            invalidRows: invalidDatas,
+                                                            invalidRowsCount: invalidDatas.length,
+                                                            validRowsCount: correctEntryCount,
+                                                            totalRowsCount: totalEntryCount,
+                                                            duplicateEntryCount: duplicateEntryCount
                                                         })
                                                     }
                                                     else {
                                                         res.status(200).json({
                                                             status: true,
                                                             message: "Data Inserted Successfully",
-                                                            invalid_rows: invalidDatas,
-                                                            invalid_rows_count: invalidDatas.length,
-                                                            valid_rows_count: correctEntryCount,
-                                                            total_rows_count: totalEntryCount,
-                                                            duplicate_entry_count: duplicateEntryCount
+                                                            invalidRows: invalidDatas,
+                                                            invalidRowsCount: invalidDatas.length,
+                                                            validRowsCount: correctEntryCount,
+                                                            totalRowsCount: totalEntryCount,
+                                                            duplicateEntryCount: duplicateEntryCount
                                                         })
                                                     }
                                                 })
@@ -133,11 +135,11 @@ module.exports = (app, connection) => {
                                             res.status(200).json({
                                                 status: true,
                                                 message: "Data Inserted Successfully",
-                                                invalid_rows: invalidDatas,
-                                                invalid_rows_count: invalidDatas.length,
-                                                valid_rows_count: correctEntryCount,
-                                                total_rows_count: totalEntryCount,
-                                                duplicate_entry_count: duplicateEntryCount
+                                                invalidRows: invalidDatas,
+                                                invalidRowsCount: invalidDatas.length,
+                                                validRowsCount: correctEntryCount,
+                                                totalRowsCount: totalEntryCount,
+                                                duplicateEntryCount: duplicateEntryCount
                                             })
                                         }
                                     })
@@ -149,53 +151,53 @@ module.exports = (app, connection) => {
                 }
                 else {
                     ////// THIS IS FOR CSV FILE 
-                    productModule.csvUpload(req.body.supplier_id,filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                    productModule.csvUpload(userId, version,supplierId,filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                         function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                             if (error) {
                                 res.status(200).json({
                                     status: false,
                                     message: error,
-                                    invalid_rows: invalidDatas,
-                                    invalid_rows_count: invalidDatas.length,
-                                    valid_rows_count: correctEntryCount,
-                                    total_rows_count: totalEntryCount,
-                                    duplicate_entry_count: duplicateEntryCount
+                                    invalidRows: invalidDatas,
+                                    invalidRowsCount: invalidDatas.length,
+                                    validRowsCount: correctEntryCount,
+                                    totalRowsCount: totalEntryCount,
+                                    duplicateEntryCount: duplicateEntryCount
                                 })
                             }
                             else {
                                 let updates = {
                                     status: true,
-                                    successed_records_count: correctEntryCount,
-                                    falied_records_count: invalidDatas.length,
-                                    total_records_count: totalEntryCount,
-                                    duplicate_records_count: duplicateEntryCount
+                                    successedRecordsCount: correctEntryCount,
+                                    faliedRecordsCount: invalidDatas.length,
+                                    totalRecordsCount: totalEntryCount,
+                                    duplicateRecordsCount: duplicateEntryCount
                                 }
-                                catalogueFiles.findOneAndUpdate({ filename: req.file.filename },
+                                catalogueFiles.findOneAndUpdate({ fileName: req.file.filename },
                                     { $set: updates },
                                     { new: true }).then(response => {
                                         if (invalidDatas.length > 0) {
-                                            productModule.failuerFileUpload(req.file.filename,
+                                            productModule.failuerFileUpload(req.file.filename,invalidDatas,
                                                 function (error) {
                                                     if (error) {
                                                         res.status(200).json({
                                                             status: false,
                                                             message: "Data Inserted Successfully",
-                                                            invalid_rows: invalidDatas,
-                                                            invalid_rows_count: invalidDatas.length,
-                                                            valid_rows_count: correctEntryCount,
-                                                            total_rows_count: totalEntryCount,
-                                                            duplicate_entry_count: duplicateEntryCount
+                                                            invalidRows: invalidDatas,
+                                                            invalidRowsCount: invalidDatas.length,
+                                                            validRowsCount: correctEntryCount,
+                                                            totalRowsCount: totalEntryCount,
+                                                            duplicateEntryCount: duplicateEntryCount
                                                         })
                                                     }
                                                     else {
                                                         res.status(200).json({
                                                             status: true,
                                                             message: "Data Inserted Successfully",
-                                                            invalid_rows: invalidDatas,
-                                                            invalid_rows_count: invalidDatas.length,
-                                                            valid_rows_count: correctEntryCount,
-                                                            total_rows_count: totalEntryCount,
-                                                            duplicate_entry_count: duplicateEntryCount
+                                                            invalidRows: invalidDatas,
+                                                            invalidRowsCount: invalidDatas.length,
+                                                            validRowsCount: correctEntryCount,
+                                                            totalRowsCount: totalEntryCount,
+                                                            duplicateEntryCount: duplicateEntryCount
                                                         })
                                                     }
                                                 })
@@ -204,11 +206,11 @@ module.exports = (app, connection) => {
                                             res.status(200).json({
                                                 status: true,
                                                 message: "Data Inserted Successfully",
-                                                invalid_rows: invalidDatas,
-                                                invalid_rows_count: invalidDatas.length,
-                                                valid_rows_count: correctEntryCount,
-                                                total_rows_count: totalEntryCount,
-                                                duplicate_entry_count: duplicateEntryCount
+                                                invalidRows: invalidDatas,
+                                                invalidRowsCount: invalidDatas.length,
+                                                validRowsCount: correctEntryCount,
+                                                totalRowsCount: totalEntryCount,
+                                                duplicateEntryCount: duplicateEntryCount
                                             })
                                         }
                                     })
@@ -221,8 +223,7 @@ module.exports = (app, connection) => {
                 }
                 ////
             }).catch(err => {
-                console.log(err)
-                return res.status(400).json({ message: 'Error while uploading file', error: err });
+                return res.status(400).json({ message: 'Error while uploading file', error: err});
             });
         }
         catch (er) {

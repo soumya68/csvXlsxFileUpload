@@ -12,39 +12,50 @@ var supplierSchema = new mongoose.Schema(
                 default: []
             },
             email: {
-                type: String
+                type: String,
+                validate: {
+                    validator: validator.isEmail,
+                    message: "{VALUE} is not a valid email",
+                  },
+                  default:null
             },
             phone: {
-                type: String
+                type: String,
+                default:null
             },
-
         },
         deliveryFee: {
-            type: Number
+            type: Number,
+            default:0
         },
         isoCountry: {
-            type: String
+            type: String,
+            default:null
         },
         lastProductSeq: {
-            type: Number
+            type: Number,
+            default:0
         },
         supplierCode: {
-            type: Number
-        },
+            type: Number,
+            default:0        },
         supplierName: {
             type: Object,
             default:{}
         },
         type: {
-            type: String
+            type: String,
+            default:null
         },
         usdPrice: {
-            type: Number
+            type: Number,
+            default:0
         },
         metadata: {
             createdBy: {
                 userId: {
                     type: mongoose.Schema.Types.ObjectId,
+                    required:true
                 },
                 utcDatetime: {
                     type: Date
@@ -55,9 +66,21 @@ var supplierSchema = new mongoose.Schema(
                 default: []
             },
             version: {
-                type: String
+                type: String,
+                default:0
             },
         },
+    },
+    {
+        timestamps: {
+            createdAt: "createdAt",
+            updatedAt: "updatedAt",
+        },
+    }
+);
+module.exports = mongoose.model("supplier", supplierSchema);
+
+
         // "contact": {
         //     "address": [],
         //     "email": "",
@@ -80,13 +103,3 @@ var supplierSchema = new mongoose.Schema(
         // },
         // "type": "medicationSupplier",
         // "usdPrice": 0
-
-    },
-    {
-        timestamps: {
-            createdAt: "createdAt",
-            updatedAt: "updatedAt",
-        },
-    }
-);
-module.exports = mongoose.model("supplier", supplierSchema);
