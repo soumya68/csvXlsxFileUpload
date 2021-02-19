@@ -1,0 +1,21 @@
+CatalougeNumber,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,IsDiscountAvailable,SupplierName
+"function(){
+                products.find().sort({r52CatNo:-1}).limit(1).then((data)=>{
+                    console.log(""2222"",data[0].r52CatNo)
+                    if(data.length>0){
+                        /* var newNum = ""10000000""
+                         data[0].r52CatNo = newNum;
+                        console.log(""result"",data[0].r52CatNo); */
+                       var r52CatNo = data[0].r52CatNo;
+                        r52CatNo+1;
+                        console.log(""UpdatedNumber"",r52CatNo)
+                       
+                    }
+                    else{
+                      r52CatNo = ""10000000"";
+                    }
+                }).catch(err => {
+                    console.log(err);
+                });
+
+               }",A9854,Advil syrup,Ibuprofen,,,100mg/5ml,suspension,1,60ml sachet,medication,No,VAT,No,Yes,10,89,,Available,false,POUT

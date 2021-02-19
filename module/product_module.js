@@ -6,6 +6,33 @@ const crypto = require("crypto");
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 module.exports = function () {
     var productModule = {
+         // Start Generating catalogue number -----
+         catalogueNumber: function (callBack) {
+            try {
+                products.find().sort({r52CatNo:-1}).limit(1).then((data)=>{
+                    if(data.length>0){
+                     var dbNum = data[0].r52CatNo;
+                       //var dbNum = "10000000"
+                        for(var i=0;i<=data.length;i++){
+                            var str= "CT"
+                            var r52CatNumber = dbNum++;
+                        }
+                        callBack(r52CatNumber);
+                       
+                    }
+                    else{
+                        r52CatNumber = "10000000";
+                        callBack(r52CatNumber);
+                    }
+                }).catch(err => {
+                    console.log(err);
+                }); 
+                 
+            } catch (e) {
+                callBack(null);
+            }
+        },
+        // End Generating catalogue number -----
         //Start of Validation
         excelValidation: function (data, callBack) {
             try {
@@ -38,7 +65,7 @@ module.exports = function () {
         },
         //End of Validation
         // Start of Check duplicate data 
-        checkDuplicate: function (SupplierUniqueCatalogueNumber, callBack) {
+        checkDuplicate: function (SupplierUniqueCatalogueNumber,supplier_id, callBack) {
             try {
                 products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber }, function (err, doc) {
                     if (err) {
@@ -57,11 +84,18 @@ module.exports = function () {
         },
         // End of Check duplicate data 
         // Start of csv file upload
-        csvUpload: function (userId, version, supplierId, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        csvUpload: async function (userId, version, supplierId, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
-                var r52CatNo = crypto.randomBytes(6).toString('hex')
+               // var r52CatNo = crypto.randomBytes(6).toString('hex')
+               var r52CatNo;
+                let test = await productModule.catalogueNumber(function (result) {
+                    r52CatNo = result
+                    return r52CatNo
+                })
+                setTimeout(()=>{
+                },4000);
                 rows = []
                 fs.createReadStream(filepath)
                     .pipe(csv())
@@ -171,6 +205,54 @@ module.exports = function () {
                                                     //////////
                                                 }
                                                 else {
+                                                    const productUpdateData = {
+                                                        supplierId: supplierId,
+                                                        r52CatNo: r52CatNo,
+                                                        suppCatNo: doc[1],
+                                                        brandName: {
+                                                            eng: doc[2]
+                                                        },
+                                                        genericName: {
+                                                            eng: doc[3]
+                                                        },
+                                                        manufacturerName: doc[4],
+                                                        description: {
+                                                            eng: doc[5]
+                                                        },
+                                                        dosage: doc[6],
+                                                        form: {
+                                                            eng: doc[7]
+                                                        },
+                                                        packSize: doc[8],
+                                                        packSizeUnit: doc[9],
+                                                        type: doc[10],
+                                                        requireRx: doc[11],
+                                                        tax: {
+                                                            name: doc[12],
+                                                            category: doc[12],
+                                                            isIncluded: isIncluded,
+                                                            percentage: doc[15],
+                                                            type: doc[12],
+                                                            IsTaxExempt: IsTaxExempt
+                                                        },
+                                                        pricePerPack: doc[16],
+                                                        catalogTags: [doc[17]],
+                                                        status: doc[18],
+                                                        isDiscounted: doc[19],
+                                                        metadata: {
+                                                            
+                                                            updatedBy: [],
+                                                            version: version
+                                                        },
+                                                        timestamp: new Date(),
+                                                    };
+                                                    products.findOneAndUpdate(data.SupplierUniqueCatalogueNumber,
+                                                        { $set: productUpdateData },
+                                                        { new: true }) .then(result => {
+                                                           // console.log('Product updated successfully');
+                                                        }).catch(err => {
+                                                            console.log('error',error)
+                                                        });
                                                     duplicateData = duplicateData + 1
                                                     index++;
                                                     if (index < rows.length) {
@@ -218,11 +300,18 @@ module.exports = function () {
         },
         // End of csv file upload
         // Start of xlsx file upload
-        xlsxUpload: function (userId, version, supplierId, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        xlsxUpload: async function (userId, version, supplierId, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
-                var r52CatNo = crypto.randomBytes(6).toString('hex')
+               // var r52CatNo = crypto.randomBytes(6).toString('hex')
+               var r52CatNo;
+                let test = await productModule.catalogueNumber(function (result) {
+                    r52CatNo = result
+                    return r52CatNo
+                })
+                setTimeout(()=>{
+                },4000);
                 readXlsxFile(fs.createReadStream(filepath), { sheet: 2 }).then((rows) => {
                     var theRemovedElement = rows.shift();
                     if (rows.length !== 0) {
@@ -254,7 +343,7 @@ module.exports = function () {
                                 productModule.excelValidation(data, function (status) {
                                     if (status) {
                                         /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
-                                        productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, function (error, isDuplicate) {
+                                        productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber,data.supplier_id, function (error, isDuplicate) {
                                             if (!isDuplicate) {
                                                 correctEntryCount = correctEntryCount + 1
                                                 if (doc[14] == 'Yes' || doc[14] == 1) {
@@ -349,6 +438,54 @@ module.exports = function () {
                                                 //////////
                                             }
                                             else {
+                                                const productUpdateData = {
+                                                    supplierId: supplierId,
+                                                    r52CatNo: r52CatNo,
+                                                    suppCatNo: doc[1],
+                                                    brandName: {
+                                                        eng: doc[2]
+                                                    },
+                                                    genericName: {
+                                                        eng: doc[3]
+                                                    },
+                                                    manufacturerName: doc[4],
+                                                    description: {
+                                                        eng: doc[5]
+                                                    },
+                                                    dosage: doc[6],
+                                                    form: {
+                                                        eng: doc[7]
+                                                    },
+                                                    packSize: doc[8],
+                                                    packSizeUnit: doc[9],
+                                                    type: doc[10],
+                                                    requireRx: doc[11],
+                                                    tax: {
+                                                        name: doc[12],
+                                                        category: doc[12],
+                                                        isIncluded: isIncluded,
+                                                        percentage: doc[15],
+                                                        type: doc[12],
+                                                        IsTaxExempt: IsTaxExempt
+                                                    },
+                                                    pricePerPack: doc[16],
+                                                    catalogTags: [doc[17]],
+                                                    status: doc[18],
+                                                    isDiscounted: doc[19],
+                                                    metadata: {
+                                                        
+                                                        updatedBy: [],
+                                                        version: version
+                                                    },
+                                                    timestamp: new Date(),
+                                                };
+                                                products.findOneAndUpdate(data.SupplierUniqueCatalogueNumber,
+                                                    { $set: productUpdateData },
+                                                    { new: true }) .then(result => {
+                                                       // console.log('Product updated successfully');
+                                                    }).catch(err => {
+                                                        console.log('error',error)
+                                                    });
                                                 duplicateData = duplicateData + 1
                                                 index++;
                                                 if (index < rows.length) {
