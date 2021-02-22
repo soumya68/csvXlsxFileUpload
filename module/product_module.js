@@ -27,20 +27,20 @@ module.exports = function () {
                     || !data.IsDiscountAvailable.toString()
                     || !data.Manufacturer
                 ) {
-                    callBack(false);
+                    callBack(false, false);
                 }
                 else {
-                    callBack(true);
+                    callBack(false, true);
                 }
             } catch (e) {
-                callBack(null);
+                callBack(true, null);
             }
         },
         //End of Validation
         // Start of Check duplicate data 
-        checkDuplicate: function (SupplierUniqueCatalogueNumber, callBack) {
+        checkDuplicate: function (SupplierUniqueCatalogueNumber, supplierId, callBack) {
             try {
-                products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber }, function (err, doc) {
+                products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber, supplierId: supplierId }, function (err, doc) {
                     if (err) {
                         callBack(true, null);
                     }
@@ -56,12 +56,33 @@ module.exports = function () {
             }
         },
         // End of Check duplicate data 
+        // Start of Generate Catalouge Number
+        generateCatalougeNumber: function (callBack) {
+            try {
+                r52CatNo = null
+                products.find({}).sort({ _id: -1 }).limit(1).exec(function (err, docs) {
+                    if (err) {
+                        callBack(true, null);
+                    }
+                    if (docs.length > 0) {
+                        r52CatNo = parseInt(docs[0].r52CatNo) + 1
+                    }
+                    else {
+                        r52CatNo = 00000000
+                    }
+                    callBack(false, r52CatNo);
+                });
+            } catch (e) {
+                callBack(true, null);
+            }
+        },
+        // End of Generate Catalouge Number
         // Start of csv file upload
         csvUpload: function (userId, version, supplierId, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
-                var r52CatNo = crypto.randomBytes(6).toString('hex')
+                // var r52CatNo = crypto.randomBytes(6).toString('hex')
                 rows = []
                 fs.createReadStream(filepath)
                     .pipe(csv())
@@ -73,118 +94,113 @@ module.exports = function () {
                             var index = 0;
                             var insertData = function (row) {
                                 if (row.length !== 0) {
-                                    productModule.excelValidation(row, function (status) {
+                                    productModule.excelValidation(row, function (error, status) {
+                                        if (error) {
+                                            return callBack(true, row.length, correctEntryCount, invalidDatas, duplicateData);
+                                        }
                                         if (status) {
-                                            /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
-                                            productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, function (error, isDuplicate) {
-                                                if (!isDuplicate) {
-                                                    correctEntryCount = correctEntryCount + 1
-                                                    if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
-                                                        isIncluded = true
+                                            productModule.generateCatalougeNumber(function (error, r52CatNo) {
+                                                if (error) {
+                                                    return callBack(true, row.length, correctEntryCount, invalidDatas, duplicateData);
+                                                }
+                                                const productData = {
+                                                    supplierId: supplierId,
+                                                    r52CatNo: r52CatNo,
+                                                    suppCatNo: row.SupplierUniqueCatalogueNumber,
+                                                    brandName: {
+                                                        eng: row.BrandName,
+                                                    },
+                                                    genericName: {
+                                                        eng: row.Generic
+                                                    },
+                                                    manufacturerName: row.Manufacturer,
+                                                    description: {
+                                                        eng: row.Description,
+                                                    },
+                                                    dosage: row.Dosage,
+                                                    form: {
+                                                        eng: row.Form,
+                                                    },
+                                                    packSize: row.PackSize,
+                                                    packSizeUnit: row.PackSizeUnits,
+                                                    type: row.ProductType,
+                                                    requireRx: row.RequiresRx,
+                                                    tax: {
+                                                        name: row.TaxName,
+                                                        category: row.TaxName,
+                                                        isIncluded: isIncluded,
+                                                        percentage: row.TaxPercent,
+                                                        type: row.TaxName,
+                                                        IsTaxExempt: IsTaxExempt
+                                                    },
+                                                    pricePerPack: row.PricePerPackage,
+                                                    catalogTags: [row.CatalogTag],
+                                                    status: row.Status,
+                                                    isDiscounted: row.IsDiscountAvailable,
+                                                    metadata: {
+                                                        createdBy: {
+                                                            userId: userId,
+                                                            utcDatetime: new Date()
+                                                        },
+                                                        updatedBy: [],
+                                                        version: version
+                                                    },
+                                                    timestamp: new Date(),
+                                                };
+                                                /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
+                                                productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, supplierId, function (error, isDuplicate) {
+                                                    if (error) {
+                                                        return callBack(true, row.length, correctEntryCount, invalidDatas, duplicateData);
                                                     }
-                                                    else {
-                                                        isIncluded = false
-                                                    }
-                                                    if (row.IsTaxExempt == 'Yes' || row.IsTaxExempt == 1) {
-                                                        IsTaxExempt = true
-                                                    }
-                                                    else {
-                                                        IsTaxExempt = false
-                                                    }
-                                                    const productData = {
-                                                        // catalogue_number: r52CatNo,
-                                                        // supplier_catalogue_number: row.SupplierUniqueCatalogueNumber,
-                                                        // brand_name: row.BrandName,
-                                                        // generic: row.Generic,
-                                                        // manufacturer_name: row.Manufacturer,
-                                                        // description: row.Description,
-                                                        // dosage: row.Dosage,
-                                                        // form: row.Form,
-                                                        // pack_size: row.PackSize,
-                                                        // pack_size_unit: row.PackSizeUnits,
-                                                        // product_type: row.ProductType,
-                                                        // require_rx: row.RequiresRx,
-                                                        // tax_name: row.TaxName,
-                                                        // Is_tax_exempt: row.IsTaxExempt,
-                                                        // Is_tax_included: row.IsTaxIncluded,
-                                                        // tax_percent: row.TaxPercent,
-                                                        // price_per_pack: row.PricePerPackage,
-                                                        // catalog_tag: row.CatalogTag,
-                                                        // status: row.Status,
-                                                        // isDiscounted: row.IsDiscountAvailable,
-                                                        // supplier_id: supplierId,
-                                                        // timestamp: new Date(),
-                                                        supplierId: supplierId,
-                                                        r52CatNo: r52CatNo,
-                                                        suppCatNo: row.SupplierUniqueCatalogueNumber,
-                                                        brandName: {
-                                                            eng: row.BrandName,
-                                                        },
-                                                        genericName: {
-                                                            eng: row.Generic
-                                                        },
-                                                        manufacturerName: row.Manufacturer,
-                                                        description: {
-                                                            eng: row.Description,
-                                                        },
-                                                        dosage: row.Dosage,
-                                                        form: {
-                                                            eng: row.Form,
-                                                        },
-                                                        packSize: row.PackSize,
-                                                        packSizeUnit: row.PackSizeUnits,
-                                                        type: row.ProductType,
-                                                        requireRx: row.RequiresRx,
-                                                        tax: {
-                                                            name: row.TaxName,
-                                                            category: row.TaxName,
-                                                            isIncluded: isIncluded,
-                                                            percentage: row.TaxPercent,
-                                                            type: row.TaxName,
-                                                            IsTaxExempt: IsTaxExempt
-                                                        },
-                                                        pricePerPack: row.PricePerPackage,
-                                                        catalogTags: [row.CatalogTag],
-                                                        status: row.Status,
-                                                        isDiscounted: row.IsDiscountAvailable,
-                                                        metadata: {
-                                                            createdBy: {
-                                                                userId: userId,
-                                                                utcDatetime: new Date()
-                                                            },
-                                                            updatedBy: [],
-                                                            version: version
-                                                        },
-                                                        timestamp: new Date(),
-                                                    };
-                                                    const product = new products(productData);
-                                                    product.save().then(response => {
-                                                        index++;
-                                                        if (index < rows.length) {
-                                                            insertData(rows[index]);
-                                                        } else {
-                                                            callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                    if (!isDuplicate) {
+                                                        correctEntryCount = correctEntryCount + 1
+                                                        if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
+                                                            isIncluded = true
                                                         }
-                                                    }).catch(err => {
-                                                        callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
-                                                    });
-                                                    //////////
-                                                }
-                                                else {
-                                                    duplicateData = duplicateData + 1
-                                                    index++;
-                                                    if (index < rows.length) {
-                                                        insertData(rows[index]);
-                                                    } else {
-                                                        callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                        else {
+                                                            isIncluded = false
+                                                        }
+                                                        if (row.IsTaxExempt == 'Yes' || row.IsTaxExempt == 1) {
+                                                            IsTaxExempt = true
+                                                        }
+                                                        else {
+                                                            IsTaxExempt = false
+                                                        }
+                                                        const product = new products(productData);
+                                                        product.save().then(response => {
+                                                            index++;
+                                                            if (index < rows.length) {
+                                                                insertData(rows[index]);
+                                                            } else {
+                                                                callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                            }
+                                                        }).catch(err => {
+                                                            callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                        });
+                                                        //////////
                                                     }
-                                                }
+                                                    else {
+                                                        duplicateData = duplicateData + 1
+                                                        delete productData.r52CatNo
+                                                        products.findOneAndUpdate({ suppCatNo: row.SupplierUniqueCatalogueNumber },
+                                                            { $set: productData },
+                                                            { new: true }).then(response => {
+                                                                index++;
+                                                                if (index < rows.length) {
+                                                                    insertData(rows[index]);
+                                                                } else {
+                                                                    callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                                }
+                                                            })
+                                                            .catch(err => {
+                                                                callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
+                                                            });
+                                                    }
+                                                })
                                             })
                                         }
                                         else {
                                             /////// IF ANY ISSUE FOUND
-                                            var invaliRow = row
-                                            invaliRow.CatalougeNumber = r52CatNo
                                             invalidDatas.push(row)
                                             index++;
                                             if (index < rows.length) {
@@ -253,116 +269,110 @@ module.exports = function () {
                                 };
                                 productModule.excelValidation(data, function (status) {
                                     if (status) {
-                                        /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
-                                        productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, function (error, isDuplicate) {
-                                            if (!isDuplicate) {
-                                                correctEntryCount = correctEntryCount + 1
-                                                if (doc[14] == 'Yes' || doc[14] == 1) {
-                                                    isIncluded = true
+                                        productModule.generateCatalougeNumber(function (error, r52CatNo) {
+                                            if (error) {
+                                                return callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                            }
+                                            const productData = {
+                                                supplierId: supplierId,
+                                                r52CatNo: r52CatNo,
+                                                suppCatNo: doc[1],
+                                                brandName: {
+                                                    eng: doc[2]
+                                                },
+                                                genericName: {
+                                                    eng: doc[3]
+                                                },
+                                                manufacturerName: doc[4],
+                                                description: {
+                                                    eng: doc[5]
+                                                },
+                                                dosage: doc[6],
+                                                form: {
+                                                    eng: doc[7]
+                                                },
+                                                packSize: doc[8],
+                                                packSizeUnit: doc[9],
+                                                type: doc[10],
+                                                requireRx: doc[11],
+                                                tax: {
+                                                    name: doc[12],
+                                                    category: doc[12],
+                                                    isIncluded: isIncluded,
+                                                    percentage: doc[15],
+                                                    type: doc[12],
+                                                    IsTaxExempt: IsTaxExempt
+                                                },
+                                                pricePerPack: doc[16],
+                                                catalogTags: [doc[17]],
+                                                status: doc[18],
+                                                isDiscounted: doc[19],
+                                                metadata: {
+                                                    createdBy: {
+                                                        userId: userId,
+                                                        utcDatetime: new Date()
+                                                    },
+                                                    updatedBy: [],
+                                                    version: version
+                                                },
+                                                timestamp: new Date(),
+                                            };
+                                            /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
+                                            productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, supplierId, function (error, isDuplicate) {
+                                                if (error) {
+                                                    return callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                 }
-                                                else {
-                                                    isIncluded = false
-                                                }
-                                                if (doc[13] == 'Yes' || doc[14] == 1) {
-                                                    IsTaxExempt = true
-                                                }
-                                                else {
-                                                    IsTaxExempt = false
-                                                }
-                                                const productData = {
-                                                    // catalogue_number: crypto.randomBytes(6).toString('hex'),
-                                                    // supplier_catalogue_number: doc[1],
-                                                    // brand_name: doc[2],
-                                                    // generic: doc[3],
-                                                    // manufacturer_name: doc[4],
-                                                    // description: doc[5],
-                                                    // dosage: doc[6],
-                                                    // form: doc[7],
-                                                    // pack_size: doc[8],
-                                                    // pack_size_unit: doc[9],
-                                                    // product_type: doc[10],
-                                                    // require_rx: doc[11],
-                                                    // tax_name: doc[12],
-                                                    // Is_tax_exempt: doc[13],
-                                                    // Is_tax_included: doc[14],
-                                                    // tax_percent: doc[15],
-                                                    // price_per_pack: doc[16],
-                                                    // catalog_tag: doc[17],
-                                                    // status: doc[18],
-                                                    // isDiscounted: doc[19],
-                                                    // supplier_name: doc[20],
-                                                    // timestamp: new Date(),
-                                                    supplierId: supplierId,
-                                                    r52CatNo: r52CatNo,
-                                                    suppCatNo: doc[1],
-                                                    brandName: {
-                                                        eng: doc[2]
-                                                    },
-                                                    genericName: {
-                                                        eng: doc[3]
-                                                    },
-                                                    manufacturerName: doc[4],
-                                                    description: {
-                                                        eng: doc[5]
-                                                    },
-                                                    dosage: doc[6],
-                                                    form: {
-                                                        eng: doc[7]
-                                                    },
-                                                    packSize: doc[8],
-                                                    packSizeUnit: doc[9],
-                                                    type: doc[10],
-                                                    requireRx: doc[11],
-                                                    tax: {
-                                                        name: doc[12],
-                                                        category: doc[12],
-                                                        isIncluded: isIncluded,
-                                                        percentage: doc[15],
-                                                        type: doc[12],
-                                                        IsTaxExempt: IsTaxExempt
-                                                    },
-                                                    pricePerPack: doc[16],
-                                                    catalogTags: [doc[17]],
-                                                    status: doc[18],
-                                                    isDiscounted: doc[19],
-                                                    metadata: {
-                                                        createdBy: {
-                                                            userId: userId,
-                                                            utcDatetime: new Date()
-                                                        },
-                                                        updatedBy: [],
-                                                        version: version
-                                                    },
-                                                    timestamp: new Date(),
-                                                };
-                                                const product = new products(productData);
-                                                product.save().then(response => {
-                                                    index++;
-                                                    if (index < rows.length) {
-                                                        insertData(rows[index]);
-                                                    } else {
-                                                        callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                if (!isDuplicate) {
+                                                    correctEntryCount = correctEntryCount + 1
+                                                    if (doc[14] == 'Yes' || doc[14] == 1) {
+                                                        isIncluded = true
                                                     }
-                                                }).catch(err => {
-                                                    callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
-                                                });
-                                                //////////
-                                            }
-                                            else {
-                                                duplicateData = duplicateData + 1
-                                                index++;
-                                                if (index < rows.length) {
-                                                    insertData(rows[index]);
-                                                } else {
-                                                    callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                    else {
+                                                        isIncluded = false
+                                                    }
+                                                    if (doc[13] == 'Yes' || doc[14] == 1) {
+                                                        IsTaxExempt = true
+                                                    }
+                                                    else {
+                                                        IsTaxExempt = false
+                                                    }
+                                                    const product = new products(productData);
+                                                    product.save().then(response => {
+                                                        index++;
+                                                        if (index < rows.length) {
+                                                            insertData(rows[index]);
+                                                        } else {
+                                                            callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                        }
+                                                    }).catch(err => {
+                                                        callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                    });
+                                                    //////////
                                                 }
-                                            }
+                                                else {
+                                                    duplicateData = duplicateData + 1
+                                                    delete productData.r52CatNo
+                                                    products.findOneAndUpdate({ suppCatNo: doc[1] },
+                                                        { $set: productData },
+                                                        { new: true }).then(response => {
+                                                            index++;
+                                                            if (index < rows.length) {
+                                                                insertData(rows[index]);
+                                                            } else {
+                                                                callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
+                                                            }
+                                                        })
+                                                        .catch(err => {
+                                                            callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
+                                                        });
+                                                }
+                                            })
                                         })
                                     }
                                     else {
                                         /////// IF ANY ISSUE FOUND
                                         const invalidData = {
-                                            CatalougeNumber: r52CatNo,
+                                            CatalougeNumber: "",
                                             SupplierUniqueCatalogueNumber: doc[1],
                                             BrandName: doc[2],
                                             Generic: doc[3],

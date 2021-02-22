@@ -1,37 +1,40 @@
 var mongoose = require("mongoose");
 const validator = require("validator");
-var catalogueFileStatusSchema = new mongoose.Schema(
+var pointSchema = new mongoose.Schema(
     {
-        fileName: {
-            type: String,
-            required: true,
-            min: 6,
-            trim: true,
-        },
+
         userId: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
-        successedRecordsCount: {
-            type: Number,
-            default:0
+        orderId: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
         },
-        failedRecordsCount: {
+        redeemedPoints: {
             type: Number,
-            default:0
+            default: 0
         },
-        totalRecordsCount: {
+        earnedPoints: {
             type: Number,
-            default:0
+            default: 0
         },
-        duplicateRecordsCount: {
+        earnedPointsExpiryDate: {
+            type: Date,
+        },
+        redeemedPoints: {
             type: Number,
-            default:0
+            default: 0
+        },
+        isActive: {
+            type: Boolean,
+            default: false
         },
         status: {
             type: Boolean,
-            default:false
+            default: false
         },
+
     },
     {
         timestamps: {
@@ -40,4 +43,4 @@ var catalogueFileStatusSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("catalogueFiles", catalogueFileStatusSchema);
+module.exports = mongoose.model("point", pointSchema);

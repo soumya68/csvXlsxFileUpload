@@ -79,8 +79,6 @@ var supplierSchema = new mongoose.Schema(
     }
 );
 module.exports = mongoose.model("supplier", supplierSchema);
-
-
         // "contact": {
         //     "address": [],
         //     "email": "",

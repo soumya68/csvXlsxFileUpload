@@ -146,8 +146,9 @@ var catalougeSchema = new mongoose.Schema(
             default: 0000,
         },
         r52CatNo: {
-            type: String,
+            type: Number,
             required: true,
+            default: 0000,
         },
         r52Locale: {
             type: Array,
