@@ -26,7 +26,10 @@ module.exports = function () {
                                     totalAvailablePoints = totalEarnedPoints - totalRedeemedPoints
                                 }
                                 if (!doc.isActive) {
-                                    totalLapsedPoints = totalEarnedPoints + totalLapsedPoints
+                                    console.log(totalEarnedPoints)
+                                    console.log(totalRedeemedPoints)
+                                    totalLapsedPoints = parseInt(totalLapsedPoints) + parseInt(doc.earnedPoints)
+                                    console.log(totalLapsedPoints)
                                 }
                                 index++;
                                 if (index < docs.length) {

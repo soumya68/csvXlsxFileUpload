@@ -26,10 +26,10 @@ module.exports = (app) => {
                 res.json({ status: false, message: "countryCode parameter is missing" });
                 return;
             }
-            if (!req.body.availablePoints) {
-                res.json({ status: false, message: "availablePoints parameter is missing" });
-                return;
-            }
+            // if (!req.body.availablePoints) {
+            //     res.json({ status: false, message: "availablePoints parameter is missing" });
+            //     return;
+            // }
             if (!req.body.pointSource) {
                 res.json({ status: false, message: "pointSource parameter is missing" });
                 return;
@@ -38,20 +38,22 @@ module.exports = (app) => {
                 req.body.finalPrice,
                 req.body.userId,
                 req.body.redeemedPoints,
-                req.body.pointSource, req.body.countryCode, req.body.availablePoints,
+                req.body.pointSource, req.body.countryCode,
                 function (error, result, message) {
                     if (error) {
                         res.status(200).json({
                             status: false,
                             message: message,
-                            data: result,
+                            orderId: null,
+                            availablePoints:result.availablePoints
                         })
                     }
                     else {
                         res.status(200).json({
                             status: true,
                             message: message,
-                            data: result._id,
+                            orderId: result._id,
+                            availablePoints:result.availablePoints
                         })
                     }
                 })
