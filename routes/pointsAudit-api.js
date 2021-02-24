@@ -1,6 +1,6 @@
 
 module.exports = (app) => {
-    var pointsModule = require('../module/pointsAudit-module')();
+    var pointsModule = require('../module/pointsAudit_module')();
     const pointsAudit = require('../models/pointAudit-schema');
     //START OF API FOR USER POINTS DETAILS 
     //Response: status, message

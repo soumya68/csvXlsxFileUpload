@@ -1,2 +1,0 @@
-CatalougeNumber,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,IsDiscountAvailable,SupplierName
-10000005,A9854,Advil syrup,Ibuprofen,,,100mg/5ml,suspension,1,60ml sachet,medication,No,VAT,No,Yes,10,89,,Available,false,POUT
