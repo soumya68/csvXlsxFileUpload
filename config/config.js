@@ -1,7 +1,5 @@
 var env = process.env.NODE_ENV || 'development';
-
 console.log('env', process.env.NODE_ENV)
-
 if (env === 'development' || env === 'test'){
     console.log('ENV Dependent on --- config.json')
     try {

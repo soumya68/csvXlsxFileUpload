@@ -9,7 +9,6 @@ module.exports = function () {
                     callBack(false, null, response,);
                 })
                     .catch(err => {
-                        console.log(err)
                         callBack(true, err, null,);
                     });
             } catch (err) {

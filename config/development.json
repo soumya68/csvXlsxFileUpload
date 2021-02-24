@@ -5,4 +5,3 @@
   "MONGODB_URI": "mongodb://localhost:27017/Unicef",
   "JWT_SECRET": "topSECRET!"
 }
-

@@ -27,8 +27,7 @@ var pointsAuditSchema = new mongoose.Schema(
             default: 0
         },
         pointSource: {
-            type: Array,
-            default: []
+            type: String,
         },
         isActive: {
             type: Boolean,

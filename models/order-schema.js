@@ -4,7 +4,7 @@ var orderSchema = new mongoose.Schema(
     {
 
         userId: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true,
         },
         productDetails: {
@@ -13,7 +13,7 @@ var orderSchema = new mongoose.Schema(
         },
         deliveryAddress: {
             type: String,
-            required: true,
+            //required: true,
             min: 6,
             trim: true,
         },

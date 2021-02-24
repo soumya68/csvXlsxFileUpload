@@ -6,28 +6,26 @@ const crypto = require("crypto");
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 module.exports = function () {
     var productModule = {
-         // Start Generating catalogue number -----
-         catalogueNumber: function (callBack) {
+        // Start Generating catalogue number -----
+        catalogueNumber: function (callBack) {
             try {
-                products.find().sort({r52CatNo:-1}).limit(1).then((data)=>{
-                    if(data.length>0){
-                     var dbNum = data[0].r52CatNo;
-                       //var dbNum = "10000000"
-                        for(var i=0;i<=data.length;i++){
-                            var str= "CT"
+                products.find().sort({ r52CatNo: -1 }).limit(1).then((data) => {
+                    if (data.length > 0) {
+                        var dbNum = data[0].r52CatNo;
+                        //var dbNum = "10000000"
+                        for (var i = 0; i <= data.length; i++) {
+                            var str = "CT"
                             var r52CatNumber = dbNum++;
                         }
                         callBack(r52CatNumber);
-                       
                     }
-                    else{
+                    else {
                         r52CatNumber = "10000000";
                         callBack(r52CatNumber);
                     }
                 }).catch(err => {
                     console.log(err);
-                }); 
-                 
+                });
             } catch (e) {
                 callBack(null);
             }
@@ -65,9 +63,9 @@ module.exports = function () {
         },
         //End of Validation
         // Start of Check duplicate data 
-        checkDuplicate: function (SupplierUniqueCatalogueNumber,supplier_id, callBack) {
+        checkDuplicate: function (SupplierUniqueCatalogueNumber, supplier_id, callBack) {
             try {
-                products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber ,supplierId:supplier_id}, function (err, doc) {
+                products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber, supplierId: supplier_id }, function (err, doc) {
                     if (err) {
                         callBack(true, null);
                     }
@@ -88,8 +86,8 @@ module.exports = function () {
             try {
                 var isIncluded
                 var IsTaxExempt
-               // var r52CatNo = crypto.randomBytes(6).toString('hex')
-               var r52CatNo;
+                // var r52CatNo = crypto.randomBytes(6).toString('hex')
+                var r52CatNo;
                 rows = []
                 fs.createReadStream(filepath)
                     .pipe(csv())
@@ -100,7 +98,7 @@ module.exports = function () {
                         let test = productModule.catalogueNumber(function (result) {
                             r52CatNo = result
                             return r52CatNo
-                        })  
+                        })
                         if (rows.length !== 0) {
                             var index = 0;
                             var insertData = function (row) {
@@ -108,7 +106,7 @@ module.exports = function () {
                                     productModule.excelValidation(row, function (status) {
                                         if (status) {
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
-                                            productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber,supplierId, function (error, isDuplicate) {
+                                            productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, supplierId, function (error, isDuplicate) {
                                                 if (!isDuplicate) {
                                                     correctEntryCount = correctEntryCount + 1
                                                     if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
@@ -238,7 +236,6 @@ module.exports = function () {
                                                         status: doc[18],
                                                         isDiscounted: doc[19],
                                                         metadata: {
-                                                            
                                                             updatedBy: [],
                                                             version: version
                                                         },
@@ -246,10 +243,10 @@ module.exports = function () {
                                                     };
                                                     products.findOneAndUpdate(data.SupplierUniqueCatalogueNumber,
                                                         { $set: productUpdateData },
-                                                        { new: true }) .then(result => {
-                                                           // console.log('Product updated successfully');
+                                                        { new: true }).then(result => {
+                                                            // console.log('Product updated successfully');
                                                         }).catch(err => {
-                                                            console.log('error',error)
+                                                            console.log('error', error)
                                                         });
                                                     duplicateData = duplicateData + 1
                                                     index++;
@@ -298,22 +295,19 @@ module.exports = function () {
         },
         // End of csv file upload
         // Start of xlsx file upload
-        xlsxUpload:  function (userId, version, supplierId, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        xlsxUpload: function (userId, version, supplierId, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
-               // var r52CatNo = crypto.randomBytes(6).toString('hex')
-               var r52CatNo
+                // var r52CatNo = crypto.randomBytes(6).toString('hex')
+                var r52CatNo
                 readXlsxFile(fs.createReadStream(filepath), { sheet: 2 }).then((rows) => {
-                   
                     var theRemovedElement = rows.shift();
                     if (rows.length !== 0) {
-                      
                         var index = 0;
                         var insertData = function (doc) {
                             if (doc.length !== 0) {
-                                
-                                let test =  productModule.catalogueNumber(function (result) {
+                                let test = productModule.catalogueNumber(function (result) {
                                     r52CatNo = result
                                     return r52CatNo
                                 })
@@ -344,7 +338,7 @@ module.exports = function () {
                                 productModule.excelValidation(data, function (status) {
                                     if (status) {
                                         /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
-                                        productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber,data.supplier_id, function (error, isDuplicate) {
+                                        productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, data.supplier_id, function (error, isDuplicate) {
                                             if (!isDuplicate) {
                                                 correctEntryCount = correctEntryCount + 1
                                                 if (doc[14] == 'Yes' || doc[14] == 1) {
@@ -474,7 +468,6 @@ module.exports = function () {
                                                     status: doc[18],
                                                     isDiscounted: doc[19],
                                                     metadata: {
-                                                        
                                                         updatedBy: [],
                                                         version: version
                                                     },
@@ -482,10 +475,10 @@ module.exports = function () {
                                                 };
                                                 products.findOneAndUpdate(data.SupplierUniqueCatalogueNumber,
                                                     { $set: productUpdateData },
-                                                    { new: true }) .then(result => {
-                                                       // console.log('Product updated successfully');
+                                                    { new: true }).then(result => {
+                                                        // console.log('Product updated successfully');
                                                     }).catch(err => {
-                                                        console.log('error',error)
+                                                        console.log('error', error)
                                                     });
                                                 duplicateData = duplicateData + 1
                                                 index++;

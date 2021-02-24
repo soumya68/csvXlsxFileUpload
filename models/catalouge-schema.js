@@ -15,7 +15,7 @@ var catalougeSchema = new mongoose.Schema(
         //packSizeUnit IS ADDED AS PER UPLOAD SHEET
         packSizeUnit: {
             type: String,
-            default:0
+            default: 0
         },
         // productType: {
         //     type: String
@@ -37,7 +37,7 @@ var catalougeSchema = new mongoose.Schema(
         //pricePerPack IS ADDED AS PER UPLOAD SHEET
         pricePerPack: {
             type: Number,
-            default:0
+            default: 0
         },
         ////////////////////////////////////
         isDiscounted: {
@@ -104,7 +104,7 @@ var catalougeSchema = new mongoose.Schema(
             createdBy: {
                 userId: {
                     type: mongoose.Schema.Types.ObjectId,
-                    required:true
+                    required: true
                 },
                 utcDatetime: {
                     type: Date
@@ -156,7 +156,7 @@ var catalougeSchema = new mongoose.Schema(
         },
         r52SupplierCode: {
             type: String,
-            default:0000
+            default: 0000
         },
         status: {
             type: String,

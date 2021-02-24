@@ -1,4 +1,3 @@
-
 module.exports = (app) => {
     var supplierModule = require('../module/supplier_module')();
     //START OF API FOR ADD SUPPLIER DETAILS 
@@ -48,21 +47,6 @@ module.exports = (app) => {
             };
             supplierModule.addSupplier(supplierData,
                 function (error, errData, result) {
-                    // "errData": {
-                    //     "contact.email": {
-                    //         "name": "ValidatorError",
-                    //         "message": "s@gmailcom is not a valid email",
-                    //         "properties": {
-                    //             "message": "s@gmailcom is not a valid email",
-                    //             "type": "user defined",
-                    //             "path": "contact.email",
-                    //             "value": "s@gmailcom"
-                    //         },
-                    //         "kind": "user defined",
-                    //         "path": "contact.email",
-                    //         "value": "s@gmailcom"
-                    //     }
-                    // }
                     if (error) {
                         res.status(200).json({
                             status: false,

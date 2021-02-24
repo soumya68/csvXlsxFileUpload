@@ -1,22 +1,19 @@
-
 module.exports = (app) => {
-    var orderModule = require('../module/order-module')();
+    var orderModule = require('../module/order_module')();
     const order = require('../models/order-schema');
+    var pointDetails = require('../config/pointsDetails.json');
     //START OF API FOR CREATE ORDER DETAILS 
     //Response: status, message
     app.post('/api/place_order', function (req, res) {
         try {
-            
             if (!req.body.productDetails) {
                 res.json({ status: false, message: "productDetails parameter is missing" });
                 return;
             }
-
             if (!req.body.finalPrice) {
-                res.json({ status: false, message: "final_price parameter is missing" });
+                res.json({ status: false, message: "finalPrice parameter is missing" });
                 return;
             }
-
             if (!req.body.userId) {
                 res.json({ status: false, message: "userId parameter is missing" });
                 return;
@@ -25,37 +22,36 @@ module.exports = (app) => {
                 res.json({ status: false, message: "redeemedPoints parameter is missing" });
                 return;
             }
-
-            if (!req.body.earnedPoints) {
-                res.json({ status: false, message: "userId parameter is missing" });
+            if (!req.body.countryCode) {
+                res.json({ status: false, message: "countryCode parameter is missing" });
                 return;
             }
-            if (!req.body.earnedPointsExpiryDate) {
-                res.json({ status: false, message: "redeemedPoints parameter is missing" });
+            if (!req.body.availablePoints) {
+                res.json({ status: false, message: "availablePoints parameter is missing" });
                 return;
             }
             if (!req.body.pointSource) {
                 res.json({ status: false, message: "pointSource parameter is missing" });
                 return;
             }
-           
-
-            orderModule.createOrder(req.body.userId,
-                function (error, result,message) {
+            orderModule.createOrder(req.body.productDetails,
+                req.body.finalPrice,
+                req.body.userId,
+                req.body.redeemedPoints,
+                req.body.pointSource, req.body.countryCode, req.body.availablePoints,
+                function (error, result, message) {
                     if (error) {
                         res.status(200).json({
                             status: false,
                             message: message,
                             data: result,
-
                         })
                     }
-                   
                     else {
                         res.status(200).json({
                             status: true,
                             message: message,
-                            data: result,
+                            data: result._id,
                         })
                     }
                 })
