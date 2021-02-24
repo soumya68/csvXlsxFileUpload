@@ -67,7 +67,7 @@ module.exports = function () {
         // Start of Check duplicate data 
         checkDuplicate: function (SupplierUniqueCatalogueNumber,supplier_id, callBack) {
             try {
-                products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber }, function (err, doc) {
+                products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber ,supplierId:supplier_id}, function (err, doc) {
                     if (err) {
                         callBack(true, null);
                     }
@@ -84,18 +84,12 @@ module.exports = function () {
         },
         // End of Check duplicate data 
         // Start of csv file upload
-        csvUpload: async function (userId, version, supplierId, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        csvUpload: function (userId, version, supplierId, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
                // var r52CatNo = crypto.randomBytes(6).toString('hex')
                var r52CatNo;
-                let test = await productModule.catalogueNumber(function (result) {
-                    r52CatNo = result
-                    return r52CatNo
-                })
-                setTimeout(()=>{
-                },4000);
                 rows = []
                 fs.createReadStream(filepath)
                     .pipe(csv())
@@ -103,6 +97,10 @@ module.exports = function () {
                         rows.push(rowData)
                     })
                     .on('end', () => {
+                        let test = productModule.catalogueNumber(function (result) {
+                            r52CatNo = result
+                            return r52CatNo
+                        })  
                         if (rows.length !== 0) {
                             var index = 0;
                             var insertData = function (row) {
@@ -110,7 +108,7 @@ module.exports = function () {
                                     productModule.excelValidation(row, function (status) {
                                         if (status) {
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
-                                            productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, function (error, isDuplicate) {
+                                            productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber,supplierId, function (error, isDuplicate) {
                                                 if (!isDuplicate) {
                                                     correctEntryCount = correctEntryCount + 1
                                                     if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
@@ -300,19 +298,27 @@ module.exports = function () {
         },
         // End of csv file upload
         // Start of xlsx file upload
-        xlsxUpload: async function (userId, version, supplierId, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        xlsxUpload:  function (userId, version, supplierId, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
                // var r52CatNo = crypto.randomBytes(6).toString('hex')
-               var r52CatNo;
-               
+               var r52CatNo
                 readXlsxFile(fs.createReadStream(filepath), { sheet: 2 }).then((rows) => {
+                   
                     var theRemovedElement = rows.shift();
                     if (rows.length !== 0) {
+                      
                         var index = 0;
                         var insertData = function (doc) {
                             if (doc.length !== 0) {
+                                
+                                let test =  productModule.catalogueNumber(function (result) {
+                                    r52CatNo = result
+                                    return r52CatNo
+                                })
+                                /* setTimeout(()=>{
+                                },4000); */
                                 const data = {
                                     SupplierUniqueCatalogueNumber: doc[1],
                                     BrandName: doc[2],

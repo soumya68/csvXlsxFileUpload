@@ -1,14 +1,14 @@
 var mongoose = require("mongoose");
 const validator = require("validator");
-var pointSchema = new mongoose.Schema(
+var pointsAuditSchema = new mongoose.Schema(
     {
 
         userId: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true,
         },
         orderId: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true,
         },
         redeemedPoints: {
@@ -22,18 +22,19 @@ var pointSchema = new mongoose.Schema(
         earnedPointsExpiryDate: {
             type: Date,
         },
-        redeemedPoints: {
+        availablePoints: {
             type: Number,
             default: 0
+        },
+        pointSource: {
+            type: Array,
+            default: []
         },
         isActive: {
             type: Boolean,
             default: false
         },
-        status: {
-            type: Boolean,
-            default: false
-        },
+       
 
     },
     {
@@ -43,4 +44,4 @@ var pointSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("point", pointSchema);
+module.exports = mongoose.model("pointsAudit", pointsAuditSchema);

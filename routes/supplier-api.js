@@ -1,4 +1,4 @@
-const bodyParser = require('body-parser');
+
 module.exports = (app) => {
     var supplierModule = require('../module/supplier_module')();
     //START OF API FOR ADD SUPPLIER DETAILS 
@@ -18,9 +18,13 @@ module.exports = (app) => {
                 res.json({ status: false, message: "userId parameter is missing" });
                 return;
             }
+            if (!req.body.supplierCode) {
+                res.json({ status: false, message: "supplierCode parameter is missing" });
+                return;
+            }
             const supplierData = {
                 supplierName: JSON.parse(req.body.supplierName),
-                supplierCode: Math.floor(Math.random() * 1000000),
+                supplierCode: req.body.supplierCode,
                 isoCountry: req.body.isoCountry,
                 catalogTags: JSON.parse(req.body.catalogTags),
                 contact: {
@@ -71,7 +75,7 @@ module.exports = (app) => {
                         res.status(200).json({
                             status: true,
                             message: "Supplier details created successfully",
-                            supplierId: result._id
+                            supplierId: result.supplierId
                         })
                     }
                 })
