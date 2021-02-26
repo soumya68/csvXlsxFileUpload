@@ -5,7 +5,9 @@ const path = require('path');
 const mongoose = require("mongoose");
 const connectDB = require('./database/mongoose');
 const config = require('config');
-const PORT = 8000
+const configDetails = require('./config/config.json')
+const PORT = configDetails.development.PORT
+//const PORT = 8000
 
 /*middlewares*/
 app.use(bodyParser.json({

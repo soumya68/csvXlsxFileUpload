@@ -91,25 +91,4 @@ supplierSchema.plugin(autoIncrement.plugin, {
   incrementBy: 1
 });
 module.exports = mongoose.model("supplier", supplierSchema);
-        // "contact": {
-        //     "address": [],
-        //     "email": "",
-        //     "phone": ""
-        // },
-        // "deliveryFee": 24,
-        // "isoCountry": "phl",
-        // "lastProductSeq": 1177,
-        // "metadata": {
-        //     "createdBy": {
-        //         "userId": "ryann",
-        //         "utcDatetime": "2020-11-20T06:41:38.116Z"
-        //     },
-        //     "updatedBy": [],
-        //     "version": 2
-        // },
-        // "supplierCode": "KING",
-        // "supplierName": {
-        //     "eng": "King Lee Pharmacy"
-        // },
-        // "type": "medicationSupplier",
-        // "usdPrice": 0
+       

@@ -6,7 +6,7 @@
         "API_AUDIT": "http://139.162.18.54:3010/"
     },
     "development": {
-        "PORT": 3000,
+        "PORT": 8000,
         "MONGODB_URI": "mongodb://localhost:27017/Unicef",
         "JWT_SECRET": "fsdfaeqwdaef213124123123@!3123123SAdasdda",
         "API_AUDIT": "http://139.162.18.54:3010/"

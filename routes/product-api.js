@@ -47,7 +47,7 @@ module.exports = (app) => {
     //START OF API FOR PRODUCT DETAILS EXCELSHEET IMPORT
     //Params: file
     //Response: status, message
-    app.post('/api/upload_products',
+    app.post('/api/upload/products',
         upload.single('file'),
         function (req, res) {
             try {

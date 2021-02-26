@@ -1,10 +1,10 @@
 module.exports = (app) => {
     var orderModule = require('../module/order_module')();
     const order = require('../models/order-schema');
-    var pointDetails = require('../config/pointsDetails.json');
+    var pointDetails = require('../utils/pointsDetails.json');
     //START OF API FOR CREATE ORDER DETAILS 
     //Response: status, message
-    app.post('/api/place_order', function (req, res) {
+    app.post('/api/placeorder', function (req, res) {
         try {
             if (!req.body.productDetails) {
                 res.json({ status: false, message: "productDetails parameter is missing" });

@@ -3,7 +3,7 @@ module.exports = (app) => {
     const pointsAudit = require('../models/pointsAudit-schema');
     //START OF API FOR USER POINTS DETAILS 
     //Response: status, message
-    app.post('/api/user-points', function (req, res) {
+    app.post('/api/user/points', function (req, res) {
         try {
             if (!req.body.userId) {
                 res.json({ status: false, message: "userId parameter is missing" });

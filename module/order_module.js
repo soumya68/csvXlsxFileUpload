@@ -1,6 +1,6 @@
 const order = require('../models/order-schema');
 const pointsAudit = require('../models/pointsAudit-schema');
-const pointDetails = require('../config/pointsDetails.json');
+var pointDetails = require('../utils/pointsDetails.json');
 const residents = require('../models/resident-schema');
 module.exports = function () {
     var orderModule = {
