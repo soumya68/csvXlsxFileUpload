@@ -3,7 +3,7 @@ module.exports = (app) => {
     //START OF API FOR ADD SUPPLIER DETAILS 
     //Params: file
     //Response: status, message
-    app.post('/api/add_supplier', function (req, res) {
+    app.post('/api/add/supplier', function (req, res) {
         try {
             if (!req.body.supplierName) {
                 res.json({ status: false, message: "supplierName parameter is missing" });

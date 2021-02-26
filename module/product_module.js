@@ -95,14 +95,15 @@ module.exports = function () {
                         rows.push(rowData)
                     })
                     .on('end', () => {
-                        let test = productModule.catalogueNumber(function (result) {
-                            r52CatNo = result
-                            return r52CatNo
-                        })
+                        
                         if (rows.length !== 0) {
                             var index = 0;
                             var insertData = function (row) {
                                 if (row.length !== 0) {
+                                    let test = productModule.catalogueNumber(function (result) {
+                                        r52CatNo = result
+                                        return r52CatNo
+                                    })
                                     productModule.excelValidation(row, function (status) {
                                         if (status) {
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
@@ -204,49 +205,49 @@ module.exports = function () {
                                                     const productUpdateData = {
                                                         supplierId: supplierId,
                                                         r52CatNo: r52CatNo,
-                                                        suppCatNo: doc[1],
+                                                        suppCatNo: row[1],
                                                         brandName: {
-                                                            eng: doc[2]
+                                                            eng: row[2]
                                                         },
                                                         genericName: {
-                                                            eng: doc[3]
+                                                            eng: row[3]
                                                         },
-                                                        manufacturerName: doc[4],
+                                                        manufacturerName: row[4],
                                                         description: {
-                                                            eng: doc[5]
+                                                            eng: row[5]
                                                         },
-                                                        dosage: doc[6],
+                                                        dosage: row[6],
                                                         form: {
-                                                            eng: doc[7]
+                                                            eng: row[7]
                                                         },
-                                                        packSize: doc[8],
-                                                        packSizeUnit: doc[9],
-                                                        type: doc[10],
-                                                        requireRx: doc[11],
+                                                        packSize: row[8],
+                                                        packSizeUnit: row[9],
+                                                        type: row[10],
+                                                        requireRx: row[11],
                                                         tax: {
-                                                            name: doc[12],
-                                                            category: doc[12],
+                                                            name: row[12],
+                                                            category: row[12],
                                                             isIncluded: isIncluded,
-                                                            percentage: doc[15],
-                                                            type: doc[12],
+                                                            percentage: row[15],
+                                                            type: row[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: doc[16],
-                                                        catalogTags: [doc[17]],
-                                                        status: doc[18],
-                                                        isDiscounted: doc[19],
+                                                        pricePerPack: row[16],
+                                                        catalogTags: [row[17]],
+                                                        status: row[18],
+                                                        isDiscounted: row[19],
                                                         metadata: {
                                                             updatedBy: [],
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
                                                     };
-                                                    products.findOneAndUpdate(data.SupplierUniqueCatalogueNumber,
+                                                    products.findOneAndUpdate(row.SupplierUniqueCatalogueNumber,
                                                         { $set: productUpdateData },
                                                         { new: true }).then(result => {
                                                             // console.log('Product updated successfully');
                                                         }).catch(err => {
-                                                            console.log('error', error)
+                                                            console.log('error', err)
                                                         });
                                                     duplicateData = duplicateData + 1
                                                     index++;
