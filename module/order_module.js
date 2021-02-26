@@ -63,6 +63,7 @@ module.exports = function () {
                                 }
                             }
                             const ponitDetails = new pointsAudit(pointData);
+                            console.log("pointsdata",pointData)
                             ponitDetails.save().then(resp => {
                                 let updates = {
                                     availablePoints: totalAvailablePoints
@@ -80,9 +81,11 @@ module.exports = function () {
                     })
                 })
                     .catch(err => {
+                        console.log(err)
                         callBack(true, err, "Error",);
                     });
             } catch (e) {
+                console.log("2222",e)
                 callBack(true, null);
             }
         },

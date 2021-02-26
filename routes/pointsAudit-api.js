@@ -73,7 +73,7 @@ module.exports = (app) => {
             res.json({ status: false, message: "userId parameter is missing" });
             return;
         }
-        pointsModule.userRedeemPoints(req.body.userId,
+        pointsModule.userRedeemPoints(req.body.userId,req.body.redeemedPoints,
            
             function (error, result,message) {
                 if (error) {

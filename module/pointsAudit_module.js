@@ -26,10 +26,7 @@ module.exports = function () {
                                     totalAvailablePoints = totalEarnedPoints - totalRedeemedPoints
                                 }
                                 if (!doc.isActive) {
-                                    console.log(totalEarnedPoints)
-                                    console.log(totalRedeemedPoints)
                                     totalLapsedPoints = parseInt(totalLapsedPoints) + parseInt(doc.earnedPoints)
-                                    console.log(totalLapsedPoints)
                                 }
                                 index++;
                                 if (index < docs.length) {
@@ -95,47 +92,19 @@ module.exports = function () {
         },
         // End of create user point  details
          //Start of get Redeem points
-         userRedeemPoints: function(userId, callBack){
+         userRedeemPoints: function(userId,redeemedPoints, callBack){
             try {
-                EarnedPoints = 0
-                RedeemedPoints = 0
-                AvailablePoints = 0
-                pointsAudit.find({ userId: userId}, function (err, result) {
-                    console.log("dbresult",result)
-                    if (err) {
-                        console.log(err);
-                        callBack(true, null,"Error");
+                pointsAudit.find({ userId: userId}).sort({ userId: -1 }).limit(1).then((result) => {
+
+                    if (result[0].availablePoints < redeemedPoints) {
+                       
+                        callBack(false,"User has available redeempoints");
                     }
                     else {
-                        if (result.length = 0) {
-                            var index = 0;
-                            var redeemCheck = function (result) {
-                               
-                                if (result.isActive) {
-                                    RedeemedPoints = parseInt(RedeemedPoints) + parseInt(result.redeemedPoints)
-                                }
-                                index++;
-                                if (index < result.length) {
-                                    redeemCheck(result[index]);
-                                } else {
-                                    var data = {
-                                        AvailablePoints: AvailablePoints,
-                                        EarnedPoints: EarnedPoints,
-                                        RedeemedPoints: RedeemedPoints
-                                    }
-                                    callBack(false, data,"User redeempoints available");
-                                }
-
-                            }
-
-                        }
-                        else {
-                                callBack(true, null,"User has no redeempoints");
-                        }
-
-
+                        callBack(true, null,"User has no redeempoints");
                     }
-
+                }).catch(err => {
+                    console.log(err);
                 });
 
 
