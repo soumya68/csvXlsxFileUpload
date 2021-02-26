@@ -45,7 +45,7 @@ module.exports = (app) => {
                             status: false,
                             message: message,
                             orderId: null,
-                            availablePoints:result.availablePoints
+                            availablePoints:null
                         })
                     }
                     else {
