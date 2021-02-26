@@ -68,12 +68,16 @@ module.exports = (app) => {
     // Start of API for Redeemption 
     app.get('/api/redeemdetails',function(req, res){
         try{
-        console.log(req.body.availablePoints)
+       
         if (!req.body.userId) {
             res.json({ status: false, message: "userId parameter is missing" });
             return;
         }
-        pointsModule.userRedeemPoints(req.body.userId,
+        if (!req.body.redeemedPoints) {
+            res.json({ status: false, message: "redeemedPoints parameter is missing" });
+            return;
+        }
+        pointsModule.userRedeemPoints(req.body.userId,req.body.redeemedPoints,
            
             function (error, result,message) {
                 if (error) {
