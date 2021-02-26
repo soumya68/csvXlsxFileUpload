@@ -33,14 +33,13 @@ module.exports = (app) => {
     });
     //END OF API FOR USER POINTS DETAILS 
       // Start of API for point datails 
-      app.get('/api/user/pointdetails', function (req, res) {
+      app.get('/api/user/transactiondetails', function (req, res) {
         try {
-            console.log("userid",req.body.userId)
             if (!req.body.userId) {
                 res.json({ status: false, message: "userId parameter is missing" });
                 return;
             }
-            pointsModule.userPoints(req.body.userId,
+            pointsModule.transactionDetails(req.body.userId,
                 function (error, result,message) {
                     if (error) {
                         res.status(200).json({
@@ -68,7 +67,7 @@ module.exports = (app) => {
     // Start of API for Redeemption 
     app.get('/api/redeemdetails',function(req, res){
         try{
-        console.log(req.body.availablePoints)
+            
         if (!req.body.userId) {
             res.json({ status: false, message: "userId parameter is missing" });
             return;
