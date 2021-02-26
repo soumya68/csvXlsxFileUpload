@@ -45,7 +45,7 @@ module.exports = (app) => {
                             status: false,
                             message: message,
                             orderId: null,
-                            availablePoints:null
+                            availablePoints: null
                         })
                     }
                     else {
@@ -53,7 +53,7 @@ module.exports = (app) => {
                             status: true,
                             message: message,
                             orderId: result._id,
-                            availablePoints:result.availablePoints
+                            availablePoints: result.availablePoints
                         })
                     }
                 })

@@ -94,27 +94,44 @@ module.exports = function () {
         //Start of get Redeem points
         userRedeemPoints: function (userId, redeemedPoints, callBack) {
             try {
-                pointsAudit.find({ userId: userId }).sort({ _id: -1 }).limit(1).then((result) => {
-                    console.log(result)
-                    console.log(redeemedPoints)
-                    if (result[0].availablePoints >= redeemedPoints) {
-
-                        callBack(false, "User has available redeempoints");
+                pointsAudit.find({ userId: userId }).sort({ createdAt: -1 }).limit(1).then((result) => {
+                    if (result.length > 0) {
+                        if (result[0].availablePoints >= redeemedPoints) {
+                            callBack(false, "User has available redeempoints");
+                        }
+                        else {
+                            callBack(true, "Sorry, You don't have availablepoints to redeem");
+                        }
                     }
                     else {
-                        callBack(true, null, "User has no redeempoints");
+                        callBack(true, "Sorry, You don't have availablepoints to redeem");
                     }
                 }).catch(err => {
-                    console.log(err);
+                    callBack(true, "Error");
                 });
-
-
             } catch (e) {
-                console.log(e)
+                callBack(true, "Error");
+            }
+        },
+        //End of get Redeem points
+        //Start Transaction details API of user
+        transactionDetails: function (userId, callBack) {
+            try {
+                pointsAudit.find({ userId: userId }).sort({ createdAt: -1 }).limit(10).then((result) => {
+                    if (result.length > 0) {
+                        callBack(false, result, "User transaction details");
+                    }
+                    else {
+                        callBack(true, "don't have transaction details");
+                    }
+                }).catch(err => {
+                    callBack(true, "Error");
+                });
+            } catch (e) {
                 callBack(true, null);
             }
         }
-        //End of get Redeem points
+        //End Transaction details API of user
     }
     return pointsAuditModule;
 }

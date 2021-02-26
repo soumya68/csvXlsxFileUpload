@@ -11,8 +11,7 @@ module.exports = function () {
             pointSource, countryCode, callBack) {
             try {
                 residents.find({ residentId: userId }).then(user => {
-                    console.log(user)
-                    if(user.length>0){
+                    if (user.length > 0) {
                         var earnedPointsExpiryDate = new Date();
                         var days = pointDetails[countryCode].earnedPointsExpiryDays
                         earnedPointsExpiryDate.setDate(earnedPointsExpiryDate.getDate() + days);
@@ -81,17 +80,14 @@ module.exports = function () {
                             }
                         })
                     }
-                    else{
+                    else {
                         callBack(true, null, "No user found");
                     }
-               
                 })
                     .catch(err => {
-                        console.log(err)
                         callBack(true, err, "Error",);
                     });
             } catch (e) {
-                console.log(e)
                 callBack(true, null);
             }
         },

@@ -115,7 +115,7 @@ module.exports = (app) => {
                                     let updates = {
                                         status: true,
                                         successedRecordsCount: correctEntryCount,
-                                        faliedRecordsCount: invalidDatas.length,
+                                        failedRecordsCount: invalidDatas.length,
                                         totalRecordsCount: totalEntryCount,
                                         duplicateRecordsCount: duplicateEntryCount
                                     }

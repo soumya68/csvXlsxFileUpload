@@ -32,25 +32,22 @@ module.exports = (app) => {
         }
     });
     //END OF API FOR USER POINTS DETAILS 
-      // Start of API for point datails 
-      app.get('/api/user/pointdetails', function (req, res) {
+    // Start of API for point datails 
+    app.get('/api/user/transactiondetails', function (req, res) {
         try {
-            console.log("userid",req.body.userId)
             if (!req.body.userId) {
                 res.json({ status: false, message: "userId parameter is missing" });
                 return;
             }
-            pointsModule.userPoints(req.body.userId,
-                function (error, result,message) {
+            pointsModule.transactionDetails(req.body.userId,
+                function (error, result, message) {
                     if (error) {
                         res.status(200).json({
                             status: false,
                             message: message,
                             data: result,
-
                         })
                     }
-                   
                     else {
                         res.status(200).json({
                             status: true,
@@ -66,38 +63,34 @@ module.exports = (app) => {
     });
     // end of API for point details
     // Start of API for Redeemption 
-    app.get('/api/redeemdetails',function(req, res){
-        try{
-       
-        if (!req.body.userId) {
-            res.json({ status: false, message: "userId parameter is missing" });
-            return;
+    app.get('/api/redeemdetails', function (req, res) {
+        try {
+            if (!req.body.userId) {
+                res.json({ status: false, message: "userId parameter is missing" });
+                return;
+            }
+            if (!req.body.redeemedPoints) {
+                res.json({ status: false, message: "redeemedPoints parameter is missing" });
+                return;
+            }
+            pointsModule.userRedeemPoints(req.body.userId, req.body.redeemedPoints,
+                function (error, result, message) {
+                    if (error) {
+                        res.status(200).json({
+                            status: false,
+                            message: message,
+                            data: result,
+                        })
+                    }
+                    else {
+                        res.status(200).json({
+                            status: true,
+                            message: message,
+                            data: result,
+                        })
+                    }
+                })
         }
-        if (!req.body.redeemedPoints) {
-            res.json({ status: false, message: "redeemedPoints parameter is missing" });
-            return;
-        }
-        pointsModule.userRedeemPoints(req.body.userId,req.body.redeemedPoints,
-           
-            function (error, result,message) {
-                if (error) {
-                    res.status(200).json({
-                        status: false,
-                        message: message,
-                        data: result,
-
-                    })
-                }
-               
-                else {
-                    res.status(200).json({
-                        status: true,
-                        message: message,
-                        data: result,
-                    })
-                }
-            })
-        }  
         catch (er) {
             res.json({ status: false, message: er });
         }

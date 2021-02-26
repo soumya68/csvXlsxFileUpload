@@ -24,7 +24,7 @@ module.exports = function () {
                         callBack(r52CatNumber);
                     }
                 }).catch(err => {
-                    console.log(err);
+                    callBack(null);
                 });
             } catch (e) {
                 callBack(null);
@@ -95,7 +95,6 @@ module.exports = function () {
                         rows.push(rowData)
                     })
                     .on('end', () => {
-                        
                         if (rows.length !== 0) {
                             var index = 0;
                             var insertData = function (row) {
@@ -123,28 +122,6 @@ module.exports = function () {
                                                         IsTaxExempt = false
                                                     }
                                                     const productData = {
-                                                        // catalogue_number: r52CatNo,
-                                                        // supplier_catalogue_number: row.SupplierUniqueCatalogueNumber,
-                                                        // brand_name: row.BrandName,
-                                                        // generic: row.Generic,
-                                                        // manufacturer_name: row.Manufacturer,
-                                                        // description: row.Description,
-                                                        // dosage: row.Dosage,
-                                                        // form: row.Form,
-                                                        // pack_size: row.PackSize,
-                                                        // pack_size_unit: row.PackSizeUnits,
-                                                        // product_type: row.ProductType,
-                                                        // require_rx: row.RequiresRx,
-                                                        // tax_name: row.TaxName,
-                                                        // Is_tax_exempt: row.IsTaxExempt,
-                                                        // Is_tax_included: row.IsTaxIncluded,
-                                                        // tax_percent: row.TaxPercent,
-                                                        // price_per_pack: row.PricePerPackage,
-                                                        // catalog_tag: row.CatalogTag,
-                                                        // status: row.Status,
-                                                        // isDiscounted: row.IsDiscountAvailable,
-                                                        // supplier_id: supplierId,
-                                                        // timestamp: new Date(),
                                                         supplierId: supplierId,
                                                         r52CatNo: r52CatNo,
                                                         suppCatNo: row.SupplierUniqueCatalogueNumber,
@@ -355,28 +332,6 @@ module.exports = function () {
                                                     IsTaxExempt = false
                                                 }
                                                 const productData = {
-                                                    // catalogue_number: crypto.randomBytes(6).toString('hex'),
-                                                    // supplier_catalogue_number: doc[1],
-                                                    // brand_name: doc[2],
-                                                    // generic: doc[3],
-                                                    // manufacturer_name: doc[4],
-                                                    // description: doc[5],
-                                                    // dosage: doc[6],
-                                                    // form: doc[7],
-                                                    // pack_size: doc[8],
-                                                    // pack_size_unit: doc[9],
-                                                    // product_type: doc[10],
-                                                    // require_rx: doc[11],
-                                                    // tax_name: doc[12],
-                                                    // Is_tax_exempt: doc[13],
-                                                    // Is_tax_included: doc[14],
-                                                    // tax_percent: doc[15],
-                                                    // price_per_pack: doc[16],
-                                                    // catalog_tag: doc[17],
-                                                    // status: doc[18],
-                                                    // isDiscounted: doc[19],
-                                                    // supplier_name: doc[20],
-                                                    // timestamp: new Date(),
                                                     supplierId: supplierId,
                                                     r52CatNo: r52CatNo,
                                                     suppCatNo: doc[1],

@@ -5,7 +5,6 @@ const removeEmpty = (obj) => {
     );
     return obj;
 };
-
 const message = [
     { "code": 400, "txt": "Invalid request" },
     { "code": 406, "txt": "Invalid Account data" },
@@ -19,9 +18,7 @@ const message = [
     { "code": 423, "txt": "Account is locked" },
     { "code": 200, "txt": "Success" },
     { "code": 204, "txt": "No content" }
-
 ];
-
 const responseMsg = (code = 500, data = null, success = false, token = null) => {
     console.log(code, data, success, token)
     let msg = "";
@@ -34,12 +31,10 @@ const responseMsg = (code = 500, data = null, success = false, token = null) => 
     }
     return removeEmpty({ code, msg, data, success, token });
 };
-
 const sendRemainingLoginAttempts = (code, attempts) => {
     msg = message.find(item => item.code == code).txt;
     return { code: code, message: `${msg} ${attempts} attempts remaining` }
 }
-
 module.exports = {
     removeEmpty,
     responseMsg,
