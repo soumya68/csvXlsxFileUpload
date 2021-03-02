@@ -2,8 +2,7 @@ var mongoose = require("mongoose");
 const validator = require("validator");
 var orderSchema = new mongoose.Schema(
     {
-
-        userId: {
+        residentId: {
             type: String,
             required: true,
         },
@@ -22,6 +21,10 @@ var orderSchema = new mongoose.Schema(
             default: 0
         },
         isDelivered: {
+            type: Boolean,
+            default: false
+        },
+        isPointsAddedToResident: {
             type: Boolean,
             default: false
         },

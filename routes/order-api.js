@@ -7,45 +7,41 @@ module.exports = (app) => {
     app.post('/api/placeorder', function (req, res) {
         try {
             if (!req.body.productDetails) {
-                res.json({ status: false, message: "productDetails parameter is missing" });
+                res.status(400).json({ status: false, message: "productDetails parameter is missing" });
                 return;
             }
             if (!req.body.finalPrice) {
-                res.json({ status: false, message: "finalPrice parameter is missing" });
+                res.status(400).json({ status: false, message: "finalPrice parameter is missing" });
                 return;
             }
-            if (!req.body.userId) {
-                res.json({ status: false, message: "userId parameter is missing" });
+            if (!req.body.residentId) {
+                res.status(400).json({ status: false, message: "residentId parameter is missing" });
                 return;
             }
             if (!req.body.redeemedPoints) {
-                res.json({ status: false, message: "redeemedPoints parameter is missing" });
+                res.status(400).json({ status: false, message: "redeemedPoints parameter is missing" });
                 return;
             }
             if (!req.body.countryCode) {
-                res.json({ status: false, message: "countryCode parameter is missing" });
+                res.status(400).json({ status: false, message: "countryCode parameter is missing" });
                 return;
             }
-            // if (!req.body.availablePoints) {
-            //     res.json({ status: false, message: "availablePoints parameter is missing" });
-            //     return;
-            // }
             if (!req.body.pointSource) {
-                res.json({ status: false, message: "pointSource parameter is missing" });
+                res.status(400).json({ status: false, message: "pointSource parameter is missing" });
                 return;
             }
-            orderModule.createOrder(req.body.productDetails,
-                req.body.finalPrice,
-                req.body.userId,
-                req.body.redeemedPoints,
-                req.body.pointSource, req.body.countryCode,
+            const { productDetails, finalPrice, residentId, redeemedPoints, pointSource, countryCode } = req.body
+            orderModule.createOrder(productDetails,
+                finalPrice,
+                residentId,
+                redeemedPoints,
+                pointSource, countryCode,
                 function (error, result, message) {
                     if (error) {
-                        res.status(200).json({
+                        res.status(500).json({
                             status: false,
                             message: message,
                             orderId: null,
-                            availablePoints: null
                         })
                     }
                     else {
@@ -53,7 +49,6 @@ module.exports = (app) => {
                             status: true,
                             message: message,
                             orderId: result._id,
-                            availablePoints: result.availablePoints
                         })
                     }
                 })

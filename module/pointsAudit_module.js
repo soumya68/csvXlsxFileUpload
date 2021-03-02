@@ -1,14 +1,15 @@
 const pointsAudit = require('../models/pointsAudit-schema');
+var pointDetails = require('../utils/pointsDetails.json');
 module.exports = function () {
     var pointsAuditModule = {
         // Start of get user points details
-        userPoints: function (userId, callBack) {
+        userPoints: function (residentId, callBack) {
             try {
                 totalLapsedPoints = 0
                 totalEarnedPoints = 0
                 totalRedeemedPoints = 0
                 totalAvailablePoints = 0
-                pointsAudit.find({ userId: userId }, function (err, docs) {
+                pointsAudit.find({ residentId: residentId }, function (err, docs) {
                     if (err) {
                         callBack(true, null, "Error");
                     }
@@ -57,7 +58,7 @@ module.exports = function () {
         // End of get user points details
         // Start of  create user point details
         createPointDetails: function (productDetails, finalPrice,
-            userId,
+            residentId,
             redeemedPoints,
             pointSource, countryCode, callBack) {
             try {
@@ -72,7 +73,7 @@ module.exports = function () {
                     totalPrice = finalPrice - discountAmount
                 }
                 var orderData = {
-                    userId: userId,
+                    residentId: residentId,
                     productDetails: JSON.parse(productDetails),
                     finalPrice: totalPrice,
                     isDelivered: false,
@@ -92,9 +93,9 @@ module.exports = function () {
         },
         // End of create user point  details
         //Start of get Redeem points
-        userRedeemPoints: function (userId, redeemedPoints, callBack) {
+        userRedeemPoints: function (residentId, redeemedPoints, callBack) {
             try {
-                pointsAudit.find({ userId: userId }).sort({ createdAt: -1 }).limit(1).then((result) => {
+                pointsAudit.find({ residentId: residentId }).sort({ createdAt: -1 }).limit(1).then((result) => {
                     if (result.length > 0) {
                         if (result[0].availablePoints >= redeemedPoints) {
                             callBack(false, "User has available redeempoints");
@@ -115,9 +116,9 @@ module.exports = function () {
         },
         //End of get Redeem points
         //Start Transaction details API of user
-        transactionDetails: function (userId, callBack) {
+        transactionDetails: function (residentId, callBack) {
             try {
-                pointsAudit.find({ userId: userId }).sort({ createdAt: -1 }).limit(10).then((result) => {
+                pointsAudit.find({ residentId: residentId }).sort({ createdAt: -1 }).limit(10).then((result) => {
                     if (result.length > 0) {
                         callBack(false, result, "User transaction details");
                     }
@@ -130,8 +131,53 @@ module.exports = function () {
             } catch (e) {
                 callBack(true, null);
             }
-        }
+        },
         //End Transaction details API of user
+        //Start points conversion 
+        pointConversion: function (countryCode, redeemedPoints, callBack) {
+            try {
+                var currencyValue = ((parseFloat(pointDetails[countryCode].redemption.currencyValue) / parseInt(pointDetails[countryCode].redemption.numberOfPoints)) * parseInt(redeemedPoints))
+                var currency = pointDetails[countryCode].countryCurrency
+                callBack(false, currencyValue, currency);
+            } catch (e) {
+                console.log(e)
+                callBack(true, null, null);
+            }
+        },
+        //End points conversion 
+        //Start deactivate points
+        deactivatePoints: function (callBack) {
+            try {
+                pointsAudit.updateMany({
+                    earnedPointsExpiryDate: {
+                        $lte: new Date()
+                    }
+                }, {
+                    $set: {
+                        isActive: false
+                    }
+                },
+                    {
+                        multi: true
+                    }
+                )
+                    .then(response => {
+                        if (response.nModified == 0) {
+                            // { n: 0, nModified: 0, ok: 1 }
+                            callBack(false, 'No points available for expiration');
+                        }
+                        else {
+                            callBack(false, 'Expiration done');
+                        }
+                    }).
+                    catch(e => {
+                        callBack(true, null);
+                    })
+            } catch (e) {
+                callBack(true, null);
+            }
+        }
+        //End deactivate points
     }
     return pointsAuditModule;
 }

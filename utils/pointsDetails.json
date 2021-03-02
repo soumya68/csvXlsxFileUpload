@@ -1,33 +1,47 @@
 {
-    "1":{
-      "countryName":"india",
-      "countryCode":1,
-      "countryCurrency":"INR",
-      "conversionAmount":1,
-      "points":100,
-      "orderTotalPrice":1000,
-      "pointsAmount":10,
-      "earnedPointsExpiryDays":90
+  "IND": {
+    "countryName": "India",
+    "countryCurrency": "INR",
+    "redemption": {
+      "numberOfPoints": 100,
+      "currencyValue": 1,
+      "minimumOrderPrice": 100
     },
-    "2":{
-      "countryName":"combodia",
-      "countryCode":2,
-      "countryCurrency":"Cambodian riel",
-      "conversionAmount":1,
-      "points":10,
-      "orderTotalPrice":1000,
-      "pointsAmount":10,
-      "earnedPointsExpiryDays":30
+    "earned": {
+      "numberOfPoints": 1,
+      "amountSpent": 100,
+      "minimumOrderPrice": 100
     },
-    "3":{
-      "countryName":"philipines",
-      "countryCode":3,
-      "countryCurrency":"Philippine peso",
-      "conversionAmount":1,
-      "points":15,
-      "orderTotalPrice":1000,
-      "pointsAmount":10,
-      "earnedPointsExpiryDays":60
-    }
+    "earnedPointsExpiryDays": 90
+  },
+  "KHM": {
+    "countryName": "Cambodia",
+    "countryCurrency": "KHM",
+    "redemption": {
+      "numberOfPoints": 100,
+      "currencyValue": 1,
+      "minimumOrderPrice": 100
+    },
+    "earned": {
+      "numberOfPoints": 1,
+      "amountSpent": 100,
+      "minimumOrderPrice": 100
+    },
+    "earnedPointsExpiryDays": 90
+  },
+  "PHL": {
+    "countryName": "Philippines",
+    "countryCurrency": "PHL",
+    "redemption": {
+      "numberOfPoints": 100,
+      "currencyValue": 1,
+      "minimumOrderPrice": 100
+    },
+    "earned": {
+      "numberOfPoints": 1,
+      "amountSpent": 100,
+      "minimumOrderPrice": 100
+    },
+    "earnedPointsExpiryDays": 60
   }
-  
+}

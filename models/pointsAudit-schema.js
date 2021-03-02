@@ -2,8 +2,7 @@ var mongoose = require("mongoose");
 const validator = require("validator");
 var pointsAuditSchema = new mongoose.Schema(
     {
-
-        userId: {
+        residentId: {
             type: String,
             required: true,
         },
@@ -33,8 +32,10 @@ var pointsAuditSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
-       
-
+        isLapsed: {
+            type: Boolean,
+            default: false
+        },
     },
     {
         timestamps: {

@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var catalougeSchema = new mongoose.Schema(
     {
         supplierId: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: Number,
             required: true,
         },
         //manufacturerName IS ADDED AS PER UPLOAD SHEET
@@ -40,7 +40,7 @@ var catalougeSchema = new mongoose.Schema(
             default: 0
         },
         ////////////////////////////////////
-        isDiscounted: {
+        pointsAccumulation: {
             type: Boolean,
             require: true,
             min: 6,

@@ -34,6 +34,7 @@ module.exports = function () {
         //Start of Validation
         excelValidation: function (data, callBack) {
             try {
+                console.log(data)
                 if (
                     !data.SupplierUniqueCatalogueNumber
                     || !data.BrandName
@@ -49,7 +50,7 @@ module.exports = function () {
                     || !data.TaxPercent
                     || !data.PricePerPackage
                     || !data.Status
-                    || !data.IsDiscountAvailable.toString()
+                    || !data.PointsAccumulation.toString()
                     || !data.Manufacturer
                 ) {
                     callBack(false);
@@ -154,7 +155,7 @@ module.exports = function () {
                                                         pricePerPack: row.PricePerPackage,
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
-                                                        isDiscounted: row.IsDiscountAvailable,
+                                                        pointsAccumulation: row.PointsAccumulation,
                                                         metadata: {
                                                             createdBy: {
                                                                 userId: userId,
@@ -212,7 +213,7 @@ module.exports = function () {
                                                         pricePerPack: row[16],
                                                         catalogTags: [row[17]],
                                                         status: row[18],
-                                                        isDiscounted: row[19],
+                                                        pointsAccumulation: row[19],
                                                         metadata: {
                                                             updatedBy: [],
                                                             version: version
@@ -310,7 +311,7 @@ module.exports = function () {
                                     PricePerPackage: doc[16],
                                     CatalogTag: doc[17],
                                     Status: doc[18],
-                                    IsDiscountAvailable: doc[19],
+                                    PointsAccumulation: doc[19],
                                     supplier_id: supplierId,
                                 };
                                 productModule.excelValidation(data, function (status) {
@@ -364,7 +365,7 @@ module.exports = function () {
                                                     pricePerPack: doc[16],
                                                     catalogTags: [doc[17]],
                                                     status: doc[18],
-                                                    isDiscounted: doc[19],
+                                                    pointsAccumulation: doc[19],
                                                     metadata: {
                                                         createdBy: {
                                                             userId: userId,
@@ -422,7 +423,7 @@ module.exports = function () {
                                                     pricePerPack: doc[16],
                                                     catalogTags: [doc[17]],
                                                     status: doc[18],
-                                                    isDiscounted: doc[19],
+                                                    pointsAccumulation: doc[19],
                                                     metadata: {
                                                         updatedBy: [],
                                                         version: version
@@ -468,7 +469,7 @@ module.exports = function () {
                                             PricePerPackage: doc[16],
                                             CatalogTag: doc[17],
                                             Status: doc[18],
-                                            IsDiscountAvailable: doc[19],
+                                            pointsAccumulation: doc[19],
                                             SupplierName: doc[20]
                                         };
                                         invalidDatas.push(invalidData)
@@ -531,7 +532,7 @@ module.exports = function () {
                         { id: 'PricePerPackage', title: 'PricePerPackage' },
                         { id: 'CatalogTag', title: 'CatalogTag' },
                         { id: 'Status', title: 'Status' },
-                        { id: 'IsDiscountAvailable', title: 'IsDiscountAvailable' },
+                        { id: 'PointsAccumulation', title: 'pointsAccumulation' },
                         { id: 'SupplierName', title: 'SupplierName' },
                     ]
                 });
