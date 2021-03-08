@@ -7,6 +7,7 @@ const connectDB = require('./database/mongoose');
 const config = require('config');
 const configDetails = require('./config/config.json')
 const PORT = configDetails.development.PORT
+var cron = require('node-cron');
 //const PORT = 8000
 
 /*middlewares*/
@@ -39,7 +40,17 @@ app.listen(process.env.PORT || PORT, () => {
 });
 
 
+// cron.schedule('* * * * *', () => {
+//     console.log('running a task every minute');
+//   });
+
+
+  
+//   cron.schedule('59 23 * * *', () => {
+//     console.log('running a task at 11:59 PM every day');
+//   });
 
 //mongodb+srv://admin:vishal1234@cluster0.yuwek.mongodb.net/products?retryWrites=true&w=majority
 //mongodb+srv://gstuser:n03ntry428@cluster0-i3gc0.mongodb.net/helmethead?retryWrites=true&w=majority
 //mongodb+srv://unicef:unicef@cluster0.xwra6.mongodb.net/unicef?retryWrites=true&w=majority
+//mongodb+srv://kunalsolace:Kunal2021@realmcluster.bulij.mongodb.net/InventoryDemo

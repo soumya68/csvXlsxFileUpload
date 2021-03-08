@@ -1,8 +1,8 @@
 var mongoose = require("mongoose");
 var catalougeSchema = new mongoose.Schema(
     {
-        supplierId: {
-            type: Number,
+        supplierCode: {
+            type: String,
             required: true,
         },
         //manufacturerName IS ADDED AS PER UPLOAD SHEET
@@ -223,4 +223,4 @@ var catalougeSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("products", catalougeSchema);
+module.exports = mongoose.model("medication", catalougeSchema);

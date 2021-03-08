@@ -5,12 +5,12 @@
     "redemption": {
       "numberOfPoints": 100,
       "currencyValue": 1,
-      "minimumOrderPrice": 100
+      "minimumOrderPrice": 1000
     },
     "earned": {
       "numberOfPoints": 1,
       "amountSpent": 100,
-      "minimumOrderPrice": 100
+      "minimumOrderPrice": 1000
     },
     "earnedPointsExpiryDays": 90
   },

@@ -1,5 +1,6 @@
 const pointsAudit = require('../models/pointsAudit-schema');
 var pointDetails = require('../utils/pointsDetails.json');
+const residents = require('../models/resident-schema');
 module.exports = function () {
     var pointsAuditModule = {
         // Start of get user points details
@@ -145,6 +146,29 @@ module.exports = function () {
             }
         },
         //End points conversion 
+          //Start of user eligibility to Redeem points
+          userRedeemPointsEligibility: function (residentId, redeemedPoints, callBack) {
+            try {
+                residents.find({ residentId: residentId }).then((result) => {
+                    if (result.length > 0) {
+                        if (result[0].availablePoints >= redeemedPoints) {
+                            callBack(false, true,"User has available redeempoints");
+                        }
+                        else {
+                            callBack(true,false, "Sorry, You don't have availablepoints to redeem");
+                        }
+                    }
+                    else {
+                        callBack(true,false, "Sorry, no user found");
+                    }
+                }).catch(err => {
+                    callBack(true,false, "Error");
+                });
+            } catch (e) {
+                callBack(true,false, "Error");
+            }
+        },
+        //End of user eligibility to Redeem points
         //Start deactivate points
         deactivatePoints: function (callBack) {
             try {
@@ -181,3 +205,7 @@ module.exports = function () {
     }
     return pointsAuditModule;
 }
+// 1) for all expired points on that day -- do the sum of earned points
+// 2) for all new order placed do sum of redeemed points on that day ---
+// 3) 1-2
+// 4) available points in wallet=available points in wallet -3

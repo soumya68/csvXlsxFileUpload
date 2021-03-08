@@ -20,11 +20,11 @@ module.exports = (app) => {
                 ("00" + date.getMinutes()).slice(-2) + ":" +
                 ("00" + date.getSeconds()).slice(-2);
             if (file.mimetype == "text/csv") {
-                const fileName = req.body.supplierId + req.body.isoCountryCode + dateStr + '.csv';
+                const fileName = req.body.supplierCode + req.body.isoCountryCode + dateStr + '.csv';
                 callback(null, fileName)
             }
             else {
-                const fileName = req.body.supplierId + req.body.isoCountryCode + dateStr + '.xlsx';
+                const fileName = req.body.supplierCode + req.body.isoCountryCode + dateStr + '.xlsx';
                 callback(null, fileName)
             }
             const randomDigit = Math.floor(Math.random() * 1000000)
@@ -64,15 +64,16 @@ module.exports = (app) => {
                     res.json({ status: false, message: "userId parameter is missing" });
                     return;
                 }
-                if (!req.body.supplierId) {
-                    res.json({ status: false, message: "supplierId parameter is missing" });
+                if (!req.body.supplierCode) {
+                    res.json({ status: false, message: "supplierCode parameter is missing" });
                     return;
                 }
                 // File path where file is saved
                 var filePath = path.resolve(DIR + req.file.filename);
-                var userId = req.body.userId;
-                var version = req.body.version;
-                var supplierId = req.body.supplierId
+                // var userId = req.body.userId;
+                // var version = req.body.version;
+                // var supplierCode = req.body.supplierId
+                const { supplierCode, version, userId } = req.body
                 const fileData = {
                     fileName: req.file.filename,
                     userId: userId,
@@ -87,7 +88,7 @@ module.exports = (app) => {
                     //FILE DATA INSERT CODE WILL BE HERE
                     if (req.file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
                         ////// THIS IS FOR XLSX FILE 
-                        productModule.xlsxUpload(userId, version, supplierId, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                        productModule.xlsxUpload(userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
                             function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                 if (totalEntryCount == 0) {
                                     return res.status(200).json({
@@ -136,6 +137,7 @@ module.exports = (app) => {
                                                             })
                                                         }
                                                         else {
+                                                            console.log('got it 335')
                                                             res.status(200).json({
                                                                 status: true,
                                                                 message: "Data Inserted Successfully",
@@ -149,6 +151,7 @@ module.exports = (app) => {
                                                     })
                                             }
                                             else {
+                                                console.log('got it 337')
                                                 res.status(200).json({
                                                     status: true,
                                                     message: "Data Inserted Successfully",
@@ -168,7 +171,7 @@ module.exports = (app) => {
                     }
                     else {
                         ////// THIS IS FOR CSV FILE 
-                        productModule.csvUpload(userId, version, supplierId, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                        productModule.csvUpload(userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                             function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                 if (error) {
                                     res.status(200).json({
@@ -196,6 +199,7 @@ module.exports = (app) => {
                                                 productModule.failuerFileUpload(req.file.filename, invalidDatas,
                                                     function (error) {
                                                         if (error) {
+                                                            console.log('got it 33')
                                                             res.status(200).json({
                                                                 status: false,
                                                                 message: "Data Inserted Successfully",
@@ -207,6 +211,7 @@ module.exports = (app) => {
                                                             })
                                                         }
                                                         else {
+                                                            console.log('got it 22')
                                                             res.status(200).json({
                                                                 status: true,
                                                                 message: "Data Inserted Successfully",
@@ -220,6 +225,7 @@ module.exports = (app) => {
                                                     })
                                             }
                                             else {
+                                                console.log('got it')
                                                 res.status(200).json({
                                                     status: true,
                                                     message: "Data Inserted Successfully",
@@ -240,6 +246,7 @@ module.exports = (app) => {
                     }
                     ////
                 }).catch(err => {
+                    console.log(err)
                     return res.status(400).json({ message: 'Error while uploading file', error: err });
                 });
             }

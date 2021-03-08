@@ -83,11 +83,6 @@ module.exports = (app) => {
                         })
                     }
                     else {
-                        res.status(200).json({
-                            status: true,
-                            message: message,
-                            data: result,
-                        })
                     }
                 })
         }
@@ -107,7 +102,11 @@ module.exports = (app) => {
                 res.status(400).json({ status: false, message: "redeemPoints parameter is missing" });
                 return;
             }
-            const { countryCode, redeemPoints } = req.body
+            if (!req.body.residentId) {
+                res.status(400).json({ status: false, message: "residentId parameter is missing" });
+                return;
+            }
+            const { countryCode, redeemPoints, residentId } = req.body
             pointsModule.pointConversion(countryCode, redeemPoints,
                 function (error, currencyValue, currency) {
                     if (error) {
@@ -118,11 +117,25 @@ module.exports = (app) => {
                         })
                     }
                     else {
-                        res.status(200).json({
-                            status: true,
-                            currencyValue: currencyValue,
-                            currency: currency
-                        })
+                        pointsModule.userRedeemPointsEligibility(residentId, redeemPoints,
+                            function (err, status, message) {
+                                if (err) {
+                                    res.status(500).json({
+                                        status: false,
+                                        message: message,
+                                        currencyValue: currencyValue,
+                                        currency: currency
+                                    })
+                                }
+                                else {
+                                    res.status(200).json({
+                                        status: status,
+                                        message: message,
+                                        currencyValue: currencyValue,
+                                        currency: currency
+                                    })
+                                }
+                            })
                     }
                 })
         }

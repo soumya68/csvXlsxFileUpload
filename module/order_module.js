@@ -1,4 +1,4 @@
-const order = require('../models/order-schema');
+const order = require('../models/neworder-schema');
 const pointsAudit = require('../models/pointsAudit-schema');
 var pointDetails = require('../utils/pointsDetails.json');
 const residents = require('../models/resident-schema');
@@ -80,7 +80,163 @@ module.exports = function () {
             }
         },
         // Start of  point accumulation for create order
+        // Start of  create order details
+        createPointsDetails: function (orderId,
+            redeemedPoints,
+            pointSource, countryCode, callBack) {
+            try {
+                order.find({ _id: new ObjectId(orderId) }).then(orderData => {
+                    console.log(orderData)
+                    if (orderData.length > 0) {
+                        var finalPrice = orderData[0].orderTotalPayable
+                        var residentId = orderData[0].residentId
+                        console.log('1567')
+                        totalAvailablePoint = 0
+                        var productDetails = [];
+                        if (orderData[0].suppliers.length > 0) {
+                            console.log('134')
+                            var index = 0;
+                            var supplierData = function (doc) {
+                                var item = doc.items
+                                console.log('item', item)
+                                productDetails = productDetails.concat(item)
+                                console.log('product', productDetails)
+                                console.log('14')
+                                index++
+                                if (index < orderData[0].suppliers.length) {
+                                    supplierData(orderData[0].suppliers[index]);
+                                }
+                                else {
+                                    console.log('1')
+                                    orderModule.pointsAccumulation(
+                                        productDetails, finalPrice,
+                                        redeemedPoints,
+                                        countryCode,
+                                        function (error, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints) {
+                                            if (!error) {
+                                                console.log('totalEarnedPoints', totalEarnedPoints)
+                                                console.log('totalRedeemedPoints', totalRedeemedPoints)
+                                                if (totalEarnedPoints > 0 || totalRedeemedPoints > 0) {
+                                                    if (totalEarnedPoints > 0) {
+                                                        var pointData = {
+                                                            redeemedPoints: totalRedeemedPoints,
+                                                            earnedPoints: totalEarnedPoints,
+                                                            availablePoints: totalAvailablePoint,
+                                                            pointSource: pointSource,
+                                                            earnedPointsExpiryDate: earnedPointsExpiryDate,
+                                                            residentId: residentId,
+                                                            orderId: orderId,
+                                                            pointsEarnedCalculation: true
+                                                        }
+                                                    }
+                                                    else {
+                                                        var pointData = {
+                                                            redeemedPoints: totalRedeemedPoints,
+                                                            earnedPoints: totalEarnedPoints,
+                                                            availablePoints: totalAvailablePoint,
+                                                            pointSource: pointSource,
+                                                            earnedPointsExpiryDate: earnedPointsExpiryDate,
+                                                            residentId: residentId,
+                                                            orderId: orderId,
+                                                            pointsEarnedCalculation: true
+                                                        }
+                                                    }
+                                                    const ponitDetails = new pointsAudit(pointData);
+                                                    ponitDetails.save().then(response => {
+                                                        console.log('RESIDENT', residentId)
+                                                        residents.findOneAndUpdate({ residentId: residentId },
+                                                            { $inc: { availablePoints: -parseInt(totalRedeemedPoints) } },
+                                                            { new: true }).then(result => {
+                                                                callBack(false, "Order point created successfully");
+                                                            }).catch(err => {
+                                                                console.log('error', err)
+                                                            });
+                                                    })
+                                                }
+                                                else {
+                                                    callBack(false, "Order point created successfully");
+                                                }
+                                                // })
+                                            }
+                                            else {
+                                                callBack(true, "Error",);
+                                            }
+                                        })
+                                }
+                            }
+                            if (orderData[0].suppliers.length !== 0) {
+                                supplierData(orderData[0].suppliers[index]);
+                            }
+                        }
+                        else {
+                            callBack(true, "No supplier data found");
+                        }
+                    }
+                    else {
+                        callBack(true, "No order found");
+                    }
+                })
+                    .catch(err => {
+                        console.log(err)
+                        callBack(true, "Error",);
+                    });
+            } catch (e) {
+                console.log(e)
+                callBack(true, "Error",);
+            }
+        },
+        // Start of  point accumulation for create order
         pointsAccumulation: function (productDetails, finalPrice,
+            redeemedPoints,
+            countryCode, callBack) {
+            try {
+                console.log('FINAL PRICE', finalPrice)
+                totalEarnedPoints = 0
+                totalRedeemedPoints = 0
+                totalPrice = finalPrice;
+                totalAvailablePoints = 0;
+                earnedPointsExpiryDate = new Date();
+                if (pointDetails[countryCode].earned.minimumOrderPrice <= finalPrice) {
+                    var products = productDetails
+                    var index = 0;
+                    var productData = function (doc) {
+                        var singleProductId = doc.medicationId
+                        if (doc.pointsAccumulation) {
+                            var productPrice = doc.price
+                            totalEarnedPoints = parseFloat(totalEarnedPoints) + Math.round(((parseFloat(pointDetails[countryCode].earned.numberOfPoints) / parseFloat(pointDetails[countryCode].earned.amountSpent)) * parseFloat(productPrice)))
+                        }
+                        index++;
+                        if (index < products.length) {
+                            productData(products[index]);
+                        }
+                        else {
+                            if (pointDetails[countryCode].redemption.minimumOrderPrice <= finalPrice) {
+                                if (redeemedPoints > 0) {
+                                    totalRedeemedPoints = redeemedPoints
+                                    var discountAmount = ((parseFloat(pointDetails[countryCode].redemption.currencyValue) / parseInt(pointDetails[countryCode].redemption.numberOfPoints)) * parseInt(redeemedPoints))
+                                    totalPrice = parseFloat(totalPrice) - parseFloat(discountAmount)
+                                    totalAvailablePoints = parseFloat(totalAvailablePoints) - parseFloat(redeemedPoints)
+                                }
+                            }
+                            var days = pointDetails[countryCode].earnedPointsExpiryDays
+                            earnedPointsExpiryDate.setDate(earnedPointsExpiryDate.getDate() + days);
+                            callBack(false, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints)
+                        }
+                    }
+                    if (products.length !== 0) {
+                        productData(products[index]);
+                    }
+                }
+                else {
+                    callBack(false, totalEarnedPoints, null, finalPrice, totalRedeemedPoints)
+                }
+            } catch (e) {
+                console.log(e)
+                callBack(true, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints)
+            }
+        },
+        // End of create order details
+        pointsAccumulationBackUp: function (productDetails, finalPrice,
             redeemedPoints,
             countryCode, callBack) {
             try {
