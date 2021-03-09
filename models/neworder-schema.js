@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 var mongoose = require("mongoose");
 const validator = require("validator");
 var orderSchema = new mongoose.Schema(
@@ -22,7 +14,6 @@ var orderSchema = new mongoose.Schema(
             type: Number,
             default: 0
         },
-
         isoCountry: {
             type: String,
             required: true,
@@ -51,12 +42,28 @@ var orderSchema = new mongoose.Schema(
             },
         },
         orderSubTotal: {
-            type: Number,
-            default: 0
+            type: mongoose.Decimal128,
+            default: '0.00'
         },
         orderTotalPayable: {
-            type: Number,
-            default: 0
+            type: mongoose.Decimal128,
+            default: '0.00'
+        },
+        pointBasedDiscountedAmount: {
+            type: mongoose.Decimal128,
+            default: '0.00'
+        },
+        canRedeemPoints: {
+            type: Boolean,
+            default: false
+        },
+        isPointsAddedToResident: {
+            type: Boolean,
+            default: false
+        },
+        isEarnedPointCalculated:{
+            type: Boolean,
+            default: false
         },
         patientAddress: {
             type: Object,
@@ -98,7 +105,7 @@ var orderSchema = new mongoose.Schema(
             type: String,
             default: 0
         },
-        suppliers: {
+        subOrders: {
             type: Array,
             default: []
         },
@@ -115,7 +122,6 @@ var orderSchema = new mongoose.Schema(
             default: 0
         },
         ///////////
-
         residentId: {
             type: String,
             required: true,
@@ -130,12 +136,7 @@ var orderSchema = new mongoose.Schema(
             min: 6,
             trim: true,
         },
-
         isDelivered: {
-            type: Boolean,
-            default: false
-        },
-        isPointsAddedToResident: {
             type: Boolean,
             default: false
         },
@@ -151,10 +152,8 @@ var orderSchema = new mongoose.Schema(
     }
 );
 module.exports = mongoose.model("neworder", orderSchema);
-
 // [
 //     {
-
 //             "delivery": 24,
 //             "discount": {},
 //             "discountIdNumber": "(@+@+@",
@@ -332,6 +331,5 @@ module.exports = mongoose.model("neworder", orderSchema);
 //             "taxPayable": 0,
 //             "trackingCode": "Kc2J2GCKrHiBTGmGy4F7t",
 //             "type": "order"
-
 //     }
 //     ]

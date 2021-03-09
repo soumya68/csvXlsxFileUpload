@@ -2,9 +2,7 @@ const products = require('../models/catalouge-schema');
 const readXlsxFile = require('read-excel-file/node');
 const fs = require('fs');
 const csv = require('csv-parser');
-const crypto = require("crypto");
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const { notDeepEqual } = require('assert');
 module.exports = function () {
     var productModule = {
         // Start Generating catalogue number -----
@@ -117,7 +115,6 @@ module.exports = function () {
                                                     else {
                                                         IsTaxExempt = false
                                                     }
-                                                  
                                                     const productData = {
                                                         supplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
@@ -160,10 +157,8 @@ module.exports = function () {
                                                             updatedBy: [],
                                                             version: version
                                                         },
-                                                       
                                                         timestamp: new Date(),
                                                     };
-                                                   
                                                     rawDocuments.push(productData)
                                                     r52CatNo = r52CatNo + 1
                                                     //////////
@@ -171,7 +166,6 @@ module.exports = function () {
                                                     if (index < rows.length) {
                                                         insertData(rows[index]);
                                                     } else {
-                                                     
                                                         products.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -364,7 +358,6 @@ module.exports = function () {
                                                             IsTaxExempt: IsTaxExempt
                                                         },
                                                         pricePerPack: parseFloat(doc[16]).toFixed(2),
-                                                       
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
@@ -376,7 +369,6 @@ module.exports = function () {
                                                             updatedBy: [],
                                                             version: version
                                                         },
-                                                       
                                                         timestamp: new Date(),
                                                     };
                                                     rawDocuments.push(productData)

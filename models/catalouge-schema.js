@@ -223,4 +223,4 @@ var catalougeSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("med", catalougeSchema);
+module.exports = mongoose.model("medication", catalougeSchema);

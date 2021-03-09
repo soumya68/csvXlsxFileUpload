@@ -1,7 +1,5 @@
 module.exports = (app) => {
     var orderModule = require('../module/order_module')();
-    const order = require('../models/order-schema');
-    var pointDetails = require('../utils/pointsDetails.json');
     //START OF API FOR CREATE ORDER DETAILS 
     //Response: status, message
     app.post('/api/placeorderBackup', function (req, res) {
@@ -82,17 +80,23 @@ module.exports = (app) => {
             orderModule.createPointsDetails(orderId,
                 redeemedPoints,
                 pointSource, countryCode,
-                function (error, message) {
+                function (error, message,discountAmount,finalPrice,totalEarnedPoints) {
                     if (error) {
                         res.status(500).json({
                             status: false,
                             message: message,
+                            discountAmount:parseFloat(discountAmount).toFixed(2),
+                            finalPrice:parseFloat(finalPrice).toFixed(2),
+                            totalEarnedPoints:totalEarnedPoints
                         })
                     }
                     else {
                         res.status(200).json({
                             status: true,
                             message: message,
+                            discountAmount:parseFloat(discountAmount).toFixed(2),
+                            finalPrice:parseFloat(finalPrice).toFixed(2),
+                            totalEarnedPoints:totalEarnedPoints
                         })
                     }
                 })

@@ -1,6 +1,5 @@
 module.exports = (app) => {
     var pointsModule = require('../module/pointsAudit_module')();
-    const pointsAudit = require('../models/pointsAudit-schema');
     //START OF API FOR USER POINTS DETAILS 
     //Response: status, message
     app.post('/api/user/points', function (req, res) {
@@ -155,7 +154,6 @@ module.exports = (app) => {
             //     res.status(400).json({ status: false, message: "redeemedPoints parameter is missing" });
             //     return;
             // }
-         
                 pointsModule.deactivatePoints(
                     function (error, message) {
                         if (error) {
@@ -171,7 +169,6 @@ module.exports = (app) => {
                             })
                         }
                     })
-            
         }
         catch (er) {
             res.status(500).json({ status: false, message: er });

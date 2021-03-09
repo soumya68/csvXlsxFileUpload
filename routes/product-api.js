@@ -1,4 +1,3 @@
-const bodyParser = require('body-parser');
 const catalogueFiles = require('../models/catalogue-file-schema');
 const path = require('path');
 const multer = require('multer');
@@ -137,7 +136,6 @@ module.exports = (app) => {
                                                             })
                                                         }
                                                         else {
-                                                            console.log('got it 335')
                                                             res.status(200).json({
                                                                 status: true,
                                                                 message: "Data Inserted Successfully",
@@ -151,7 +149,6 @@ module.exports = (app) => {
                                                     })
                                             }
                                             else {
-                                                console.log('got it 337')
                                                 res.status(200).json({
                                                     status: true,
                                                     message: "Data Inserted Successfully",
@@ -199,7 +196,6 @@ module.exports = (app) => {
                                                 productModule.failuerFileUpload(req.file.filename, invalidDatas,
                                                     function (error) {
                                                         if (error) {
-                                                            console.log('got it 33')
                                                             res.status(200).json({
                                                                 status: false,
                                                                 message: "Data Inserted Successfully",
@@ -211,7 +207,6 @@ module.exports = (app) => {
                                                             })
                                                         }
                                                         else {
-                                                            console.log('got it 22')
                                                             res.status(200).json({
                                                                 status: true,
                                                                 message: "Data Inserted Successfully",
@@ -225,7 +220,6 @@ module.exports = (app) => {
                                                     })
                                             }
                                             else {
-                                                console.log('got it')
                                                 res.status(200).json({
                                                     status: true,
                                                     message: "Data Inserted Successfully",
@@ -246,7 +240,6 @@ module.exports = (app) => {
                     }
                     ////
                 }).catch(err => {
-                    console.log(err)
                     return res.status(400).json({ message: 'Error while uploading file', error: err });
                 });
             }

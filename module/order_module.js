@@ -86,86 +86,91 @@ module.exports = function () {
             pointSource, countryCode, callBack) {
             try {
                 order.find({ _id: new ObjectId(orderId) }).then(orderData => {
-                    console.log(orderData)
                     if (orderData.length > 0) {
                         var finalPrice = orderData[0].orderTotalPayable
                         var residentId = orderData[0].residentId
-                        console.log('1567')
                         totalAvailablePoint = 0
                         var productDetails = [];
-                        if (orderData[0].suppliers.length > 0) {
-                            console.log('134')
+                        if (orderData[0].subOrders.length > 0) {
                             var index = 0;
-                            var supplierData = function (doc) {
+                            var subOrdersData = function (doc) {
                                 var item = doc.items
-                                console.log('item', item)
                                 productDetails = productDetails.concat(item)
-                                console.log('product', productDetails)
-                                console.log('14')
                                 index++
-                                if (index < orderData[0].suppliers.length) {
-                                    supplierData(orderData[0].suppliers[index]);
+                                if (index < orderData[0].subOrders.length) {
+                                    subOrdersData(orderData[0].subOrders[index]);
                                 }
                                 else {
-                                    console.log('1')
                                     orderModule.pointsAccumulation(
                                         productDetails, finalPrice,
                                         redeemedPoints,
                                         countryCode,
-                                        function (error, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints) {
+                                        function (error, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints, discountAmount) {
                                             if (!error) {
-                                                console.log('totalEarnedPoints', totalEarnedPoints)
-                                                console.log('totalRedeemedPoints', totalRedeemedPoints)
-                                                if (totalEarnedPoints > 0 || totalRedeemedPoints > 0) {
-                                                    if (totalEarnedPoints > 0) {
-                                                        var pointData = {
-                                                            redeemedPoints: totalRedeemedPoints,
-                                                            earnedPoints: totalEarnedPoints,
-                                                            availablePoints: totalAvailablePoint,
-                                                            pointSource: pointSource,
-                                                            earnedPointsExpiryDate: earnedPointsExpiryDate,
-                                                            residentId: residentId,
-                                                            orderId: orderId,
-                                                            pointsEarnedCalculation: true
+                                                finalPrice = parseFloat(finalPrice - discountAmount).toFixed(2)
+                                                order.findOneAndUpdate({ _id: new ObjectId(orderId) },
+                                                    {
+                                                        $set: {
+                                                            orderTotalPayable: finalPrice,
+                                                            pointBasedDiscountedAmount: parseFloat(discountAmount).toFixed(2),
+                                                            isEarnedPointCalculated: true
                                                         }
-                                                    }
-                                                    else {
-                                                        var pointData = {
-                                                            redeemedPoints: totalRedeemedPoints,
-                                                            earnedPoints: totalEarnedPoints,
-                                                            availablePoints: totalAvailablePoint,
-                                                            pointSource: pointSource,
-                                                            earnedPointsExpiryDate: earnedPointsExpiryDate,
-                                                            residentId: residentId,
-                                                            orderId: orderId,
-                                                            pointsEarnedCalculation: true
+                                                    },
+                                                )
+                                                    .then(result => {
+                                                        if (totalEarnedPoints > 0 || totalRedeemedPoints > 0) {
+                                                            if (totalEarnedPoints > 0) {
+                                                                var pointData = {
+                                                                    redeemedPoints: totalRedeemedPoints,
+                                                                    earnedPoints: totalEarnedPoints,
+                                                                    availablePoints: totalAvailablePoint,
+                                                                    pointSource: pointSource,
+                                                                    earnedPointsExpiryDate: earnedPointsExpiryDate,
+                                                                    residentId: residentId,
+                                                                    orderId: orderId,
+                                                                    pointsEarnedCalculation: true
+                                                                }
+                                                            }
+                                                            else {
+                                                                var pointData = {
+                                                                    redeemedPoints: totalRedeemedPoints,
+                                                                    earnedPoints: totalEarnedPoints,
+                                                                    availablePoints: totalAvailablePoint,
+                                                                    pointSource: pointSource,
+                                                                    earnedPointsExpiryDate: earnedPointsExpiryDate,
+                                                                    residentId: residentId,
+                                                                    orderId: orderId,
+                                                                    pointsEarnedCalculation: true
+                                                                }
+                                                            }
+                                                            const ponitDetails = new pointsAudit(pointData);
+                                                            ponitDetails.save().then(response => {
+                                                                residents.findOneAndUpdate({ residentId: residentId },
+                                                                    { $inc: { availablePoints: -parseInt(totalRedeemedPoints) } },
+                                                                    { new: true }).then(result => {
+                                                                        callBack(false, "Order point created successfully", discountAmount, finalPrice, totalEarnedPoints);
+                                                                    }).catch(err => {
+                                                                        callBack(true, "Error", 0, 0, 0);
+                                                                    });
+                                                            })
                                                         }
-                                                    }
-                                                    const ponitDetails = new pointsAudit(pointData);
-                                                    ponitDetails.save().then(response => {
-                                                        console.log('RESIDENT', residentId)
-                                                        residents.findOneAndUpdate({ residentId: residentId },
-                                                            { $inc: { availablePoints: -parseInt(totalRedeemedPoints) } },
-                                                            { new: true }).then(result => {
-                                                                callBack(false, "Order point created successfully");
-                                                            }).catch(err => {
-                                                                console.log('error', err)
-                                                            });
+                                                        else {
+                                                            callBack(false, "Order point created successfully", discountAmount, finalPrice, totalEarnedPoints);
+                                                        }
+                                                        // callBack(false, "Order point created successfully");
+                                                    }).catch(err => {
+                                                        callBack(true, "Error", 0, 0, 0);
                                                     })
-                                                }
-                                                else {
-                                                    callBack(false, "Order point created successfully");
-                                                }
                                                 // })
                                             }
                                             else {
-                                                callBack(true, "Error",);
+                                                callBack(true, "Error", 0, 0, 0);
                                             }
                                         })
                                 }
                             }
-                            if (orderData[0].suppliers.length !== 0) {
-                                supplierData(orderData[0].suppliers[index]);
+                            if (orderData[0].subOrders.length !== 0) {
+                                subOrdersData(orderData[0].subOrders[index]);
                             }
                         }
                         else {
@@ -177,11 +182,9 @@ module.exports = function () {
                     }
                 })
                     .catch(err => {
-                        console.log(err)
                         callBack(true, "Error",);
                     });
             } catch (e) {
-                console.log(e)
                 callBack(true, "Error",);
             }
         },
@@ -190,49 +193,48 @@ module.exports = function () {
             redeemedPoints,
             countryCode, callBack) {
             try {
-                console.log('FINAL PRICE', finalPrice)
                 totalEarnedPoints = 0
                 totalRedeemedPoints = 0
                 totalPrice = finalPrice;
                 totalAvailablePoints = 0;
+                discountAmount = 0.00;
                 earnedPointsExpiryDate = new Date();
-                if (pointDetails[countryCode].earned.minimumOrderPrice <= finalPrice) {
-                    var products = productDetails
-                    var index = 0;
-                    var productData = function (doc) {
-                        var singleProductId = doc.medicationId
-                        if (doc.pointsAccumulation) {
-                            var productPrice = doc.price
-                            totalEarnedPoints = parseFloat(totalEarnedPoints) + Math.round(((parseFloat(pointDetails[countryCode].earned.numberOfPoints) / parseFloat(pointDetails[countryCode].earned.amountSpent)) * parseFloat(productPrice)))
-                        }
-                        index++;
-                        if (index < products.length) {
-                            productData(products[index]);
-                        }
-                        else {
-                            if (pointDetails[countryCode].redemption.minimumOrderPrice <= finalPrice) {
-                                if (redeemedPoints > 0) {
-                                    totalRedeemedPoints = redeemedPoints
-                                    var discountAmount = ((parseFloat(pointDetails[countryCode].redemption.currencyValue) / parseInt(pointDetails[countryCode].redemption.numberOfPoints)) * parseInt(redeemedPoints))
-                                    totalPrice = parseFloat(totalPrice) - parseFloat(discountAmount)
-                                    totalAvailablePoints = parseFloat(totalAvailablePoints) - parseFloat(redeemedPoints)
-                                }
-                            }
-                            var days = pointDetails[countryCode].earnedPointsExpiryDays
-                            earnedPointsExpiryDate.setDate(earnedPointsExpiryDate.getDate() + days);
-                            callBack(false, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints)
-                        }
+                //  if (pointDetails[countryCode].earned.minimumOrderPrice <= finalPrice) {
+                var products = productDetails
+                var index = 0;
+                var productData = function (doc) {
+                    var singleProductId = doc.medicationId
+                    if (doc.pointsAccumulation) {
+                        var productPrice = doc.price
+                        totalEarnedPoints = parseFloat(totalEarnedPoints) + Math.round(((parseFloat(pointDetails[countryCode].earned.numberOfPoints) / parseFloat(pointDetails[countryCode].earned.amountSpent)) * parseFloat(productPrice)))
                     }
-                    if (products.length !== 0) {
+                    index++;
+                    if (index < products.length) {
                         productData(products[index]);
                     }
+                    else {
+                        //  if (pointDetails[countryCode].redemption.minimumOrderPrice <= finalPrice) {
+                        if (redeemedPoints > 0) {
+                            totalRedeemedPoints = redeemedPoints
+                            discountAmount = ((parseFloat(pointDetails[countryCode].redemption.currencyValue).toFixed(2) / parseInt(pointDetails[countryCode].redemption.numberOfPoints)) * parseInt(redeemedPoints))
+                            totalPrice = parseFloat(totalPrice) - parseFloat(discountAmount)
+                            totalAvailablePoints = parseFloat(totalAvailablePoints) - parseFloat(redeemedPoints)
+                        }
+                        //   }
+                        var days = pointDetails[countryCode].earnedPointsExpiryDays
+                        earnedPointsExpiryDate.setDate(earnedPointsExpiryDate.getDate() + days);
+                        callBack(false, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints, discountAmount)
+                    }
                 }
-                else {
-                    callBack(false, totalEarnedPoints, null, finalPrice, totalRedeemedPoints)
+                if (products.length !== 0) {
+                    productData(products[index]);
                 }
+                // }
+                // else {
+                //     callBack(false, totalEarnedPoints, null, finalPrice, totalRedeemedPoints)
+                // }
             } catch (e) {
-                console.log(e)
-                callBack(true, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints)
+                callBack(true, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints, discountAmount)
             }
         },
         // End of create order details
@@ -243,6 +245,7 @@ module.exports = function () {
                 totalEarnedPoints = 0
                 totalPrice = finalPrice;
                 totalAvailablePoints = 0;
+                var earnedPointsExpiryDate = new Date();
                 if (pointDetails[countryCode].earned.minimumOrderPrice <= finalPrice) {
                     var products = JSON.parse(productDetails)
                     var index = 0;
@@ -257,6 +260,7 @@ module.exports = function () {
                             }
                             else {
                                 console.log('NO PRODUCT FOUND')
+                                callBack(true, totalEarnedPoints, earnedPointsExpiryDate, totalPrice)
                             }
                             index++;
                             if (index < products.length) {
@@ -270,7 +274,6 @@ module.exports = function () {
                                         totalAvailablePoints = parseFloat(totalAvailablePoints) - parseFloat(redeemedPoints)
                                     }
                                 }
-                                var earnedPointsExpiryDate = new Date();
                                 var days = pointDetails[countryCode].earnedPointsExpiryDays
                                 earnedPointsExpiryDate.setDate(earnedPointsExpiryDate.getDate() + days);
                                 callBack(false, totalEarnedPoints, earnedPointsExpiryDate, totalPrice)
