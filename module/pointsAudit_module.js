@@ -146,57 +146,72 @@ module.exports = function () {
             }
         },
         //End points conversion 
-          //Start of user eligibility to Redeem points
-          userRedeemPointsEligibility: function (residentId, redeemedPoints, callBack) {
+        //Start of user eligibility to Redeem points
+        userRedeemPointsEligibility: function (residentId, redeemedPoints, callBack) {
             try {
                 residents.find({ residentId: residentId }).then((result) => {
                     if (result.length > 0) {
                         if (result[0].availablePoints >= redeemedPoints) {
-                            callBack(false, true,"User has available redeempoints");
+                            callBack(false, true, "User has available redeempoints");
                         }
                         else {
-                            callBack(true,false, "Sorry, You don't have availablepoints to redeem");
+                            callBack(true, false, "Sorry, You don't have availablepoints to redeem");
                         }
                     }
                     else {
-                        callBack(true,false, "Sorry, no user found");
+                        callBack(true, false, "Sorry, no user found");
                     }
                 }).catch(err => {
-                    callBack(true,false, "Error");
+                    callBack(true, false, "Error");
                 });
             } catch (e) {
-                callBack(true,false, "Error");
+                callBack(true, false, "Error");
             }
         },
         //End of user eligibility to Redeem points
         //Start deactivate points
         deactivatePoints: function (callBack) {
             try {
-                pointsAudit.updateMany({
+
+                pointsAudit.find({
                     earnedPointsExpiryDate: {
                         $lte: new Date()
                     }
-                }, {
-                    $set: {
-                        isActive: false
-                    }
-                },
-                    {
-                        multi: true
-                    }
-                )
-                    .then(response => {
-                        if (response.nModified == 0) {
-                            // { n: 0, nModified: 0, ok: 1 }
-                            callBack(false, 'No points available for expiration');
-                        }
-                        else {
-                            callBack(false, 'Expiration done');
-                        }
-                    }).
+                }).then(res => {
+
+                    console.log(res)
+
+                }).
                     catch(e => {
                         callBack(true, null);
                     })
+
+
+                // pointsAudit.updateMany({
+                //     earnedPointsExpiryDate: {
+                //         $lte: new Date()
+                //     }
+                // }, {
+                //     $set: {
+                //         isActive: false
+                //     }
+                // },
+                //     {
+                //         multi: true
+                //     }
+                // )
+                //     .then(response => {
+                //         if (response.nModified == 0) {
+                //             // { n: 0, nModified: 0, ok: 1 }
+                //             callBack(false, 'No points available for expiration');
+                //         }
+                //         else {
+                //             callBack(false, 'Expiration done');
+                //         }
+                //     }).
+                //     catch(e => {
+                //         callBack(true, null);
+                //     })
             } catch (e) {
                 callBack(true, null);
             }

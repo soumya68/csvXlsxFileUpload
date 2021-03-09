@@ -145,7 +145,7 @@ module.exports = (app) => {
     });
     //End of API for Point Expiry
     // Start of API for Point Expiry
-    app.post('/api/', function (req, res) {
+    app.post('/api/pointsexpire', function (req, res) {
         try {
             // if (!req.body.userId) {
             //     res.status(400).json({ status: false, message: "userId parameter is missing" });
@@ -155,7 +155,7 @@ module.exports = (app) => {
             //     res.status(400).json({ status: false, message: "redeemedPoints parameter is missing" });
             //     return;
             // }
-            setInterval(function () {
+         
                 pointsModule.deactivatePoints(
                     function (error, message) {
                         if (error) {
@@ -171,7 +171,7 @@ module.exports = (app) => {
                             })
                         }
                     })
-            }, 3000);
+            
         }
         catch (er) {
             res.status(500).json({ status: false, message: er });
