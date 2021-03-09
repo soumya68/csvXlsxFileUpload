@@ -1,4 +1,7 @@
 var mongoose = require("mongoose");
+var Float = require('mongoose-float').loadType(mongoose, 2);
+var SchemaTypes = mongoose.Schema.Types;
+require('mongoose-double')(mongoose)
 var catalougeSchema = new mongoose.Schema(
     {
         supplierCode: {
@@ -36,8 +39,7 @@ var catalougeSchema = new mongoose.Schema(
         // },
         //pricePerPack IS ADDED AS PER UPLOAD SHEET
         pricePerPack: {
-            type: Number,
-            default: 0
+            type:SchemaTypes.Double , 
         },
         ////////////////////////////////////
         pointsAccumulation: {
@@ -130,8 +132,7 @@ var catalougeSchema = new mongoose.Schema(
             default: false,
         },
         price: {
-            type: Number,
-            default: 0,
+            type:SchemaTypes.Double 
         },
         prodCategory: {
             type: Array,
@@ -212,8 +213,7 @@ var catalougeSchema = new mongoose.Schema(
             default: '',
         },
         usdPrice: {
-            type: Number,
-            default: 0
+            type:SchemaTypes.Double , 
         }
     },
     {
@@ -223,4 +223,4 @@ var catalougeSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("medication", catalougeSchema);
+module.exports = mongoose.model("med", catalougeSchema);

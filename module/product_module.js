@@ -117,6 +117,7 @@ module.exports = function () {
                                                     else {
                                                         IsTaxExempt = false
                                                     }
+                                                  
                                                     const productData = {
                                                         supplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
@@ -147,7 +148,7 @@ module.exports = function () {
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: row.PricePerPackage,
+                                                        pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
@@ -159,8 +160,11 @@ module.exports = function () {
                                                             updatedBy: [],
                                                             version: version
                                                         },
+                                                        price: parseFloat(0).toFixed(2),
+                                                        usdPrice:parseFloat(0).toFixed(2),
                                                         timestamp: new Date(),
                                                     };
+                                                    console.log('productData',productData)
                                                     rawDocuments.push(productData)
                                                     r52CatNo = r52CatNo + 1
                                                     //////////
@@ -168,6 +172,7 @@ module.exports = function () {
                                                     if (index < rows.length) {
                                                         insertData(rows[index]);
                                                     } else {
+                                                        console.log(rawDocuments)
                                                         products.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -205,7 +210,7 @@ module.exports = function () {
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: row.PricePerPackage,
+                                                        pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
@@ -359,7 +364,8 @@ module.exports = function () {
                                                             type: doc[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: doc[16],
+                                                        pricePerPack: parseFloat(doc[16]).toFixed(2),
+                                                       
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
@@ -371,6 +377,8 @@ module.exports = function () {
                                                             updatedBy: [],
                                                             version: version
                                                         },
+                                                        price: parseFloat(0).toFixed(2),
+                                                        usdPrice:parseFloat(0).toFixed(2),
                                                         timestamp: new Date(),
                                                     };
                                                     rawDocuments.push(productData)
@@ -417,7 +425,7 @@ module.exports = function () {
                                                             type: doc[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: doc[16],
+                                                        pricePerPack: parseFloat(doc[16]).toFixed(2),
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
