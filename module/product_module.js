@@ -160,11 +160,10 @@ module.exports = function () {
                                                             updatedBy: [],
                                                             version: version
                                                         },
-                                                        price: parseFloat(0).toFixed(2),
-                                                        usdPrice:parseFloat(0).toFixed(2),
+                                                       
                                                         timestamp: new Date(),
                                                     };
-                                                    console.log('productData',productData)
+                                                   
                                                     rawDocuments.push(productData)
                                                     r52CatNo = r52CatNo + 1
                                                     //////////
@@ -172,7 +171,7 @@ module.exports = function () {
                                                     if (index < rows.length) {
                                                         insertData(rows[index]);
                                                     } else {
-                                                        console.log(rawDocuments)
+                                                     
                                                         products.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -377,8 +376,7 @@ module.exports = function () {
                                                             updatedBy: [],
                                                             version: version
                                                         },
-                                                        price: parseFloat(0).toFixed(2),
-                                                        usdPrice:parseFloat(0).toFixed(2),
+                                                       
                                                         timestamp: new Date(),
                                                     };
                                                     rawDocuments.push(productData)

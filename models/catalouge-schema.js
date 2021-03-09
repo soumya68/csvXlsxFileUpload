@@ -1,7 +1,4 @@
 var mongoose = require("mongoose");
-var Float = require('mongoose-float').loadType(mongoose, 2);
-var SchemaTypes = mongoose.Schema.Types;
-require('mongoose-double')(mongoose)
 var catalougeSchema = new mongoose.Schema(
     {
         supplierCode: {
@@ -39,7 +36,8 @@ var catalougeSchema = new mongoose.Schema(
         // },
         //pricePerPack IS ADDED AS PER UPLOAD SHEET
         pricePerPack: {
-            type:SchemaTypes.Double , 
+            type:mongoose.Decimal128 , 
+            default:'0.00'
         },
         ////////////////////////////////////
         pointsAccumulation: {
@@ -132,7 +130,8 @@ var catalougeSchema = new mongoose.Schema(
             default: false,
         },
         price: {
-            type:SchemaTypes.Double 
+            type:mongoose.Decimal128 , 
+            default:'0.00'
         },
         prodCategory: {
             type: Array,
@@ -213,7 +212,8 @@ var catalougeSchema = new mongoose.Schema(
             default: '',
         },
         usdPrice: {
-            type:SchemaTypes.Double , 
+            type:mongoose.Decimal128 , 
+            default:'0.00'
         }
     },
     {
