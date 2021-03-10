@@ -8,6 +8,9 @@ const config = require('config');
 const configDetails = require('./config/config.json')
 const PORT = configDetails.development.PORT
 var cron = require('node-cron');
+const order = require('./models/order-schema');
+const residents = require('./models/resident-schema');
+const pointsAudit = require('./models/pointsAudit-schema');
 //const PORT = 8000
 
 /*middlewares*/
@@ -34,6 +37,56 @@ app.get('/', (req, res) => {
 /*Incudes all API routes*/
 require('./routes/index')(app, connectDB);
 
+// Start the cron job ----
+cron.schedule("00 00 00 * * *", function() { 
+   // cron.schedule("*/10 * * * * *", function() { 
+    updateOrderStatus(function(err, res){
+        if (err){
+        }
+        else{
+        }
+    })
+}); 
+async function updateOrderStatus(callbackfn) {
+    try {
+    let result= await order.find({ isPointsAddedToResident:false })
+      
+      Promise.all(
+        result.map(async ele=>{
+          let orderdata = await order.findOneAndUpdate({ _id: ele._id },
+                { $set:{isDelivered : true,isPointsAddedToResident:true} },
+                { new: true })
+           let auditdata = await pointsAudit.findOneAndUpdate({ orderId: ele._id },
+                    { $set:{isActive : false} },
+                    { new: true })
+                    let points = auditdata.earnedPoints
+                let residentdata =  await residents.findOneAndUpdate({ _id: ele._id },
+                        { $set:{isPointsAddedToResident:true,earnedPoints:points} },
+                        { new: true })
+                    let finalData = {...orderdata,...auditdata,...residentdata}
+                return finalData
+          })
+
+    ).then(function(documents) {
+       console.log(documents)
+    });
+  /*  let res = await Order.updateMany(
+        { isDelivered : true,isPointsAddedToResident:true },
+          { new: true })
+              await pointsAudit.updateMany(
+                {isActive : false},
+                  { new: true })
+                  await residents.updateMany(
+                    {availablePoints : '50'},
+                      { new: true })  */
+         
+  // console.log("result",res)
+   callbackfn(null, finalData);
+} catch (err) {
+    callbackfn(err, null,);
+}
+}
+// End the cron job ----
 /*Listen express server on port*/
 app.listen(process.env.PORT || PORT, () => {
     console.info(`Server is running on port.... ${process.env.PORT || PORT}`);
