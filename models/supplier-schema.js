@@ -3,9 +3,9 @@ const validator = require("validator");
 const autoIncrement = require('mongoose-auto-increment');
 var supplierSchema = new mongoose.Schema(
     {
-        supplierId:{
+        supplierId: {
             type: Number,
-            required:true
+            required: true
         },
         catalogTags: {
             type: Array,
@@ -21,46 +21,47 @@ var supplierSchema = new mongoose.Schema(
                 validate: {
                     validator: validator.isEmail,
                     message: "{VALUE} is not a valid email",
-                  },
-                  default:null
+                },
+                default: null
             },
             phone: {
                 type: String,
-                default:null
+                default: null
             },
         },
         deliveryFee: {
             type: Number,
-            default:0
+            default: 0
         },
         isoCountry: {
             type: String,
-            default:null
+            default: null
         },
         lastProductSeq: {
             type: Number,
-            default:0
+            default: 0
         },
         supplierCode: {
             type: String,
-            default:0        },
+            default: 0
+        },
         supplierName: {
             type: Object,
-            default:{}
+            default: {}
         },
         type: {
             type: String,
-            default:null
+            default: null
         },
         usdPrice: {
             type: Number,
-            default:0
+            default: 0
         },
         metadata: {
             createdBy: {
                 userId: {
                     type: String,
-                    required:true
+                    required: true
                 },
                 utcDatetime: {
                     type: Date
@@ -72,7 +73,7 @@ var supplierSchema = new mongoose.Schema(
             },
             version: {
                 type: String,
-                default:0
+                default: 0
             },
         },
     },
@@ -83,12 +84,11 @@ var supplierSchema = new mongoose.Schema(
         },
     }
 );
-autoIncrement.initialize(mongoose.connection); 
+autoIncrement.initialize(mongoose.connection);
 supplierSchema.plugin(autoIncrement.plugin, {
-  model: 'supplier',
-  field: 'supplierId',
-  startAt: 10000000,
-  incrementBy: 1
+    model: 'supplier',
+    field: 'supplierId',
+    startAt: 10000000,
+    incrementBy: 1
 });
 module.exports = mongoose.model("supplier", supplierSchema);
-       
