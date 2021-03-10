@@ -8,7 +8,7 @@ module.exports = function () {
         // Start Generating catalogue number -----
         catalogueNumber: function (callBack) {
             try {
-                products.find().sort({ r52CatNo: -1 }).limit(1).then((data) => {
+                products.find().sort({ createdAt: -1 }).limit(1).then((data) => {
                     if (data.length > 0) {
                         var dbNum = data[0].r52CatNo;
                         var r52CatNumber = dbNum + 1;

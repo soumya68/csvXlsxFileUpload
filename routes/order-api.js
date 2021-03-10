@@ -107,6 +107,36 @@ module.exports = (app) => {
         }
     });
     //END OF API FOR PROCESS ORDER DETAILS 
+    //Start To get the points earned after successfully deliver
+    app.get('/api/pointsupdate',function(req, res){
+        try {
+            if (!req.body.orderId) {
+                res.json({ status: false, message: "orderId parameter is missing" });
+                return;
+            }
+            orderModule.pointsupdate(req.body.orderId,
+                function (error, result, message) {
+                    if (error) {
+                        res.status(200).json({
+                            status: false,
+                            message: message,
+                            data: result,
+                        })
+                    }
+                    else {
+                        res.status(200).json({
+                            status: true,
+                            message: message,
+                            data: result,
+                        })
+                    }
+                })
+        }
+        catch (er) {
+            res.json({ status: false, message: er });
+        }
+    })
+    //Eng To get the points earned
 };
 // -----------------------------
 // input param should be

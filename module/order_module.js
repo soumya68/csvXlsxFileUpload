@@ -295,6 +295,42 @@ module.exports = function () {
             }
         },
         // End of create order details
+        //Start To get the points earned after successfully deliver
+         pointsupdate: function (orderId, callBack) {
+         try {
+            pointsAudit.find({ orderId: orderId }).then((result) => {
+               let updates= {
+                    availablePoints: result[0].availablePoints + result[0].earnedPoints
+                }
+                if (result[0].isActive==true) {
+                    residents.findOneAndUpdate({ _id: orderId },
+                        { $set:updates },
+                        { new: true }).then(data => {
+                            order.findOneAndUpdate({ _id: orderId },
+                                { $set:{isDelivered : true,isPointsAddedToResident:true} },
+                                { new: true }).then(data => {
+                                 pointsAudit.findOneAndUpdate({ orderId: orderId },
+                                    { $set:{isActive : false} },
+                                    { new: true }).then(data => {
+                                       callBack(false, "Order status updated successfully");
+                                    })
+                                })
+
+                        }).catch(err=>{
+                                });
+                        
+                }
+                else {
+                    callBack(true, "No delivery products");
+                } 
+            }).catch(err => {
+                callBack(true, "Error");
+            });
+        } catch (e) {
+            callBack(true, "Error");
+        }
+         },
+    //Start To get the points earned after successfully deliver
     }
     return orderModule;
 }
