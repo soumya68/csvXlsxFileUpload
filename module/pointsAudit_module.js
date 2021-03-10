@@ -142,7 +142,6 @@ module.exports = function () {
                 var currency = pointDetails[countryCode].countryCurrency
                 callBack(false, currencyValue, currency);
             } catch (e) {
-                console.log(e)
                 callBack(true, null, null);
             }
         },
@@ -171,100 +170,87 @@ module.exports = function () {
         },
         //End of user eligibility to Redeem points
         //Start deactivate points
-        deactivatePoints: function (callBack) {
+        deactivatePoints: async function (callBack) {
             try {
-                var totalEarnedPoints = 0;
-                var totalRedeemedPoints = 0;
-                var updatedPoints = 0;
-                var availablePoints = 0;
-                pointsAudit.find({
-                    earnedPointsExpiryDate: {
-                        $lte: new Date()
-                    }
-                }).then(res => {
-                    index = 0;
-                    // console.log(res)
-                    if (res.length > 0) {
-                        var index = 0;
-                        var checkData = function (doc) {
-                            //  console.log(doc)
-                            totalEarnedPoints = parseInt(totalEarnedPoints) + parseInt(doc.earnedPoints)
-                            totalRedeemedPoints = parseInt(totalRedeemedPoints) + parseInt(doc.redeemedPoints)
-                            // { redeemedPoints: 10,
-                            //     earnedPoints: 3,
-                            //     availablePoints: 0,
-                            //     isActive: false,
-                            //     isLapsed: false,
-                            //     pointsEarnedCalculation: true,
-                            //     _id: 6041accaec81d22c3ae445d3,
-                            //     pointSource: 'order',
-                            //     earnedPointsExpiryDate: 2021-03-09T04:00:10.913Z,
-                            //     residentId: '7c0ff871-0092-4f45-8530-1729f941bb93',
-                            //     orderId: '60408a32fe2d51af9059ca19',
-                            //     createdAt: 2021-03-05T04:00:10.921Z,
-                            //     updatedAt: 2021-03-05T04:00:10.921Z,
-                            //     __v: 0 }
-                            console.log('totalEarnedPoints', totalEarnedPoints)
-                            console.log('totalRedeemedPoints', totalRedeemedPoints)
+                let residentData = await residents.find({})
+                if (residentData.length > 0) {
+                    var totalEarnedPoints = 0;
+                    var totalRedeemedPoints = 0;
+                    var updatedPoints = 0;
+                    var availablePoints = 0;
+                    var startOfToday = new Date();
+                    var lastDataId
+                    startOfToday.setHours(0, 0, 0, 0);
+                    var index = 0;
+                    var checkData = async function (doc) {
+                        var pointsData = await pointsAudit.aggregate([{
+                            $match: {
+                                residentId: doc.residentId,
+                                earnedPointsExpiryDate: { "$lte": startOfToday },
+                                isActive: true,
+                                isLapsed: false
+                            }
+                        }, {
+                            $group:
+                                { _id: null, totalEarnedPoints: { $sum: "$earnedPoints" } }
+                        }])
+                        let pointsAllData = await pointsAudit.find({
+                            residentId: doc.residentId,
+                        }).sort({ _id: -1 }).limit(1)
+                        if (pointsData.length > 0) {
+                            totalEarnedPoints = parseInt(pointsData[0].totalEarnedPoints)
+                            lastDataId = pointsAllData[0]._id
+                            var todayPointsData = await pointsAudit.aggregate([{
+                                $match: {
+                                    residentId: doc.residentId,
+                                    createdAt: { "$gte": startOfToday },
+                                    isActive: true,
+                                    isLapsed: false
+                                }
+                            }, {
+                                $group:
+                                    { _id: null, totalRedeemedPoints: { $sum: "$redeemedPoints" } }
+                            }])
+                            if (todayPointsData.length > 0) {
+                                totalRedeemedPoints = parseInt(todayPointsData[0].totalRedeemedPoints)
+                            }
                             updatedPoints = totalEarnedPoints - totalRedeemedPoints
-                            console.log('updatedPoints', updatedPoints)
                             availablePoints = parseInt(doc.availablePoints) - updatedPoints
-                            pointsAudit.updateMany({
-                                _id: new ObjectId(doc._id),
+                            var updatedLastPointsAudit = await pointsAudit.updateOne({
+                                _id: lastDataId
+                            }, {
+                                $set: {
+                                    availablePoints: availablePoints,
+                                }
+                            }, function (err, res) {
+                                console.log(err)
+                            })
+                            var updatedResidents = await residents.updateOne({ residentId: doc.residentId }, {
+                                $set: { availablePoints: availablePoints }
+                            })
+                            var updatedPointsAudit = await pointsAudit.updateMany({
+                                residentId: doc.residentId,
+                                earnedPointsExpiryDate: { "$lte": startOfToday },
                             }, {
                                 $set: {
                                     isActive: false,
-                                    availablePoints: availablePoints,
                                     isLapsed: true
                                 }
-                            },
-                                // {
-                                //     multi: true
-                                // }
-                            )
-                                .then(response => {
-                                    // if (response.nModified == 0) {
-                                    //     // { n: 0, nModified: 0, ok: 1 }
-                                    //     callBack(false, 'No points available for expiration');
-                                    // }
-                                    // else {
-                                    //     callBack(false, 'Expiration done');
-                                    // }
-                                    residents.updateMany({residentId: doc.residentId,}, {$set: {availablePoints: availablePoints}
-                                    })
-                                        .then(residentUpdate => {
-                                            index++
-                                            if (index < res.length) {
-                                                checkData(res[index]);
-                                            } else {
-                                                callBack(false, 'Expiration done')
-                                            }
-                                        }).
-                                        catch(e => {
-                                            console.log(e)
-                                            callBack(true, null);
-                                        })
-                                }).
-                                catch(e => {
-                                    console.log(e)
-                                    callBack(true, null);
-                                })
+                            })
                         }
-                        if (res.length !== 0) {
-                            checkData(res[index]);
+                        index++
+                        if (index < residentData.length) {
+                            checkData(residentData[index]);
+                        } else {
+                            callBack(false, 'Expiration done')
                         }
                     }
-                    else {
-                        console.log('no data found')
-                        callBack(false, 'No points available for expiration');
-                    }
-                }).
-                    catch(e => {
-                        console.log(e)
-                        callBack(true, null);
-                    })
+                    checkData(residentData[index]);
+                }
+                else {
+                    callBack(false, 'No residents available');
+                }
             } catch (e) {
-                console.log(e)
                 callBack(true, null);
             }
         }
