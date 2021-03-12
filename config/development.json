@@ -1,11 +1,3 @@
-// {
-//   "version": "v1",
-//   "name": "development",
-//   "PORT": 4000,
-//   "MONGODB_URI": "mongodb+srv://kunalsolace:Kunal2021@realmcluster.bulij.mongodb.net/InventoryDemo",
-//   "JWT_SECRET": "topSECRET!"
-// }
-
 
 
 {

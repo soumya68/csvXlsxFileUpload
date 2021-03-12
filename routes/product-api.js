@@ -133,6 +133,7 @@ module.exports = (app) => {
                                                 // IF ANY VALIDATION ISSUE FOUND THEN MAKE A FAILUER FILE & SAVE THAT FAILED ROW DATA
                                                 productModule.failuerFileUpload(req.file.filename, invalidDatas,
                                                     function (error) {
+                                                          // IF ANY ERROR HAPPENS AT FAILURE FILE SAVING
                                                         if (error) {
                                                             res.status(200).json({
                                                                 status: false,
@@ -157,6 +158,7 @@ module.exports = (app) => {
                                                     })
                                             }
                                             else {
+                                                  // IF NO FAILUER DATA FOUND THEN RESPONSE WILL BE HERE
                                                 res.status(200).json({
                                                     status: true,
                                                     message: "Data Inserted Successfully",

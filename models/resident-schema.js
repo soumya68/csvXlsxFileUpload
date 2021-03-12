@@ -38,11 +38,5 @@ var residentSchema = new mongoose.Schema(
         },
     }
 );
-// autoIncrement.initialize(mongoose.connection);
-// residentSchema.plugin(autoIncrement.plugin, {
-//     model: 'resident',
-//     field: 'residentId',
-//     startAt: 10000000,
-//     incrementBy: 1
-// });
+
 module.exports = mongoose.model("resident", residentSchema);

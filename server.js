@@ -93,4 +93,3 @@ async function updateOrderStatus(callbackfn) {
 app.listen(process.env.PORT || PORT, () => {
   console.info(`Server is running on port.... ${process.env.PORT || PORT}`);
 });
-//mongodb+srv://kunalsolace:Kunal2021@realmcluster.bulij.mongodb.net/InventoryDemo

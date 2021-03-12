@@ -57,7 +57,9 @@ module.exports = (app) => {
     });
     //END OF API FOR CREATE ORDER DETAILS 
     //START OF API FOR PROCESS ORDER DETAILS 
-    //Response: status, message
+    //Response: status, message,discountAmount,finalPrice,totalEarnedPoints
+    //functions:createPointsDetails
+    //Params:orderId,redeemedPoints,countryCode,pointSource
     app.post('/api/processorder', function (req, res) {
         try {
             if (!req.body.orderId) {
@@ -77,26 +79,27 @@ module.exports = (app) => {
                 return;
             }
             const { redeemedPoints, pointSource, countryCode, orderId } = req.body
+            // ON ORDER PROCESS NEED TO CREATE POINTS DETAILS
             orderModule.createPointsDetails(orderId,
                 redeemedPoints,
                 pointSource, countryCode,
-                function (error, message,discountAmount,finalPrice,totalEarnedPoints) {
+                function (error, message, discountAmount, finalPrice, totalEarnedPoints) {
                     if (error) {
                         res.status(500).json({
                             status: false,
                             message: message,
-                            discountAmount:parseFloat(discountAmount).toFixed(2),
-                            finalPrice:parseFloat(finalPrice).toFixed(2),
-                            totalEarnedPoints:totalEarnedPoints
+                            discountAmount: parseFloat(discountAmount).toFixed(2),
+                            finalPrice: parseFloat(finalPrice).toFixed(2),
+                            totalEarnedPoints: totalEarnedPoints
                         })
                     }
                     else {
                         res.status(200).json({
                             status: true,
                             message: message,
-                            discountAmount:parseFloat(discountAmount).toFixed(2),
-                            finalPrice:parseFloat(finalPrice).toFixed(2),
-                            totalEarnedPoints:totalEarnedPoints
+                            discountAmount: parseFloat(discountAmount).toFixed(2),
+                            finalPrice: parseFloat(finalPrice).toFixed(2),
+                            totalEarnedPoints: totalEarnedPoints
                         })
                     }
                 })
@@ -108,7 +111,7 @@ module.exports = (app) => {
     });
     //END OF API FOR PROCESS ORDER DETAILS 
     //Start To get the points earned after successfully deliver
-    app.get('/api/pointsupdate',function(req, res){
+    app.get('/api/pointsupdate', function (req, res) {
         try {
             if (!req.body.orderId) {
                 res.json({ status: false, message: "orderId parameter is missing" });

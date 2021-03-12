@@ -1,8 +1,9 @@
 module.exports = (app) => {
     var supplierModule = require('../module/supplier_module')();
     //START OF API FOR ADD SUPPLIER DETAILS 
-    //Params: file
-    //Response: status, message
+    //Params: supplierName,isoCountry,userId
+    //Response: status, message,supplierId,supplierCode
+    //Functions:addSupplier
     app.post('/api/add/supplier', function (req, res) {
         try {
             if (!req.body.supplierName) {
@@ -45,6 +46,7 @@ module.exports = (app) => {
                 },
                 timestamp: new Date()
             };
+            // SAVE SUPPLIER DATA IN SUPPLIER COLLECTION BY ADD SUPPLIER COLLECTION
             supplierModule.addSupplier(supplierData,
                 function (error, errData, result) {
                     if (error) {

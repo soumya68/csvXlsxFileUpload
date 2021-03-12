@@ -17,27 +17,15 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             default: 0
         },
-        // productType: {
-        //     type: String
-        // },
         //requireRx IS ADDED AS PER UPLOAD SHEET
         requireRx: {
             type: String,
             default: 'No'
         },
-        // taxName: {
-        //     type: String
-        // },
-        // IsTaxExempt: {
-        //     type: String,
-        //     require: true,
-        //     min: 6,
-        //     default: false,
-        // },
         //pricePerPack IS ADDED AS PER UPLOAD SHEET
         pricePerPack: {
-            type:mongoose.Decimal128 , 
-            default:'0.00'
+            type: mongoose.Decimal128,
+            default: '0.00'
         },
         ////////////////////////////////////
         pointsAccumulation: {
@@ -86,12 +74,6 @@ var catalougeSchema = new mongoose.Schema(
             type: Object,
             default: {}
         },
-        // isoCountry: {
-        //     type: String
-        // },
-        // isoCurrency: {
-        //     type: String
-        // },
         medClass: {
             type: Array,
             default: []
@@ -130,8 +112,8 @@ var catalougeSchema = new mongoose.Schema(
             default: false,
         },
         price: {
-            type:mongoose.Decimal128 , 
-            default:'0.00'
+            type: mongoose.Decimal128,
+            default: '0.00'
         },
         prodCategory: {
             type: Array,
@@ -212,8 +194,8 @@ var catalougeSchema = new mongoose.Schema(
             default: '',
         },
         usdPrice: {
-            type:mongoose.Decimal128 , 
-            default:'0.00'
+            type: mongoose.Decimal128,
+            default: '0.00'
         }
     },
     {
