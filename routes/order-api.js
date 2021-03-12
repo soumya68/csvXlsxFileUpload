@@ -111,6 +111,7 @@ module.exports = (app) => {
     });
     //END OF API FOR PROCESS ORDER DETAILS 
     //Start To get the points earned after successfully deliver
+    //Params:orderId
     app.get('/api/pointsupdate', function (req, res) {
         try {
             if (!req.body.orderId) {

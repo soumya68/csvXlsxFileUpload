@@ -11,6 +11,7 @@ module.exports = function () {
                 products.find().sort({ createdAt: -1 }).limit(1).then((data) => {
                     if (data.length > 0) {
                         var dbNum = data[0].r52CatNo;
+                        // Incrementing the catalogue number
                         var r52CatNumber = dbNum + 1;
                         callBack(r52CatNumber);
                     }

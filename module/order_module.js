@@ -196,6 +196,7 @@ module.exports = function () {
                         availablePoints: result[0].availablePoints + result[0].earnedPoints
                     }
                     if (result[0].isActive == true) {
+                        // To update points in the collections
                         residents.findOneAndUpdate({ _id: orderId },
                             { $set: updates },
                             { new: true }).then(data => {
@@ -203,7 +204,7 @@ module.exports = function () {
                                     { $set: { isDelivered: true, isPointsAddedToResident: true } },
                                     { new: true }).then(data => {
                                         pointsAudit.findOneAndUpdate({ orderId: orderId },
-                                            { $set: { isActive: false } },
+                                            { $set: { isActive: false, earnedPointsExpiryDate : new Date() } },
                                             { new: true }).then(data => {
                                                 callBack(false, "Order status updated successfully");
                                             })
