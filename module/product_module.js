@@ -26,10 +26,11 @@ module.exports = function () {
             }
         },
         // End Generating catalogue number -----
-        //Start of Validation
+        //Start of File Row Validation
         excelValidation: function (data, callBack) {
             try {
                 console.log(data.SupplierUniqueCatalogueNumber)
+                // CHECK IF THESE FIELDS ARE EMPTY OR NOT 
                 if (
                     !data.SupplierUniqueCatalogueNumber
                     || !data.BrandName
@@ -48,9 +49,11 @@ module.exports = function () {
                     || !data.PointsAccumulation.toString()
                     || !data.Manufacturer
                 ) {
+                    // IF EMPTY THEN SEND STATUS FALSE
                     callBack(false);
                 }
                 else {
+                    // IF NOT EMPTY THEN SEND STATUS TRUE
                     callBack(true);
                 }
             } catch (e) {
@@ -61,6 +64,7 @@ module.exports = function () {
         // Start of Check duplicate data 
         checkDuplicate: function (SupplierUniqueCatalogueNumber, supplierCode, callBack) {
             try {
+                // FIND DATA FROM MEDICATION COLLECTION BY SUPPLIER UNIQUE CATALOUGUE NUM & SUPPLIER CODE
                 products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber, supplierCode: supplierCode }, function (err, doc) {
                     if (err) {
                         callBack(true, null);
@@ -86,22 +90,29 @@ module.exports = function () {
                 var r52CatNo;
                 rows = []
                 rawDocuments = []
+                // START READING OF CSV FILE
                 fs.createReadStream(filepath)
                     .pipe(csv())
                     .on('data', (rowData) => {
+                        // AFTER READ ALL ROWS OF FILE PUSH DATAS INSIDE ROWS ARRAY
                         rows.push(rowData)
                     })
                     .on('end', () => {
                         if (rows.length !== 0) {
+                            // GENERATE CATALOUGUE NUMBER
                             productModule.catalogueNumber(function (result) {
                                 r52CatNo = result
                                 var index = 0;
+                                // RECURSIVE FUNCTION INSERT DATA FOUND
                                 var insertData = function (row) {
+                                    // EXCEL FILE ROW VALIDATION FOR EMPTY DATA IN ANY MANDATORY COLUMN
                                     productModule.excelValidation(row, function (status) {
                                         if (status) {
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
                                             productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, supplierCode, function (error, isDuplicate) {
+                                                // IF NO DUPLICATE DATA FOUND
                                                 if (!isDuplicate) {
+                                                    // INCREASE CORRECT ENTRY VALUE
                                                     correctEntryCount = correctEntryCount + 1
                                                     if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
                                                         isIncluded = true
@@ -115,6 +126,7 @@ module.exports = function () {
                                                     else {
                                                         IsTaxExempt = false
                                                     }
+                                                    // MAKE A PRODUCT DATA OBJECT 
                                                     const productData = {
                                                         supplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
@@ -159,13 +171,19 @@ module.exports = function () {
                                                         },
                                                         timestamp: new Date(),
                                                     };
+                                                    // PUSH PRODUCT DATA OBJECT IN RAWDOCUMENT ARRAY FOR SAVING IN COLLECTION
                                                     rawDocuments.push(productData)
+                                                    // INCREASE R52 CATALOUGUE NUMBER
                                                     r52CatNo = r52CatNo + 1
-                                                    //////////
+
+                                                    // INCREASE INDEX BY 1
                                                     index++;
+                                                    // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
                                                     if (index < rows.length) {
+                                                        // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
                                                         insertData(rows[index]);
                                                     } else {
+                                                        // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                         products.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -176,6 +194,8 @@ module.exports = function () {
                                                     }
                                                 }
                                                 else {
+                                                    // IF DUPLICATE DATA FOUND
+                                                    // MAKE PRODUCT DATA OBJECT FOR UPDATE DATA IN COLLECTION
                                                     const productUpdateData = {
                                                         brandName: {
                                                             eng: row.BrandName,
@@ -217,17 +237,23 @@ module.exports = function () {
                                                         },
                                                         timestamp: new Date(),
                                                     };
+                                                    // UPDATE THAT DUPLICATE DATA IN MEDICATION COLLECTION BY SPECIFIC SUPPLIERUNIQUECATALOUGUENUM & SUPPLIER CODE
                                                     products.findOneAndUpdate({ suppCatNo: row.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
                                                         { $set: productUpdateData },
                                                         { new: true }).then(result => {
                                                         }).catch(err => {
                                                             console.log('error', err)
                                                         });
+                                                    // INCREASE DUPLICATE DATA COUNT
                                                     duplicateData = duplicateData + 1
+                                                    // INCREASE INDEX BY 1
                                                     index++;
+                                                    // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
                                                     if (index < rows.length) {
+                                                        // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
                                                         insertData(rows[index]);
                                                     } else {
+                                                        // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                         products.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -242,11 +268,16 @@ module.exports = function () {
                                         else {
                                             /////// IF ANY ISSUE FOUND
                                             var invaliRow = row
+                                            // PUSH THAT ROW INSIDE INVALIDDATAS ARRAY
                                             invalidDatas.push(row)
+                                            // INCREASE INDEX BY 1
                                             index++;
+                                            // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
                                             if (index < rows.length) {
+                                                // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
                                                 insertData(rows[index]);
                                             } else {
+                                                // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                 products.insertMany(rawDocuments)
                                                     .then(function (mongooseDocuments) {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -258,12 +289,15 @@ module.exports = function () {
                                         }
                                     })
                                 }
+                                // CHECK IF ROW HAS DATA OR EMPTY
                                 if (rows.length !== 0) {
+                                    // IF ROW IS NOT EMPTY ,THEN CALL INSERT DATA FUNCTION
                                     insertData(rows[index]);
                                 }
                             })
                         }
                         else {
+                            // IF FILE IS EMPTY OR ROW IS EMPTY
                             callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                         }
                     })
@@ -279,14 +313,20 @@ module.exports = function () {
                 var IsTaxExempt
                 var r52CatNo = 0
                 rawDocuments = []
+                // START READING OF EXCEL/XLSX FILE
                 readXlsxFile(fs.createReadStream(filepath), { sheet: 2 }).then((rows) => {
                     var theRemovedElement = rows.shift();
+                    // CHECK IF FILE/ROW HAS DATA OR NOT
                     if (rows.length !== 0) {
                         var index = 0;
+                        // CREATE CATALOUGUE NUMBER
                         productModule.catalogueNumber(function (result) {
                             r52CatNo = result
+                            // INSERTDATA FUNCTION START
                             var insertData = function (doc) {
+                                // CHECK IF DOC HAS NO VALUE
                                 if (doc.length !== 0) {
+                                    // IF DOC HAS DATA ,THEN MAKE A DATA OBJECT 
                                     const data = {
                                         SupplierUniqueCatalogueNumber: doc[1],
                                         BrandName: doc[2],
@@ -309,10 +349,13 @@ module.exports = function () {
                                         PointsAccumulation: doc[19],
                                         supplierCode: supplierCode,
                                     };
+                                    // CHECK DATA OBJECT VALIDATION FOR NO EMPTY COLUMNS FOR MANDATORY FIELDS
                                     productModule.excelValidation(data, function (status) {
+                                        // IF VALIDATION DONE & STATUS TRUE
                                         if (status) {
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
                                             productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, data.supplierCode, function (error, isDuplicate) {
+                                                // IF NO DUPLICATE DATA
                                                 if (!isDuplicate) {
                                                     correctEntryCount = correctEntryCount + 1
                                                     if (doc[14] == 'Yes' || doc[14] == 1) {
@@ -327,6 +370,7 @@ module.exports = function () {
                                                     else {
                                                         IsTaxExempt = false
                                                     }
+                                                    // MAKE PRODUCT OBJECT
                                                     const productData = {
                                                         supplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
@@ -371,12 +415,18 @@ module.exports = function () {
                                                         },
                                                         timestamp: new Date(),
                                                     };
+                                                    // PUSH PRODUCT OBJECT INSIDE RAW DOCUMENT ARRAY FOR FINAL INSERT
                                                     rawDocuments.push(productData)
+                                                    // INCREASE CATALOGUE NUMBER
                                                     r52CatNo = r52CatNo + 1
+                                                    // INCREASE INDEX BY 1
                                                     index++;
+                                                    // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
                                                     if (index < rows.length) {
+                                                        // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
                                                         insertData(rows[index]);
                                                     } else {
+                                                        // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                         products.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -388,6 +438,7 @@ module.exports = function () {
                                                     //////////
                                                 }
                                                 else {
+                                                    // IF DUPLICATE DATA FOUND MAKE A OBJECT
                                                     const productUpdateData = {
                                                         brandName: {
                                                             eng: doc[2]
@@ -425,17 +476,23 @@ module.exports = function () {
                                                         },
                                                         timestamp: new Date(),
                                                     };
+                                                    // UPDATE THAT DUPLICATE DATA IN MEDICATION COLLECTION BY SPECIFIC SUPPLIERUNIQUECATALOUGUENUM & SUPPLIER CODE
                                                     products.findOneAndUpdate({ suppCatNo: data.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
                                                         { $set: productUpdateData },
                                                         { new: true }).then(result => {
                                                         }).catch(err => {
                                                             console.log('error', error)
                                                         });
+                                                    // INCREASE DUPLICATE DATA COUNT
                                                     duplicateData = duplicateData + 1
+                                                    // INCREASE INDEX BY 1
                                                     index++;
+                                                    // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
                                                     if (index < rows.length) {
+                                                        // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
                                                         insertData(rows[index]);
                                                     } else {
+                                                        // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                         products.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -448,7 +505,7 @@ module.exports = function () {
                                             })
                                         }
                                         else {
-                                            /////// IF ANY ISSUE FOUND
+                                            /////// IF ANY ISSUE FOUND THEN MAKE A INVALIDATA OBJECT
                                             const invalidData = {
                                                 CatalougeNumber: "",
                                                 SupplierUniqueCatalogueNumber: doc[1],
@@ -472,12 +529,17 @@ module.exports = function () {
                                                 pointsAccumulation: doc[19],
                                                 SupplierName: doc[20]
                                             };
+                                            // PUSH INVALID DATA OBJECR INSIDE INVALIDATA ARRAY
                                             invalidDatas.push(invalidData)
+                                            // INCREASE INDEX BY 1
                                             index++;
+                                            // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
                                             if (index < rows.length) {
+                                                // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
                                                 insertData(rows[index]);
                                             }
                                             else {
+                                                // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                 products.insertMany(rawDocuments)
                                                     .then(function (mongooseDocuments) {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
@@ -505,12 +567,15 @@ module.exports = function () {
                                     }
                                 }
                             }
+                            // CHECK IF ROW HAS DATA OR EMPTY
                             if (rows.length !== 0) {
+                                // IF ROW IS NOT EMPTY ,THEN CALL INSERT DATA FUNCTION
                                 insertData(rows[index]);
                             }
                         })
                     }
                     else {
+                        // IF FILE IS EMPTY OR ROW IS EMPTY
                         callBack(false, 0, correctEntryCount, invalidDatas, duplicateData);
                     }
                 })

@@ -172,7 +172,9 @@ module.exports = function () {
         //Start deactivate points
         deactivatePoints: async function (callBack) {
             try {
+                // FIND ALL RESIDENTS DATA 
                 let residentData = await residents.find({})
+                // IF ANY RESIDENT DATA FOUND THEN WE WILL CALLL RECURSIVE FUNCTION 'checkData'
                 if (residentData.length > 0) {
                     var totalEarnedPoints = 0;
                     var totalRedeemedPoints = 0;
@@ -180,9 +182,10 @@ module.exports = function () {
                     var availablePoints = 0;
                     var startOfToday = new Date();
                     var lastDataId
-                    startOfToday.setHours(0, 0, 0, 0);
+                    startOfToday.setHours(0, 0, 0, 0);  // SETTING START OF THE DAY TO MIDNIGHT
                     var index = 0;
                     var checkData = async function (doc) {
+                        // FIND OUT TOTAL EARNED POINTS WHICH ARE GOING TO BE EXPIRED ON SAME DAY OF THIS RESIDENT BY RESIDENT ID
                         var pointsData = await pointsAudit.aggregate([{
                             $match: {
                                 residentId: doc.residentId,
@@ -194,12 +197,17 @@ module.exports = function () {
                             $group:
                                 { _id: null, totalEarnedPoints: { $sum: "$earnedPoints" } }
                         }])
+                        // FIND OUT LASTEST POINT DATA OF THIS RESIDENT FROM POINTSAUDIT COLLECTION TO UPDATE LATEST AVAILABLE POINTS 
                         let pointsAllData = await pointsAudit.find({
                             residentId: doc.residentId,
                         }).sort({ _id: -1 }).limit(1)
+                        // IF ANY POINTS DATA FOUND OF THIS PERTICULAR RESIDENT
                         if (pointsData.length > 0) {
+                            // TOTAL EARNED POINT OF THIS RESIDENT
                             totalEarnedPoints = parseInt(pointsData[0].totalEarnedPoints)
+                            // LATEST POINTSAUDIT ID OF THIS RESIDENT POINTSAUDIT DATA
                             lastDataId = pointsAllData[0]._id
+                            // FIND OUT TODAY'S TOTAL REDEMED POINTS DETAILS OF THIS RESIDENT WHICH CREATED AT IS TODAY
                             var todayPointsData = await pointsAudit.aggregate([{
                                 $match: {
                                     residentId: doc.residentId,
@@ -211,11 +219,16 @@ module.exports = function () {
                                 $group:
                                     { _id: null, totalRedeemedPoints: { $sum: "$redeemedPoints" } }
                             }])
+                            // CHECK IF ANY TODAY REDEM POINT FOUND
                             if (todayPointsData.length > 0) {
+                                // TOTAL REDEMMED POINT OF TODAY
                                 totalRedeemedPoints = parseInt(todayPointsData[0].totalRedeemedPoints)
                             }
+                            // GET UDATED POINTS AFTER SUBTRACTING TODAY TOTAL REDEMED POINTS WITH EXPIREDDATE TOTAL EARNED POINTS
                             updatedPoints = totalEarnedPoints - totalRedeemedPoints
+                            // UPDATING AVAILABLE PONTS OF RESIDENTS COLLECTION BY SUBTRACTING UPDATED POINTS FROM LATEST AVAILABLE POINTS OF THIS RESINDENT IN RESIDENT COLLECTION
                             availablePoints = parseInt(doc.availablePoints) - updatedPoints
+                            // UPDATE LATEST AVAILABLE POINTS AT LATEST RECORD OF RESIDENT AT POINTSAUDIT COLLECTION
                             var updatedLastPointsAudit = await pointsAudit.updateOne({
                                 _id: lastDataId
                             }, {
@@ -225,9 +238,11 @@ module.exports = function () {
                             }, function (err, res) {
                                 console.log(err)
                             })
+                            // UPDATE LATEST AVAILABLE POINTS IN RESIDENT COLLECTION OF THAT RESIDENT ID
                             var updatedResidents = await residents.updateOne({ residentId: doc.residentId }, {
                                 $set: { availablePoints: availablePoints }
                             })
+                            // UPDATE ALL EXPIRED POINTS RECORD MAKE IT ACTIVE FALSE & LAPSE TRUE FOR MAKING IT EXPIRED
                             var updatedPointsAudit = await pointsAudit.updateMany({
                                 residentId: doc.residentId,
                                 earnedPointsExpiryDate: { "$lte": startOfToday },
@@ -238,16 +253,22 @@ module.exports = function () {
                                 }
                             })
                         }
+                        // MAKE INDEX INCREMENT
                         index++
+                        // CHECK IF MORE RESIDENTS ARE AVAILABLE OR NOT IN RESIDENTDATA
                         if (index < residentData.length) {
+                            // IF MORE RESIDENT AVAILABLE THEN PASS NEXT INDEX TO CHECKDATA FUNCTION
                             checkData(residentData[index]);
                         } else {
+                            // IF MORE RESIDENTS ARE NOT AVAILABLE THE GIVE CALL BACK TO API
                             callBack(false, 'Expiration done')
                         }
                     }
+                    // THIS IS THE CHECK DATA RECURSIVE FUNCTION
                     checkData(residentData[index]);
                 }
                 else {
+                    // IF NO RESIDENTS AVAILABLE IN RESIDENTS COLLECTION
                     callBack(false, 'No residents available');
                 }
             } catch (e) {

@@ -36,10 +36,6 @@ var pointsAuditSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
-        pointsEarnedCalculation:{
-            type: Boolean,
-            default: false
-        }
     },
     {
         timestamps: {

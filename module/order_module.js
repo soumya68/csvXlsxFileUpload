@@ -85,20 +85,22 @@ module.exports = function () {
             redeemedPoints,
             pointSource, countryCode, callBack) {
             try {
+
                 order.find({ _id: new ObjectId(orderId) }).then(orderData => {
                     if (orderData.length > 0) {
                         var finalPrice = orderData[0].orderTotalPayable
                         var residentId = orderData[0].residentId
                         totalAvailablePoint = 0
                         var productDetails = [];
-                        if (orderData[0].subOrders.length > 0) {
+                        var subOrdersDetails = orderData[0].subOrders
+                        if (subOrdersDetails.length > 0) {
                             var index = 0;
                             var subOrdersData = function (doc) {
                                 var item = doc.items
                                 productDetails = productDetails.concat(item)
                                 index++
-                                if (index < orderData[0].subOrders.length) {
-                                    subOrdersData(orderData[0].subOrders[index]);
+                                if (index < subOrdersDetails.length) {
+                                    subOrdersData(subOrdersDetails[index]);
                                 }
                                 else {
                                     orderModule.pointsAccumulation(
@@ -169,8 +171,8 @@ module.exports = function () {
                                         })
                                 }
                             }
-                            if (orderData[0].subOrders.length !== 0) {
-                                subOrdersData(orderData[0].subOrders[index]);
+                            if (subOrdersDetails.length !== 0) {
+                                subOrdersData(subOrdersDetails[index]);
                             }
                         }
                         else {
