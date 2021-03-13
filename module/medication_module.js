@@ -1,21 +1,23 @@
-const products = require('../models/catalouge-schema');
+const medications = require('../models/catalouge-schema');
 const readXlsxFile = require('read-excel-file/node');
 const fs = require('fs');
 const csv = require('csv-parser');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 module.exports = function () {
-    var productModule = {
+    var medicationModule = {
         // Start Generating catalogue number -----
         catalogueNumber: function (callBack) {
             try {
-                products.find().sort({ createdAt: -1 }).limit(1).then((data) => {
+                medications.find({}).sort({ _id: -1 }).limit(1).then((data) => {
                     if (data.length > 0) {
                         var dbNum = data[0].r52CatNo;
                         var r52CatNumber = dbNum + 1;
+                        console.log('1',dbNum)
+                        console.log('2',r52CatNumber)
                         callBack(r52CatNumber);
                     }
                     else {
-                        var r52CatNumber = 1000;
+                        var r52CatNumber = 1000000;
                         callBack(r52CatNumber);
                     }
                 }).catch(err => {
@@ -29,7 +31,7 @@ module.exports = function () {
         //Start of File Row Validation
         excelValidation: function (data, callBack) {
             try {
-                console.log(data.SupplierUniqueCatalogueNumber)
+              //  console.log(data.SupplierUniqueCatalogueNumber)
                 // CHECK IF THESE FIELDS ARE EMPTY OR NOT 
                 if (
                     !data.SupplierUniqueCatalogueNumber
@@ -65,7 +67,7 @@ module.exports = function () {
         checkDuplicate: function (SupplierUniqueCatalogueNumber, supplierCode, callBack) {
             try {
                 // FIND DATA FROM MEDICATION COLLECTION BY SUPPLIER UNIQUE CATALOUGUE NUM & SUPPLIER CODE
-                products.findOne({ suppCatNo: SupplierUniqueCatalogueNumber, supplierCode: supplierCode }, function (err, doc) {
+                medications.findOne({ suppCatNo: SupplierUniqueCatalogueNumber, supplierCode: supplierCode }, function (err, doc) {
                     if (err) {
                         callBack(true, null);
                     }
@@ -100,18 +102,20 @@ module.exports = function () {
                     .on('end', () => {
                         if (rows.length !== 0) {
                             // GENERATE CATALOUGUE NUMBER
-                            productModule.catalogueNumber(function (result) {
+                            medicationModule.catalogueNumber(function (result) {
                                 r52CatNo = result
                                 var index = 0;
+                                console.log('r52CatNo',r52CatNo)
                                 // RECURSIVE FUNCTION INSERT DATA FOUND
                                 var insertData = function (row) {
                                     // EXCEL FILE ROW VALIDATION FOR EMPTY DATA IN ANY MANDATORY COLUMN
-                                    productModule.excelValidation(row, function (status) {
+                                    medicationModule.excelValidation(row, function (status) {
                                         if (status) {
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
-                                            productModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, supplierCode, function (error, isDuplicate) {
+                                            medicationModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, supplierCode, function (error, isDuplicate) {
                                                 // IF NO DUPLICATE DATA FOUND
                                                 if (!isDuplicate) {
+                                                    console.log('r52CatNo222',r52CatNo)
                                                     // INCREASE CORRECT ENTRY VALUE
                                                     correctEntryCount = correctEntryCount + 1
                                                     if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
@@ -126,8 +130,8 @@ module.exports = function () {
                                                     else {
                                                         IsTaxExempt = false
                                                     }
-                                                    // MAKE A PRODUCT DATA OBJECT 
-                                                    const productData = {
+                                                    // MAKE A MEDICATION DATA OBJECT 
+                                                    const medicationData = {
                                                         supplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
                                                         suppCatNo: row.SupplierUniqueCatalogueNumber,
@@ -171,8 +175,8 @@ module.exports = function () {
                                                         },
                                                         timestamp: new Date(),
                                                     };
-                                                    // PUSH PRODUCT DATA OBJECT IN RAWDOCUMENT ARRAY FOR SAVING IN COLLECTION
-                                                    rawDocuments.push(productData)
+                                                    // PUSH MEDICATION DATA OBJECT IN RAWDOCUMENT ARRAY FOR SAVING IN COLLECTION
+                                                    rawDocuments.push(medicationData)
                                                     // INCREASE R52 CATALOUGUE NUMBER
                                                     r52CatNo = r52CatNo + 1
 
@@ -184,7 +188,7 @@ module.exports = function () {
                                                         insertData(rows[index]);
                                                     } else {
                                                         // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
-                                                        products.insertMany(rawDocuments)
+                                                        medications.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
@@ -195,8 +199,8 @@ module.exports = function () {
                                                 }
                                                 else {
                                                     // IF DUPLICATE DATA FOUND
-                                                    // MAKE PRODUCT DATA OBJECT FOR UPDATE DATA IN COLLECTION
-                                                    const productUpdateData = {
+                                                    // MAKE MEDICATION DATA OBJECT FOR UPDATE DATA IN COLLECTION
+                                                    const medicationUpdateData = {
                                                         brandName: {
                                                             eng: row.BrandName,
                                                         },
@@ -238,8 +242,8 @@ module.exports = function () {
                                                         timestamp: new Date(),
                                                     };
                                                     // UPDATE THAT DUPLICATE DATA IN MEDICATION COLLECTION BY SPECIFIC SUPPLIERUNIQUECATALOUGUENUM & SUPPLIER CODE
-                                                    products.findOneAndUpdate({ suppCatNo: row.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
-                                                        { $set: productUpdateData },
+                                                    medications.findOneAndUpdate({ suppCatNo: row.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
+                                                        { $set: medicationUpdateData },
                                                         { new: true }).then(result => {
                                                         }).catch(err => {
                                                             console.log('error', err)
@@ -254,7 +258,7 @@ module.exports = function () {
                                                         insertData(rows[index]);
                                                     } else {
                                                         // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
-                                                        products.insertMany(rawDocuments)
+                                                        medications.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
@@ -278,7 +282,7 @@ module.exports = function () {
                                                 insertData(rows[index]);
                                             } else {
                                                 // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
-                                                products.insertMany(rawDocuments)
+                                                medications.insertMany(rawDocuments)
                                                     .then(function (mongooseDocuments) {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     })
@@ -320,8 +324,9 @@ module.exports = function () {
                     if (rows.length !== 0) {
                         var index = 0;
                         // CREATE CATALOUGUE NUMBER
-                        productModule.catalogueNumber(function (result) {
+                        medicationModule.catalogueNumber(function (result) {
                             r52CatNo = result
+                            console.log('R52',r52CatNo)
                             // INSERTDATA FUNCTION START
                             var insertData = function (doc) {
                                 // CHECK IF DOC HAS NO VALUE
@@ -350,11 +355,11 @@ module.exports = function () {
                                         supplierCode: supplierCode,
                                     };
                                     // CHECK DATA OBJECT VALIDATION FOR NO EMPTY COLUMNS FOR MANDATORY FIELDS
-                                    productModule.excelValidation(data, function (status) {
+                                    medicationModule.excelValidation(data, function (status) {
                                         // IF VALIDATION DONE & STATUS TRUE
                                         if (status) {
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
-                                            productModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, data.supplierCode, function (error, isDuplicate) {
+                                            medicationModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, data.supplierCode, function (error, isDuplicate) {
                                                 // IF NO DUPLICATE DATA
                                                 if (!isDuplicate) {
                                                     correctEntryCount = correctEntryCount + 1
@@ -370,8 +375,9 @@ module.exports = function () {
                                                     else {
                                                         IsTaxExempt = false
                                                     }
-                                                    // MAKE PRODUCT OBJECT
-                                                    const productData = {
+                                                    // MAKE MEDICATION OBJECT
+                                                    console.log('R523333333',r52CatNo)
+                                                    const medicationData = {
                                                         supplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
                                                         suppCatNo: doc[1],
@@ -415,8 +421,8 @@ module.exports = function () {
                                                         },
                                                         timestamp: new Date(),
                                                     };
-                                                    // PUSH PRODUCT OBJECT INSIDE RAW DOCUMENT ARRAY FOR FINAL INSERT
-                                                    rawDocuments.push(productData)
+                                                    // PUSH MEDICATION OBJECT INSIDE RAW DOCUMENT ARRAY FOR FINAL INSERT
+                                                    rawDocuments.push(medicationData)
                                                     // INCREASE CATALOGUE NUMBER
                                                     r52CatNo = r52CatNo + 1
                                                     // INCREASE INDEX BY 1
@@ -427,7 +433,7 @@ module.exports = function () {
                                                         insertData(rows[index]);
                                                     } else {
                                                         // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
-                                                        products.insertMany(rawDocuments)
+                                                        medications.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
@@ -439,7 +445,7 @@ module.exports = function () {
                                                 }
                                                 else {
                                                     // IF DUPLICATE DATA FOUND MAKE A OBJECT
-                                                    const productUpdateData = {
+                                                    const medicationUpdateData = {
                                                         brandName: {
                                                             eng: doc[2]
                                                         },
@@ -477,8 +483,8 @@ module.exports = function () {
                                                         timestamp: new Date(),
                                                     };
                                                     // UPDATE THAT DUPLICATE DATA IN MEDICATION COLLECTION BY SPECIFIC SUPPLIERUNIQUECATALOUGUENUM & SUPPLIER CODE
-                                                    products.findOneAndUpdate({ suppCatNo: data.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
-                                                        { $set: productUpdateData },
+                                                    medications.findOneAndUpdate({ suppCatNo: data.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
+                                                        { $set: medicationUpdateData },
                                                         { new: true }).then(result => {
                                                         }).catch(err => {
                                                             console.log('error', error)
@@ -493,7 +499,7 @@ module.exports = function () {
                                                         insertData(rows[index]);
                                                     } else {
                                                         // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
-                                                        products.insertMany(rawDocuments)
+                                                        medications.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
@@ -540,7 +546,7 @@ module.exports = function () {
                                             }
                                             else {
                                                 // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
-                                                products.insertMany(rawDocuments)
+                                                medications.insertMany(rawDocuments)
                                                     .then(function (mongooseDocuments) {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     })
@@ -557,7 +563,7 @@ module.exports = function () {
                                         insertData(rows[index]);
                                     }
                                     else {
-                                        products.insertMany(rawDocuments)
+                                        medications.insertMany(rawDocuments)
                                             .then(function (mongooseDocuments) {
                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                             })
@@ -629,5 +635,5 @@ module.exports = function () {
         }
         // End of Failuer data file create
     }
-    return productModule;
+    return medicationModule;
 }

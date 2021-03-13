@@ -30,8 +30,8 @@ var supplierSchema = new mongoose.Schema(
             },
         },
         deliveryFee: {
-            type: Number,
-            default: 0
+            type: mongoose.Decimal128,
+            default: '0.00'
         },
         isoCountry: {
             type: String,
@@ -54,8 +54,8 @@ var supplierSchema = new mongoose.Schema(
             default: null
         },
         usdPrice: {
-            type: Number,
-            default: 0
+            type: mongoose.Decimal128,
+            default: '0.00'
         },
         metadata: {
             createdBy: {

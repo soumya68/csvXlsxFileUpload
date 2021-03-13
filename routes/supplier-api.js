@@ -6,6 +6,7 @@ module.exports = (app) => {
     //Functions:addSupplier
     app.post('/api/add/supplier', function (req, res) {
         try {
+            console.log(req.body)
             if (!req.body.supplierName) {
                 res.json({ status: false, message: "supplierName parameter is missing" });
                 return;
@@ -23,19 +24,19 @@ module.exports = (app) => {
                 return;
             }
             const supplierData = {
-                supplierName: JSON.parse(req.body.supplierName),
+                supplierName: req.body.supplierName,
                 supplierCode: req.body.supplierCode,
                 isoCountry: req.body.isoCountry,
-                catalogTags: JSON.parse(req.body.catalogTags),
+                catalogTags: req.body.catalogTags,
                 contact: {
-                    address: JSON.parse(req.body.address),
+                    address: req.body.address,
                     email: req.body.email,
                     phone: req.body.phone
                 },
-                deliveryFee: req.body.deliveryFee,
+                deliveryFee:parseFloat( req.body.deliveryFee).toFixed(2),
                 lastProductSeq: req.body.lastProductSeq,
                 type: req.body.type,
-                usdPrice: req.body.usdPrice,
+                usdPrice:parseFloat( req.body.usdPrice).toFixed(2),
                 metadata: {
                     createdBy: {
                         userId: req.body.userId,
@@ -67,8 +68,44 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
+            console.log(er)
             res.json({ status: false, message: er });
         }
     });
     //END OF API FOR ADD SUPPLIER DETAILS 
+
+
+    //START OF API FOR VIEW SUPPLIER DETAILS 
+    //Params:
+    //Response: status, message,data
+    //Functions:viewSupplier
+    app.post('/api/view/supplier', function (req, res) {
+        try {
+
+
+            supplierModule.viewSuppliers(
+                function (error, message, result) {
+                    if (error) {
+                        res.status(200).json({
+                            status: false,
+                            message: message,
+                            data: result
+                        })
+                    }
+                    else {
+                       // console.log(result)
+                        res.status(200).json({
+                            status: true,
+                            message: message,
+                            data: result
+                        })
+                    }
+                })
+        }
+        catch (er) {
+            console.log(er)
+            res.json({ status: false, message: er });
+        }
+    });
+    //END OF API FOR VIEW SUPPLIER DETAILS 
 };
