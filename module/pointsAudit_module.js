@@ -23,7 +23,6 @@ module.exports = function () {
                         if (docs.length > 0) {
                             var index = 0;
                             var checkData = function (doc) {
-
                                 totalEarnedPoints = parseInt(totalEarnedPoints) + parseInt(doc.earnedPoints)
                                 totalRedeemedPoints = parseInt(totalRedeemedPoints) + parseInt(doc.redeemedPoints)
                                 if (doc.isActive) {
@@ -59,7 +58,6 @@ module.exports = function () {
             }
         },
         // End of get user points details
-       
         //Start of get Redeem points
         userRedeemPoints: function (residentId, redeemedPoints, callBack) {
             try {
@@ -245,7 +243,3 @@ module.exports = function () {
     }
     return pointsAuditModule;
 }
-// 1) for all expired points on that day -- do the sum of earned points
-// 2) for all new order placed do sum of redeemed points on that day ---
-// 3) 1-2
-// 4) available points in wallet=available points in wallet -3

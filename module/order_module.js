@@ -6,7 +6,6 @@ const productsModel = require('../models/catalouge-schema');
 var ObjectId = require('mongoose').Types.ObjectId;
 module.exports = function () {
     var orderModule = {
-
         // Start of  create order details
         createPointsDetails: function (orderId,
             redeemedPoints,
@@ -188,7 +187,7 @@ module.exports = function () {
             }
         },
         // End of create order details
-            //Start To get the points earned after successfully deliver
+        //Start To get the points earned after successfully deliver
         pointsupdate: function (orderId, callBack) {
             try {
                 pointsAudit.find({ orderId: orderId }).then((result) => {
@@ -204,7 +203,7 @@ module.exports = function () {
                                     { $set: { isDelivered: true, isPointsAddedToResident: true } },
                                     { new: true }).then(data => {
                                         pointsAudit.findOneAndUpdate({ orderId: orderId },
-                                            { $set: { isActive: false, earnedPointsExpiryDate : new Date() } },
+                                            { $set: { isActive: false, earnedPointsExpiryDate: new Date() } },
                                             { new: true }).then(data => {
                                                 callBack(false, "Order status updated successfully");
                                             })

@@ -9,28 +9,21 @@ module.exports = function () {
                     callBack(false, null, response,);
                 })
                     .catch(err => {
-                        console.log(err)
                         callBack(true, err, null,);
                     });
             } catch (err) {
-                console.log(err)
                 callBack(true, err, null,);
             }
         },
         // End of add supplier details
-
         //Start of add supplier details
         viewSuppliers: function (callBack) {
             try {
-
-                supplier.find({}).sort({_id:-1}).then(response => {
-                    // console.log(response)
+                supplier.find({}).sort({ _id: -1 }).then(response => {
                     if (response.length > 0) {
                         index = 0
                         finalData = []
                         var subOrdersData = function (doc) {
-                            console.log(doc.deliveryFee.toString())
-
                             var data = {
                                 supplierName: doc.supplierName.eng,
                                 supplierCode: doc.supplierCode,
@@ -45,7 +38,6 @@ module.exports = function () {
                                 lastProductSeq: doc.lastProductSeq,
                                 type: doc.type,
                                 usdPrice: doc.usdPrice.toString()
-
                             }
                             finalData.push(data)
                             index++
@@ -63,26 +55,15 @@ module.exports = function () {
                             // IF ANY SUBORDER IS FOUND THEN CALL SUBORDERDATA FUNCTION
                             subOrdersData(response[index]);
                         }
-
-
-
-
-
-
-
-
                     }
                     else {
                         callBack(false, 'No supplier found', response);
                     }
-
                 })
                     .catch(err => {
-                        console.log(err)
                         callBack(true, 'Error', null,);
                     });
             } catch (err) {
-                console.log(err)
                 callBack(true, err, null,);
             }
         }

@@ -38,5 +38,4 @@ var residentSchema = new mongoose.Schema(
         },
     }
 );
-
 module.exports = mongoose.model("resident", residentSchema);

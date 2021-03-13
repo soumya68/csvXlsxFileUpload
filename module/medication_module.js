@@ -13,8 +13,6 @@ module.exports = function () {
                         var dbNum = data[0].r52CatNo;
                         // Incrementing the catalogue number
                         var r52CatNumber = dbNum + 1;
-                        console.log('1',dbNum)
-                        console.log('2',r52CatNumber)
                         callBack(r52CatNumber);
                     }
                     else {
@@ -32,7 +30,6 @@ module.exports = function () {
         //Start of File Row Validation
         excelValidation: function (data, callBack) {
             try {
-              //  console.log(data.SupplierUniqueCatalogueNumber)
                 // CHECK IF THESE FIELDS ARE EMPTY OR NOT 
                 if (
                     !data.SupplierUniqueCatalogueNumber
@@ -106,7 +103,6 @@ module.exports = function () {
                             medicationModule.catalogueNumber(function (result) {
                                 r52CatNo = result
                                 var index = 0;
-                                console.log('r52CatNo',r52CatNo)
                                 // RECURSIVE FUNCTION INSERT DATA FOUND
                                 var insertData = function (row) {
                                     // EXCEL FILE ROW VALIDATION FOR EMPTY DATA IN ANY MANDATORY COLUMN
@@ -116,7 +112,6 @@ module.exports = function () {
                                             medicationModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, supplierCode, function (error, isDuplicate) {
                                                 // IF NO DUPLICATE DATA FOUND
                                                 if (!isDuplicate) {
-                                                    console.log('r52CatNo222',r52CatNo)
                                                     // INCREASE CORRECT ENTRY VALUE
                                                     correctEntryCount = correctEntryCount + 1
                                                     if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
@@ -180,7 +175,6 @@ module.exports = function () {
                                                     rawDocuments.push(medicationData)
                                                     // INCREASE R52 CATALOUGUE NUMBER
                                                     r52CatNo = r52CatNo + 1
-
                                                     // INCREASE INDEX BY 1
                                                     index++;
                                                     // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
@@ -327,7 +321,6 @@ module.exports = function () {
                         // CREATE CATALOUGUE NUMBER
                         medicationModule.catalogueNumber(function (result) {
                             r52CatNo = result
-                            console.log('R52',r52CatNo)
                             // INSERTDATA FUNCTION START
                             var insertData = function (doc) {
                                 // CHECK IF DOC HAS NO VALUE
@@ -377,7 +370,6 @@ module.exports = function () {
                                                         IsTaxExempt = false
                                                     }
                                                     // MAKE MEDICATION OBJECT
-                                                    console.log('R523333333',r52CatNo)
                                                     const medicationData = {
                                                         supplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,

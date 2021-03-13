@@ -20,15 +20,13 @@ module.exports = (app) => {
             //     ("00" + date.getHours()).slice(-2) + ":" +
             //     ("00" + date.getMinutes()).slice(-2) + ":" +
             //     ("00" + date.getSeconds()).slice(-2);
-
             var milliseconds = date.getTime();
-            var ml=milliseconds.toString()
-            var dateStr=ml
+            var ml = milliseconds.toString()
+            var dateStr = ml
             // MAKING FILENAME WITH SUPPLIERCODE,COUNTRYCODE,& MILISECONDS OF FILEUPLOADTIME
             var customeFileName = req.body.supplierCode.toString() + req.body.isoCountryCode.toString() + dateStr
             // CHECKING FILE EXTENSION & MAKING FILE NAME 
             if (file.mimetype == "text/csv") {
-               
                 const fileName = customeFileName + '.csv';
                 callback(null, fileName)
             }
@@ -107,7 +105,7 @@ module.exports = (app) => {
                                     return res.status(200).json({
                                         status: false,
                                         message: "File is empty",
-                                      //  invalidRows: invalidDatas,
+                                        //  invalidRows: invalidDatas,
                                         invalidRowsCount: invalidDatas.length,
                                         validRowsCount: correctEntryCount,
                                         totalRowsCount: totalEntryCount,
@@ -119,7 +117,7 @@ module.exports = (app) => {
                                     res.status(200).json({
                                         status: false,
                                         message: error,
-                                       // invalidRows: invalidDatas,
+                                        // invalidRows: invalidDatas,
                                         invalidRowsCount: invalidDatas.length,
                                         validRowsCount: correctEntryCount,
                                         totalRowsCount: totalEntryCount,
@@ -147,7 +145,7 @@ module.exports = (app) => {
                                                         if (error) {
                                                             res.status(200).json({
                                                                 status: false,
-                                                               // invalidRows: invalidDatas,
+                                                                // invalidRows: invalidDatas,
                                                                 invalidRowsCount: invalidDatas.length,
                                                                 validRowsCount: correctEntryCount,
                                                                 totalRowsCount: totalEntryCount,
@@ -158,7 +156,7 @@ module.exports = (app) => {
                                                             res.status(200).json({
                                                                 status: true,
                                                                 message: "Data Inserted Successfully",
-                                                               // invalidRows: invalidDatas,
+                                                                // invalidRows: invalidDatas,
                                                                 invalidRowsCount: invalidDatas.length,
                                                                 validRowsCount: correctEntryCount,
                                                                 totalRowsCount: totalEntryCount,
@@ -172,7 +170,7 @@ module.exports = (app) => {
                                                 res.status(200).json({
                                                     status: true,
                                                     message: "Data Inserted Successfully",
-                                                   // invalidRows: invalidDatas,
+                                                    // invalidRows: invalidDatas,
                                                     invalidRowsCount: invalidDatas.length,
                                                     validRowsCount: correctEntryCount,
                                                     totalRowsCount: totalEntryCount,
@@ -195,7 +193,7 @@ module.exports = (app) => {
                                     return res.status(200).json({
                                         status: false,
                                         message: "File is empty",
-                                       // invalidRows: invalidDatas,
+                                        // invalidRows: invalidDatas,
                                         invalidRowsCount: invalidDatas.length,
                                         validRowsCount: correctEntryCount,
                                         totalRowsCount: totalEntryCount,
@@ -207,7 +205,7 @@ module.exports = (app) => {
                                     res.status(200).json({
                                         status: false,
                                         message: error,
-                                      //  invalidRows: invalidDatas,
+                                        //  invalidRows: invalidDatas,
                                         invalidRowsCount: invalidDatas.length,
                                         validRowsCount: correctEntryCount,
                                         totalRowsCount: totalEntryCount,
@@ -236,7 +234,7 @@ module.exports = (app) => {
                                                             res.status(200).json({
                                                                 status: false,
                                                                 message: "Data Inserted Successfully",
-                                                               // invalidRows: invalidDatas,
+                                                                // invalidRows: invalidDatas,
                                                                 invalidRowsCount: invalidDatas.length,
                                                                 validRowsCount: correctEntryCount,
                                                                 totalRowsCount: totalEntryCount,
@@ -247,7 +245,7 @@ module.exports = (app) => {
                                                             res.status(200).json({
                                                                 status: true,
                                                                 message: "Data Inserted Successfully",
-                                                               // invalidRows: invalidDatas,
+                                                                // invalidRows: invalidDatas,
                                                                 invalidRowsCount: invalidDatas.length,
                                                                 validRowsCount: correctEntryCount,
                                                                 totalRowsCount: totalEntryCount,
@@ -261,7 +259,7 @@ module.exports = (app) => {
                                                 res.status(200).json({
                                                     status: true,
                                                     message: "Data Inserted Successfully",
-                                                   // invalidRows: invalidDatas,
+                                                    // invalidRows: invalidDatas,
                                                     invalidRowsCount: invalidDatas.length,
                                                     validRowsCount: correctEntryCount,
                                                     totalRowsCount: totalEntryCount,

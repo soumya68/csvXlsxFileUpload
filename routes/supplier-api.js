@@ -6,7 +6,6 @@ module.exports = (app) => {
     //Functions:addSupplier
     app.post('/api/add/supplier', function (req, res) {
         try {
-            console.log(req.body)
             if (!req.body.supplierName) {
                 res.json({ status: false, message: "supplierName parameter is missing" });
                 return;
@@ -33,10 +32,10 @@ module.exports = (app) => {
                     email: req.body.email,
                     phone: req.body.phone
                 },
-                deliveryFee:parseFloat( req.body.deliveryFee).toFixed(2),
+                deliveryFee: parseFloat(req.body.deliveryFee).toFixed(2),
                 lastProductSeq: req.body.lastProductSeq,
                 type: req.body.type,
-                usdPrice:parseFloat( req.body.usdPrice).toFixed(2),
+                usdPrice: parseFloat(req.body.usdPrice).toFixed(2),
                 metadata: {
                     createdBy: {
                         userId: req.body.userId,
@@ -68,21 +67,16 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            console.log(er)
             res.json({ status: false, message: er });
         }
     });
     //END OF API FOR ADD SUPPLIER DETAILS 
-
-
     //START OF API FOR VIEW SUPPLIER DETAILS 
     //Params:
     //Response: status, message,data
     //Functions:viewSupplier
     app.post('/api/view/supplier', function (req, res) {
         try {
-
-
             supplierModule.viewSuppliers(
                 function (error, message, result) {
                     if (error) {
@@ -93,7 +87,6 @@ module.exports = (app) => {
                         })
                     }
                     else {
-                       // console.log(result)
                         res.status(200).json({
                             status: true,
                             message: message,
@@ -103,7 +96,6 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            console.log(er)
             res.json({ status: false, message: er });
         }
     });

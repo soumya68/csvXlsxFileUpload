@@ -14,23 +14,23 @@ var catalogueFileStatusSchema = new mongoose.Schema(
         },
         successedRecordsCount: {
             type: Number,
-            default:0
+            default: 0
         },
         failedRecordsCount: {
             type: Number,
-            default:0
+            default: 0
         },
         totalRecordsCount: {
             type: Number,
-            default:0
+            default: 0
         },
         duplicateRecordsCount: {
             type: Number,
-            default:0
+            default: 0
         },
         status: {
             type: Boolean,
-            default:false
+            default: false
         },
     },
     {
