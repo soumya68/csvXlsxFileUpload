@@ -11,6 +11,7 @@ module.exports = function () {
                 medications.find({}).sort({ _id: -1 }).limit(1).then((data) => {
                     if (data.length > 0) {
                         var dbNum = data[0].r52CatNo;
+                        // Incrementing the catalogue number
                         var r52CatNumber = dbNum + 1;
                         console.log('1',dbNum)
                         console.log('2',r52CatNumber)

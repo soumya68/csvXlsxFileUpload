@@ -34,7 +34,7 @@ module.exports = (app) => {
         }
     });
     //END OF API FOR USER POINTS DETAILS 
-    // Start of API for point datails 
+    // Start of API for get the user latest transaction details
     //Response: status, message,data
     //functions:transactionDetails
     //Params:residentId
@@ -66,7 +66,7 @@ module.exports = (app) => {
             res.json({ status: false, message: er });
         }
     });
-    // end of API for point details
+    // Start of API for get the user latest transaction details
     // Start of API for Point Redeemption 
     //Response: status, message,data
     //functions:userRedeemPoints

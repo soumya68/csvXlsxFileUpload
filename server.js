@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 })
 /*Incudes all API routes*/
 require('./routes/index')(app, connectDB);
-// Start the cron job ----
+// Start the cron job ----will run every day midnight
 cron.schedule("00 00 00 * * *", function () {
   // cron.schedule("*/10 * * * * *", function() { 
   updateOrderStatus(function (err, res) {
@@ -44,11 +44,12 @@ async function updateOrderStatus(callbackfn) {
     let result = await order.find({ isPointsAddedToResident: false })
     Promise.all(
       result.map(async ele => {
+        // Update order status and points in the collections
         let orderdata = await order.findOneAndUpdate({ _id: ele._id },
           { $set: { isDelivered: true, isPointsAddedToResident: true } },
           { new: true })
         let auditdata = await pointsAudit.findOneAndUpdate({ orderId: ele._id },
-          { $set: { isActive: false } },
+          { $set: { isActive: false,earnedPointsExpiryDate : new Date() } },
           { new: true })
         let points = auditdata.earnedPoints
         let residentdata = await residents.findOneAndUpdate({ _id: ele._id },
@@ -58,18 +59,7 @@ async function updateOrderStatus(callbackfn) {
         return finalData
       })
     ).then(function (documents) {
-      console.log(documents)
     });
-    /*  let res = await Order.updateMany(
-          { isDelivered : true,isPointsAddedToResident:true },
-            { new: true })
-                await pointsAudit.updateMany(
-                  {isActive : false},
-                    { new: true })
-                    await residents.updateMany(
-                      {availablePoints : '50'},
-                        { new: true })  */
-    // console.log("result",res)
     callbackfn(null, finalData);
   } catch (err) {
     callbackfn(err, null,);

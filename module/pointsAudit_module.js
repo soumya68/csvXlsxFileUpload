@@ -83,7 +83,7 @@ module.exports = function () {
             }
         },
         //End of get Redeem points
-        //Start Transaction details API of user
+        //Start API to get the user Transaction details
         transactionDetails: function (residentId, callBack) {
             try {
                 pointsAudit.find({ residentId: residentId }).sort({ createdAt: -1 }).limit(10).then((result) => {
@@ -100,7 +100,7 @@ module.exports = function () {
                 callBack(true, null);
             }
         },
-        //End Transaction details API of user
+        //End API to get the user Transaction details
         //Start points conversion 
         pointConversion: function (countryCode, redeemedPoints, callBack) {
             try {
