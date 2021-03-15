@@ -1,5 +1,0 @@
-CatalougeNumber,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,pointsAccumulation,SupplierName
-,A9854,Advil syrup,Ibuprofen ,,,100mg/5ml ,suspension,1,60ml sachet,medication,No,VAT,No,Yes,10,89,,Available,1,POUT
-,A5629,Advil 2,Ibuprofen,,,200mg,soft gel capsule,8, capsule pack,medication,Yes,VAT,No,Yes,10,9,,Available,0,ERT
-,A98545,Advil syrup,Ibuprofen ,,,100mg/5ml ,suspension,1,60ml sachet,medication,No,VAT,No,Yes,10,89,,Available,1,POUT
-,A56290,Advil 2,Ibuprofen,,,200mg,soft gel capsule,8, capsule pack,medication,Yes,VAT,No,Yes,10,9,,Available,0,ERT
