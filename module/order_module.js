@@ -13,7 +13,7 @@ module.exports = function () {
             try {
                 // FIND ORDER DETAILS BY ORDER ID
                 order.find({ _id: new ObjectId(orderId) }).then(orderData => {
-                    console.log(orderData)
+
                     // CHECK ANY ORDER FOUND OR NOT
                     if (orderData.length > 0) {
                         // IF ANY ORDER FOUND

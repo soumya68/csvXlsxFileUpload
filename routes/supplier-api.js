@@ -22,6 +22,18 @@ module.exports = (app) => {
                 res.json({ status: false, message: "supplierCode parameter is missing" });
                 return;
             }
+            if (!req.body.address) {
+                res.json({ status: false, message: "address parameter is missing" });
+                return;
+            }
+            if (!req.body.email) {
+                res.json({ status: false, message: "email parameter is missing" });
+                return;
+            }
+            if (!req.body.phone) {
+                res.json({ status: false, message: "phone parameter is missing" });
+                return;
+            }
             const supplierData = {
                 supplierName: req.body.supplierName,
                 supplierCode: req.body.supplierCode,
@@ -33,7 +45,6 @@ module.exports = (app) => {
                     phone: req.body.phone
                 },
                 deliveryFee: parseFloat(req.body.deliveryFee).toFixed(2),
-                lastProductSeq: req.body.lastProductSeq,
                 type: req.body.type,
                 usdPrice: parseFloat(req.body.usdPrice).toFixed(2),
                 metadata: {
@@ -48,20 +59,33 @@ module.exports = (app) => {
             };
             // SAVE SUPPLIER DATA IN SUPPLIER COLLECTION BY ADD SUPPLIER COLLECTION
             supplierModule.addSupplier(supplierData,
-                function (error, errData, result) {
-                    if (error) {
+                function (error, errData, result,message) {
+                    if (error & result==null) {
                         res.status(200).json({
                             status: false,
-                            message: Object.keys(errData.errors)[0],
+                            // message: Object.keys(errData.errors)[0],
+                            message: message,
                             supplierId: null,
                             errData: errData.errors
                         })
+                       
                     }
-                    else {
+                    else if (error&&result) {
+                        res.status(200).json({
+                            status: false,
+                            // message: Object.keys(errData.errors)[0],
+                            message: message,
+                            supplierId: null,
+                            errData: null
+                        })
+                       
+                    }
+                    else  {
                         res.status(200).json({
                             status: true,
-                            message: "Supplier details created successfully",
-                            supplierId: result.supplierId
+                            message: message,
+                            supplierId: result.supplierId,
+                            errData: null
                         })
                     }
                 })

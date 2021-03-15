@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "server": "cross-env NODE_ENV=production node server.js",
-    "dev": "cross-env DEBUG=server:debug NODE_ENV=development nodemon server.js"
+    "dev": "cross-env DEBUG=server:debug NODE_ENV=development nodemon server.js",
+    "start":"NODE_ENV=production node server.js"
   },
   "author": "Kristhian Tiu",
   "license": "ISC",
