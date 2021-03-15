@@ -24,7 +24,7 @@ module.exports = (app) => {
             var ml = milliseconds.toString()
             var dateStr = ml
             // MAKING FILENAME WITH SUPPLIERCODE,COUNTRYCODE,& MILISECONDS OF FILEUPLOADTIME
-            var customeFileName = req.body.supplierCode.toString() + req.body.isoCountryCode.toString() + dateStr
+            var customeFileName = req.body.supplierCode + req.body.isoCountryCode + dateStr
             // CHECKING FILE EXTENSION & MAKING FILE NAME 
             if (file.mimetype == "text/csv") {
                 const fileName = customeFileName + '.csv';
@@ -59,6 +59,8 @@ module.exports = (app) => {
         upload.single('file'),
         function (req, res) {
             try {
+                // console.log('FILE',req.file)
+                // console.log('BODY',req.body)
                 invalidDatas = [];
                 incorrectEntryCount = 0;
                 correctEntryCount = 0;
@@ -280,8 +282,38 @@ module.exports = (app) => {
                 });
             }
             catch (er) {
+                console.log(er)
                 res.json({ status: false, message: er });
             }
         });
     //END OF API FOR MEDICATION DETAILS EXCELSHEET IMPORT
+    //START OF API FOR VIEW FILE DETAILS 
+    //Params:
+    //Response: status, message,data
+    //Functions:viewSupplier
+    app.post('/api/view/files', function (req, res) {
+        try {
+            medicationModule.viewFiles(
+                function (error, message, result) {
+                    if (error) {
+                        res.status(200).json({
+                            status: false,
+                            message: message,
+                            data: result
+                        })
+                    }
+                    else {
+                        res.status(200).json({
+                            status: true,
+                            message: message,
+                            data: result
+                        })
+                    }
+                })
+        }
+        catch (er) {
+            res.json({ status: false, message: er });
+        }
+    });
+    //END OF API FOR VIEW FILE DETAILS 
 };

@@ -1,4 +1,5 @@
 const medications = require('../models/catalouge-schema');
+const catalogueFiles = require('../models/catalogue-file-schema');
 const readXlsxFile = require('read-excel-file/node');
 const fs = require('fs');
 const csv = require('csv-parser');
@@ -625,8 +626,27 @@ module.exports = function () {
             } catch (e) {
                 callBack(true);
             }
-        }
+        },
         // End of Failuer data file create
+        //Start of view file details
+        viewFiles: function (callBack) {
+            try {
+                catalogueFiles.find({}).sort({ _id: -1 }).then(response => {
+                    if (response.length > 0) {
+                        callBack(false, 'Files details found', response);
+                    }
+                    else {
+                        callBack(false, 'No files details found', response);
+                    }
+                })
+                    .catch(err => {
+                        callBack(true, 'Error', null,);
+                    });
+            } catch (err) {
+                callBack(true, err, null,);
+            }
+        }
+        // End of view file details
     }
     return medicationModule;
 }

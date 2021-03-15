@@ -9,6 +9,14 @@ const order = require('./models/order-schema');
 const residents = require('./models/resident-schema');
 const pointsAudit = require('./models/pointsAudit-schema');
 var pointsModule = require('./module/pointsAudit_module')();
+var cors=require('cors')
+const corsOpts = {
+  origin: '*',
+  methods: ['GET', 'POST',],
+  allowedHeaders: ['Content-Type',],
+};
+
+app.use(cors(corsOpts));
 //const PORT = 8000
 /*middlewares*/
 app.use(bodyParser.json({

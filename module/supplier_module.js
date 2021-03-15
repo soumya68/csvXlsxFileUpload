@@ -16,7 +16,7 @@ module.exports = function () {
             }
         },
         // End of add supplier details
-        //Start of add supplier details
+        //Start of view supplier details
         viewSuppliers: function (callBack) {
             try {
                 supplier.find({}).sort({ _id: -1 }).then(response => {
@@ -67,7 +67,7 @@ module.exports = function () {
                 callBack(true, err, null,);
             }
         }
-        // End of add supplier details
+        // End of view supplier details
     }
     return supplierModule;
 }
