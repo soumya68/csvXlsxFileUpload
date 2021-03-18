@@ -78,6 +78,37 @@ async function updateOrderStatus(callbackfn) {
   }
 }
 // End the cron job ----
+// Start of cron job for earnedpoint details
+/* cron.schedule("00 00 00 * * *", function() { 
+  updatePointsCalculated(function (err, res) {
+    if (err) {
+      console.log("err")
+    }
+    else {
+      console.log("success")
+    }
+  })
+});
+async function updatePointsCalculated(callbackfn) {
+  try {
+    let result = await order.find({ isEarnedPointCalculated: false })
+      result.map(async ele => {
+        let auditdata = await pointsAudit.findOneAndUpdate({ residentId: ele.residentId },
+          { $set: { isActive: false} },
+          { new: true })
+          let points = auditdata.availablePoints
+        let residentdata = await residents.findOneAndUpdate({ residentId: ele.residentId },
+          { $set: { isPointsAddedToResident: true, availablePoints: points } },
+          { new: true })
+          data = {...auditdata,...residentdata}
+          callbackfn(null, data);
+      })
+    
+  } catch (err) {
+    callbackfn(err, null,);
+  }
+} */
+//End of cron job for earnedpoint details
 // START OF  CRON JOB FOR RESIDENTS POINT EXPIRY PROCESS
 // cron.schedule('59 23 * * *', () => {
 //   
