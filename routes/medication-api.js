@@ -59,6 +59,7 @@ module.exports = (app) => {
         upload.single('file'),
         function (req, res) {
             try {
+                console.log('fileName', req.file)
                 // console.log('FILE',req.file)
                 // console.log('BODY',req.body)
                 invalidDatas = [];
@@ -88,6 +89,7 @@ module.exports = (app) => {
                 const fileData = {
                     fileName: req.file.filename,
                     userId: userId,
+                    supplierCode: req.body.supplierCode,
                     status: false,
                     successedRecordsCount: 0,
                     failedRecordsCount: 0,
@@ -316,4 +318,31 @@ module.exports = (app) => {
         }
     });
     //END OF API FOR VIEW FILE DETAILS 
+    //START OF API FOR FAILUER FILE PROCESS 
+    //Params:DIR (Directory name where file is stored)
+    //Response: status, message
+    //Functions:processFile
+    app.post('/api/view/fileprocess', function (req, res) {
+        try {
+            medicationModule.processFile(DIR,
+                function (error, message) {
+                    if (error) {
+                        res.status(200).json({
+                            status: false,
+                            message: message,
+                        })
+                    }
+                    else {
+                        res.status(200).json({
+                            status: true,
+                            message: message,
+                        })
+                    }
+                })
+        }
+        catch (er) {
+            res.json({ status: false, message: er });
+        }
+    });
+    //END OF API FOR FAILUER FILE PROCESS 
 };

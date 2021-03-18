@@ -4,7 +4,7 @@
   "version": "v1",
   "name": "development",
   "PORT": 4000,
-  "MONGODB_URI": "mongodb://localhost:27017/Unicef",
+  "MONGODB_URI": "mongodb+srv://soumya:12345@cluster0.iocs1.mongodb.net/Unicef",
   "JWT_SECRET": "topSECRET!"
 }
 

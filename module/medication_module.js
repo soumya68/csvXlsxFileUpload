@@ -1,6 +1,7 @@
 const medications = require('../models/catalouge-schema');
 const catalogueFiles = require('../models/catalogue-file-schema');
 const readXlsxFile = require('read-excel-file/node');
+const path = require('path');
 const fs = require('fs');
 const csv = require('csv-parser');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
@@ -82,6 +83,141 @@ module.exports = function () {
             }
         },
         // End of Check duplicate data 
+        // Start of Process File
+        processFile: function (DIR, callBack) {
+            try {
+                //// FIND ALL CATALOUGE FILE DETAILS BY STATUS FALSE
+                catalogueFiles.find({ status: false }).then((data) => {
+                    // CHECK IF ANY FILE DETAILS FOUND
+                    if (data.length > 0) {
+                        var index = 0;
+                        // RECURSIVE FUNCTION CHECK DATA 
+                        var checkData = function (row) {
+                            invalidDatas = [];
+                            incorrectEntryCount = 0;
+                            correctEntryCount = 0;
+                            totalEntryCount = 0;
+                            duplicateEntryCount = 0;
+                            var fileName = row.fileName
+                            var userId = row.userId
+                            var supplierCode = row.supplierCode
+                            var version = 1
+                            // File path where file is saved
+                            var filePath = path.resolve(DIR + fileName);
+                            var fileExtention = fileName.split('.').pop()
+                            // CHECK FILE EXTENTION TYPE 
+                            if (fileExtention == "xlsx" || fileExtention == "xls") {
+                                ////// THIS IS FOR XLSX FILE 
+                                medicationModule.xlsxUpload(userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                    function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
+                                        // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
+                                        let updates = {
+                                            status: true,
+                                            successedRecordsCount: row.successedRecordsCount + correctEntryCount,
+                                            failedRecordsCount: invalidDatas.length,
+                                            totalRecordsCount: totalEntryCount,
+                                            duplicateRecordsCount: duplicateEntryCount
+                                        }
+                                        catalogueFiles.findOneAndUpdate({ fileName: fileName },
+                                            { $set: updates },
+                                            { new: true }).then(response => {
+                                                // CHECK IF ANY ROW OF FILE HAS VALIDATION ISSUE
+                                                if (invalidDatas.length > 0) {
+                                                    // IF ANY VALIDATION ISSUE FOUND THEN MAKE A FAILUER FILE & SAVE THAT FAILED ROW DATA
+                                                    medicationModule.failuerFileUpload(fileName, invalidDatas,
+                                                        function (error) {
+                                                            // IF ANY ERROR HAPPENS AT FAILURE FILE SAVING
+                                                            index++
+                                                            // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
+                                                            if (index < data.length) {
+                                                                // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
+                                                                checkData(data[index]);
+                                                            } else {
+                                                                // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
+                                                                callBack(false, 'File upload done');
+                                                            }
+                                                        })
+                                                }
+                                                else {
+                                                    // IF NO FAILUER DATA FOUND THEN RESPONSE WILL BE HERE
+                                                    index++
+                                                    // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
+                                                    if (index < data.length) {
+                                                        // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
+                                                        checkData(data[index]);
+                                                    } else {
+                                                        // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
+                                                        callBack(false, 'File upload done');
+                                                    }
+                                                }
+                                            })
+                                            .catch(err => {
+                                                return res.status(400).json({ status: false, message: err });
+                                            });
+                                    })
+                            }
+                            else {
+                                /// THIS IS FOR CSV FILE UPLOAD
+                                medicationModule.csvUpload(userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                    function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
+                                        // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
+                                        let updates = {
+                                            status: true,
+                                            successedRecordsCount: row.successedRecordsCount + correctEntryCount,
+                                            failedRecordsCount: invalidDatas.length,
+                                            totalRecordsCount: totalEntryCount,
+                                            duplicateRecordsCount: duplicateEntryCount
+                                        }
+                                        catalogueFiles.findOneAndUpdate({ fileName: fileName },
+                                            { $set: updates },
+                                            { new: true }).then(response => {
+                                                // CHECK IF ANY ROW OF FILE HAS VALIDATION ISSUE
+                                                if (invalidDatas.length > 0) {
+                                                    // IF ANY VALIDATION ISSUE FOUND THEN MAKE A FAILUER FILE & SAVE THAT FAILED ROW DATA
+                                                    medicationModule.failuerFileUpload(fileName, invalidDatas,
+                                                        function (error) {
+                                                            // IF ANY ERROR HAPPENS AT FAILURE FILE SAVING
+                                                            index++
+                                                            // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
+                                                            if (index < data.length) {
+                                                                // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
+                                                                checkData(data[index]);
+                                                            } else {
+                                                                // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
+                                                                callBack(false, 'File upload done');
+                                                            }
+                                                        })
+                                                }
+                                                else {
+                                                    // IF NO FAILUER DATA FOUND THEN RESPONSE WILL BE HERE
+                                                    index++
+                                                    // CHECK IF MORE DATA IS AVAILABLE OR NOT IN FILE
+                                                    if (index < data.length) {
+                                                        // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
+                                                        checkData(data[index]);
+                                                    } else {
+                                                        // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
+                                                        callBack(false, 'File upload done');
+                                                    }
+                                                }
+                                            })
+                                            .catch(err => {
+                                                return res.status(400).json({ status: false, message: err });
+                                            });
+                                    })
+                            }
+                        }
+                        checkData(data[index]);
+                    }
+                    else {
+                        callBack(false, 'No error file found');
+                    }
+                })
+            } catch (e) {
+                callBack(true, null);
+            }
+        },
+        // End of Process File
         // Start of csv file upload
         csvUpload: function (userId, version, supplierCode, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {

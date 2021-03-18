@@ -9,7 +9,11 @@ const order = require('./models/order-schema');
 const residents = require('./models/resident-schema');
 const pointsAudit = require('./models/pointsAudit-schema');
 var pointsModule = require('./module/pointsAudit_module')();
-var cors=require('cors')
+var medicationModule = require('./module/medication_module')();
+var cors = require('cors')
+
+var DIR = 'Catalouge_Import/'
+console.log('aaaaaa', DIR)
 const corsOpts = {
   origin: '*',
   methods: ['GET', 'POST',],
@@ -57,7 +61,7 @@ async function updateOrderStatus(callbackfn) {
           { $set: { isDelivered: true, isPointsAddedToResident: true } },
           { new: true })
         let auditdata = await pointsAudit.findOneAndUpdate({ orderId: ele._id },
-          { $set: { isActive: false,earnedPointsExpiryDate : new Date() } },
+          { $set: { isActive: false, earnedPointsExpiryDate: new Date() } },
           { new: true })
         let points = auditdata.earnedPoints
         let residentdata = await residents.findOneAndUpdate({ _id: ele._id },
@@ -87,7 +91,27 @@ async function updateOrderStatus(callbackfn) {
 //     })
 // });
 // END OF  CRON JOB FOR RESIDENTS POINT EXPIRY PROCESS
+
+// START OF  CRON JOB FOR CATALOUGE FILE UPLOAD PROCESS
+// cron.schedule('0,30 * * * *', () => {
+//   console.log('DIR', DIR)
+//   medicationModule.processFile(DIR,
+//     function (error, message) {
+//       if (error) {
+//         console.log('err')
+//       }
+//       else {
+//         console.log('success')
+//       }
+//       console.log('running a task at every 30 mins on every day');
+//     })
+// });
+// END OF  CRON JOB FOR CATALOUGE FILE UPLOAD PROCESS
+
+
 /*Listen express server on port*/
 app.listen(process.env.PORT || PORT, () => {
   console.info(`Server is running on port.... ${process.env.PORT || PORT}`);
 });
+
+//"mongodb+srv://soumya:12345@cluster0.iocs1.mongodb.net/Unicef"

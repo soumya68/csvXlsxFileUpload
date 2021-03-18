@@ -24,28 +24,58 @@ module.exports = function () {
                         console.log(err)
                         callBack(true, err, null, "Error");
                     });
-
             } catch (err) {
                 console.log(err)
                 callBack(true, err, null, "Error");
             }
         },
         // End of add supplier details
+        // Start of view single supplier details
+        viewSingleSupplier: function (supplierCode, callBack) {
+            try {
+                supplier.find({ supplierCode: supplierCode }).then(docs => {
+                    if (docs.length > 0) {
+                        var doc = docs[0];
+                        var data = {
+                            supplierName: doc.supplierName.eng,
+                            supplierCode: doc.supplierCode,
+                            isoCountry: doc.isoCountry,
+                            catalogTags: doc.catalogTags,
+                            contact: doc.contact,
+                            address: doc.contact.address,
+                            email: doc.contact.email,
+                            phone: doc.contact.phone,
+                            supplierUniqueId: doc.supplierId,
+                            deliveryFee: doc.deliveryFee.toString(),
+                            lastProductSeq: doc.lastProductSeq,
+                            type: doc.type,
+                            usdPrice: doc.usdPrice.toString()
+                        }
+                        callBack(false, 'Suppliers data found', data);
+                    }
+                    else {
+                        callBack(false, 'No supplier found', docs);
+                    }
+                })
+                    .catch(err => {
+                        console.log(err)
+                        callBack(true, 'Error', null,);
+                    });
+            } catch (err) {
+                console.log(err)
+                callBack(true, err, null,);
+            }
+        },
+        // End of view single supplier details
         //Start of view supplier details
         viewSuppliers: function (callBack) {
             try {
                 supplier.find({}).sort({ _id: -1 }).then(response => {
                     if (response.length > 0) {
-
-
-
-
                         index = 0
                         finalData = []
-                        var subOrdersData = function (doc) {
-
+                        var supplierData = function (doc) {
                             medications.countDocuments({ supplierCode: doc.supplierCode }).then(totalDatas => {
-
                                 var data = {
                                     supplierName: doc.supplierName.eng,
                                     supplierCode: doc.supplierCode,
@@ -64,24 +94,22 @@ module.exports = function () {
                                 }
                                 finalData.push(data)
                                 index++
-                                // CHECK IF ANY MORE SUB ORDER IS AVAILABLE OR NOT
+                                // CHECK IF ANY MORE SUPPLIER IS AVAILABLE OR NOT
                                 if (index < response.length) {
-                                    // IF ANY MORE SUBORDER AVAILABLE ,THEN CALL THE SUBORDERDATA FUNCTION AGAIN
-                                    subOrdersData(response[index]);
+                                    // IF ANY SUPPLIER IS FOUND THEN CALL SUPPLIERDATA FUNCTION
+                                    supplierData(response[index]);
                                 }
                                 else {
                                     callBack(false, 'Suppliers data found', finalData);
                                 }
-
-
                             }).catch(err => {
                                 callBack(true, 'Error', null,);
                             });
                         }
                         // CHECK IF ANY SUBORDER IS FOUND OR NOT
                         if (response.length !== 0) {
-                            // IF ANY SUBORDER IS FOUND THEN CALL SUBORDERDATA FUNCTION
-                            subOrdersData(response[index]);
+                            // IF ANY SUPPLIER IS FOUND THEN CALL SUPPLIERDATA FUNCTION
+                            supplierData(response[index]);
                         }
                     }
                     else {

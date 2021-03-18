@@ -59,8 +59,8 @@ module.exports = (app) => {
             };
             // SAVE SUPPLIER DATA IN SUPPLIER COLLECTION BY ADD SUPPLIER COLLECTION
             supplierModule.addSupplier(supplierData,
-                function (error, errData, result,message) {
-                    if (error & result==null) {
+                function (error, errData, result, message) {
+                    if (error & result == null) {
                         res.status(200).json({
                             status: false,
                             // message: Object.keys(errData.errors)[0],
@@ -68,9 +68,8 @@ module.exports = (app) => {
                             supplierId: null,
                             errData: errData.errors
                         })
-                       
                     }
-                    else if (error&&result) {
+                    else if (error && result) {
                         res.status(200).json({
                             status: false,
                             // message: Object.keys(errData.errors)[0],
@@ -78,9 +77,8 @@ module.exports = (app) => {
                             supplierId: null,
                             errData: null
                         })
-                       
                     }
-                    else  {
+                    else {
                         res.status(200).json({
                             status: true,
                             message: message,
@@ -95,13 +93,47 @@ module.exports = (app) => {
         }
     });
     //END OF API FOR ADD SUPPLIER DETAILS 
+    //START OF API FOR VIEW ALL SUPPLIER DETAILS 
+    //Params:
+    //Response: status, message,data
+    //Functions:viewSupplier
+    app.post('/api/view/allsuppliers', function (req, res) {
+        try {
+            supplierModule.viewSuppliers(
+                function (error, message, result) {
+                    if (error) {
+                        res.status(200).json({
+                            status: false,
+                            message: message,
+                            data: result
+                        })
+                    }
+                    else {
+                        res.status(200).json({
+                            status: true,
+                            message: message,
+                            data: result
+                        })
+                    }
+                })
+        }
+        catch (er) {
+            res.json({ status: false, message: er });
+        }
+    });
+    //END OF API FOR VIEW ALL SUPPLIER DETAILS 
     //START OF API FOR VIEW SUPPLIER DETAILS 
     //Params:
     //Response: status, message,data
     //Functions:viewSupplier
-    app.post('/api/view/supplier', function (req, res) {
+    app.post('/api/view/singlesupplier', function (req, res) {
         try {
-            supplierModule.viewSuppliers(
+            if (!req.body.supplierCode) {
+                res.json({ status: false, message: "supplierCode parameter is missing" });
+                return;
+            }
+            let supplierCode = req.body.supplierCode
+            supplierModule.viewSingleSupplier(supplierCode,
                 function (error, message, result) {
                     if (error) {
                         res.status(200).json({

@@ -12,6 +12,10 @@ var catalogueFileStatusSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
+        supplierCode: {
+            type: String,
+            required: true,
+        },
         successedRecordsCount: {
             type: Number,
             default: 0
