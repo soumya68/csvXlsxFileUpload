@@ -4,7 +4,7 @@ const multer = require('multer');
 module.exports = (app) => {
     var medicationModule = require('../module/medication_module')();
     // FILE UPLOAD FOLDER PATH
-    const DIR = 'Catalouge_Import/';
+    var DIR = process.env.SUCCESSDIR
     // STORAGE OF MULTER
     var storage = multer.diskStorage({
         destination: function (req, file, callback) {

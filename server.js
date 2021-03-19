@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+require('dotenv').config()
 const bodyParser = require('body-parser');
 const connectDB = require('./database/mongoose');
 const configDetails = require('./config/config.json')
@@ -8,11 +9,10 @@ var cron = require('node-cron');
 const order = require('./models/order-schema');
 const residents = require('./models/resident-schema');
 const pointsAudit = require('./models/pointsAudit-schema');
-var pointsModule = require('./module/pointsAudit_module')();
-var medicationModule = require('./module/medication_module')();
 var cors = require('cors')
-
-var DIR = 'Catalouge_Import/'
+var cronJob = require('./cronjob/cron-job')
+console.log(cronJob)
+var DIR = process.env.SUCCESSDIR
 console.log('aaaaaa', DIR)
 const corsOpts = {
   origin: '*',
@@ -35,7 +35,16 @@ app.use((req, res, next) => {
   next();
 });
 //mongodb connection using mongoose
-connectDB()
+connectDB(function (err) {
+  if (err) {
+    console.log("err")
+  }
+  else {
+    // TO RUN CRON JOB ONLY AFTER DATABASE CONNECTION DONE
+    cronJob.startCrons()
+    console.log("Database connection success")
+  }
+})
 app.get('/', (req, res) => {
   res.send('Welcome to Unicef API!')
 })
@@ -109,40 +118,15 @@ async function updatePointsCalculated(callbackfn) {
   }
 } */
 //End of cron job for earnedpoint details
-// START OF  CRON JOB FOR RESIDENTS POINT EXPIRY PROCESS
-// cron.schedule('59 23 * * *', () => {
-//   
-//   pointsModule.deactivatePoints(
-//     function (error, message) {
-//       if (error) {
-//       }
-//       else {
-//       }
-//       console.log('running a task at 11:59 PM every day');
-//     })
-// });
-// END OF  CRON JOB FOR RESIDENTS POINT EXPIRY PROCESS
 
-// START OF  CRON JOB FOR CATALOUGE FILE UPLOAD PROCESS
-// cron.schedule('0,30 * * * *', () => {
-//   console.log('DIR', DIR)
-//   medicationModule.processFile(DIR,
-//     function (error, message) {
-//       if (error) {
-//         console.log('err')
-//       }
-//       else {
-//         console.log('success')
-//       }
-//       console.log('running a task at every 30 mins on every day');
-//     })
-// });
-// END OF  CRON JOB FOR CATALOUGE FILE UPLOAD PROCESS
 
 
 /*Listen express server on port*/
 app.listen(process.env.PORT || PORT, () => {
+
+
   console.info(`Server is running on port.... ${process.env.PORT || PORT}`);
+
 });
 
 //"mongodb+srv://soumya:12345@cluster0.iocs1.mongodb.net/Unicef"

@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const csv = require('csv-parser');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const failuerDir=process.env.FAILUERDIR
 module.exports = function () {
     var medicationModule = {
         // Start Generating catalogue number -----
@@ -727,7 +728,7 @@ module.exports = function () {
         failuerFileUpload: function (filename, invalidDatas, callBack) {
             try {
                 const csvWriter = createCsvWriter({
-                    path: 'Failure_Catalogue/' + filename,
+                    path: failuerDir + filename,
                     header: [
                         { id: 'CatalougeNumber', title: 'CatalougeNumber' },
                         { id: 'SupplierUniqueCatalogueNumber', title: 'SupplierUniqueCatalogueNumber' },
