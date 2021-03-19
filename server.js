@@ -50,52 +50,26 @@ app.get('/', (req, res) => {
 })
 /*Incudes all API routes*/
 require('./routes/index')(app, connectDB);
-// Start the cron job ----will run every day midnight
+// Start the cron job for update order status ----will run every day midnight
 cron.schedule("00 00 00 * * *", function () {
-  // cron.schedule("*/10 * * * * *", function() { 
-  updateOrderStatus(function (err, res) {
-    if (err) {
-    }
-    else {
-    }
-  })
+   //cron.schedule("*/10 * * * * *", function() { 
+     orderModule.updateOrderStatus(function(err,res){
+       if(err){
+       }
+       else{
+         console.log("running a task at 12:00 AM every day")
+       }
+     })
 });
-async function updateOrderStatus(callbackfn) {
-  try {
-    let result = await order.find({ isPointsAddedToResident: false })
-    Promise.all(
-      result.map(async ele => {
-        // Update order status and points in the collections
-        let orderdata = await order.findOneAndUpdate({ _id: ele._id },
-          { $set: { isDelivered: true, isPointsAddedToResident: true } },
-          { new: true })
-        let auditdata = await pointsAudit.findOneAndUpdate({ orderId: ele._id },
-          { $set: { isActive: false, earnedPointsExpiryDate: new Date() } },
-          { new: true })
-        let points = auditdata.earnedPoints
-        let residentdata = await residents.findOneAndUpdate({ _id: ele._id },
-          { $set: { isPointsAddedToResident: true, earnedPoints: points } },
-          { new: true })
-        let finalData = { ...orderdata, ...auditdata, ...residentdata }
-        return finalData
-      })
-    ).then(function (documents) {
-    });
-    callbackfn(null, finalData);
-  } catch (err) {
-    callbackfn(err, null,);
-  }
-}
-// End the cron job ----
-// Start of cron job for earnedpoint details
+// End the cron job for update order status 
+// Start of cron job for update points calculated status
 /* cron.schedule("00 00 00 * * *", function() { 
   updatePointsCalculated(function (err, res) {
-    if (err) {
-      console.log("err")
-    }
-    else {
-      console.log("success")
-    }
+     if(err){
+       }
+       else{
+         console.log("running a task at 12:00 AM every day")
+       }
   })
 });
 async function updatePointsCalculated(callbackfn) {
