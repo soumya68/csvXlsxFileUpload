@@ -222,6 +222,66 @@ module.exports = function () {
             }
         },
         //Start To get the points earned after successfully deliver
+        //Start to update the order status for cron job
+        updateOrderStatus:async function (callbackfn) {
+            try {
+              let result = await order.find({ isPointsAddedToResident: false })
+              if(result.length > 0){
+                Promise.all(
+                    result.map(async ele => {
+                      // Update order status and points in the collections
+                      let orderdata = await order.findOneAndUpdate({ _id: ele._id },
+                        { $set: { isDelivered: true, isPointsAddedToResident: true } },
+                        { new: true })
+                      let auditdata = await pointsAudit.findOneAndUpdate({ orderId: ele._id },
+                        { $set: { isActive: false, earnedPointsExpiryDate: new Date() } },
+                        { new: true })
+                      let points = auditdata.earnedPoints
+                      let residentdata = await residents.findOneAndUpdate({ _id: ele._id },
+                        { $set: { isPointsAddedToResident: true, earnedPoints: points } },
+                        { new: true })
+                      let finalData = { ...orderdata, ...auditdata, ...residentdata }
+                      return finalData
+                    })
+                  ).then(function (documents) {
+                  });
+                  callbackfn(null, finalData);
+              }
+              else{
+                callbackfn(null, 'No data');
+              }
+              
+            } catch (err) {
+              callbackfn(err, null,);
+            }
+         },
+        //End to update the order status for cron job
+        //End of cron job for update earnedpoint calculated
+        updatePointsCalculated:async function (callbackfn) {
+            try {
+              let result = await order.find({ isEarnedPointCalculated: false })
+              if(result.length > 0){
+                result.map(async ele => {
+                    // To get the data from collections
+                  let auditdata = await pointsAudit.findOneAndUpdate({ residentId: ele.residentId },
+                    { $set: { isActive: false} },
+                    { new: true })
+                    let points = auditdata.availablePoints
+                  let residentdata = await residents.findOneAndUpdate({ residentId: ele.residentId },
+                    { $set: { isPointsAddedToResident: true, availablePoints: points } },
+                    { new: true })
+                    data = {...auditdata,...residentdata}
+                    callbackfn(null, data);
+                })
+              }
+              else{
+                callbackfn(null, 'No data');
+              }
+            } catch (err) {
+              callbackfn(err, null,);
+            }
+          }
+         // End of cron job for update earnedpoint calculated
     }
     return orderModule;
 }
