@@ -11,9 +11,9 @@ const residents = require('./models/resident-schema');
 const pointsAudit = require('./models/pointsAudit-schema');
 var cors = require('cors')
 var cronJob = require('./cronjob/cron-job')
-console.log(cronJob)
+
 var DIR = process.env.SUCCESSDIR
-console.log('aaaaaa', DIR)
+
 const corsOpts = {
   origin: '*',
   methods: ['GET', 'POST',],
@@ -52,14 +52,14 @@ app.get('/', (req, res) => {
 require('./routes/index')(app, connectDB);
 // Start the cron job for update order status ----will run every day midnight
 cron.schedule("00 00 00 * * *", function () {
-   //cron.schedule("*/10 * * * * *", function() { 
-     orderModule.updateOrderStatus(function(err,res){
-       if(err){
-       }
-       else{
-         console.log("running a task at 12:00 AM every day")
-       }
-     })
+  //cron.schedule("*/10 * * * * *", function() { 
+  orderModule.updateOrderStatus(function (err, res) {
+    if (err) {
+    }
+    else {
+      console.log("running a task at 12:00 AM every day")
+    }
+  })
 });
 // End the cron job for update order status 
 // Start of cron job for update points calculated status

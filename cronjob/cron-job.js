@@ -51,7 +51,7 @@ function startCrons() {
     // // END OF  CRON JOB FOR CATALOUGE FILE UPLOAD PROCESS
 
 
-
+    // START ALL REQUIRED FUNCTIONS FOR CRON JOB
 
     processUploadFileCron.start()
     pointsExpiryCron.start()
