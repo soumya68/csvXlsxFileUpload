@@ -34,6 +34,7 @@ module.exports = (app) => {
                 res.json({ status: false, message: "phone parameter is missing" });
                 return;
             }
+            console.log(req.body.supplierName)
             const supplierData = {
                 supplierName: req.body.supplierName,
                 supplierCode: req.body.supplierCode,

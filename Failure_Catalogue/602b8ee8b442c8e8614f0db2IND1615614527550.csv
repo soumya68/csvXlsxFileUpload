@@ -1,5 +1,0 @@
-CatalougeNumber,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,PointsAccumulation,SupplierName
-We will create this,A1234,Activent syrup,Salbutamol ,Gilead,,2mg/5ml,syrup ,1,60ml sachet,medication,Yes,GST,No,Yes,10,96,,Available,0,ABC
-,A3452,AD-C plus,Ascorbic acid + Zinc,Novartis,,500mg/15mg,capsule,30, capsule pack,medication,No,VAT,No,Yes,10,6.5,,Available,1,XYZ
-,A5623,Advil ,Ibuprofen,J&J,,200mg,soft gel capsule,8, capsule pack,medication,Yes,VAT,No,Yes,10,9,,Available,1,ERT
-,A9854,Advil syrup,Ibuprofen ,,,100mg/5ml ,suspension,1,60ml sachet,medication,No,VAT,No,Yes,10,89,,Available,1,POUT
