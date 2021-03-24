@@ -8,15 +8,12 @@ const PORT = configDetails.development.PORT
 var cron = require('node-cron');
 var cors = require('cors')
 var cronJob = require('./cronjob/cron-job')
-
 var DIR = process.env.SUCCESSDIR
-
 const corsOpts = {
   origin: '*',
-  methods: ['GET', 'POST',],
+  methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type',],
 };
-
 app.use(cors(corsOpts));
 //const PORT = 8000
 /*middlewares*/
@@ -47,14 +44,8 @@ app.get('/', (req, res) => {
 })
 /*Incudes all API routes*/
 require('./routes/index')(app, connectDB);
-
-
-
 /*Listen express server on port*/
 app.listen(process.env.PORT || PORT, () => {
-  
   console.info(`Server is running on port.... ${process.env.PORT || PORT}`);
-
 });
-
 //"mongodb+srv://soumya:12345@cluster0.iocs1.mongodb.net/Unicef"

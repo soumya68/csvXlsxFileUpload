@@ -15,17 +15,14 @@ module.exports = function () {
                             callBack(false, null, response, "Supplier added successfully");
                         })
                             .catch(err => {
-                                console.log(err)
                                 callBack(true, err, null, "Error");
                             });
                     }
                 })
                     .catch(err => {
-                        console.log(err)
                         callBack(true, err, null, "Error");
                     });
             } catch (err) {
-                console.log(err)
                 callBack(true, err, null, "Error");
             }
         },
@@ -58,11 +55,9 @@ module.exports = function () {
                     }
                 })
                     .catch(err => {
-                        console.log(err)
                         callBack(true, 'Error', null,);
                     });
             } catch (err) {
-                console.log(err)
                 callBack(true, err, null,);
             }
         },

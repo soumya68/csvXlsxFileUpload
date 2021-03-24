@@ -4,7 +4,7 @@ module.exports = (app) => {
     //Response: status, message,data
     //functions:userPoints
     //Params:residentId
-    app.post('/api/user/points', function (req, res) {
+    app.get('/api/user/points', function (req, res) {
         try {
             if (!req.body.residentId) {
                 res.status(400).json({ status: false, message: "residentId parameter is missing" });

@@ -59,9 +59,6 @@ module.exports = (app) => {
         upload.single('file'),
         function (req, res) {
             try {
-                console.log('fileName', req.file)
-                // console.log('FILE',req.file)
-                // console.log('BODY',req.body)
                 invalidDatas = [];
                 incorrectEntryCount = 0;
                 correctEntryCount = 0;
@@ -284,7 +281,6 @@ module.exports = (app) => {
                 });
             }
             catch (er) {
-                console.log(er)
                 res.json({ status: false, message: er });
             }
         });
@@ -293,7 +289,7 @@ module.exports = (app) => {
     //Params:
     //Response: status, message,data
     //Functions:viewSupplier
-    app.post('/api/view/files', function (req, res) {
+    app.get('/api/view/files', function (req, res) {
         try {
             medicationModule.viewFiles(
                 function (error, message, result) {

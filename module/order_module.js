@@ -250,7 +250,6 @@ module.exports = function () {
               else{
                 callbackfn(null, 'No data');
               }
-              
             } catch (err) {
               callbackfn(err, null,);
             }
