@@ -36,6 +36,13 @@ var catalogueFileStatusSchema = new mongoose.Schema(
             type: Boolean,
             default: false
         },
+        isoCountryCode: {
+            type: String,
+            default: ""
+        },
+        // supplierId: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        // },
     },
     {
         timestamps: {

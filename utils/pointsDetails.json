@@ -16,7 +16,7 @@
   },
   "KHM": {
     "countryName": "Cambodia",
-    "countryCurrency": "KHM",
+    "countryCurrency": "KHR",
     "redemption": {
       "numberOfPoints": 100,
       "currencyValue": 1,
@@ -31,7 +31,7 @@
   },
   "PHL": {
     "countryName": "Philippines",
-    "countryCurrency": "PHL",
+    "countryCurrency": "PHP",
     "redemption": {
       "numberOfPoints": 100,
       "currencyValue": 1,

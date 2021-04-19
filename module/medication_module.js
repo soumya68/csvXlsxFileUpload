@@ -5,7 +5,8 @@ const path = require('path');
 const fs = require('fs');
 const csv = require('csv-parser');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const failuerDir=process.env.FAILUERDIR
+const failuerDir = process.env.FAILUERDIR
+var ObjectId = require('mongodb').ObjectID;
 module.exports = function () {
     var medicationModule = {
         // Start Generating catalogue number -----
@@ -15,7 +16,7 @@ module.exports = function () {
                     if (data.length > 0) {
                         var dbNum = data[0].r52CatNo;
                         // Incrementing the catalogue number
-                        var r52CatNumber = dbNum + 1;
+                        var r52CatNumber = parseInt(dbNum) + 1;
                         callBack(r52CatNumber);
                     }
                     else {
@@ -102,6 +103,8 @@ module.exports = function () {
                             var fileName = row.fileName
                             var userId = row.userId
                             var supplierCode = row.supplierCode
+                            var supplierId = row.supplierId
+                            var isoCountryCode = row.isoCountryCode
                             var version = 1
                             // File path where file is saved
                             var filePath = path.resolve(DIR + fileName);
@@ -109,7 +112,7 @@ module.exports = function () {
                             // CHECK FILE EXTENTION TYPE 
                             if (fileExtention == "xlsx" || fileExtention == "xls") {
                                 ////// THIS IS FOR XLSX FILE 
-                                medicationModule.xlsxUpload(userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                medicationModule.xlsxUpload(supplierId, isoCountryCode, userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
                                     function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                         // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
                                         let updates = {
@@ -159,7 +162,7 @@ module.exports = function () {
                             }
                             else {
                                 /// THIS IS FOR CSV FILE UPLOAD
-                                medicationModule.csvUpload(userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                medicationModule.csvUpload(supplierId, isoCountryCode, userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                                     function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                         // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
                                         let updates = {
@@ -220,7 +223,7 @@ module.exports = function () {
         },
         // End of Process File
         // Start of csv file upload
-        csvUpload: function (userId, version, supplierCode, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        csvUpload: function (isoCountryCode, userId, version, supplierCode, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
@@ -243,6 +246,8 @@ module.exports = function () {
                                 var index = 0;
                                 // RECURSIVE FUNCTION INSERT DATA FOUND
                                 var insertData = function (row) {
+
+
                                     // EXCEL FILE ROW VALIDATION FOR EMPTY DATA IN ANY MANDATORY COLUMN
                                     medicationModule.excelValidation(row, function (status) {
                                         if (status) {
@@ -266,22 +271,43 @@ module.exports = function () {
                                                     }
                                                     // MAKE A MEDICATION DATA OBJECT 
                                                     const medicationData = {
+                                                        information: {
+                                                            "eng": "NA"
+                                                        },
+                                                        promotion: {
+                                                            "eng": "NA"
+                                                        },
+                                                        stock: {
+                                                            "qty": 0
+                                                        },
+                                                        suppliers: {
+                                                            "eng": "NA"
+                                                        },
+                                                        ingredients: {
+                                                            "eng": "NA"
+                                                        },
+                                                        handlingInstr: {
+                                                            "eng": "NA"
+                                                        },
+                                                        isoCountry: isoCountryCode,
                                                         supplierCode: supplierCode,
+                                                        r52SupplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
                                                         suppCatNo: row.SupplierUniqueCatalogueNumber,
                                                         brandName: {
-                                                            eng: row.BrandName,
+                                                            eng: row.BrandName == null ? "NA" : row.BrandName
                                                         },
                                                         genericName: {
-                                                            eng: row.Generic
+                                                            eng: row.Generic == null ? "NA" : row.Generic
                                                         },
                                                         manufacturerName: row.Manufacturer,
                                                         description: {
-                                                            eng: row.Description,
+
+                                                            eng: row.Description == null ? "NA" : row.Description
                                                         },
                                                         dosage: row.Dosage,
                                                         form: {
-                                                            eng: row.Form,
+                                                            eng: row.Form == null ? "NA" : row.Form,
                                                         },
                                                         packSize: row.PackSize,
                                                         packSizeUnit: row.PackSizeUnits,
@@ -295,16 +321,21 @@ module.exports = function () {
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
+                                                        pricePerPack: row.PricePerPackage,
+                                                        price: parseFloat(row.PricePerPackage).toFixed(2),
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
-                                                        metadata: {
+                                                        createdBy: {
+                                                            userId: userId,
+                                                            utcDatetime: new Date()
+                                                        },
+                                                        metaData: {
                                                             createdBy: {
                                                                 userId: userId,
                                                                 utcDatetime: new Date()
                                                             },
-                                                            updatedBy: [],
+                                                            updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -323,9 +354,13 @@ module.exports = function () {
                                                         // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                         medications.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
+
+
+
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
+                                                                console.log(err)
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -333,20 +368,45 @@ module.exports = function () {
                                                 else {
                                                     // IF DUPLICATE DATA FOUND
                                                     // MAKE MEDICATION DATA OBJECT FOR UPDATE DATA IN COLLECTION
+
                                                     const medicationUpdateData = {
+                                                        information: {
+                                                            "eng": "NA"
+                                                        },
+                                                        promotion: {
+                                                            "eng": "NA"
+                                                        },
+                                                        stock: {
+                                                            "qty": 0
+                                                        },
+                                                        suppliers: {
+                                                            "eng": "NA"
+                                                        },
+                                                        ingredients: {
+                                                            "eng": "NA"
+                                                        },
+                                                        handlingInstr: {
+                                                            "eng": "NA"
+                                                        },
+                                                        isoCountry: isoCountryCode,
+                                                        supplierCode: supplierCode,
+                                                        r52SupplierCode: supplierCode,
+                                                        r52CatNo: r52CatNo,
+                                                        suppCatNo: row.SupplierUniqueCatalogueNumber,
                                                         brandName: {
-                                                            eng: row.BrandName,
+                                                            eng: row.BrandName == null ? "NA" : row.BrandName
                                                         },
                                                         genericName: {
-                                                            eng: row.Generic
+                                                            eng: row.Generic == null ? "NA" : row.Generic
                                                         },
                                                         manufacturerName: row.Manufacturer,
                                                         description: {
-                                                            eng: row.Description,
+
+                                                            eng: row.Description == null ? "NA" : row.Description
                                                         },
                                                         dosage: row.Dosage,
                                                         form: {
-                                                            eng: row.Form,
+                                                            eng: row.Form == null ? "NA" : row.Form,
                                                         },
                                                         packSize: row.PackSize,
                                                         packSizeUnit: row.PackSizeUnits,
@@ -360,24 +420,29 @@ module.exports = function () {
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
+                                                        // pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
+                                                        pricePerPack: row.PricePerPackage,
+                                                        price: parseFloat(row.PricePerPackage).toFixed(2),
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
-                                                        metadata: {
-                                                            createdBy: {
-                                                                userId: userId,
-                                                                utcDatetime: new Date()
-                                                            },
-                                                            updatedBy: [],
+
+                                                        metaData: {
+
+                                                            updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
                                                     };
+
+
                                                     // UPDATE THAT DUPLICATE DATA IN MEDICATION COLLECTION BY SPECIFIC SUPPLIERUNIQUECATALOUGUENUM & SUPPLIER CODE
                                                     medications.findOneAndUpdate({ suppCatNo: row.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
                                                         { $set: medicationUpdateData },
                                                         { new: true }).then(result => {
+
+
+
                                                         }).catch(err => {
                                                             console.log('error', err)
                                                         });
@@ -396,6 +461,7 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
+                                                                console.log(err)
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -420,6 +486,7 @@ module.exports = function () {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     })
                                                     .catch(function (err) {
+                                                        console.log(err)
                                                         callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     });
                                             }
@@ -439,12 +506,13 @@ module.exports = function () {
                         }
                     })
             } catch (e) {
+                console.log(e)
                 callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
             }
         },
         // End of csv file upload
         // Start of xlsx file upload
-        xlsxUpload: function (userId, version, supplierCode, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        xlsxUpload: function (isoCountry, userId, version, supplierCode, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
@@ -488,8 +556,10 @@ module.exports = function () {
                                     };
                                     // CHECK DATA OBJECT VALIDATION FOR NO EMPTY COLUMNS FOR MANDATORY FIELDS
                                     medicationModule.excelValidation(data, function (status) {
+                                        console.log(doc[5])
                                         // IF VALIDATION DONE & STATUS TRUE
                                         if (status) {
+                                            console.log(parseFloat(doc[16]))
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
                                             medicationModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, data.supplierCode, function (error, isDuplicate) {
                                                 // IF NO DUPLICATE DATA
@@ -509,28 +579,49 @@ module.exports = function () {
                                                     }
                                                     // MAKE MEDICATION OBJECT
                                                     const medicationData = {
+                                                        Information: {
+                                                            "eng": "NA"
+                                                        },
+                                                        Promotion: {
+                                                            "eng": "NA"
+                                                        },
+                                                        Stock: {
+                                                            "eng": 0
+                                                        },
+                                                        Suppliers: {
+                                                            "eng": "NA"
+                                                        },
+                                                        Ingredients: {
+                                                            "eng": "NA"
+                                                        },
+                                                        HandlingInstr: {
+                                                            "eng": "NA"
+                                                        },
+                                                        isoCountry: isoCountry,
                                                         supplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
                                                         suppCatNo: doc[1],
-                                                        brandName: {
-                                                            eng: doc[2]
+                                                        BrandName: {
+
+                                                            eng: doc[2] == null ? "NA" : doc[2]
                                                         },
-                                                        genericName: {
-                                                            eng: doc[3]
+
+                                                        GenericName: {
+                                                            eng: doc[3] == null ? "NA" : doc[3]
                                                         },
                                                         manufacturerName: doc[4],
-                                                        description: {
-                                                            eng: doc[5]
+                                                        Description: {
+                                                            eng: doc[5] == null ? "NA" : doc[5]
                                                         },
                                                         dosage: doc[6],
-                                                        form: {
-                                                            eng: doc[7]
+                                                        Form: {
+                                                            eng: doc[7] == null ? "NA" : doc[7]
                                                         },
                                                         packSize: doc[8],
                                                         packSizeUnit: doc[9],
                                                         type: doc[10],
                                                         requireRx: doc[11],
-                                                        tax: {
+                                                        Tax: {
                                                             name: doc[12],
                                                             category: doc[12],
                                                             isIncluded: isIncluded,
@@ -538,16 +629,22 @@ module.exports = function () {
                                                             type: doc[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: parseFloat(doc[16]).toFixed(2),
+                                                        // pricePerPack: parseFloat(doc[16]),
+                                                        pricePerPack: doc[16],
+                                                        price: parseFloat(doc[16]).toFixed(2),
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
-                                                        metadata: {
+                                                        CreatedBy: {
+                                                            userId: userId,
+                                                            utcDatetime: new Date()
+                                                        },
+                                                        MetaData: {
                                                             createdBy: {
                                                                 userId: userId,
                                                                 utcDatetime: new Date()
                                                             },
-                                                            updatedBy: [],
+                                                            updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -569,6 +666,7 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
+                                                                console.log(err)
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -577,25 +675,47 @@ module.exports = function () {
                                                 else {
                                                     // IF DUPLICATE DATA FOUND MAKE A OBJECT
                                                     const medicationUpdateData = {
-                                                        brandName: {
-                                                            eng: doc[2]
+                                                        Information: {
+                                                            "eng": "NA"
                                                         },
-                                                        genericName: {
-                                                            eng: doc[3]
+                                                        Promotion: {
+                                                            "eng": "NA"
+                                                        },
+                                                        Stock: {
+                                                            "qty": 0
+                                                        },
+                                                        Suppliers: {
+                                                            "eng": "NA"
+                                                        },
+                                                        Ingredients: {
+                                                            "eng": "NA"
+                                                        },
+                                                        HandlingInstr: {
+                                                            "eng": "NA"
+                                                        },
+                                                        isoCountry: isoCountry,
+
+                                                        BrandName: {
+
+                                                            eng: doc[2] == null ? "NA" : doc[2]
+                                                        },
+
+                                                        GenericName: {
+                                                            eng: doc[3] == null ? "NA" : doc[3]
                                                         },
                                                         manufacturerName: doc[4],
-                                                        description: {
-                                                            eng: doc[5]
+                                                        Description: {
+                                                            eng: doc[5] == null ? "NA" : doc[5]
                                                         },
                                                         dosage: doc[6],
-                                                        form: {
-                                                            eng: doc[7]
+                                                        Form: {
+                                                            eng: doc[7] == null ? "NA" : doc[7]
                                                         },
                                                         packSize: doc[8],
                                                         packSizeUnit: doc[9],
                                                         type: doc[10],
                                                         requireRx: doc[11],
-                                                        tax: {
+                                                        Tax: {
                                                             name: doc[12],
                                                             category: doc[12],
                                                             isIncluded: isIncluded,
@@ -603,16 +723,18 @@ module.exports = function () {
                                                             type: doc[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: parseFloat(doc[16]).toFixed(2),
+                                                        pricePerPack: doc[16],
+                                                        price: parseFloat(doc[16]).toFixed(2),
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
-                                                        metadata: {
-                                                            updatedBy: [],
+                                                        Metadata: {
+                                                            updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
                                                     };
+                                                    console.log(medicationUpdateData)
                                                     // UPDATE THAT DUPLICATE DATA IN MEDICATION COLLECTION BY SPECIFIC SUPPLIERUNIQUECATALOUGUENUM & SUPPLIER CODE
                                                     medications.findOneAndUpdate({ suppCatNo: data.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
                                                         { $set: medicationUpdateData },

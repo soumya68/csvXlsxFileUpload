@@ -1,6 +1,43 @@
+
 var mongoose = require("mongoose");
+require('mongoose-double')(mongoose);
+require('mongoose-long')(mongoose);
+var Long = mongoose.Schema.Types.Long;
+var SchemaTypes = mongoose.Schema.Types;
 var catalougeSchema = new mongoose.Schema(
     {
+        _partition: {
+            type: String,
+            default: "101"
+        },
+        tags: {
+            type: Array,
+            default: []
+        },
+        isoCountry: {
+            type: String,
+            default: ""
+        },
+        isoCurrency: {
+            type: String,
+            default: ""
+        },
+        manufacturer: {
+            type: String,
+            default: ""
+        },
+        //40
+        packUnit: {
+            type: String,
+            default: ""
+        },
+        stock: {
+            qty: {
+                type: Long,
+                default: 22
+            }
+        },
+        ////////////////////////////
         supplierCode: {
             type: String,
             required: true,
@@ -25,12 +62,22 @@ var catalougeSchema = new mongoose.Schema(
         //pricePerPack IS ADDED AS PER UPLOAD SHEET
         pricePerPack: {
             type: mongoose.Decimal128,
-            default: '0.00'
+            default: 0.00
+
+        },
+        price: {
+
+            //type:  SchemaTypes.Double ,
+            // default: 0.00
+            // type: String,
+            // default: '0.00'
+            type: mongoose.Decimal128,
+            default: 0.00
         },
         ////////////////////////////////////
         pointsAccumulation: {
             type: Boolean,
-            require: true,
+            required: true,
             min: 6,
             default: false,
         },
@@ -42,6 +89,7 @@ var catalougeSchema = new mongoose.Schema(
             type: Object,
             default: {}
         },
+        //30
         catalogTags: {
             type: Array,
             default: []
@@ -82,22 +130,30 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             default: 0000
         },
-        metadata: {
+        //20
+        createdBy: {
+            userId: {
+                type: String,
+            },
+            utcDatetime: {
+                type: String
+            },
+        },
+        metaData: {
             createdBy: {
                 userId: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    required: true
+                    type: String,
                 },
                 utcDatetime: {
-                    type: Date
+                    type: String
                 },
             },
             updatedBy: {
-                type: Array,
-                default: []
+                type: String,
+                default: ""
             },
             version: {
-                type: String,
+                type: Long,
                 default: 0
             },
         },
@@ -111,10 +167,7 @@ var catalougeSchema = new mongoose.Schema(
             min: 6,
             default: false,
         },
-        price: {
-            type: mongoose.Decimal128,
-            default: '0.00'
-        },
+
         prodCategory: {
             type: Array,
             default: []
@@ -128,9 +181,9 @@ var catalougeSchema = new mongoose.Schema(
             default: 0000,
         },
         r52CatNo: {
-            type: Number,
+            type: String,
             required: true,
-            default: 0000,
+            default: '0000',
         },
         r52Locale: {
             type: Array,
@@ -145,15 +198,11 @@ var catalougeSchema = new mongoose.Schema(
             required: true,
             default: 'Unavailable'
         },
-        stock: {
-            type: Object,
-            default: {}
-        },
         suppCatNo: {
             type: String,
             required: true,
         },
-        supplier: {
+        suppliers: {
             type: Object,
             default: {}
         },
@@ -181,7 +230,7 @@ var catalougeSchema = new mongoose.Schema(
                 default: false,
             },
             percentage: {
-                type: Number,
+                type: Long,
                 default: 0,
             },
             type: {
@@ -193,9 +242,17 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             default: '',
         },
+        rating: {
+            type: String,
+            default: '',
+        },
+        supplierName: {
+            type: String,
+            default: '',
+        },
         usdPrice: {
-            type: mongoose.Decimal128,
-            default: '0.00'
+            type: Long,
+            default: 0
         }
     },
     {
@@ -205,4 +262,9 @@ var catalougeSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("medication", catalougeSchema);
+
+
+var customeCollectionName = 'MedicationObject'
+/// TO MAKE CUSTOME COLLECTION NAME
+module.exports = mongoose.model("medication", catalougeSchema, customeCollectionName);
+

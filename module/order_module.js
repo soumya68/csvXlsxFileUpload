@@ -89,7 +89,9 @@ module.exports = function () {
                                                             // SAVE POINTS DETAILS IN POINTSAUDIT COLLECTION 
                                                             ponitDetails.save().then(response => {
                                                                 // UPDATE AVAILABLE POINT OF THAT RESIDENT BY SUBSTRACTING REEDEM POINTS FROM AVAILABLE POINTS
-                                                                residents.findOneAndUpdate({ residentId: residentId },
+                                                               
+                                                              //  residents.findOneAndUpdate({ residentId: residentId },
+                                                                    residents.findOneAndUpdate({ _id: residentId },
                                                                     { $inc: { availablePoints: -parseInt(totalRedeemedPoints) } },
                                                                     { new: true }).then(result => {
                                                                         callBack(false, "Order point created successfully", discountAmount, finalPrice, totalEarnedPoints);
@@ -266,7 +268,7 @@ module.exports = function () {
                     { $set: { isActive: false} },
                     { new: true })
                     let points = auditdata.availablePoints
-                  let residentdata = await residents.findOneAndUpdate({ residentId: ele.residentId },
+                  let residentdata = await residents.findOneAndUpdate({ _id: ele.residentId },
                     { $set: { isPointsAddedToResident: true, availablePoints: points } },
                     { new: true })
                     data = {...auditdata,...residentdata}
