@@ -80,13 +80,16 @@ module.exports = (app) => {
                     res.json({ status: false, message: "isoCountryCode parameter is missing" });
                     return;
                 }
+               
                 // File path where file is saved
                 var filePath = path.resolve(DIR + req.file.filename);
-                const { supplierCode, version, userId } = req.body
+                const { supplierCode, version, userId ,isoCountryCode} = req.body
                 const fileData = {
                     fileName: req.file.filename,
                     userId: userId,
-                    supplierCode: req.body.supplierCode,
+                    supplierCode:supplierCode,
+                   // supplierId:supplierId,
+                    isoCountryCode:isoCountryCode,
                     status: false,
                     successedRecordsCount: 0,
                     failedRecordsCount: 0,
@@ -99,7 +102,7 @@ module.exports = (app) => {
                     //FILE DATA INSERT CODE WILL BE HERE
                     if (req.file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
                         ////// THIS IS FOR XLSX FILE 
-                        medicationModule.xlsxUpload(userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                        medicationModule.xlsxUpload(isoCountryCode,userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
                             function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                 // IF FILE HAS NO DATA
                                 if (totalEntryCount == 0) {
@@ -180,6 +183,7 @@ module.exports = (app) => {
                                             }
                                         })
                                         .catch(err => {
+                                            console.log(err)
                                             return res.status(400).json({ status: false, message: err });
                                         });
                                 }
@@ -187,7 +191,7 @@ module.exports = (app) => {
                     }
                     else {
                         ////// THIS IS FOR CSV FILE 
-                        medicationModule.csvUpload(userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                        medicationModule.csvUpload(isoCountryCode,userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                             function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                 // IF FILE HAS NO DATA
                                 if (totalEntryCount == 0) {
@@ -269,6 +273,7 @@ module.exports = (app) => {
                                             }
                                         })
                                         .catch(err => {
+                                            console.log(err)
                                             return res.status(400).json({ status: false, message: err });
                                         });
                                 }
@@ -277,10 +282,12 @@ module.exports = (app) => {
                     }
                     ////
                 }).catch(err => {
+                    console.log(err)
                     return res.status(400).json({ message: 'Error while uploading file', error: err });
                 });
             }
             catch (er) {
+                console.log(er)
                 res.json({ status: false, message: er });
             }
         });

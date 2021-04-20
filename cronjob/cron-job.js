@@ -8,7 +8,7 @@ var orderModule = require('../module/order_module')();
 const cron = require("node-cron");
 function startCrons() {
     // // START OF  CRON JOB FOR RESIDENTS POINT EXPIRY PROCESS----will run every day midnight
-    var pointsExpiryCron = new cron.schedule('00 00 * * *', () => {
+    var pointsExpiryCron = new cron.schedule('00 00 00 * * *', () => {
         pointsModule.deactivatePoints(
             function (error, message) {
                 if (error) {
