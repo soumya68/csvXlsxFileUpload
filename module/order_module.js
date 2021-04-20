@@ -259,26 +259,35 @@ module.exports = function () {
          },
         //End to update the order status for cron job
         //End of cron job for update earnedpoint calculated
-        updatePointsCalculated:async function (callbackfn) {
+        updatePointsCalculated:function (callbackfn) {
             try {
-              let result = await order.find({ isEarnedPointCalculated: false })
+              order.find({ isEarnedPointCalculated: false }).then(result=>{
               if(result.length > 0){
-                result.map(async ele => {
+                result.map(ele => {
                     // To get the data from collections
-                  let auditdata = await pointsAudit.findOneAndUpdate({ residentId: ele.residentId },
-                    { $set: { isActive: false} },
-                    { new: true })
-                    let points = auditdata.availablePoints
-                  let residentdata = await residents.findOneAndUpdate({ _id: ele.residentId },
-                    { $set: { isPointsAddedToResident: true, availablePoints: points } },
-                    { new: true })
-                    data = {...auditdata,...residentdata}
-                    callbackfn(null, data);
+                  let auditdata = pointsAudit.findOneAndUpdate({ residentId: ele.residentId },
+                    { $set: { isActive: false,isLapsed : true} },
+                    { new: true }).then(data=>{
+                        let points = auditdata.availablePoints
+                        let residentdata = residents.findOneAndUpdate({ _id: ele.residentId },
+                          { $set: {availablePoints: points } },
+                          { new: true }).then(data=>{
+                            callbackfn(null, data);
+                          }).catch(err => {
+                            callbackfn(true, "err");
+                        });
+                        callbackfn(null, data);
+                    }).catch(err => {
+                        callbackfn(true, "Error");
+                    });
                 })
               }
               else{
                 callbackfn(null, 'No data');
               }
+            }).catch(err => {
+                callbackfn(true, "Error");
+            });
             } catch (err) {
               callbackfn(err, null,);
             }
