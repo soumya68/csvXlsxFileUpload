@@ -3,7 +3,7 @@ const pointsAudit = require('../models/pointsAudit-schema');
 var pointDetails = require('../utils/pointsDetails.json');
 const residents = require('../models/resident-schema');
 const productsModel = require('../models/catalouge-schema');
-var ObjectId = require('mongoose').Types.ObjectId;
+var ObjectId = require('mongodb').ObjectID;
 module.exports = function () {
     var orderModule = {
         // Start of  create order details
@@ -80,7 +80,7 @@ module.exports = function () {
                                                                     availablePoints: totalAvailablePoint,
                                                                     pointSource: pointSource,
                                                                     earnedPointsExpiryDate: earnedPointsExpiryDate,
-                                                                    residentId: residentId,
+                                                                    residentId: new ObjectId(residentId),
                                                                     orderId: orderId,
                                                                     pointsEarnedCalculation: true
                                                                 }
@@ -91,7 +91,7 @@ module.exports = function () {
                                                                 // UPDATE AVAILABLE POINT OF THAT RESIDENT BY SUBSTRACTING REEDEM POINTS FROM AVAILABLE POINTS
                                                                
                                                               //  residents.findOneAndUpdate({ residentId: residentId },
-                                                                    residents.findOneAndUpdate({ _id: residentId },
+                                                                    residents.findOneAndUpdate({ _id:new ObjectId(residentId),},
                                                                     { $inc: { availablePoints: -parseInt(totalRedeemedPoints) } },
                                                                     { new: true }).then(result => {
                                                                         callBack(false, "Order point created successfully", discountAmount, finalPrice, totalEarnedPoints);
@@ -189,6 +189,7 @@ module.exports = function () {
             }
         },
         // End of create order details
+        ////////////////////////////////////////////////////////////////////////////////////////////
         //Start To get the points earned after successfully deliver
         pointsupdate: function (orderId, callBack) {
             try {
@@ -198,7 +199,7 @@ module.exports = function () {
                     }
                     if (result[0].isActive == true) {
                         // To update points in the collections
-                        residents.findOneAndUpdate({ _id: orderId },
+                        residents.findOneAndUpdate({ _id: result[0].residentId },
                             { $set: updates },
                             { new: true }).then(data => {
                                 order.findOneAndUpdate({ _id: orderId },
@@ -224,6 +225,7 @@ module.exports = function () {
             }
         },
         //Start To get the points earned after successfully deliver
+        ////////////////////////////////////////////////////////////////////////////////////
         //Start to update the order status for cron job
         updateOrderStatus:async function (callbackfn) {
             try {
