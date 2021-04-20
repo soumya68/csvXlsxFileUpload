@@ -203,7 +203,7 @@ module.exports = function () {
                                     { $set: { isDelivered: true, isPointsAddedToResident: true } },
                                     { new: true }).then(data => {
                                         pointsAudit.findOneAndUpdate({ orderId: orderId },
-                                            { $set: { isActive: false, earnedPointsExpiryDate: new Date() } },
+                                            { $set: { isActive: false, isLapsed : true } },
                                             { new: true }).then(data => {
                                                 callBack(false, "Order status updated successfully");
                                             })
@@ -226,6 +226,7 @@ module.exports = function () {
         updateOrderStatus:async function (callbackfn) {
             try {
               let result = await order.find({ isPointsAddedToResident: false })
+              console.log("data",result)
               if(result.length > 0){
                 Promise.all(
                     result.map(async ele => {
@@ -234,11 +235,11 @@ module.exports = function () {
                         { $set: { isDelivered: true, isPointsAddedToResident: true } },
                         { new: true })
                       let auditdata = await pointsAudit.findOneAndUpdate({ orderId: ele._id },
-                        { $set: { isActive: false, earnedPointsExpiryDate: new Date() } },
+                        { $set: { isActive: false, isLapsed : true } },
                         { new: true })
                       let points = auditdata.earnedPoints
                       let residentdata = await residents.findOneAndUpdate({ _id: ele._id },
-                        { $set: { isPointsAddedToResident: true, earnedPoints: points } },
+                        { $set: { isPointsAddedToResident: true, availablePoints: points } },
                         { new: true })
                       let finalData = { ...orderdata, ...auditdata, ...residentdata }
                       return finalData
