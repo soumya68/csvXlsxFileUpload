@@ -1,9 +1,7 @@
 
 var mongoose = require("mongoose");
-require('mongoose-double')(mongoose);
 require('mongoose-long')(mongoose);
 var Long = mongoose.Schema.Types.Long;
-var SchemaTypes = mongoose.Schema.Types;
 var catalougeSchema = new mongoose.Schema(
     {
         _partition: {

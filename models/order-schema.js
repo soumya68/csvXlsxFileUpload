@@ -37,21 +37,21 @@ var orderSchema = new mongoose.Schema(
                 default: []
             },
             version: {
-                type: String,
-                default: 0
+                type: mongoose.Decimal128,
+                default: 1.00
             },
         },
         orderSubTotal: {
             type: mongoose.Decimal128,
-            default: '0.00'
+            default: 0.00
         },
         orderTotalPayable: {
             type: mongoose.Decimal128,
-            default: '0.00'
+            default: 0.00
         },
         pointBasedDiscountedAmount: {
             type: mongoose.Decimal128,
-            default: '0.00'
+            default: 0.00
         },
         canRedeemPoints: {
             type: Boolean,
@@ -132,9 +132,6 @@ var orderSchema = new mongoose.Schema(
         },
         deliveryAddress: {
             type: String,
-            //required: true,
-            min: 6,
-            trim: true,
         },
         isDelivered: {
             type: Boolean,
@@ -151,4 +148,8 @@ var orderSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("order", orderSchema);
+
+var customeCollectionName = 'OrderMedicine'
+/// TO MAKE CUSTOME COLLECTION NAME
+module.exports = mongoose.model("order", orderSchema,customeCollectionName);
+

@@ -3,7 +3,7 @@ const pointsAudit = require('../models/pointsAudit-schema');
 var pointDetails = require('../utils/pointsDetails.json');
 const residents = require('../models/resident-schema');
 const productsModel = require('../models/catalouge-schema');
-var ObjectId = require('mongodb').ObjectID;
+var ObjectID = require('mongodb').ObjectID;
 module.exports = function () {
     var orderModule = {
         // Start of  create order details
@@ -12,10 +12,11 @@ module.exports = function () {
             pointSource, countryCode, callBack) {
             try {
                 // FIND ORDER DETAILS BY ORDER ID
-                order.find({ _id: new ObjectId(orderId) }).then(orderData => {
+                order.find({ _id: new ObjectID(orderId) }).then(orderData => {
                     // CHECK ANY ORDER FOUND OR NOT
                     if (orderData.length > 0) {
                         // IF ANY ORDER FOUND
+                      
                         var finalPrice = orderData[0].orderTotalPayable
                         var residentId = orderData[0].residentId
                         totalAvailablePoint = 0
@@ -48,7 +49,7 @@ module.exports = function () {
                                             if (!error) {
                                                 //IF NO ERROR FOUND ,THEN GET FINAL PRICE & UPDATE PERTICULAR ORDER DATAS
                                                 finalPrice = parseFloat(finalPrice - discountAmount).toFixed(2)
-                                                order.findOneAndUpdate({ _id: new ObjectId(orderId) },
+                                                order.findOneAndUpdate({ _id: new ObjectID(orderId) },
                                                     {
                                                         $set: {
                                                             orderTotalPayable: finalPrice,
@@ -58,6 +59,7 @@ module.exports = function () {
                                                     },
                                                 )
                                                     .then(result => {
+                                                        console.log(residentId)
                                                         // CHECK IF IS THERE ANY totalEarnedPoints OR totalRedeemedPoints 
                                                         if (totalEarnedPoints > 0 || totalRedeemedPoints > 0) {
                                                             // IF  totalEarnedPoints IS AVAILABLE
@@ -68,8 +70,8 @@ module.exports = function () {
                                                                     availablePoints: totalAvailablePoint,
                                                                     pointSource: pointSource,
                                                                     earnedPointsExpiryDate: earnedPointsExpiryDate,
-                                                                    residentId: residentId,
-                                                                    orderId: orderId,
+                                                                    residentId: new ObjectID(residentId),
+                                                                    orderId: new ObjectID(orderId),
                                                                     pointsEarnedCalculation: true
                                                                 }
                                                             }
@@ -80,8 +82,8 @@ module.exports = function () {
                                                                     availablePoints: totalAvailablePoint,
                                                                     pointSource: pointSource,
                                                                     earnedPointsExpiryDate: earnedPointsExpiryDate,
-                                                                    residentId: new ObjectId(residentId),
-                                                                    orderId: orderId,
+                                                                    residentId: new ObjectID(residentId),
+                                                                    orderId: new ObjectID(orderId),
                                                                     pointsEarnedCalculation: true
                                                                 }
                                                             }
@@ -91,7 +93,7 @@ module.exports = function () {
                                                                 // UPDATE AVAILABLE POINT OF THAT RESIDENT BY SUBSTRACTING REEDEM POINTS FROM AVAILABLE POINTS
                                                                
                                                               //  residents.findOneAndUpdate({ residentId: residentId },
-                                                                    residents.findOneAndUpdate({ _id:new ObjectId(residentId),},
+                                                                    residents.findOneAndUpdate({ _id:new ObjectID(residentId)},
                                                                     { $inc: { availablePoints: -parseInt(totalRedeemedPoints) } },
                                                                     { new: true }).then(result => {
                                                                         callBack(false, "Order point created successfully", discountAmount, finalPrice, totalEarnedPoints);
@@ -106,11 +108,13 @@ module.exports = function () {
                                                         }
                                                         // callBack(false, "Order point created successfully");
                                                     }).catch(err => {
+                                                        console.log(err)
                                                         callBack(true, "Error", 0, 0, 0);
                                                     })
                                                 // })
                                             }
                                             else {
+                                               
                                                 callBack(true, "Error", 0, 0, 0);
                                             }
                                         })
@@ -133,9 +137,11 @@ module.exports = function () {
                     }
                 })
                     .catch(err => {
+                        console.log(e)
                         callBack(true, "Error",);
                     });
             } catch (e) {
+                console.log(e)
                 callBack(true, "Error",);
             }
         },
@@ -238,12 +244,13 @@ module.exports = function () {
                       let orderdata = await order.findOneAndUpdate({ _id: ele._id },
                         { $set: { isDelivered: true, isPointsAddedToResident: true } },
                         { new: true })
+
                       let auditdata = await pointsAudit.findOneAndUpdate({ orderId: ele._id },
-                        { $set: { isActive: false, isLapsed : true } },
+                        { $set: { isActive: true } },
                         { new: true })
                       let points = auditdata.earnedPoints
                       let residentdata = await residents.findOneAndUpdate({ _id: ele._id },
-                        { $set: { isPointsAddedToResident: true, availablePoints: points } },
+                        { $set: {  availablePoints: residentsavailablePoints+points } },
                         { new: true })
                       let finalData = { ...orderdata, ...auditdata, ...residentdata }
                       return finalData

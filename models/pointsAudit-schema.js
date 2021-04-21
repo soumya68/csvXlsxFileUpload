@@ -3,11 +3,11 @@ const validator = require("validator");
 var pointsAuditSchema = new mongoose.Schema(
     {
         residentId: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
         orderId: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
             required: true,
         },
         redeemedPoints: {

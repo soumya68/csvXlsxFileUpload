@@ -112,8 +112,8 @@ var residentSchema = new mongoose.Schema(
                 type: String,
             }
         },
-        ques:{
-            type:Array,
+        ques: {
+            type: Array,
             default: []
         },
         availablePoints: {

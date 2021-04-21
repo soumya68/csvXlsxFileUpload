@@ -1,6 +1,7 @@
 const catalogueFiles = require('../models/catalogue-file-schema');
 const path = require('path');
 const multer = require('multer');
+var ObjectID = require('mongodb').ObjectID;
 module.exports = (app) => {
     var medicationModule = require('../module/medication_module')();
     // FILE UPLOAD FOLDER PATH
@@ -86,7 +87,7 @@ module.exports = (app) => {
                 const { supplierCode, version, userId ,isoCountryCode} = req.body
                 const fileData = {
                     fileName: req.file.filename,
-                    userId: userId,
+                    userId: new ObjectID(userId),
                     supplierCode:supplierCode,
                    // supplierId:supplierId,
                     isoCountryCode:isoCountryCode,

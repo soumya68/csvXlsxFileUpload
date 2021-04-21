@@ -6,7 +6,7 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const failuerDir = process.env.FAILUERDIR
-var ObjectId = require('mongodb').ObjectID;
+var ObjectID = require('mongodb').ObjectID;
 module.exports = function () {
     var medicationModule = {
         // Start Generating catalogue number -----
@@ -39,7 +39,7 @@ module.exports = function () {
                     !data.SupplierUniqueCatalogueNumber
                     || !data.BrandName
                     || !data.Dosage
-                    || !data.BrandName
+                    || !data.SupplierName
                     || !data.PackSize
                     || !data.PackSizeUnits
                     || !data.ProductType
@@ -103,16 +103,18 @@ module.exports = function () {
                             var fileName = row.fileName
                             var userId = row.userId
                             var supplierCode = row.supplierCode
-                            var supplierId = row.supplierId
+                          
                             var isoCountryCode = row.isoCountryCode
                             var version = 1
                             // File path where file is saved
+                          
                             var filePath = path.resolve(DIR + fileName);
                             var fileExtention = fileName.split('.').pop()
+                          
                             // CHECK FILE EXTENTION TYPE 
                             if (fileExtention == "xlsx" || fileExtention == "xls") {
                                 ////// THIS IS FOR XLSX FILE 
-                                medicationModule.xlsxUpload(supplierId, isoCountryCode, userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                medicationModule.xlsxUpload(isoCountryCode, userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
                                     function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                         // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
                                         let updates = {
@@ -162,7 +164,7 @@ module.exports = function () {
                             }
                             else {
                                 /// THIS IS FOR CSV FILE UPLOAD
-                                medicationModule.csvUpload(supplierId, isoCountryCode, userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                medicationModule.csvUpload( isoCountryCode, userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                                     function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                         // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
                                         let updates = {
@@ -214,6 +216,7 @@ module.exports = function () {
                         checkData(data[index]);
                     }
                     else {
+                       
                         callBack(false, 'No error file found');
                     }
                 })
@@ -326,16 +329,17 @@ module.exports = function () {
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
+                                                        supplierName:row.SupplierName,
                                                         createdBy: {
-                                                            userId: userId,
+                                                            userId: new ObjectID(userId),
                                                             utcDatetime: new Date()
                                                         },
                                                         metaData: {
                                                             createdBy: {
-                                                                userId: userId,
+                                                                userId: new ObjectID(userId),
                                                                 utcDatetime: new Date()
                                                             },
-                                                            updatedBy: userId,
+                                                            updatedBy: new ObjectID(userId),
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -426,10 +430,10 @@ module.exports = function () {
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
-
+                                                        supplierName:row.SupplierName,
                                                         metaData: {
 
-                                                            updatedBy: userId,
+                                                            updatedBy: new ObjectID(userId),
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -553,6 +557,7 @@ module.exports = function () {
                                         Status: doc[18],
                                         PointsAccumulation: doc[19],
                                         supplierCode: supplierCode,
+                                        SupplierName: doc[20]
                                     };
                                     // CHECK DATA OBJECT VALIDATION FOR NO EMPTY COLUMNS FOR MANDATORY FIELDS
                                     medicationModule.excelValidation(data, function (status) {
@@ -579,6 +584,7 @@ module.exports = function () {
                                                     }
                                                     // MAKE MEDICATION OBJECT
                                                     const medicationData = {
+                                                      
                                                         Information: {
                                                             "eng": "NA"
                                                         },
@@ -635,16 +641,17 @@ module.exports = function () {
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
+                                                        supplierName: doc[20],
                                                         CreatedBy: {
-                                                            userId: userId,
+                                                            userId: new ObjectID(userId),
                                                             utcDatetime: new Date()
                                                         },
                                                         MetaData: {
                                                             createdBy: {
-                                                                userId: userId,
+                                                                userId: new ObjectID(userId),
                                                                 utcDatetime: new Date()
                                                             },
-                                                            updatedBy: userId,
+                                                            updatedBy: new ObjectID(userId),
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -675,6 +682,7 @@ module.exports = function () {
                                                 else {
                                                     // IF DUPLICATE DATA FOUND MAKE A OBJECT
                                                     const medicationUpdateData = {
+                                                       
                                                         Information: {
                                                             "eng": "NA"
                                                         },
@@ -728,8 +736,9 @@ module.exports = function () {
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
+                                                        supplierName: doc[20],
                                                         Metadata: {
-                                                            updatedBy: userId,
+                                                            updatedBy: new ObjectID(userId),
                                                             version: version
                                                         },
                                                         timestamp: new Date(),

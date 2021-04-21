@@ -24,21 +24,23 @@ function startCrons() {
         });
     // // END OF  CRON JOB FOR RESIDENTS POINT EXPIRY PROCESS
     // // START OF  CRON JOB FOR CATALOUGE FILE UPLOAD PROCESS----will run every 30 mins
-    var processUploadFileCron = new cron.schedule('0,30 * * * *', () => {
-        medicationModule.processFile(DIR,
-            function (error, message) {
-                if (error) {
-                    console.log('err')
-                }
-                else {
-                    console.log('success')
-                }
-            })
-    },
-        {
-            scheduled: false,
-            timezone: timeZone
-        });
+    var processUploadFileCron =
+        new cron.schedule('0,30 * * * *', () => {
+            //  new cron.schedule('*/5 * * * * *', () => {  // for every 5 secs
+            medicationModule.processFile(DIR,
+                function (error, message) {
+                    if (error) {
+                        console.log('err')
+                    }
+                    else {
+                        console.log('success')
+                    }
+                })
+        },
+            {
+                scheduled: false,
+                timezone: timeZone
+            });
     // // END OF  CRON JOB FOR CATALOUGE FILE UPLOAD PROCESS
     // Start the cron job for update order status ----will run every day midnight
     var updateOrderStatus = cron.schedule("00 00 00 * * *", function () {
@@ -76,7 +78,7 @@ function startCrons() {
     // pointsExpiryCron.start()
     // updateOrderStatus.start()
     // updatePointsCalculated.start()
-    // task.start();
+
 }
 module.exports = {
     startCrons
