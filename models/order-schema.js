@@ -151,4 +151,6 @@ var orderSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("order", orderSchema);
+/// TO MAKE CUSTOME COLLECTION NAME
+var customeCollectionName = 'OrderMedicine'
+module.exports = mongoose.model("order", orderSchema,customeCollectionName);
