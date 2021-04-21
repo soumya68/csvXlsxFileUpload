@@ -35,7 +35,11 @@ module.exports = (app) => {
                 return;
             }
             const supplierData = {
-                supplierName: req.body.supplierName,
+                supplierName: 
+                {
+                    eng:req.body.supplierName
+                },
+                //supplierName: req.body.supplierName,
                 supplierCode: req.body.supplierCode,
                 isoCountry: req.body.isoCountry,
                 catalogTags: req.body.catalogTags,

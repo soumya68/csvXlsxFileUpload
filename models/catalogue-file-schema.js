@@ -1,3 +1,4 @@
+const { parseString } = require("@fast-csv/parse");
 var mongoose = require("mongoose");
 const validator = require("validator");
 var catalogueFileStatusSchema = new mongoose.Schema(
@@ -9,7 +10,7 @@ var catalogueFileStatusSchema = new mongoose.Schema(
             trim: true,
         },
         userId: {
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             required: true,
         },
         supplierCode: {

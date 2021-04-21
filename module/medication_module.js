@@ -6,7 +6,7 @@ const fs = require('fs');
 const csv = require('csv-parser');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 const failuerDir = process.env.FAILUERDIR
-var ObjectID = require('mongodb').ObjectID;
+
 module.exports = function () {
     var medicationModule = {
         // Start Generating catalogue number -----
@@ -331,15 +331,15 @@ module.exports = function () {
                                                         pointsAccumulation: row.PointsAccumulation,
                                                         supplierName:row.SupplierName,
                                                         createdBy: {
-                                                            userId: new ObjectID(userId),
+                                                            userId: userId,
                                                             utcDatetime: new Date()
                                                         },
                                                         metaData: {
                                                             createdBy: {
-                                                                userId: new ObjectID(userId),
+                                                                userId:userId,
                                                                 utcDatetime: new Date()
                                                             },
-                                                            updatedBy: new ObjectID(userId),
+                                                            updatedBy:userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -433,7 +433,7 @@ module.exports = function () {
                                                         supplierName:row.SupplierName,
                                                         metaData: {
 
-                                                            updatedBy: new ObjectID(userId),
+                                                            updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -643,15 +643,15 @@ module.exports = function () {
                                                         pointsAccumulation: doc[19],
                                                         supplierName: doc[20],
                                                         CreatedBy: {
-                                                            userId: new ObjectID(userId),
+                                                            userId: userId,
                                                             utcDatetime: new Date()
                                                         },
                                                         MetaData: {
                                                             createdBy: {
-                                                                userId: new ObjectID(userId),
+                                                                userId: userId,
                                                                 utcDatetime: new Date()
                                                             },
-                                                            updatedBy: new ObjectID(userId),
+                                                            updatedBy:userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -738,7 +738,7 @@ module.exports = function () {
                                                         pointsAccumulation: doc[19],
                                                         supplierName: doc[20],
                                                         Metadata: {
-                                                            updatedBy: new ObjectID(userId),
+                                                            updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),

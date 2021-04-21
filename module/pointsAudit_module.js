@@ -1,7 +1,7 @@
 const pointsAudit = require('../models/pointsAudit-schema');
 var pointDetails = require('../utils/pointsDetails.json');
 const residents = require('../models/resident-schema');
-var ObjectId = require('mongoose').Types.ObjectId;
+
 module.exports = function () {
     var pointsAuditModule = {
         // Start of get user points details
@@ -113,7 +113,7 @@ module.exports = function () {
         //Start of user eligibility to Redeem points
         userRedeemPointsEligibility: function (residentId, redeemedPoints, callBack) {
             try {
-                residents.find({ _id:new ObjectId(residentId)}).then((result) => {
+                residents.find({ _id:residentId}).then((result) => {
                     if (result.length > 0) {
                         if (result[0].availablePoints >= redeemedPoints) {
                             callBack(false, true, "User has available redeempoints");
@@ -152,7 +152,7 @@ module.exports = function () {
                         // FIND OUT TOTAL EARNED POINTS WHICH ARE GOING TO BE EXPIRED ON SAME DAY OF THIS RESIDENT BY RESIDENT ID
                         var pointsData = await pointsAudit.aggregate([{
                             $match: {
-                                residentId:  new ObjectId(doc._id),
+                                residentId:doc._id,
                                 earnedPointsExpiryDate: { "$lte": startOfToday },
                                 isActive: true,
                                 isLapsed: false
@@ -163,7 +163,7 @@ module.exports = function () {
                         }])
                         // FIND OUT LASTEST POINT DATA OF THIS RESIDENT FROM POINTSAUDIT COLLECTION TO UPDATE LATEST AVAILABLE POINTS 
                         let pointsAllData = await pointsAudit.find({
-                            residentId: new ObjectId(doc._id),
+                            residentId:doc._id,
                         }).sort({ _id: -1 }).limit(1)
                         // IF ANY POINTS DATA FOUND OF THIS PERTICULAR RESIDENT
                         if (pointsData.length > 0) {
@@ -174,7 +174,7 @@ module.exports = function () {
                             // FIND OUT TODAY'S TOTAL REDEMED POINTS DETAILS OF THIS RESIDENT WHICH CREATED AT IS TODAY
                             var todayPointsData = await pointsAudit.aggregate([{
                                 $match: {
-                                    residentId:  new ObjectId(doc._id),
+                                    residentId:doc._id,
                                     createdAt: { "$gte": startOfToday },
                                     isActive: true,
                                     isLapsed: false
@@ -203,12 +203,12 @@ module.exports = function () {
                                 console.log(err)
                             })
                             // UPDATE LATEST AVAILABLE POINTS IN RESIDENT COLLECTION OF THAT RESIDENT ID
-                            var updatedResidents = await residents.updateOne({ residentId:  new ObjectId(doc._id) }, {
+                            var updatedResidents = await residents.updateOne({ residentId:doc._id }, {
                                 $set: { availablePoints: availablePoints }
                             })
                             // UPDATE ALL EXPIRED POINTS RECORD MAKE IT ACTIVE FALSE & LAPSE TRUE FOR MAKING IT EXPIRED
                             var updatedPointsAudit = await pointsAudit.updateMany({
-                                residentId:  new ObjectId(doc._id),
+                                residentId: doc._id,
                                 earnedPointsExpiryDate: { "$lte": startOfToday },
                             }, {
                                 $set: {

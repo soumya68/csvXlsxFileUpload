@@ -55,7 +55,7 @@ module.exports = (app) => {
     //END OF API FOR PROCESS ORDER DETAILS 
     //Start To get the points earned after successfully deliver
     //Params:orderId
-    app.get('/api/pointsupdate', function (req, res) {
+    app.post('/api/pointsupdate', function (req, res) {
         try {
             if (!req.body.orderId) {
                 res.json({ status: false, message: "orderId parameter is missing" });
