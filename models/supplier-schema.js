@@ -3,7 +3,6 @@ const validator = require("validator");
 const autoIncrement = require('mongoose-auto-increment');
 var supplierSchema = new mongoose.Schema(
     {
-
         catalogTags: {
             type: Array,
             default: []
@@ -73,5 +72,6 @@ var supplierSchema = new mongoose.Schema(
         },
     }
 );
-
-module.exports = mongoose.model("supplier", supplierSchema);
+var customeCollectionName = 'Supplier'
+/// TO MAKE CUSTOME COLLECTION NAME
+module.exports = mongoose.model("supplier", supplierSchema, customeCollectionName);

@@ -1,4 +1,3 @@
-
 var mongoose = require("mongoose");
 require('mongoose-long')(mongoose);
 var Long = mongoose.Schema.Types.Long;
@@ -61,10 +60,8 @@ var catalougeSchema = new mongoose.Schema(
         pricePerPack: {
             type: mongoose.Decimal128,
             default: 0.00
-
         },
         price: {
-
             //type:  SchemaTypes.Double ,
             // default: 0.00
             // type: String,
@@ -165,7 +162,6 @@ var catalougeSchema = new mongoose.Schema(
             min: 6,
             default: false,
         },
-
         prodCategory: {
             type: Array,
             default: []
@@ -260,9 +256,6 @@ var catalougeSchema = new mongoose.Schema(
         },
     }
 );
-
-
 var customeCollectionName = 'MedicationObject'
 /// TO MAKE CUSTOME COLLECTION NAME
 module.exports = mongoose.model("medication", catalougeSchema, customeCollectionName);
-

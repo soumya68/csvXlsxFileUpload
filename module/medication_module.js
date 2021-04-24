@@ -5,8 +5,8 @@ const path = require('path');
 const fs = require('fs');
 const csv = require('csv-parser');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
-const failuerDir = process.env.FAILUERDIR
-
+//const failuerDir = process.env.FAILUERDIR
+const DIR = require('../config/fileDetails.json');
 module.exports = function () {
     var medicationModule = {
         // Start Generating catalogue number -----
@@ -103,14 +103,11 @@ module.exports = function () {
                             var fileName = row.fileName
                             var userId = row.userId
                             var supplierCode = row.supplierCode
-                          
                             var isoCountryCode = row.isoCountryCode
                             var version = 1
                             // File path where file is saved
-                          
                             var filePath = path.resolve(DIR + fileName);
                             var fileExtention = fileName.split('.').pop()
-                          
                             // CHECK FILE EXTENTION TYPE 
                             if (fileExtention == "xlsx" || fileExtention == "xls") {
                                 ////// THIS IS FOR XLSX FILE 
@@ -164,7 +161,7 @@ module.exports = function () {
                             }
                             else {
                                 /// THIS IS FOR CSV FILE UPLOAD
-                                medicationModule.csvUpload( isoCountryCode, userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                medicationModule.csvUpload(isoCountryCode, userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                                     function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                         // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
                                         let updates = {
@@ -216,7 +213,6 @@ module.exports = function () {
                         checkData(data[index]);
                     }
                     else {
-                       
                         callBack(false, 'No error file found');
                     }
                 })
@@ -249,8 +245,6 @@ module.exports = function () {
                                 var index = 0;
                                 // RECURSIVE FUNCTION INSERT DATA FOUND
                                 var insertData = function (row) {
-
-
                                     // EXCEL FILE ROW VALIDATION FOR EMPTY DATA IN ANY MANDATORY COLUMN
                                     medicationModule.excelValidation(row, function (status) {
                                         if (status) {
@@ -305,7 +299,6 @@ module.exports = function () {
                                                         },
                                                         manufacturerName: row.Manufacturer,
                                                         description: {
-
                                                             eng: row.Description == null ? "NA" : row.Description
                                                         },
                                                         dosage: row.Dosage,
@@ -329,17 +322,17 @@ module.exports = function () {
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
-                                                        supplierName:row.SupplierName,
+                                                        supplierName: row.SupplierName,
                                                         createdBy: {
                                                             userId: userId,
                                                             utcDatetime: new Date()
                                                         },
                                                         metaData: {
                                                             createdBy: {
-                                                                userId:userId,
+                                                                userId: userId,
                                                                 utcDatetime: new Date()
                                                             },
-                                                            updatedBy:userId,
+                                                            updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -358,13 +351,9 @@ module.exports = function () {
                                                         // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                         medications.insertMany(rawDocuments)
                                                             .then(function (mongooseDocuments) {
-
-
-
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
-                                                                console.log(err)
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -372,7 +361,6 @@ module.exports = function () {
                                                 else {
                                                     // IF DUPLICATE DATA FOUND
                                                     // MAKE MEDICATION DATA OBJECT FOR UPDATE DATA IN COLLECTION
-
                                                     const medicationUpdateData = {
                                                         information: {
                                                             "eng": "NA"
@@ -405,7 +393,6 @@ module.exports = function () {
                                                         },
                                                         manufacturerName: row.Manufacturer,
                                                         description: {
-
                                                             eng: row.Description == null ? "NA" : row.Description
                                                         },
                                                         dosage: row.Dosage,
@@ -430,23 +417,17 @@ module.exports = function () {
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
-                                                        supplierName:row.SupplierName,
+                                                        supplierName: row.SupplierName,
                                                         metaData: {
-
                                                             updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
                                                     };
-
-
                                                     // UPDATE THAT DUPLICATE DATA IN MEDICATION COLLECTION BY SPECIFIC SUPPLIERUNIQUECATALOUGUENUM & SUPPLIER CODE
                                                     medications.findOneAndUpdate({ suppCatNo: row.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
                                                         { $set: medicationUpdateData },
                                                         { new: true }).then(result => {
-
-
-
                                                         }).catch(err => {
                                                             console.log('error', err)
                                                         });
@@ -465,7 +446,6 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
-                                                                console.log(err)
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -490,7 +470,6 @@ module.exports = function () {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     })
                                                     .catch(function (err) {
-                                                        console.log(err)
                                                         callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     });
                                             }
@@ -510,7 +489,6 @@ module.exports = function () {
                         }
                     })
             } catch (e) {
-                console.log(e)
                 callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
             }
         },
@@ -561,10 +539,8 @@ module.exports = function () {
                                     };
                                     // CHECK DATA OBJECT VALIDATION FOR NO EMPTY COLUMNS FOR MANDATORY FIELDS
                                     medicationModule.excelValidation(data, function (status) {
-                                        console.log(doc[5])
                                         // IF VALIDATION DONE & STATUS TRUE
                                         if (status) {
-                                            console.log(parseFloat(doc[16]))
                                             /// DUPLICATE SUPPLIER CATALOUGE NUMBER CHECK
                                             medicationModule.checkDuplicate(data.SupplierUniqueCatalogueNumber, data.supplierCode, function (error, isDuplicate) {
                                                 // IF NO DUPLICATE DATA
@@ -584,7 +560,6 @@ module.exports = function () {
                                                     }
                                                     // MAKE MEDICATION OBJECT
                                                     const medicationData = {
-                                                      
                                                         Information: {
                                                             "eng": "NA"
                                                         },
@@ -608,10 +583,8 @@ module.exports = function () {
                                                         r52CatNo: r52CatNo,
                                                         suppCatNo: doc[1],
                                                         BrandName: {
-
                                                             eng: doc[2] == null ? "NA" : doc[2]
                                                         },
-
                                                         GenericName: {
                                                             eng: doc[3] == null ? "NA" : doc[3]
                                                         },
@@ -651,7 +624,7 @@ module.exports = function () {
                                                                 userId: userId,
                                                                 utcDatetime: new Date()
                                                             },
-                                                            updatedBy:userId,
+                                                            updatedBy: userId,
                                                             version: version
                                                         },
                                                         timestamp: new Date(),
@@ -673,7 +646,6 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
-                                                                console.log(err)
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -682,7 +654,6 @@ module.exports = function () {
                                                 else {
                                                     // IF DUPLICATE DATA FOUND MAKE A OBJECT
                                                     const medicationUpdateData = {
-                                                       
                                                         Information: {
                                                             "eng": "NA"
                                                         },
@@ -702,12 +673,9 @@ module.exports = function () {
                                                             "eng": "NA"
                                                         },
                                                         isoCountry: isoCountry,
-
                                                         BrandName: {
-
                                                             eng: doc[2] == null ? "NA" : doc[2]
                                                         },
-
                                                         GenericName: {
                                                             eng: doc[3] == null ? "NA" : doc[3]
                                                         },
@@ -743,7 +711,6 @@ module.exports = function () {
                                                         },
                                                         timestamp: new Date(),
                                                     };
-                                                    console.log(medicationUpdateData)
                                                     // UPDATE THAT DUPLICATE DATA IN MEDICATION COLLECTION BY SPECIFIC SUPPLIERUNIQUECATALOUGUENUM & SUPPLIER CODE
                                                     medications.findOneAndUpdate({ suppCatNo: data.SupplierUniqueCatalogueNumber, supplierCode: supplierCode },
                                                         { $set: medicationUpdateData },
@@ -859,7 +826,7 @@ module.exports = function () {
         failuerFileUpload: function (filename, invalidDatas, callBack) {
             try {
                 const csvWriter = createCsvWriter({
-                    path: failuerDir + filename,
+                    path: DIR.FAILUERDIR + filename,
                     header: [
                         { id: 'CatalougeNumber', title: 'CatalougeNumber' },
                         { id: 'SupplierUniqueCatalogueNumber', title: 'SupplierUniqueCatalogueNumber' },

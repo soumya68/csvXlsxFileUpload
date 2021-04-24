@@ -7,37 +7,37 @@ module.exports = (app) => {
     app.post('/api/add/supplier', function (req, res) {
         try {
             if (!req.body.supplierName) {
-                res.json({ status: false, message: "supplierName parameter is missing" });
+                res.status(400).json({ status: false, message: "supplierName parameter is missing" });
                 return;
             }
             if (!req.body.isoCountry) {
-                res.json({ status: false, message: "isoCountry parameter is missing" });
+                res.status(400).json({ status: false, message: "isoCountry parameter is missing" });
                 return;
             }
             if (!req.body.userId) {
-                res.json({ status: false, message: "userId parameter is missing" });
+                res.status(400).json({ status: false, message: "userId parameter is missing" });
                 return;
             }
             if (!req.body.supplierCode) {
-                res.json({ status: false, message: "supplierCode parameter is missing" });
+                res.status(400).json({ status: false, message: "supplierCode parameter is missing" });
                 return;
             }
             if (!req.body.address) {
-                res.json({ status: false, message: "address parameter is missing" });
+                res.status(400).json({ status: false, message: "address parameter is missing" });
                 return;
             }
             if (!req.body.email) {
-                res.json({ status: false, message: "email parameter is missing" });
+                res.status(400).json({ status: false, message: "email parameter is missing" });
                 return;
             }
             if (!req.body.phone) {
-                res.json({ status: false, message: "phone parameter is missing" });
+                res.status(400).json({ status: false, message: "phone parameter is missing" });
                 return;
             }
             const supplierData = {
-                supplierName: 
+                supplierName:
                 {
-                    eng:req.body.supplierName
+                    eng: req.body.supplierName
                 },
                 //supplierName: req.body.supplierName,
                 supplierCode: req.body.supplierCode,
@@ -49,7 +49,6 @@ module.exports = (app) => {
                     phone: req.body.phone
                 },
                 deliveryFee: parseFloat(req.body.deliveryFee).toFixed(2),
-                type: req.body.type,
                 usdPrice: parseFloat(req.body.usdPrice).toFixed(2),
                 metadata: {
                     createdBy: {
@@ -65,7 +64,7 @@ module.exports = (app) => {
             supplierModule.addSupplier(supplierData,
                 function (error, errData, result, message) {
                     if (error & result == null) {
-                        res.status(200).json({
+                        res.status(500).json({
                             status: false,
                             // message: Object.keys(errData.errors)[0],
                             message: message,
@@ -74,7 +73,7 @@ module.exports = (app) => {
                         })
                     }
                     else if (error && result) {
-                        res.status(200).json({
+                        res.status(500).json({
                             status: false,
                             // message: Object.keys(errData.errors)[0],
                             message: message,
@@ -93,7 +92,7 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     //END OF API FOR ADD SUPPLIER DETAILS 
@@ -106,7 +105,7 @@ module.exports = (app) => {
             supplierModule.viewSuppliers(
                 function (error, message, result) {
                     if (error) {
-                        res.status(200).json({
+                        res.status(500).json({
                             status: false,
                             message: message,
                             data: result
@@ -122,25 +121,25 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     //END OF API FOR VIEW ALL SUPPLIER DETAILS 
     //START OF API FOR VIEW SUPPLIER DETAILS 
     //Params:
     //Response: status, message,data
-    //Functions:viewSupplier
-    app.post('/api/view/singlesupplier', function (req, res) {
+    //Functions:viewSingleSupplier
+    app.get('/api/view/singlesupplier/:supplierCode', function (req, res) {
         try {
-            if (!req.body.supplierCode) {
-                res.json({ status: false, message: "supplierCode parameter is missing" });
+            if (!req.params.supplierCode) {
+                res.status(400).json({ status: false, message: "supplierCode parameter is missing" });
                 return;
             }
-            let supplierCode = req.body.supplierCode
+            let supplierCode = req.params.supplierCode
             supplierModule.viewSingleSupplier(supplierCode,
                 function (error, message, result) {
                     if (error) {
-                        res.status(200).json({
+                        res.status(500).json({
                             status: false,
                             message: message,
                             data: result
@@ -156,7 +155,7 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     //END OF API FOR VIEW SUPPLIER DETAILS 

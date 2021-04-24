@@ -1,11 +1,12 @@
 const catalogueFiles = require('../models/catalogue-file-schema');
 const path = require('path');
+const DIRECTORY = require('../config/fileDetails.json')
 const multer = require('multer');
 var ObjectID = require('mongodb').ObjectID;
 module.exports = (app) => {
     var medicationModule = require('../module/medication_module')();
     // FILE UPLOAD FOLDER PATH
-    var DIR = process.env.SUCCESSDIR
+    var DIR = DIRECTORY.SUCCESSDIR
     // STORAGE OF MULTER
     var storage = multer.diskStorage({
         destination: function (req, file, callback) {
@@ -66,31 +67,30 @@ module.exports = (app) => {
                 totalEntryCount = 0;
                 duplicateEntryCount = 0;
                 if (!req.file) {
-                    res.json({ status: false, message: "No file passed" });
+                    res.status(400).json({ status: false, message: "No file passed" });
                     return;
                 }
                 if (!req.body.userId) {
-                    res.json({ status: false, message: "userId parameter is missing" });
+                    res.status(400).json({ status: false, message: "userId parameter is missing" });
                     return;
                 }
                 if (!req.body.supplierCode) {
-                    res.json({ status: false, message: "supplierCode parameter is missing" });
+                    res.status(400).json({ status: false, message: "supplierCode parameter is missing" });
                     return;
                 }
                 if (!req.body.isoCountryCode) {
-                    res.json({ status: false, message: "isoCountryCode parameter is missing" });
+                    res.status(400).json({ status: false, message: "isoCountryCode parameter is missing" });
                     return;
                 }
-               
                 // File path where file is saved
                 var filePath = path.resolve(DIR + req.file.filename);
-                const { supplierCode, version, userId ,isoCountryCode} = req.body
+                const { supplierCode, version, userId, isoCountryCode } = req.body
                 const fileData = {
                     fileName: req.file.filename,
                     userId: new ObjectID(userId),
-                    supplierCode:supplierCode,
-                   // supplierId:supplierId,
-                    isoCountryCode:isoCountryCode,
+                    supplierCode: supplierCode,
+                    // supplierId:supplierId,
+                    isoCountryCode: isoCountryCode,
                     status: false,
                     successedRecordsCount: 0,
                     failedRecordsCount: 0,
@@ -103,7 +103,7 @@ module.exports = (app) => {
                     //FILE DATA INSERT CODE WILL BE HERE
                     if (req.file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
                         ////// THIS IS FOR XLSX FILE 
-                        medicationModule.xlsxUpload(isoCountryCode,userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                        medicationModule.xlsxUpload(isoCountryCode, userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
                             function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                 // IF FILE HAS NO DATA
                                 if (totalEntryCount == 0) {
@@ -184,15 +184,14 @@ module.exports = (app) => {
                                             }
                                         })
                                         .catch(err => {
-                                            console.log(err)
-                                            return res.status(400).json({ status: false, message: err });
+                                            return res.status(500).json({ status: false, message: err });
                                         });
                                 }
                             })
                     }
                     else {
                         ////// THIS IS FOR CSV FILE 
-                        medicationModule.csvUpload(isoCountryCode,userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                        medicationModule.csvUpload(isoCountryCode, userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                             function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                 // IF FILE HAS NO DATA
                                 if (totalEntryCount == 0) {
@@ -274,8 +273,7 @@ module.exports = (app) => {
                                             }
                                         })
                                         .catch(err => {
-                                            console.log(err)
-                                            return res.status(400).json({ status: false, message: err });
+                                            return res.status(500).json({ status: false, message: err });
                                         });
                                 }
                             })
@@ -283,13 +281,11 @@ module.exports = (app) => {
                     }
                     ////
                 }).catch(err => {
-                    console.log(err)
-                    return res.status(400).json({ message: 'Error while uploading file', error: err });
+                    return res.status(500).json({ message: 'Error while uploading file', error: err });
                 });
             }
             catch (er) {
-                console.log(er)
-                res.json({ status: false, message: er });
+                res.status(500).json({ status: false, message: er });
             }
         });
     //END OF API FOR MEDICATION DETAILS EXCELSHEET IMPORT
@@ -302,7 +298,7 @@ module.exports = (app) => {
             medicationModule.viewFiles(
                 function (error, message, result) {
                     if (error) {
-                        res.status(200).json({
+                        res.status(500).json({
                             status: false,
                             message: message,
                             data: result
@@ -318,7 +314,7 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     //END OF API FOR VIEW FILE DETAILS 
@@ -331,7 +327,7 @@ module.exports = (app) => {
             medicationModule.processFile(DIR,
                 function (error, message) {
                     if (error) {
-                        res.status(200).json({
+                        res.status(500).json({
                             status: false,
                             message: message,
                         })
@@ -345,7 +341,7 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     //END OF API FOR FAILUER FILE PROCESS 

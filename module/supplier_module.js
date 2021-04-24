@@ -51,7 +51,7 @@ module.exports = function () {
                         callBack(false, 'Suppliers data found', data);
                     }
                     else {
-                        callBack(false, 'No supplier found', docs);
+                        callBack(false, 'No supplier found', {});
                     }
                 })
                     .catch(err => {

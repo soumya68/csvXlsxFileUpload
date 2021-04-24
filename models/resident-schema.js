@@ -11,7 +11,6 @@ var residentSchema = new mongoose.Schema(
             type: String,
             default: null
         },
-
         middleName: {
             type: String,
             default: null
@@ -50,11 +49,9 @@ var residentSchema = new mongoose.Schema(
         },
         createdDate: {
             type: Date,
-
         },
         updatedDate: {
             type: Date,
-
         },
         createdBy: {
             type: String,
@@ -65,12 +62,10 @@ var residentSchema = new mongoose.Schema(
         updatedBy: {
             type: String,
         },
-
         isSelected: {
             type: Boolean,
             default: false
         },
-
         address: {
             location: {
                 type: String,
@@ -148,10 +143,7 @@ var residentSchema = new mongoose.Schema(
     }
 );
 module.exports = mongoose.model("resident", residentSchema);
-
-
 /// BELOW FROM MOBILE TEAM
-
 // {
 //     "title": "ResidentUser",
 //     "bsonType": "object",

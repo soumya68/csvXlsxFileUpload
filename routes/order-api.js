@@ -49,7 +49,7 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     //END OF API FOR PROCESS ORDER DETAILS 
@@ -58,29 +58,27 @@ module.exports = (app) => {
     app.post('/api/pointsupdate', function (req, res) {
         try {
             if (!req.body.orderId) {
-                res.json({ status: false, message: "orderId parameter is missing" });
+                res.status(400).json({ status: false, message: "orderId parameter is missing" });
                 return;
             }
             orderModule.pointsupdate(req.body.orderId,
-                function (error, result, message) {
+                function (error, message) {
                     if (error) {
                         res.status(200).json({
                             status: false,
                             message: message,
-                            data: result,
                         })
                     }
                     else {
                         res.status(200).json({
                             status: true,
                             message: message,
-                            data: result,
                         })
                     }
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     })
     //Eng To get the points earned

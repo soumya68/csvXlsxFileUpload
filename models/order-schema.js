@@ -148,8 +148,6 @@ var orderSchema = new mongoose.Schema(
         },
     }
 );
-
 var customeCollectionName = 'OrderMedicine'
 /// TO MAKE CUSTOME COLLECTION NAME
-module.exports = mongoose.model("order", orderSchema,customeCollectionName);
-
+module.exports = mongoose.model("order", orderSchema, customeCollectionName);

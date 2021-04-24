@@ -4,14 +4,14 @@ module.exports = (app) => {
     //Response: status, message,data
     //functions:userPoints
     //Params:residentId
-    app.get('/api/user/points', function (req, res) {
+    app.get('/api/user/points/:residentId', function (req, res) {
         try {
-            if (!req.body.residentId) {
+            if (!req.params.residentId) {
                 res.status(400).json({ status: false, message: "residentId parameter is missing" });
                 return;
             }
             // TO CHECK USER POINT DETAILS BY USERPOINTS FUNCTION
-            pointsModule.userPoints(req.body.residentId,
+            pointsModule.userPoints(req.params.residentId,
                 function (error, result, message) {
                     if (error) {
                         res.status(500).json({
@@ -30,7 +30,7 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     //END OF API FOR USER POINTS DETAILS 
@@ -38,13 +38,13 @@ module.exports = (app) => {
     //Response: status, message,data
     //functions:transactionDetails
     //Params:residentId
-    app.get('/api/user/transactiondetails', function (req, res) {
+    app.get('/api/user/transactiondetails/:residentId', function (req, res) {
         try {
-            if (!req.body.residentId) {
+            if (!req.params.residentId) {
                 res.status(400).json({ status: false, message: "residentId parameter is missing" });
                 return;
             }
-            pointsModule.transactionDetails(req.body.residentId,
+            pointsModule.transactionDetails(req.params.residentId,
                 function (error, result, message) {
                     if (error) {
                         res.status(500).json({
@@ -63,7 +63,7 @@ module.exports = (app) => {
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     // Start of API for get the user latest transaction details
@@ -71,7 +71,7 @@ module.exports = (app) => {
     //Response: status, message,data
     //functions:userRedeemPoints
     //Params:residentId,redeemedPoints
-    app.get('/api/redeemdetails', function (req, res) {
+    app.post('/api/redeemdetails', function (req, res) {
         try {
             if (!req.body.residentId) {
                 res.status(400).json({ status: false, message: "residentId parameter is missing" });
@@ -82,20 +82,23 @@ module.exports = (app) => {
                 return;
             }
             pointsModule.userRedeemPoints(req.body.residentId, req.body.redeemedPoints,
-                function (error, result, message) {
+                function (error, message) {
                     if (error) {
                         res.status(500).json({
                             status: false,
                             message: message,
-                            data: result,
                         })
                     }
                     else {
+                        res.status(200).json({
+                            status: true,
+                            message: message,
+                        })
                     }
                 })
         }
         catch (er) {
-            res.json({ status: false, message: er });
+            res.status(500).json({ status: false, message: er });
         }
     });
     //End of API for Point Redeemption
