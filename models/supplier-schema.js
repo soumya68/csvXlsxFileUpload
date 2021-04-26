@@ -9,18 +9,46 @@ var supplierSchema = new mongoose.Schema(
         },
         contact: {
             address: {
-                type: Array,
-                default: []
-            },
-            email: {
-                type: String,
-                default: null
-            },
-            phone: {
-                type: String,
-                default: null
-            },
+                addressLine1: {
+                    type: String,
+                },
+                addressLine2: {
+                    type: String,
+                },
+                city: {
+                    type: String,
+                },
+                country: {
+                    type: String,
+                },
+                district: {
+                    type: String,
+                },
+                isoCountry: {
+                    type: String,
+                },
+                postal_code: {
+                    type: String,
+                },
+                directions: {
+                    type: String,
+                },
+                landmark: {
+                    type: String,
+                },
+                region: {
+                    type: String,
+                },
+                town: {
+                    type: String,
+                },
+                zip: {
+                    type: String,
+                },
+
+            }
         },
+
         deliveryFee: {
             type: mongoose.Decimal128,
             default: 0.00
@@ -75,3 +103,22 @@ var supplierSchema = new mongoose.Schema(
 var customeCollectionName = 'Supplier'
 /// TO MAKE CUSTOME COLLECTION NAME
 module.exports = mongoose.model("supplier", supplierSchema, customeCollectionName);
+
+
+
+
+
+
+ // var addressLine1: String? = null
+        // var addressLine2: String? = null
+        // var city: String? = null
+        // var country: String? = null
+        // var district: String? = null
+        // var isoCountry: String? = null
+        // var postal_code: String? = null
+        // var directions: String? = null
+        // var landmark: String? = null
+        // var location: String? = null
+        // var region: String? = null
+        // var town: String? = null
+        // var zip: String? = null
