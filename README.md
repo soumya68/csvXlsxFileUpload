@@ -38,6 +38,8 @@ Please refer to the [CONTRIBUTING.MD](https://bitbucket.org/reach52/reach52-comm
 ## Installation/Deployment
 This is an API open source project built in Node.js and hence this project needs to be deployed on to a server.
 
+You can take a look at the API documentation here: [API Documentation](https://api-open.reach52.com/api-docs/)
+
 There are many ways of hosting the API but for the sake of simplicity, lets take the case of hosting this in AWS from where your endpoints are to be exposed. To do this, please follow the steps mentioned [here](https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/module-4/).
 
 ***Once the hosting is done, you can test the end-points using any REST client like Postman***
