@@ -1,12 +1,52 @@
 var mongoose = require("mongoose");
-const validator = require("validator");
+var customeCollectionName = 'OrderMedicine';
+
 var orderSchema = new mongoose.Schema(
     {
         _partition: {
-            type: String,
-            default: "101"
+            type: String
         },
-        delivery: {
+        canRedeemPoints: {
+            type: Boolean,
+            default: false
+        },
+        physicianLicenseNumber: {
+            type: String
+        },
+        physicianId: {
+            type: String
+        },
+        physicianName: {
+            type: String
+        },
+        currentStatus: {
+            reason: {
+                type: String
+            },
+            reasonCode: {
+                type: String,
+                default: ''
+            },
+            status: {
+                type: String
+            },
+            statusDate: {
+                type: Date
+            },
+            userDisplayName: {
+                type: String,
+                default: ''
+            },
+            userId: {
+                type: mongoose.Schema.Types.ObjectId,
+                required: true
+            },
+            username: {
+                type: String,
+                default: ''
+            },
+        },
+        deliveryFee: {
             type: Number,
             default: 0
         },
@@ -18,6 +58,14 @@ var orderSchema = new mongoose.Schema(
             type: Number,
             default: 0
         },
+        isEarnedPointCalculated: {
+            type: Boolean,
+            default: false
+        },
+        isPointsAddedToResident: {
+            type: Boolean,
+            default: false
+        },
         isoCountry: {
             type: String,
             required: true,
@@ -26,10 +74,10 @@ var orderSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        metaData: {
+        metadata: {
             createdBy: {
                 userId: {
-                    type: String,
+                    type: mongoose.Schema.Types.ObjectId,
                     required: true
                 },
                 utcDatetime: {
@@ -37,16 +85,16 @@ var orderSchema = new mongoose.Schema(
                 },
             },
             updatedBy: {
-                type: String,
+                type: Array,
+                default: []
             },
             version: {
-                type: Number,
+                type: String,
                 default: 0
             },
         },
-        deliveryFee:{
-            type: mongoose.Decimal128,
-            default: 0.00
+        orderStatus: {
+            type: String,
         },
         orderSubTotal: {
             type: mongoose.Decimal128,
@@ -56,25 +104,29 @@ var orderSchema = new mongoose.Schema(
             type: mongoose.Decimal128,
             default: 0.00
         },
-        pointBasedDiscountedAmount: {
-            type: mongoose.Decimal128,
-            default: 0.00
-        },
-        canRedeemPoints: {
-            type: Boolean,
-            default: false
-        },
-        isPointsAddedToResident: {
-            type: Boolean,
-            default: false
-        },
-        isEarnedPointCalculated: {
-            type: Boolean,
-            default: false
-        },
         patientAddress: {
             type: Object,
-            default: {}
+            default: {},
+            addressLine1: {
+                type: String,
+                default: ''
+            },
+            isoCountry: {
+                type: String,
+                required: true,
+            },
+            isoCurrency: {
+                type: String,
+                required: true,
+            },
+            villageCode: {
+                type: String,
+                default: ''
+            },
+            zip: {
+                type: String,
+                default: ''
+            },
         },
         patientAge: {
             type: Number,
@@ -82,11 +134,17 @@ var orderSchema = new mongoose.Schema(
         },
         patientGender: {
             type: String,
-            default: 0
         },
         patientName: {
             type: String,
             default: 0
+        },
+        pointBasedDiscountedAmount: {
+            type: mongoose.Decimal128,
+            default: 0.00
+        },
+        prescriptionImage: {
+            type: String,
         },
         prescriptionNumber: {
             type: String,
@@ -100,40 +158,13 @@ var orderSchema = new mongoose.Schema(
             type: String,
             default: 0
         },
-        currentStatus: {
-            type: Object,
-            default: {}
-        },
         supplierOrderId: {
             type: String,
             default: 0
         },
-        orderStatus: {
-            acceptedOn: {
-                type: String
-            },
-            effectiveDate: {
-                type: String
-            },
-            enteredOn: {
-                type: String
-            },
-            expiryDate: {
-                type: String
-            },
-            processedOn: {
-                type: String
-            },
-            status: {
-                type: String
-            },
-
-        },
-      
-        subOrders:[],
         taxPayable: {
-            type: Number,
-            default: 0
+            type: mongoose.Decimal128,
+            default: 0.00
         },
         trackingCode: {
             type: String,
@@ -143,17 +174,207 @@ var orderSchema = new mongoose.Schema(
             type: String,
             default: 0
         },
-        ///////////
-        residentId: {
-            type: String,
-            required: true,
-        },
-        productDetails: {
-            type: Array,
-            default: []
-        },
+        subOrders: [
+            {
+                currentStatus: {
+                    reason: {
+                        type: String,
+                        default: '',
+                    },
+                    reasonCode: {
+                        type: String,
+                        default: ''
+                    },
+                    status: {
+                        type: String
+                    },
+                    statusDate: {
+                        type: Date
+                    },
+                    userDisplayName: {
+                        type: String,
+                        default: ''
+                    },
+                    userId: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        required: true
+                    },
+                    username: {
+                        type: String,
+                        default: '',
+                    },
+                },
+                items: [{
+                    tax: {
+                        category: {
+                            type: String
+
+                        },
+                        isIncluded: {
+                            type: Boolean,
+                            require: true,
+                            min: 6,
+                            default: false,
+                        },
+                        IsTaxExempt: {
+                            type: Boolean,
+                            require: true,
+                            min: 6,
+                            default: false,
+                        },
+                        percentage: {
+                            type: mongoose.Decimal128,
+                            default: 0.00,
+                        },
+                        type: {
+                            type: String,
+                            default: '',
+                        },
+                        name: {
+                            type: String,
+                            default: '',
+                        },
+                    },
+                    brandName: {
+                        type: String,
+                        default: ''
+                    },
+                    description: {
+                        type: String,
+                        default: ''
+                    },
+                    dosage: {
+                        type: String,
+                        default: 0
+                    },
+                    form: {
+                        type: Object,
+                        default: {}
+                    },
+                    genericname: {
+                        type: String,
+                        default: ''
+                    },
+                    information: {
+                        type: String,
+                        default: ''
+                    },
+                    linesubtotal: {
+                        type: mongoose.Decimal128,
+                        default: 0.00
+                    },
+                    medicationid: {
+                        type: String
+                    },
+                    packagesize: {
+                        type: String,
+                        default: 0
+                    },
+                    packageunit: {
+                        type: Number
+                    },
+                    prescriptionrequired: {
+                        type: Boolean,
+                        require: true,
+                        min: 6,
+                        default: false,
+                    },
+                    price: {
+                        type: mongoose.Decimal128,
+                        default: 0.00
+                    },
+                    qty: {
+                        type: Number
+                    },
+                    qtyoriginal: {
+                        type: Number
+                    },
+                    r52suppcode: {
+                        type: String
+                    },
+                    status: {
+                        type: String,
+                    },
+                    statusreason: {
+                        type: String
+                    },
+                    suppCatNo: {
+                        type: String
+                    },
+                    supplier: {
+                        type: String
+                    },
+                }],
+                pastStatuses: [{
+                    reason: {
+                        type: String,
+                        default: '',
+                    },
+                    reasonCode: {
+                        type: String,
+                        default: ''
+                    },
+                    status: {
+                        type: String
+                    },
+                    statusDate: {
+                        type: Date
+                    },
+                    userDisplayName: {
+                        type: String,
+                        default: ''
+                    },
+                    userId: {
+                        type: mongoose.Schema.Types.ObjectId,
+                        required: true
+                    },
+                    username: {
+                        type: String,
+                        default: '',
+                    },
+                }],
+                email: {
+                    type: String,
+                    default: ""
+                },
+                isoCountry: {
+                    type: String,
+                    required: true,
+                },
+                phone: {
+                    type: String,
+                    default: ""
+                },
+                r52SuppCode: {
+                    type: String
+                },
+                subOrderID: {
+                    type: String,
+                },
+                supplierCode: {
+                    type: String
+                },
+                supplierName: {
+                    type: String
+                },
+                taxPayable: {
+                    type: mongoose.Decimal128,
+                    default: 0.00
+                },
+                totalPayable: {
+                    type: mongoose.Decimal128,
+                    default: 0.00
+                },
+                subTotal: {
+                    type: mongoose.Decimal128,
+                    default: 0.00
+                },
+            }
+        ],
         deliveryAddress: {
             type: String,
+            min: 6,
+            trim: true,
         },
         isDelivered: {
             type: Boolean,
@@ -170,21 +391,5 @@ var orderSchema = new mongoose.Schema(
         },
     }
 );
-var customeCollectionName = 'OrderMedicine'
 /// TO MAKE CUSTOME COLLECTION NAME
-module.exports = mongoose.model("order", orderSchema, 'OrderMedicine');
-
-
-  // var currentStatus : CurrentStatus? = null
-        // var email: String? = null
-        // var isoCountry: String? = null
-        // var items: RealmList<Items> = RealmList()
-        // var pastStatuses: RealmList<PastStatus>? = RealmList()  //need discussed
-        // var phone: String? = null
-        // var r52SuppCode: String? = null
-        // var subOrderID: String? = null
-        // var supplierCode: String? = null
-        // var supplierName: String? = null
-        // var taxPayable: Decimal128? = null
-        // var totalPayable: Decimal128? = null
-        // var subTotal: Decimal128? = null
+module.exports = mongoose.model("OrderMedicine", orderSchema, customeCollectionName);
