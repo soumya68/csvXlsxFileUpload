@@ -56,6 +56,15 @@ var residentSchema = new mongoose.Schema(
         createdBy: {
             type: String,
         },
+        createdBy: {
+            userId: {
+                type: String,
+                required: true
+            },
+            utcDatetime: {
+                type: Date
+            },
+        },
         createdById: {
             type: String,
         },
@@ -67,43 +76,40 @@ var residentSchema = new mongoose.Schema(
             default: false
         },
         address: {
-            location: {
-                type: String,
-            },
-            region: {
-                type: String,
-            },
-            country: {
-                type: String,
-            },
-            city: {
-                type: String,
-            },
-            postal_code: {
-                type: String,
-            },
-            landmark: {
-                type: String,
-            },
-            isoCountry: {
-                type: String,
-            },
-            zip: {
-                type: String,
-            },
-            directions: {
-                type: String,
-            },
             addressLine1: {
                 type: String,
             },
             addressLine2: {
                 type: String,
             },
+            city: {
+                type: String,
+            },
+            country: {
+                type: String,
+            },
             district: {
                 type: String,
             },
+            isoCountry: {
+                type: String,
+            },
+            postalCode: {
+                type: String,
+            },
+            directions: {
+                type: String,
+            },
+            landmark: {
+                type: String,
+            },
+            region: {
+                type: String,
+            },
             town: {
+                type: String,
+            },
+            zip: {
                 type: String,
             }
         },
@@ -115,7 +121,7 @@ var residentSchema = new mongoose.Schema(
             type: Number,
             default: 0
         },
-        metadata: {
+        metaData: {
             createdBy: {
                 userId: {
                     type: String,
@@ -126,11 +132,10 @@ var residentSchema = new mongoose.Schema(
                 },
             },
             updatedBy: {
-                type: Array,
-                default: []
+                type: String,
             },
             version: {
-                type: String,
+                type: Number,
                 default: 0
             },
         },
@@ -140,9 +145,13 @@ var residentSchema = new mongoose.Schema(
             createdAt: "createdAt",
             updatedAt: "updatedAt",
         },
-    }
+    },
+    
 );
-module.exports = mongoose.model("resident", residentSchema);
+
+var customeCollectionName = 'ResidentUser'
+/// TO MAKE CUSTOME COLLECTION NAME
+module.exports = mongoose.model("resident", residentSchema,customeCollectionName);
 /// BELOW FROM MOBILE TEAM
 // {
 //     "title": "ResidentUser",

@@ -3,6 +3,10 @@ const validator = require("validator");
 const autoIncrement = require('mongoose-auto-increment');
 var supplierSchema = new mongoose.Schema(
     {
+        _partition: {
+            type: String,
+            default: "101"
+        },
         catalogTags: {
             type: Array,
             default: []
@@ -27,7 +31,7 @@ var supplierSchema = new mongoose.Schema(
                 isoCountry: {
                     type: String,
                 },
-                postal_code: {
+                postalCode: {
                     type: String,
                 },
                 directions: {
@@ -45,8 +49,13 @@ var supplierSchema = new mongoose.Schema(
                 zip: {
                     type: String,
                 },
-
-            }
+            },
+            email: {
+                type: String,
+            },
+            phone: {
+                type: String,
+            },
         },
 
         deliveryFee: {
@@ -63,35 +72,36 @@ var supplierSchema = new mongoose.Schema(
         },
         supplierCode: {
             type: String,
-            default: 0
+            default: '0'
         },
         supplierName: {
-            type: Object,
-            default: {}
-        },
+            eng:{
+                type: String
+            }
+         },
         usdPrice: {
             type: mongoose.Decimal128,
             default: 0.00
         },
-        metadata: {
-            createdBy: {
-                userId: {
-                    type: String,
-                    required: true
-                },
-                utcDatetime: {
-                    type: Date
-                },
-            },
-            updatedBy: {
-                type: Array,
-                default: []
-            },
-            version: {
+        createdBy: {
+            userId: {
                 type: String,
-                default: 0
+                required: true
+            },
+            utcDatetime: {
+                type: Date
             },
         },
+        updatedBy: {
+            userId: {
+                type: String,
+                required: true
+            },
+            utcDatetime: {
+                type: Date
+            },
+        },
+
     },
     {
         timestamps: {
@@ -100,7 +110,7 @@ var supplierSchema = new mongoose.Schema(
         },
     }
 );
-var customeCollectionName = 'Supplier'
+var customeCollectionName = 'Suppliers'
 /// TO MAKE CUSTOME COLLECTION NAME
 module.exports = mongoose.model("supplier", supplierSchema, customeCollectionName);
 

@@ -48,4 +48,8 @@ var pointsAuditSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("pointsAudit", pointsAuditSchema);
+
+var customeCollectionName = 'PointsAudit'
+/// TO MAKE CUSTOME COLLECTION NAME
+module.exports = mongoose.model("pointsAudit", pointsAuditSchema, customeCollectionName);
+

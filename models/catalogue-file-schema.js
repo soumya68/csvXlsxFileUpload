@@ -1,4 +1,4 @@
-const { parseString } = require("@fast-csv/parse");
+
 var mongoose = require("mongoose");
 const validator = require("validator");
 var catalogueFileStatusSchema = new mongoose.Schema(
@@ -52,4 +52,7 @@ var catalogueFileStatusSchema = new mongoose.Schema(
         },
     }
 );
-module.exports = mongoose.model("catalogueFiles", catalogueFileStatusSchema);
+
+var customeCollectionName = 'CatalogueFile'
+/// TO MAKE CUSTOME COLLECTION NAME
+module.exports = mongoose.model("catalogueFiles", catalogueFileStatusSchema, customeCollectionName);

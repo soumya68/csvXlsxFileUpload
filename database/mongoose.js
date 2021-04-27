@@ -10,6 +10,7 @@ const connectDB = async (callback) => {
       useCreateIndex: true,
       useFindAndModify: false,
     });
+    
     callback(false)
     console.info(`Database connected: ${conn.connection.host}`);
   } catch (error) {

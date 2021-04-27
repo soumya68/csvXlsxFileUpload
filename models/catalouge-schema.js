@@ -21,9 +21,9 @@ var catalougeSchema = new mongoose.Schema(
         },
         manufacturer: {
             type: String,
-            default: ""
+          
         },
-        //40
+       
         packUnit: {
             type: String,
             default: ""
@@ -34,7 +34,7 @@ var catalougeSchema = new mongoose.Schema(
                 default: 22
             }
         },
-        ////////////////////////////
+      
         supplierCode: {
             type: String,
             required: true,
@@ -49,7 +49,7 @@ var catalougeSchema = new mongoose.Schema(
         //packSizeUnit IS ADDED AS PER UPLOAD SHEET
         packSizeUnit: {
             type: String,
-            default: 0
+            default: '0'
         },
         //requireRx IS ADDED AS PER UPLOAD SHEET
         requireRx: {
@@ -62,10 +62,6 @@ var catalougeSchema = new mongoose.Schema(
             default: 0.00
         },
         price: {
-            //type:  SchemaTypes.Double ,
-            // default: 0.00
-            // type: String,
-            // default: '0.00'
             type: mongoose.Decimal128,
             default: 0.00
         },
@@ -78,13 +74,14 @@ var catalougeSchema = new mongoose.Schema(
         },
         barCode: {
             type: String,
-            default: 0000
+            default: '0000'
         },
         brandName: {
-            type: Object,
-            default: {}
+            eng: {
+                type: String
+            }
         },
-        //30
+
         catalogTags: {
             type: Array,
             default: []
@@ -95,7 +92,7 @@ var catalougeSchema = new mongoose.Schema(
         },
         dosage: {
             type: String,
-            default: 0
+            default: '0'
         },
         form: {
             type: Object,
@@ -123,9 +120,9 @@ var catalougeSchema = new mongoose.Schema(
         },
         medCode: {
             type: String,
-            default: 0000
+            default: '0000'
         },
-        //20
+    
         createdBy: {
             userId: {
                 type: String,
@@ -138,23 +135,23 @@ var catalougeSchema = new mongoose.Schema(
             createdBy: {
                 userId: {
                     type: String,
+                    required: true
                 },
                 utcDatetime: {
-                    type: String
+                    type: Date
                 },
             },
             updatedBy: {
                 type: String,
-                default: ""
             },
             version: {
-                type: Long,
+                type: Number,
                 default: 0
             },
         },
         packSize: {
             type: String,
-            default: 0
+            default: '0'
         },
         prescriptionRequired: {
             type: Boolean,
@@ -172,7 +169,7 @@ var catalougeSchema = new mongoose.Schema(
         },
         r52CatCode: {
             type: String,
-            default: 0000,
+            default: '0000',
         },
         r52CatNo: {
             type: String,
@@ -196,16 +193,13 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        suppliers: {
-            type: Object,
-            default: {}
-        },
+        // supplier: {
+        //     type: Object,
+        //     default: {}
+        // },
         tax: {
             //////// name IS ADDED AS PER UPLOAD SHEET
-            name: {
-                type: String,
-                default: '',
-            },
+
             category: {
                 type: String,
                 default: '',
@@ -224,28 +218,37 @@ var catalougeSchema = new mongoose.Schema(
                 default: false,
             },
             percentage: {
-                type: Long,
-                default: 0,
+                type: mongoose.Decimal128,
+                default: 0.00
             },
             type: {
                 type: String,
                 default: '',
-            }
+            },
+            name: {
+                type: String,
+                default: '',
+            },
         },
         type: {
             type: String,
-            default: '',
+            default: 'Medication',
         },
         rating: {
             type: String,
             default: '',
         },
+        // supplierName: {
+        //     type: String,
+        //     default: '',
+        // },
         supplierName: {
-            type: String,
-            default: '',
+            eng: {
+                type: String
+            }
         },
         usdPrice: {
-            type: Long,
+            type: Number,
             default: 0
         }
     },

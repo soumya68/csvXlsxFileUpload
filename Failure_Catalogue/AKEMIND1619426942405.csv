@@ -1,0 +1,2 @@
+CatalougeNumber,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,pointsAccumulation,SupplierName
+,A5625,Advil ,Ibuprofen,,,200mg,soft gel capsule,8, capsule pack,medication,Yes,VAT,No,Yes,10,9.33,,Available,0,ERT

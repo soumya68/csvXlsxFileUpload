@@ -60,7 +60,8 @@ module.exports = function () {
         //Start of get Redeem points
         userRedeemPoints: function (residentId, redeemedPoints, callBack) {
             try {
-                residents.find({ _id: residentId }).then((result) => {
+                residents.find({_id:residentId}).then((result) => {
+                   
                     if (result.length > 0) {
                         if (result[0].availablePoints >= redeemedPoints) {
                             callBack(false, "User has available redeempoints");

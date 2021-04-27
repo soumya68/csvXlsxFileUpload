@@ -81,6 +81,10 @@ module.exports = (app) => {
                 res.status(400).json({ status: false, message: "redeemedPoints parameter is missing" });
                 return;
             }
+
+         
+
+
             pointsModule.userRedeemPoints(req.body.residentId, req.body.redeemedPoints,
                 function (error, message) {
                     if (error) {

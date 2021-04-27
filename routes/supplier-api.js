@@ -6,6 +6,7 @@ module.exports = (app) => {
     //Functions:addSupplier
     app.post('/api/add/supplier', function (req, res) {
         try {
+           
             if (!req.body.supplierName) {
                 res.status(400).json({ status: false, message: "supplierName parameter is missing" });
                 return;
@@ -22,10 +23,10 @@ module.exports = (app) => {
                 res.status(400).json({ status: false, message: "supplierCode parameter is missing" });
                 return;
             }
-            if (!req.body.address) {
-                res.status(400).json({ status: false, message: "address parameter is missing" });
-                return;
-            }
+            // if (!req.body.address) {
+            //     res.status(400).json({ status: false, message: "address parameter is missing" });
+            //     return;
+            // }
             if (!req.body.email) {
                 res.status(400).json({ status: false, message: "email parameter is missing" });
                 return;
@@ -44,19 +45,33 @@ module.exports = (app) => {
                 isoCountry: req.body.isoCountry,
                 catalogTags: req.body.catalogTags,
                 contact: {
-                    address: req.body.address,
+                    address: {
+                        addressLine1: req.body.addressLine1,
+                        addressLine2: req.body.addressLine1,
+                        city: req.body.city,
+                        country: req.body.country,
+                        district: req.body.district,
+                        isoCountry: req.body.isoCountry,
+                        postalCode: req.body.postalCode,
+                        directions: req.body.directions,
+                        landmark: req.body.landmark,
+                        region: req.body.region,
+                        town: req.body.town,
+                        zip: req.body.zip,
+                    },
                     email: req.body.email,
                     phone: req.body.phone
                 },
                 deliveryFee: parseFloat(req.body.deliveryFee).toFixed(2),
                 usdPrice: parseFloat(req.body.usdPrice).toFixed(2),
-                metadata: {
-                    createdBy: {
-                        userId: req.body.userId,
-                        utcDatetime: new Date()
-                    },
-                    updatedBy: [],
-                    version: req.body.version
+                lastProductSeq:req.body.lastProductSeq,
+                createdBy: {
+                    userId: req.body.userId,
+                    utcDatetime: new Date()
+                },
+                updatedBy: {
+                    userId: req.body.userId,
+                    utcDatetime: new Date()
                 },
                 timestamp: new Date()
             };

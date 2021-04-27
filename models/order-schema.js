@@ -2,6 +2,10 @@ var mongoose = require("mongoose");
 const validator = require("validator");
 var orderSchema = new mongoose.Schema(
     {
+        _partition: {
+            type: String,
+            default: "101"
+        },
         delivery: {
             type: Number,
             default: 0
@@ -22,7 +26,7 @@ var orderSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        metadata: {
+        metaData: {
             createdBy: {
                 userId: {
                     type: String,
@@ -33,13 +37,16 @@ var orderSchema = new mongoose.Schema(
                 },
             },
             updatedBy: {
-                type: Array,
-                default: []
+                type: String,
             },
             version: {
-                type: mongoose.Decimal128,
-                default: 1.00
+                type: Number,
+                default: 0
             },
+        },
+        deliveryFee:{
+            type: mongoose.Decimal128,
+            default: 0.00
         },
         orderSubTotal: {
             type: mongoose.Decimal128,
@@ -102,13 +109,28 @@ var orderSchema = new mongoose.Schema(
             default: 0
         },
         orderStatus: {
-            type: String,
-            default: 0
+            acceptedOn: {
+                type: String
+            },
+            effectiveDate: {
+                type: String
+            },
+            enteredOn: {
+                type: String
+            },
+            expiryDate: {
+                type: String
+            },
+            processedOn: {
+                type: String
+            },
+            status: {
+                type: String
+            },
+
         },
-        subOrders: {
-            type: Array,
-            default: []
-        },
+      
+        subOrders:[],
         taxPayable: {
             type: Number,
             default: 0
@@ -150,4 +172,19 @@ var orderSchema = new mongoose.Schema(
 );
 var customeCollectionName = 'OrderMedicine'
 /// TO MAKE CUSTOME COLLECTION NAME
-module.exports = mongoose.model("order", orderSchema, customeCollectionName);
+module.exports = mongoose.model("order", orderSchema, 'OrderMedicine');
+
+
+  // var currentStatus : CurrentStatus? = null
+        // var email: String? = null
+        // var isoCountry: String? = null
+        // var items: RealmList<Items> = RealmList()
+        // var pastStatuses: RealmList<PastStatus>? = RealmList()  //need discussed
+        // var phone: String? = null
+        // var r52SuppCode: String? = null
+        // var subOrderID: String? = null
+        // var supplierCode: String? = null
+        // var supplierName: String? = null
+        // var taxPayable: Decimal128? = null
+        // var totalPayable: Decimal128? = null
+        // var subTotal: Decimal128? = null

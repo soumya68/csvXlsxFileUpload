@@ -107,7 +107,7 @@ module.exports = (app) => {
                             function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                 // IF FILE HAS NO DATA
                                 if (totalEntryCount == 0) {
-                                    return res.status(200).json({
+                                    return res.status(500).json({
                                         status: false,
                                         message: "File is empty",
                                         //  invalidRows: invalidDatas,
@@ -119,7 +119,7 @@ module.exports = (app) => {
                                 }
                                 // IF ANY ERROR HAPPENS
                                 if (error) {
-                                    res.status(200).json({
+                                    res.status(500).json({
                                         status: false,
                                         message: error,
                                         // invalidRows: invalidDatas,
@@ -148,7 +148,7 @@ module.exports = (app) => {
                                                     function (error) {
                                                         // IF ANY ERROR HAPPENS AT FAILURE FILE SAVING
                                                         if (error) {
-                                                            res.status(200).json({
+                                                            res.status(500).json({
                                                                 status: false,
                                                                 // invalidRows: invalidDatas,
                                                                 invalidRowsCount: invalidDatas.length,
@@ -195,7 +195,7 @@ module.exports = (app) => {
                             function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                 // IF FILE HAS NO DATA
                                 if (totalEntryCount == 0) {
-                                    return res.status(200).json({
+                                    return res.status(500).json({
                                         status: false,
                                         message: "File is empty",
                                         // invalidRows: invalidDatas,
@@ -207,7 +207,7 @@ module.exports = (app) => {
                                 }
                                 // IF ANY ERROR HAPPENS
                                 if (error) {
-                                    res.status(200).json({
+                                    res.status(500).json({
                                         status: false,
                                         message: error,
                                         //  invalidRows: invalidDatas,
@@ -236,7 +236,7 @@ module.exports = (app) => {
                                                     function (error) {
                                                         // IF ANY ERROR HAPPENS AT FAILURE FILE SAVING
                                                         if (error) {
-                                                            res.status(200).json({
+                                                            res.status(500).json({
                                                                 status: false,
                                                                 message: "Data Inserted Successfully",
                                                                 // invalidRows: invalidDatas,

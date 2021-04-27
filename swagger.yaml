@@ -155,7 +155,84 @@ paths:
         description: "Supplier object that needs to be added to the database"
         required: true
         schema:
-          $ref: "#/definitions/Supplier"
+          type: "object"
+          properties:
+            _partition: 
+               type: "string"
+               example: "101"
+            userId:
+              type: "string"
+              #format: "objectId"
+              example: "6048708c946251d02c88f329"
+            addressLine1:
+              type: "string"
+              example: "PUNE"
+            addressLine2:
+              type: "string"
+              example: "BANNER"
+            city:
+              type: "string"
+              example: "PUNE"
+            country:
+              type: "string"
+              example: "INDIA"
+            isoCountry:
+              type: "string"
+              example: "phl"
+            district:
+              type: "string"
+              example: "PUNE"
+            postalCode:
+              type: "string"
+              example: "784512"
+            directions:
+              type: "string"
+              example: "WEST"
+            landmark:
+              type: "string"
+              example: "NEW GALAXY MALL"
+            region:
+              type: "string"
+              example: "EAST"
+            town:
+              type: "string"
+              example: "PUNE"
+            zip:
+              type: "string"
+              example: "PUNE"
+            email:
+              type: "string"
+              example: "email@gmail.com"
+            phone:
+              type: "string"
+              example: "9999999999"
+            supplierCode:
+              type: "string"
+              required: true
+              example: "ALKEM"
+            deliveryFee:
+              type: "integer"
+              format: "decimal"
+              example: 100.00
+            isoCountry:
+              type: "string"
+              example: "phl"
+            lastProductSeq:
+              type: "string"
+              example: "45A"
+            supplierName:
+              type: "string"
+              example: "ALKEM"
+            catalogTags:
+              type: "array"
+              xml:
+                name: "tag"
+                wrapped: true
+              items:
+                type: "string"
+            usdPrice:
+              type: "integer"
+              format: "decimal"
       responses:
         "200":
           description: "successful operation"
@@ -863,30 +940,78 @@ definitions:
   Supplier:
     type: "object"
     properties:
+      _partition: 
+        type: "string"
+        example: "101"
       userId:
         type: "string"
         #format: "objectId"
         example: "6048708c946251d02c88f329"
-      address:
-        type: "string"
-      email:
-        type: "string"
-      phone:
-        type: "string"
+      contact: 
+        type: "object"
+        properties:
+          address: 
+            type:
+            properties:
+                addressLine1:
+                  type: "string"
+                  example: "PUNE"
+                addressLine2:
+                  type: "string"
+                  example: "BANNER"
+                city:
+                  type: "string"
+                  example: "PUNE"
+                country:
+                  type: "string"
+                  example: "INDIA"
+                isoCountry:
+                  type: "string"
+                  example: "phl"
+                district:
+                  type: "string"
+                  example: "PUNE"
+                postalCode:
+                  type: "string"
+                  example: "784512"
+                directions:
+                  type: "string"
+                  example: "WEST"
+                landmark:
+                  type: "string"
+                  example: "NEW GALAXY MALL"
+                region:
+                  type: "string"
+                  example: "EAST"
+                town:
+                  type: "string"
+                  example: "PUNE"
+                zip:
+                  type: "string"
+                  example: "PUNE"            
+          email:
+            type: "string"
+            example: "email@gmail.com"
+          phone:
+            type: "string"
+            example: "9999999999"
       supplierCode:
         type: "string"
+        required: true
+        example: "ALKEM"
       deliveryFee:
         type: "integer"
         format: "decimal"
+        example: 100.00
       isoCountry:
         type: "string"
-       
+        example: "phl"
       lastProductSeq:
         type: "string"
-       
+        example: "45A"
       supplierName:
-        type: "object"
-        example: { eng:"abcd"}
+        type: "string"
+        example: "ALKEM"
       catalogTags:
         type: "array"
         xml:
@@ -1089,6 +1214,15 @@ definitions:
       availablePoints:
         type: "integer"
         format: "int32"
+      createdBy:
+        type: "object"
+        properties:
+          userId:
+            type: "string"
+            example: "605059f391ad10274d40f663"
+          utcDatetime:
+            type: "string"
+            format: "date-time"
       metadata:
         type: "object"
         properties:
@@ -1114,8 +1248,6 @@ definitions:
   Medication:
     type: "object"
     properties:
-     
-
       _partition:
         type: "string"
         default: "101"
@@ -1162,7 +1294,7 @@ definitions:
         type: "string"
       brandName:
         type: "object"
-        example: {}
+        example: {"eng":"ALKEM"}
       catalogTags:
         type: "array"
         xml:
@@ -1277,7 +1409,8 @@ definitions:
             type: "boolean"
             default: false
           percentage:
-            type: "long"
+            type: "integer"
+            format: "decimal"
           type:
             type: "string"
       type:
@@ -1285,7 +1418,11 @@ definitions:
       rating:
         type: "string"
       supplierName:
-        type: "string"
+        type: "object"
+        properties:
+          eng:
+            type: "string"
+            example: "ALKEM"
       usdPrice:
         type: "long"
     xml:

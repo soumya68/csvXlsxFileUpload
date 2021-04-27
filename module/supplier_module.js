@@ -15,6 +15,7 @@ module.exports = function () {
                             callBack(false, null, response, "Supplier added successfully");
                         })
                             .catch(err => {
+                              
                                 callBack(true, err, null, "Error");
                             });
                     }
@@ -34,15 +35,16 @@ module.exports = function () {
                     if (docs.length > 0) {
                         var doc = docs[0];
                         var data = {
+                            id:doc._id,
                             supplierName: doc.supplierName.eng,
                             supplierCode: doc.supplierCode,
                             isoCountry: doc.isoCountry,
                             catalogTags: doc.catalogTags,
                             contact: doc.contact,
-                            address: doc.contact.address,
-                            email: doc.contact.email,
-                            phone: doc.contact.phone,
-                            supplierUniqueId: doc.supplierId,
+                            //address: doc.contact.address,
+                            // email: doc.contact.email,
+                            // phone: doc.contact.phone,
+                           // supplierUniqueId: doc.supplierId,
                             deliveryFee: doc.deliveryFee.toString(),
                             lastProductSeq: doc.lastProductSeq,
                             type: doc.type,
@@ -72,17 +74,18 @@ module.exports = function () {
                         var supplierData = function (doc) {
                             medications.countDocuments({ supplierCode: doc.supplierCode }).then(totalDatas => {
                                 var data = {
+                                    id:doc._id,
                                     supplierName: doc.supplierName.eng,
                                     supplierCode: doc.supplierCode,
                                     isoCountry: doc.isoCountry,
                                     catalogTags: doc.catalogTags,
                                     contact: doc.contact,
-                                    address: doc.contact.address,
+                                   // address: doc.contact.address,
                                     email: doc.contact.email,
                                     phone: doc.contact.phone,
                                     supplierUniqueId: doc.supplierId,
                                     deliveryFee: doc.deliveryFee.toString(),
-                                    // lastProductSeq: doc.lastProductSeq,
+                                    lastProductSeq: doc.lastProductSeq,
                                     totalDatas: totalDatas,
                                     type: doc.type,
                                     usdPrice: doc.usdPrice.toString()

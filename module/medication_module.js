@@ -34,6 +34,7 @@ module.exports = function () {
         //Start of File Row Validation
         excelValidation: function (data, callBack) {
             try {
+              
                 // CHECK IF THESE FIELDS ARE EMPTY OR NOT 
                 if (
                     !data.SupplierUniqueCatalogueNumber
@@ -53,10 +54,12 @@ module.exports = function () {
                     || !data.PointsAccumulation.toString()
                     || !data.Manufacturer
                 ) {
+                 
                     // IF EMPTY THEN SEND STATUS FALSE
                     callBack(false);
                 }
                 else {
+                   
                     // IF NOT EMPTY THEN SEND STATUS TRUE
                     callBack(true);
                 }
@@ -252,6 +255,7 @@ module.exports = function () {
                                             medicationModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, supplierCode, function (error, isDuplicate) {
                                                 // IF NO DUPLICATE DATA FOUND
                                                 if (!isDuplicate) {
+                                                
                                                     // INCREASE CORRECT ENTRY VALUE
                                                     correctEntryCount = correctEntryCount + 1
                                                     if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
@@ -317,12 +321,15 @@ module.exports = function () {
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: row.PricePerPackage,
+                                                        pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
                                                         price: parseFloat(row.PricePerPackage).toFixed(2),
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
-                                                        supplierName: row.SupplierName,
+                                                        // supplierName: row.SupplierName,
+                                                        supplierName: {
+                                                            "eng": row.SupplierName
+                                                        },
                                                         createdBy: {
                                                             userId: userId,
                                                             utcDatetime: new Date()
@@ -354,6 +361,7 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
+                                                              
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -411,13 +419,16 @@ module.exports = function () {
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        // pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
-                                                        pricePerPack: row.PricePerPackage,
+                                                        pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
+                                                       
                                                         price: parseFloat(row.PricePerPackage).toFixed(2),
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
-                                                        supplierName: row.SupplierName,
+                                                        //supplierName: row.SupplierName,
+                                                        supplierName: {
+                                                            "eng": row.SupplierName
+                                                        },
                                                         metaData: {
                                                             updatedBy: userId,
                                                             version: version
@@ -446,6 +457,7 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
+                                                              
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -470,6 +482,7 @@ module.exports = function () {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     })
                                                     .catch(function (err) {
+                                                       
                                                         callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     });
                                             }
@@ -485,10 +498,12 @@ module.exports = function () {
                         }
                         else {
                             // IF FILE IS EMPTY OR ROW IS EMPTY
+                          
                             callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                         }
                     })
             } catch (e) {
+            
                 callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
             }
         },
@@ -609,17 +624,20 @@ module.exports = function () {
                                                             IsTaxExempt: IsTaxExempt
                                                         },
                                                         // pricePerPack: parseFloat(doc[16]),
-                                                        pricePerPack: doc[16],
+                                                        pricePerPack:  parseFloat(doc[16]).toFixed(2),
                                                         price: parseFloat(doc[16]).toFixed(2),
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
-                                                        supplierName: doc[20],
-                                                        CreatedBy: {
+                                                       // supplierName: doc[20],
+                                                        supplierName: {
+                                                            "eng": doc[20]
+                                                        },
+                                                        createdBy: {
                                                             userId: userId,
                                                             utcDatetime: new Date()
                                                         },
-                                                        MetaData: {
+                                                        metaData: {
                                                             createdBy: {
                                                                 userId: userId,
                                                                 utcDatetime: new Date()
@@ -699,13 +717,16 @@ module.exports = function () {
                                                             type: doc[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: doc[16],
+                                                        pricePerPack:  parseFloat(doc[16]).toFixed(2),
                                                         price: parseFloat(doc[16]).toFixed(2),
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
-                                                        supplierName: doc[20],
-                                                        Metadata: {
+                                                        // supplierName: doc[20],
+                                                        supplierName: {
+                                                            "eng": doc[20]
+                                                        },
+                                                        metadata: {
                                                             updatedBy: userId,
                                                             version: version
                                                         },
@@ -867,6 +888,7 @@ module.exports = function () {
         viewFiles: function (callBack) {
             try {
                 catalogueFiles.find({}).sort({ _id: -1 }).then(response => {
+                  
                     if (response.length > 0) {
                         callBack(false, 'Files details found', response);
                     }
