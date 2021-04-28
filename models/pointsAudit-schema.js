@@ -6,10 +6,6 @@ var pointsAuditSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        // orderId: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     required: true,
-        // },
         orderId: {
             type: String,
             required: true,

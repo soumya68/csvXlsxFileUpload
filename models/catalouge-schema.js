@@ -193,10 +193,7 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        // supplier: {
-        //     type: Object,
-        //     default: {}
-        // },
+        
         tax: {
             //////// name IS ADDED AS PER UPLOAD SHEET
 
@@ -238,10 +235,7 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             default: '',
         },
-        // supplierName: {
-        //     type: String,
-        //     default: '',
-        // },
+       
         supplierName: {
             eng: {
                 type: String

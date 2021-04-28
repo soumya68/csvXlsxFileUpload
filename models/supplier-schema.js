@@ -115,20 +115,3 @@ var customeCollectionName = 'Suppliers'
 module.exports = mongoose.model("supplier", supplierSchema, customeCollectionName);
 
 
-
-
-
-
- // var addressLine1: String? = null
-        // var addressLine2: String? = null
-        // var city: String? = null
-        // var country: String? = null
-        // var district: String? = null
-        // var isoCountry: String? = null
-        // var postal_code: String? = null
-        // var directions: String? = null
-        // var landmark: String? = null
-        // var location: String? = null
-        // var region: String? = null
-        // var town: String? = null
-        // var zip: String? = null
