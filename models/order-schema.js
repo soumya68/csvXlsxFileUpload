@@ -304,6 +304,12 @@ var orderSchema = new mongoose.Schema(
                     supplier: {
                         type: String
                     },
+                    pointsAccumulation:{
+                        type: Boolean,
+                        require: true,
+                        min: 6,
+                        default: false,
+                    }
                 }],
                 pastStatuses: [{
                     reason: {
@@ -392,6 +398,5 @@ var orderSchema = new mongoose.Schema(
     }
 );
 var customeCollectionName = 'OrderMedicine'
-/// TO MAKE CUSTOME COLLECTION NAME
 /// TO MAKE CUSTOME COLLECTION NAME
 module.exports = mongoose.model("ordermedicine", orderSchema, customeCollectionName);
