@@ -57,7 +57,6 @@ var supplierSchema = new mongoose.Schema(
                 type: String,
             },
         },
-
         deliveryFee: {
             type: mongoose.Decimal128,
             default: 0.00
@@ -75,10 +74,10 @@ var supplierSchema = new mongoose.Schema(
             default: '0'
         },
         supplierName: {
-            eng:{
+            eng: {
                 type: String
             }
-         },
+        },
         usdPrice: {
             type: mongoose.Decimal128,
             default: 0.00
@@ -101,7 +100,6 @@ var supplierSchema = new mongoose.Schema(
                 type: Date
             },
         },
-
     },
     {
         timestamps: {
@@ -113,5 +111,3 @@ var supplierSchema = new mongoose.Schema(
 var customeCollectionName = 'Suppliers'
 /// TO MAKE CUSTOME COLLECTION NAME
 module.exports = mongoose.model("supplier", supplierSchema, customeCollectionName);
-
-

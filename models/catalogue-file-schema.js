@@ -1,4 +1,3 @@
-
 var mongoose = require("mongoose");
 const validator = require("validator");
 var catalogueFileStatusSchema = new mongoose.Schema(
@@ -41,7 +40,9 @@ var catalogueFileStatusSchema = new mongoose.Schema(
             type: String,
             default: ""
         },
-       
+        supplierName: {
+            type: String,
+        }
     },
     {
         timestamps: {
@@ -50,7 +51,6 @@ var catalogueFileStatusSchema = new mongoose.Schema(
         },
     }
 );
-
 var customeCollectionName = 'CatalogueFile'
 /// TO MAKE CUSTOME COLLECTION NAME
 module.exports = mongoose.model("catalogueFiles", catalogueFileStatusSchema, customeCollectionName);

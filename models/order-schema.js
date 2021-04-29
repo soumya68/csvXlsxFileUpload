@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 var customeCollectionName = 'OrderMedicine';
-
 var orderSchema = new mongoose.Schema(
     {
         _partition: {
@@ -208,7 +207,6 @@ var orderSchema = new mongoose.Schema(
                     tax: {
                         category: {
                             type: String
-
                         },
                         isIncluded: {
                             type: Boolean,
@@ -304,7 +302,7 @@ var orderSchema = new mongoose.Schema(
                     supplier: {
                         type: String
                     },
-                    pointsAccumulation:{
+                    pointsAccumulation: {
                         type: Boolean,
                         require: true,
                         min: 6,

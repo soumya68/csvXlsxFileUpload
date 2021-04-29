@@ -10,10 +10,8 @@ module.exports = function () {
             redeemedPoints,
             pointSource, countryCode, callBack) {
             try {
-              
                 // FIND ORDER DETAILS BY ORDER ID
-                order.find({_id:orderId}).then(orderData => {
-                  
+                order.find({ _id: orderId }).then(orderData => {
                     // CHECK ANY ORDER FOUND OR NOT
                     if (orderData.length > 0) {
                         // IF ANY ORDER FOUND

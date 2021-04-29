@@ -34,13 +34,12 @@ module.exports = function () {
         //Start of File Row Validation
         excelValidation: function (data, callBack) {
             try {
-              
                 // CHECK IF THESE FIELDS ARE EMPTY OR NOT 
                 if (
                     !data.SupplierUniqueCatalogueNumber
                     || !data.BrandName
-                    || !data.Dosage
-                    || !data.SupplierName
+                    // || !data.Dosage
+                    //|| !data.SupplierName
                     || !data.PackSize
                     || !data.PackSizeUnits
                     || !data.ProductType
@@ -52,14 +51,12 @@ module.exports = function () {
                     || !data.PricePerPackage
                     || !data.Status
                     || !data.PointsAccumulation.toString()
-                    || !data.Manufacturer
+                    // || !data.Manufacturer
                 ) {
-                 
                     // IF EMPTY THEN SEND STATUS FALSE
                     callBack(false);
                 }
                 else {
-                   
                     // IF NOT EMPTY THEN SEND STATUS TRUE
                     callBack(true);
                 }
@@ -106,6 +103,7 @@ module.exports = function () {
                             var fileName = row.fileName
                             var userId = row.userId
                             var supplierCode = row.supplierCode
+                            var supplierName = row.supplierName
                             var isoCountryCode = row.isoCountryCode
                             var version = 1
                             // File path where file is saved
@@ -114,7 +112,9 @@ module.exports = function () {
                             // CHECK FILE EXTENTION TYPE 
                             if (fileExtention == "xlsx" || fileExtention == "xls") {
                                 ////// THIS IS FOR XLSX FILE 
-                                medicationModule.xlsxUpload(isoCountryCode, userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                medicationModule.xlsxUpload(
+                                    supplierName,
+                                    isoCountryCode, userId, version, supplierCode, filePath, correctEntryCount, invalidDatas, duplicateEntryCount,
                                     function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                         // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
                                         let updates = {
@@ -164,7 +164,9 @@ module.exports = function () {
                             }
                             else {
                                 /// THIS IS FOR CSV FILE UPLOAD
-                                medicationModule.csvUpload(isoCountryCode, userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
+                                medicationModule.csvUpload(
+                                    supplierName,
+                                    isoCountryCode, userId, version, supplierCode, filePath, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount,
                                     function (error, totalEntryCount, correctEntryCount, invalidDatas, duplicateEntryCount) {
                                         // UPDATE THE UPLOAD FILE STATUS IN CATALOGUE FILE COLLECTION BY FILE NAME
                                         let updates = {
@@ -225,7 +227,9 @@ module.exports = function () {
         },
         // End of Process File
         // Start of csv file upload
-        csvUpload: function (isoCountryCode, userId, version, supplierCode, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        csvUpload: function (
+            supplierName,
+            isoCountryCode, userId, version, supplierCode, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
@@ -255,7 +259,6 @@ module.exports = function () {
                                             medicationModule.checkDuplicate(row.SupplierUniqueCatalogueNumber, supplierCode, function (error, isDuplicate) {
                                                 // IF NO DUPLICATE DATA FOUND
                                                 if (!isDuplicate) {
-                                                
                                                     // INCREASE CORRECT ENTRY VALUE
                                                     correctEntryCount = correctEntryCount + 1
                                                     if (row.IsTaxIncluded == 'Yes' || row.IsTaxIncluded == 1) {
@@ -327,8 +330,11 @@ module.exports = function () {
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
                                                         // supplierName: row.SupplierName,
+                                                        // supplierName: {
+                                                        //     "eng": row.SupplierName
+                                                        // },
                                                         supplierName: {
-                                                            "eng": row.SupplierName
+                                                            "eng": supplierName
                                                         },
                                                         createdBy: {
                                                             userId: userId,
@@ -361,7 +367,6 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
-                                                              
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -420,14 +425,16 @@ module.exports = function () {
                                                             IsTaxExempt: IsTaxExempt
                                                         },
                                                         pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
-                                                       
                                                         price: parseFloat(row.PricePerPackage).toFixed(2),
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
                                                         //supplierName: row.SupplierName,
+                                                        // supplierName: {
+                                                        //     "eng": row.SupplierName
+                                                        // },
                                                         supplierName: {
-                                                            "eng": row.SupplierName
+                                                            "eng": supplierName
                                                         },
                                                         metaData: {
                                                             updatedBy: userId,
@@ -457,7 +464,6 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
-                                                              
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -482,7 +488,6 @@ module.exports = function () {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     })
                                                     .catch(function (err) {
-                                                       
                                                         callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     });
                                             }
@@ -498,25 +503,25 @@ module.exports = function () {
                         }
                         else {
                             // IF FILE IS EMPTY OR ROW IS EMPTY
-                          
                             callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                         }
                     })
             } catch (e) {
-            
                 callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
             }
         },
         // End of csv file upload
         // Start of xlsx file upload
-        xlsxUpload: function (isoCountry, userId, version, supplierCode, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
+        xlsxUpload: function (
+            supplierName,
+            isoCountry, userId, version, supplierCode, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
                 var isIncluded
                 var IsTaxExempt
                 var r52CatNo = 0
                 rawDocuments = []
                 // START READING OF EXCEL/XLSX FILE
-                readXlsxFile(fs.createReadStream(filepath), { sheet: 2 }).then((rows) => {
+                readXlsxFile(fs.createReadStream(filepath), { sheet: 1 }).then((rows) => {
                     var theRemovedElement = rows.shift();
                     // CHECK IF FILE/ROW HAS DATA OR NOT
                     if (rows.length !== 0) {
@@ -550,7 +555,7 @@ module.exports = function () {
                                         Status: doc[18],
                                         PointsAccumulation: doc[19],
                                         supplierCode: supplierCode,
-                                        SupplierName: doc[20]
+                                        //  SupplierName: doc[20]
                                     };
                                     // CHECK DATA OBJECT VALIDATION FOR NO EMPTY COLUMNS FOR MANDATORY FIELDS
                                     medicationModule.excelValidation(data, function (status) {
@@ -624,14 +629,17 @@ module.exports = function () {
                                                             IsTaxExempt: IsTaxExempt
                                                         },
                                                         // pricePerPack: parseFloat(doc[16]),
-                                                        pricePerPack:  parseFloat(doc[16]).toFixed(2),
+                                                        pricePerPack: parseFloat(doc[16]).toFixed(2),
                                                         price: parseFloat(doc[16]).toFixed(2),
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
-                                                       // supplierName: doc[20],
+                                                        // supplierName: doc[20],
+                                                        // supplierName: {
+                                                        //     "eng": doc[20]
+                                                        // },
                                                         supplierName: {
-                                                            "eng": doc[20]
+                                                            "eng": supplierName
                                                         },
                                                         createdBy: {
                                                             userId: userId,
@@ -717,14 +725,17 @@ module.exports = function () {
                                                             type: doc[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack:  parseFloat(doc[16]).toFixed(2),
+                                                        pricePerPack: parseFloat(doc[16]).toFixed(2),
                                                         price: parseFloat(doc[16]).toFixed(2),
                                                         catalogTags: [doc[17]],
                                                         status: doc[18],
                                                         pointsAccumulation: doc[19],
                                                         // supplierName: doc[20],
+                                                        // supplierName: {
+                                                        //     "eng": doc[20]
+                                                        // },
                                                         supplierName: {
-                                                            "eng": doc[20]
+                                                            "eng": supplierName
                                                         },
                                                         metadata: {
                                                             updatedBy: userId,
@@ -869,7 +880,6 @@ module.exports = function () {
                         { id: 'CatalogTag', title: 'CatalogTag' },
                         { id: 'Status', title: 'Status' },
                         { id: 'PointsAccumulation', title: 'pointsAccumulation' },
-                        { id: 'SupplierName', title: 'SupplierName' },
                     ]
                 });
                 csvWriter.writeRecords(invalidDatas)
@@ -888,7 +898,6 @@ module.exports = function () {
         viewFiles: function (callBack) {
             try {
                 catalogueFiles.find({}).sort({ _id: -1 }).then(response => {
-                  
                     if (response.length > 0) {
                         callBack(false, 'Files details found', response);
                     }

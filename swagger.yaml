@@ -779,6 +779,12 @@ paths:
         example: "ALKEM"
         required: true
         type: "string"
+      - name: "supplierName"
+        in: "formData"
+        description: "supplierName"
+        example: "ALKEM"
+        required: true
+        type: "string"
       - name: "isoCountryCode"
         in: "formData"
         description: "isoCountryCode"

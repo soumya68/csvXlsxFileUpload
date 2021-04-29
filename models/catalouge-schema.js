@@ -21,9 +21,7 @@ var catalougeSchema = new mongoose.Schema(
         },
         manufacturer: {
             type: String,
-          
         },
-       
         packUnit: {
             type: String,
             default: ""
@@ -34,7 +32,6 @@ var catalougeSchema = new mongoose.Schema(
                 default: 22
             }
         },
-      
         supplierCode: {
             type: String,
             required: true,
@@ -42,7 +39,7 @@ var catalougeSchema = new mongoose.Schema(
         //manufacturerName IS ADDED AS PER UPLOAD SHEET
         manufacturerName: {
             type: String,
-            required: true,
+            required: false,
             min: 6,
             trim: true,
         },
@@ -81,7 +78,6 @@ var catalougeSchema = new mongoose.Schema(
                 type: String
             }
         },
-
         catalogTags: {
             type: Array,
             default: []
@@ -122,7 +118,6 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             default: '0000'
         },
-    
         createdBy: {
             userId: {
                 type: String,
@@ -193,10 +188,8 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        
         tax: {
             //////// name IS ADDED AS PER UPLOAD SHEET
-
             category: {
                 type: String,
                 default: '',
@@ -235,7 +228,6 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             default: '',
         },
-       
         supplierName: {
             eng: {
                 type: String

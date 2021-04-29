@@ -6,7 +6,6 @@ module.exports = (app) => {
     //Functions:addSupplier
     app.post('/api/add/supplier', function (req, res) {
         try {
-           
             if (!req.body.supplierName) {
                 res.status(400).json({ status: false, message: "supplierName parameter is missing" });
                 return;
@@ -64,7 +63,7 @@ module.exports = (app) => {
                 },
                 deliveryFee: parseFloat(req.body.deliveryFee).toFixed(2),
                 usdPrice: parseFloat(req.body.usdPrice).toFixed(2),
-                lastProductSeq:req.body.lastProductSeq,
+                lastProductSeq: req.body.lastProductSeq,
                 createdBy: {
                     userId: req.body.userId,
                     utcDatetime: new Date()

@@ -146,10 +146,7 @@ var residentSchema = new mongoose.Schema(
             updatedAt: "updatedAt",
         },
     },
-    
 );
-
 var customeCollectionName = 'ResidentUser'
 /// TO MAKE CUSTOME COLLECTION NAME
-module.exports = mongoose.model("resident", residentSchema,customeCollectionName);
-
+module.exports = mongoose.model("resident", residentSchema, customeCollectionName);
