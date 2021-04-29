@@ -1,0 +1,4 @@
+r52 Catalogue Number,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,RX - JOSEF,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,PointsAccumulation
+We will create this,JS0001,2M BLEND COFFEE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,19.5,,Available,0
+,JS0002,2M PLUS JUICE 10'S,,,,,,10`S,10`S,consumer health,No,,VAT,No,Yes,12,18,,Available,1
+,JS0003,ACALKA TABS 30S,,,,,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,16.65,,Available,1
