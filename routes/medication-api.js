@@ -13,6 +13,7 @@ module.exports = (app) => {
             callback(null, DIR)
         },
         filename: function (req, file, callback) {
+
             // MAKING DATE PART FOR FILE NAME
             var date = new Date();
             // var dateStr =
@@ -43,8 +44,9 @@ module.exports = (app) => {
         storage: storage,
         limits: { fileSize: 1000000 }, // File size must be below 1 MB
         fileFilter: (req, file, cb) => {
+            console.log(file)
             // FILE TYPE ONLY CSV OR XLSX IS ALLOWED
-            if (file.mimetype == "text/csv"
+            if (file.mimetype == "text/csv" || file.mimetype == "application/vnd.ms-excel"
                 || file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
                 cb(null, true);
             } else {
@@ -79,7 +81,7 @@ module.exports = (app) => {
                     return;
                 }
                 if (!req.body.supplierName) {
-                    res.status(400).json({ status: false, message: "supplierCode parameter is missing" });
+                    res.status(400).json({ status: false, message: "supplierName parameter is missing" });
                     return;
                 }
                 if (!req.body.isoCountryCode) {

@@ -22,11 +22,12 @@ module.exports = (app) => {
                 res.status(400).json({ status: false, message: "pointSource parameter is missing" });
                 return;
             }
-            const { redeemedPoints, pointSource, countryCode, orderId } = req.body
+            const { redeemedPoints, pointSource, orderId } = req.body
+            const upperCaseCountrycode = req.body.countryCode.toUpperCase();
             // ON ORDER PROCESS NEED TO CREATE POINTS DETAILS
             orderModule.createPointsDetails(orderId,
                 redeemedPoints,
-                pointSource, countryCode,
+                pointSource, upperCaseCountrycode,
                 function (error, message, discountAmount, finalPrice, totalEarnedPoints) {
                     if (error) {
                         res.status(500).json({

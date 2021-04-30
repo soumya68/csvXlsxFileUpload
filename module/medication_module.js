@@ -34,6 +34,7 @@ module.exports = function () {
         //Start of File Row Validation
         excelValidation: function (data, callBack) {
             try {
+             //   console.log(data)
                 // CHECK IF THESE FIELDS ARE EMPTY OR NOT 
                 if (
                     !data.SupplierUniqueCatalogueNumber

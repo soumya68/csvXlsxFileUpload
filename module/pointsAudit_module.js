@@ -101,8 +101,11 @@ module.exports = function () {
         //Start points conversion 
         pointConversion: function (countryCode, redeemedPoints, callBack) {
             try {
-                var currencyValue = ((parseFloat(pointDetails[countryCode].redemption.currencyValue) / parseInt(pointDetails[countryCode].redemption.numberOfPoints)) * parseInt(redeemedPoints))
-                var currency = pointDetails[countryCode].countryCurrency
+              
+                var upperCaseCountrycode = countryCode.toUpperCase();
+             
+                var currencyValue = ((parseFloat(pointDetails[upperCaseCountrycode].redemption.currencyValue) / parseInt(pointDetails[upperCaseCountrycode].redemption.numberOfPoints)) * parseInt(redeemedPoints))
+                var currency = pointDetails[upperCaseCountrycode].countryCurrency
                 callBack(false, currencyValue, currency);
             } catch (e) {
                 callBack(true, null, null);
