@@ -1,0 +1,114 @@
+r52 Catalogue Number,SupplierUniqueCatalogueNumber,BrandNameAsLocal,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,PointsAccumulation
+We will create this,DKSH0000001,ប៊ីយ៉ូហ្វ្លរគ្រាប់ ២៥០មីលីក្រាម,BIOFLOR 250MG B/10Sachs                           ,saccharomyces boulardii,,,250mg,sachet,10 sachets,10 sachets,consumer health,No,VAT,No,Yes,0,17000,,Available,1
+,DKSH0000002,ប៊ីយ៉ូហ្វ្លរគ្រាប់ ២៥០មីលីក្រាម,BIOFLOR 250MG B/10Caps                            ,saccharomyces boulardii,,,250mg,capsule,10 capsules,10 capsules,consumer health,No,VAT,No,Yes,0,17000,,Available,1
+,DKSH0000003,ស្ទីម៉ុល,STIMOL EFF B/18Sachs                              ,Malate de Citrulline,,,,sachet,18 sachets,18 sachets,consumer health,No,VAT,No,Yes,0,30500,,Available,1
+,DKSH0000004,ហ្វ្លេម៊ិចសេរ៉ូ (កូនក្មេង) ៦០មីលីលីត្រ,FLEMEX SYRUP KIDS 60ML                            ,cough medicine,,,60ml,syrup,1 bottle,1 bottle,consumer health,No,VAT,No,Yes,0,4500,,Available,1
+,DKSH0000005,ហ្វ្លេម៊ិចសេរ៉ូ (មនុស្សធំ)​ ៦០មីលីលីត្រ,Flemex Syrup 60 ml                                ,cough medicine,,,60ml,syrup,2 bottle,2 bottle,consumer health,No,VAT,No,Yes,0,4500,,Available,1
+,DKSH0000006,ហ្វ្លេម៊ិចគ្រាប់ (មនុស្សធំ) ៣៧៥មីលីក្រាម,Flemex 375mg B/50x10Tabs                          ,cough medicine,,,375mg,tablet,50 blisters,50 blisters,consumer health,No,VAT,No,Yes,0,113000,,Available,1
+,DKSH0000007,ប៉ាណាដុលអ៊ិចស្រ្តា ,Panadol Extra Tabs B/10x12                        ,Paracetamol/Caffeine,,,500mg,tablet,10 blisters,10 blisters,consumer health,No,VAT,No,Yes,0,32700,,Available,1
+,DKSH0000008,ប៉ាណាដុល ៥០០ មីលីក្រាម,Panadol Caps B/10x12                              ,Paracetamol,,,500mg,Capsule,10 blisters,10 blisters,consumer health,No,VAT,No,Yes,0,25000,,Available,1
+,DKSH0000009,ប៉ាណាដុល,Panadol Cold & Flu Tabs B/10x12                   ,Paracetamol,,,500mg,Tablet,10 blisters,10 blisters,consumer health,No,VAT,No,Yes,0,24700,,Available,1
+,DKSH0000010,ថ្នាំដុសធ្មេញអាខ្វាហ្វ្រេសមនុស្សធំ,AQUAFRESH Whitening Action                        ,toothpaste,,,,,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,11900,,Available,1
+,DKSH0000011,ច្រាសដុសធ្មេញអាខ្វាហ្វ្រេសកូនក្មេង,AQUAFRESH KID TB LITTLE TEETH                     ,toothbrush,,,,,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,5900,,Available,1
+,DKSH0000012,ថ្នាំដុសធ្មេញអាខ្វាហ្វ្រេសកូនក្មេង,AQUAFRESH KID TP BIG TEETH 50ML                   ,toothpaste,,,50ml,,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,4600,,Available,1
+,DKSH0000013,ថ្នាំដុសធ្មេញអាខ្វាហ្វ្រេសកូនក្មេង,AQUAFRESH KID TP LITTLE TEETH 50ML                ,toothpaste,,,50ml,,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,4600,,Available,1
+,DKSH0000014,ច្រាសដុសធ្មេញអាខ្វាហ្វ្រេសកូនក្មេង,AQUAFRESH KID TB BIG TEETH                        ,toothbrush,,,,,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,5900,,Available,1
+,DKSH0000015,ស្មិចតារស់ជាតិក្រូច ៣ក្រាម,SMECTA ORANGE 3G B/30SACH                         ,Anti-acid,,,3g,sachet,30 sachets,30 sachets,consumer health,No,VAT,No,Yes,0,25900,,Available,1
+,DKSH0000016,អាក់តាពុលហ្សីត​ ៣ក្រាម,ACTAPULGITE 3G B/30SACH                           ,Anti-acid,,,3g,sachet,30 sachets,30 sachets,consumer health,No,VAT,No,Yes,0,25000,,Available,1
+,DKSH0000017,បេដេឡិច ៣ក្រាម,BEDELIX 3G B/30SACH                               ,Anti-acid,,,3g,sachet,30 sachets,30 sachets,consumer health,No,VAT,No,Yes,0,27700,,Available,1
+,DKSH0000018,ហ្គាស្រ្តូពុលហ្សីត,GASTROPULGITE B/30SACH                            ,Anti-acid,,,,sachet,30 sachets,30 sachets,consumer health,No,VAT,No,Yes,0,23800,,Available,1
+,DKSH0000019,វូដសេរ៉ូ,Woods' cough syrup Expectorant 100ml              ,cough medicine,,,100ml,syrup,bottle,bottle,consumer health,No,VAT,No,Yes,0,11000,,Available,1
+,DKSH0000020,វូដសេរ៉ូ,Woods cough syrup Antitussive 100ml               ,cough medicine,,,100ml,syrup,bottle,bottle,consumer health,No,VAT,No,Yes,0,11000,,Available,1
+,DKSH0000021,ប្រូខូលគ្រាប់,PROCOLD TABLET B/50 x 4Tab                        ,Cold medicine,,,,tablet,50 blisters,50 blisters,consumer health,No,VAT,No,Yes,0,43500,,Available,1
+,DKSH0000022,វូដសេរ៉ូ,WOODS' COUGH SYRUP Expectorant 60ML               ,cough medicine,,,60ml,syrup,bottle,bottle,consumer health,No,VAT,No,Yes,0,7000,,Available,1
+,DKSH0000023,វូដសេរ៉ូ,WOODS' COUGH SYRUP Antitussive 60ML               ,cough medicine,,,60ml,syrup,bottle,bottle,consumer health,No,VAT,No,Yes,0,7000,,Available,1
+,DKSH0000024,ប្រូម៉ែកកញ្ចប់,PROMAG Sach                                       ,Anti-gastric medicine,,,,sachet,box,box,consumer health,No,VAT,No,Yes,0,3000,,Available,1
+,DKSH0000025,វូដបៀម,WOODS' LOZ ORANGE B/15 Sach                       ,Sore throat reliever,,,,sachet,15 sachets,15 sachets,consumer health,No,VAT,No,Yes,0,18400,,Available,1
+,DKSH0000026,ប្រូម៉ែកគ្រាប់,PROMAG B/3 x 12Tab                                ,Anti-acid ,,,,tablet,3 blisters,3 blisters,consumer health,No,VAT,No,Yes,0,4600,,Available,1
+,DKSH0000027,ប្រូខូលបំបាត់ការឈឺចាប់,Procold Pain Reliever B/24blister x 6Cap          ,Pain reliever,,,,capsule,24 blisters,24 blisters,consumer health,No,VAT,No,Yes,0,32200,,Available,1
+,DKSH0000028,វូដសេរ៉ូក្អកផលិតពីរុក្ខជាតិ,WOOD'S HERBAL COUGH MEDICINE BOT/60ML             ,cough medicine,,,60ml,syrup,bottle,bottle,consumer health,No,VAT,No,Yes,0,8500,,Available,1
+,DKSH0000029,រីណិច,RHINEX JOUR-NUIT CP BT 10x12                      ,Cold medicine,,,,tablet,12 blisters,12 blisters,consumer health,No,VAT,No,Yes,0,27600,,Available,1
+,DKSH0000030,ឌីយ៉ារៀលកញ្ចប់ ៣ក្រាម,DIAREAL SACH 3G BT 30                             ,Diarrhea medicine,,,3g,sachet,30 sachets,30 sachets,consumer health,No,VAT,No,Yes,0,20700,,Available,1
+,DKSH0000031,អាប់ប៉េទីន ៤មីលីក្រាម,APPETINE CP 4MG BT 10x10                          ,Multivitamins,,,4mg,tablet,10 blisters,10 blisters,consumer health,No,VAT,No,Yes,0,8200,,Available,1
+,DKSH0000032,ស៊ិបទីលម៉ង់តុល,SEPTYL MENTHE SOL BTL/80ML                        ,Mouth antiseptic,,,80ml,liquid,bottle,bottle,consumer health,No,VAT,No,Yes,0,6500,,Available,1
+,DKSH0000033,ប៉ូលីវីតសេរ៉ូ ១៥មីលីលីត្រ,POLYVIT ADEC FL 15ML                              ,Multivitamins,,,15ml,liquid,bottle,bottle,consumer health,No,VAT,No,Yes,0,5700,,Available,1
+,DKSH0000034,ប្រែតូ ៥មីលីលីត្រ,BRAITO BTL/5ML                                    ,Eye solution,,,5ml,eye drop,bottle,bottle,consumer health,No,VAT,No,Yes,0,3500,,Available,1
+,DKSH0000035,ប្រែតូធៀរ ៥មីលីលីត្រ,BRAITO TEARS BTL/5ML                              ,Eye solution,,,5ml,eye drop,bottle,bottle,consumer health,No,VAT,No,Yes,0,3500,,Available,1
+,DKSH0000036,បេរូកា,BEROCCA CAL-MAG Eff T/10 TAB                      ,Multivitamins plus minerals,,,,Tablet,bottle,bottle,consumer health,No,VAT,No,Yes,0,17500,,Available,1
+,DKSH0000037,វ៉ុលតិច​ ,VOLTEX CREAM 25G                                  ,Arthritis cream,,,25g,cream,tube,tube,consumer health,No,VAT,No,Yes,0,4500,,Available,1
+,DKSH0000038,ហ៊ីរុស្ការ,Hiruscar Post Acne 5g                             ,Post acne cream,,,5g,cream,tube,tube,consumer health,No,VAT,No,Yes,0,23200,,Available,1
+,DKSH0000039,ហ៊ីរុស្ការជែល,Hiruscar Anti-acne Spot gel 4g                    ,Anti-acne,,,4g,gel,tube,tube,consumer health,No,VAT,No,Yes,0,19000,,Available,1
+,DKSH0000040,វ៉ង់តូលីន,Ventolin inhaler B/200metered doses KH            ,bronchodilator,,,200 metered dose,spray,bottle,bottle,consumer health,No,VAT,No,Yes,0,16700,,Available,1
+,DKSH0000041,ខ្វាន់លុង,KWAN LOONG OIL 57CC 1Bottle                       ,Pain reliever,,,57CC,oil,bottle,bottle,consumer health,No,VAT,No,Yes,0,14700,,Available,1
+,DKSH0000042,តាណាកង់,TANAKAN 40MG B/30TABS                             ,Memory booster,,,40mg,Tablet,bottle,bottle,consumer health,No,VAT,No,Yes,0,27600,,Available,1
+,DKSH0000043,នីហ្សូរ៉ាល់,NIZORAL CREAM T/5G                                ,Anti-fungal medicine,,,5g,cream,tube,tube,consumer health,No,VAT,No,Yes,0,5700,,Available,1
+,DKSH0000044,កូមិច,KOMIX PEPPERMINT FLAVOUR B/30Sach                 ,cough medicine,,,,sachets,box,box,consumer health,No,VAT,No,Yes,0,9200,,Available,1
+,DKSH0000045,សាប៊ូដុំដុសខ្លួនម៉ាកវ៉ាស៊ឺលីន (៧៥ក្រាម),VASELINE BAR DEO ACTIVE 75G,bar soap,,,75g,soap,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,7900,,Available,1
+,DKSH0000046,សាប៊ូដុំដុសខ្លួនធ្វើអោយស្បែកភ្លឺម៉ាកវ៉ាស៊ឺលីន (៧៥ក្រាម),VASELINE BAR HEALTHY WHITE 75G,bar soap,,,75g,soap,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,7900,,Available,1
+,DKSH0000047,សាប៊ូដុំដុសខ្លួនត្រជាក់ម៉ាកវ៉ាស៊ឺលីន (៧៥ក្រាម),VASELINE BAR ICY COOL 75G,bar soap,,,75g,soap,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,7900,,Available,1
+,DKSH0000048,ក្រែមលាបមាត់រស់ជាតិស្ត្ររប័ររីម៉ាកនីវា​ (៤.៨ក្រាម),LABELLO LIP STAW 4.8G,lipstick,,,4.8g,lipstick,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,7500,,Available,1
+,DKSH0000049,ក្រែមលាបមាត់នីវា (៤.៨ក្រាម),NIVEA LABELL LIP CARE ESSENTIAL 4.8G,lipstick,,,4.8g,lipstick,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,7500,,Available,1
+,DKSH0000050,ក្រែមលាបមាត់នីវារស់ជាតិក្រូច,NIVEA LIP BALM 4.8G,lipstick,,,4.8g,lipstick,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,7500,,Available,1
+,DKSH0000051,ឡេលាបស្បែកអោយមានសំណើមម៉ាកនីវា (៤០០មីលីលីត្រ),NIVEA DRY SKIN ENRICHED BODY LOTION 400ML,Body lotion,,,400ml,body lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,17500,,Available,1
+,DKSH0000052,ឡេលាបអោយស្បែកសនិងតឹងឆាប់រហ័សម៉ាកនីវា (៣០០មីលីលីត្រ),NB I NSTANT WHITE AND FIRM 5PF30 350MLX12,Body lotion,,,300ml,body lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,17500,,Available,1
+,DKSH0000053,ឡេលាបអោយស្បែកស ការពារកម្តៅថ្ងៃនិងព្យាបាលកោសិកាស្បែកម៉ាកនីវា (៤០០មីលីលីត្រ),NV UV WHITENING CELL REPAIR LOTION 400ML (NEW),Body lotion,,,400ml,body lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,17500,,Available,1
+,DKSH0000054,ប្រេងលាបស្បែកព្យាបាលកោសិកាស្បែកម៉ាកនីវា (ក្លិនឆែរី),NIVEA OIL IN LOTION CHERRY BLOSSOM & JOJOBA OIL 40,Oil lotion,,,,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,17500,,Available,1
+,DKSH0000055,ប្រេងលាបស្បែកព្យាបាលកោសិកាស្បែកម៉ាកនីវា (ក្លិនផ្កាកុលាប),NIVEA OIL IN LOTION ROSE & ARGAN OIL 400ML,Oil lotion,,,,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,17500,,Available,1
+,DKSH0000056,ឡេលាបអោយស្បែកសឆាប់រហ័សម៉ាកនីវាមានវីតាមីនសេ និងវីតាមីនអ៊ឺ (៣២០មីលីលីត្រ),NIVEA BODY EXTRA WHITE C&E LOTION 320ML,Body lotion,,,320ml,body lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,19000,,Available,1
+,DKSH0000057,ប្រេងលាបស្បែកអោយសម៉ាកនីវា (ក្លិនផ្កាសាគូរ៉ា),NB WHITE LOTION DEWY SAKURA 350ML,Oil lotion,,,350ml,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,17500,,Available,1
+,DKSH0000058,ប្រេងលាបស្បែកអោយសម៉ាកនីវា (ក្លិនផ្កាកុលាប),NB WHITE LOTION RADIANT ROSE 350ML,Oil lotion,,,350ml,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,17500,,Available,1
+,DKSH0000059,សាប៊ូលាងមុខអោយសម៉ាកនីវាជួយបំបាត់មុន និងស្នាមខ្មៅ (១០០ក្រាម),NIVEA WHITE PEARL MUD FOAM 100G ,Facial foam,,,100g,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,13000,,Available,1
+,DKSH0000060,សាប៊ូលាងមុខអោយសម៉ាកនីវា (១០០ក្រាម),NIVEA WHITE PEARL FOAM 100G,Facial foam,,,100g,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000061,សាប៊ូលាងមុខអោយសម៉ាកនីវា (៥០ក្រាម),NIVEA WHITE PEARL FOAM 50G,Facial foam,,,50g,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,4500,,Available,1
+,DKSH0000062,សាប៊ូលាងមុខបំបាត់មុនម៉ាកនីវា (២០០មីលីលីត្រ),NIVEA MICELLAIR ACNE CARE 200ML,Facial foam,,,200ml,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,13500,,Available,1
+,DKSH0000063,សាប៊ូលាងមុខបំបាត់មុនម៉ាកនីវា (១២៥មីលីលីត្រ),NIVEA MICELLAIR ACNE CARE 125ML,Facial foam,,,125ml,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,8500,,Available,1
+,DKSH0000064,ឡេលាបមុខអោយមានសំណើម (៥០ មីលីលីត្រ),VISAGE MOIST DAY CREAM 50ML,Face cream,,,50ml,face cream,bottle,bottle,consumer health,No,VAT,No,Yes,0,32000,,Available,1
+,DKSH0000065,ប្រេងលាបស្បែកអោយរលោង (២៥០ក្រាម),EN PER BODY LOTION SATIN SMOOTH -ALLURING 250G,Oil lotion,,,250g,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000066,ប្រេងលាបស្បែកអោយរលោង (២៥០ក្រាម),EN PER BODY LOTION SATIN SMOOTH ROMANTIC 250G,Oil lotion,,,250g,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000067,ប្រេងលាបស្បែកអោយរលោង (២៥០ក្រាម),ENCHANTEUR LOTION SATIN SMOOTH CHAMING 250G,Oil lotion,,,250g,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000068,ប្រេងលាបស្បែកអោយក្រអូប (២៥០ក្រាម),"ENC PERFUMED BODY LOTION ALL,250ML+20%",Oil lotion,,,250g,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000069,ប្រេងលាបស្បែកអោយក្រអូប (២៥០ក្រាម),"ENC PERFUMED BODY LOTION CH,250ML+20%",Oil lotion,,,250g,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000070,ប្រេងលាបស្បែកអោយក្រអូប (២៥០ក្រាម),"ENC PERFUMED BODY LOTION R,250ML+20%",Oil lotion,,,250g,oil lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000071,សាប៊ូដុំដុសខ្លួនអង់សង់ត័រ,ENCHANTEUR PERFUMED MAGIC SOAP,bar soap,,,,soap,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,4500,,Available,1
+,DKSH0000072,សាប៊ូដុំដុសខ្លួនអង់សង់ត័រ,ENCHANTEUR PERFUMED ROMANTIC SOAP90G,bar soap,,,,soap,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,4500,,Available,1
+,DKSH0000073,សាប៊ូដុសខ្លួនឌឺលុច (៩០ក្រាម),"ENCH.DELUXE BEAUTY SOAP CH, 90GR",bar soap,,,,soap,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,4500,,Available,1
+,DKSH0000074,សាប៊ូទឹកដុសខ្លួន (១៨០ក្រាម),ENCHANTEUR SHOWER GEL CHARMING 180GR,Shower gel,,,180g,shower gel,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000075,សាប៊ូលាងមុខអោយភ្លឺ (១០០ក្រាម),C&C FINE FAIRNESS 100G,Facial foam,,,100g,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000076,សាប៊ូលាងមុខអោយភ្លឺ (៥០ក្រាម),C&C CLEAR FAIRNESS CLEANSER 50G,Facial foam,,,50g,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,6500,,Available,1
+,DKSH0000077,ទឹកខ្ពុលមាត់លីស្តើរីនឃូលមិនសេរ៉ូ​ (១០០មីលីលីត្រ),LISTERINE COOLMINT 100ML,Mouth wash,,,100ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,4900,,Available,1
+,DKSH0000078,ទឹកខ្ពុលមាត់លីស្តើរីនឃូលមិនសេរ៉ូ (២៥០មីលីលីត្រ),LISTERINE COOL MINT 250ML,Mouth wash,,,250ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,7500,,Available,1
+,DKSH0000079,ទឹកខ្ពុលមាត់លីស្តើរីនឃូលមិនសេរ៉ូ(១០០មីលីលីត្រ),LISTERINE COOLMINT ZERO 100ML,Mouth wash,,,100ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,3900,,Available,1
+,DKSH0000080,ទឹកខ្ពុលមាត់លីស្តើរីនឃូលមិនសេរ៉ូ(២៥០មីលីលីត្រ),LISTERINE COOLMINT ZERO 250ML,Mouth wash,,,250ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,7900,,Available,1
+,DKSH0000081,ទឹកខ្ពុលមាត់លីស្តើរីនសុខភាព(២៥០មីលីលីត្រ),LISTERINE HEALTHY BRIGHT 250ML,Mouth wash,,,250ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,8900,,Available,1
+,DKSH0000082,ទឹកខ្ពុលមាត់លីស្តើរីនរស់ជាតិតែបៃតង(១០០មីលីលីត្រ),LISTERINE GREENTEA ZERO 100ML ,Mouth wash,,,100ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,4500,,Available,1
+,DKSH0000083,ទឹកខ្ពុលមាត់លីស្តើរីនរស់ជាតិតែបៃតង(២៥០មីលីលីត្រ),LISTERINE NATURAL GREEN TEA 250ML,Mouth wash,,,250ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,8500,,Available,1
+,DKSH0000084,ទឹកខ្ពុលមាត់លីស្តើរីន(១០០មីលីលីត្រ),LISTERINE ORIGINAL 100ML,Mouth wash,,,100ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,4700,,Available,1
+,DKSH0000085,ទឹកខ្ពុលមាត់លីស្តើរីន(២៥០មីលីលីត្រ),LISTERINE ORIGINAL 250ML,Mouth wash,,,250ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,8500,,Available,1
+,DKSH0000086,ទឹកខ្ពុលមាត់លីស្តើរីន(២៥០មីលីលីត្រ),LISTERINE TARTAR CONTROL 250ML,Mouth wash,,,250ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,8500,,Available,1
+,DKSH0000087,ទឹកខ្ពុលមាត់លីស្តើរីន(២៥០មីលីលីត្រ),LISTERINE TOTAL CARE 250ML,Mouth wash,,,250ml,mouth wash,bottle,bottle,consumer health,No,VAT,No,Yes,0,9900,,Available,1
+,DKSH0000088,ក្រដាសសើមកូនក្មេង (កញ្ចប់តូច),JB MESSY TIME WIPES 20PCS X 36,Baby wet tissue,,,,baby wet tissue,box,box,consumer health,No,VAT,No,Yes,0,3700,,Available,1
+,DKSH0000089,ក្រដាសសើមកូនក្មេង (កញ្ចប់ធំ),JB MESSY TIME WIPES 80PCS,Baby wet tissue,,,,baby wet tissue,box,box,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000090,ថ្នាំដុស​ធ្មេញអាខ្វាហ្វ្រែស(១០០មីលីលីត្រ),AQUAFRESH FRESH & MINTY 100ML,toothpaste,,,100ml,toothpaste,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,5900,,Available,1
+,DKSH0000091,ច្រាសដុស​ធ្មេញសែនសូដាញ,MULTICARE TOOTHBRUSH,toothbrush,,,,toothbrush,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,5500,,Available,1
+,DKSH0000092,ច្រាសដុស​ធ្មេញសែនសូដាញ,SENSODYNE TB ULTRA SENSITIVE EX SOFT 1X2,toothbrush,,,,toothbrush,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,5500,,Available,1
+,DKSH0000093,ថ្នាំដុស​ធ្មេញសែនសូដាញ,FRESH MINT TOOTHPASTE 100G,toothbrush,,,,toothbrush,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,13000,,Available,1
+,DKSH0000094,សាប៊ូដុំដុសខ្លួនហ្គើវេន,GERVENNE BAR SOAP PINK LILY 120X90G,bar soap,,,,bar soap,1 piece,1 piece,consumer health,No,VAT,No,Yes,0,2200,,Available,1
+,DKSH0000095,ឡេលាបស្បែកហ្គើវេន,GERVENNE SHOWER CREAM PINK LILY 12X450G,Body lotion,,,12x450g,body lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000096,ឡេលាបស្បែកហ្គើវេន,GERVENNE SHOWER CREAM GREEN LILY 12X450G,Body lotion,,,12x450g,body lotion,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000097,ហ្វូមលាងមុខអោយសម៉ាកស៊ីត្រា,CITRA PEARLY WHITE FF CARNATION 4X6X50G,Facial foam,,,4x6x50g,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,5500,,Available,1
+,DKSH0000098,សាប៊ូលាងមុខតែបៃតងស៊ីត្រា,CITRA GREEN TEA FF CARNATION 4X6X50G,Facial foam,,,4x6x50g,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,5500,,Available,1
+,DKSH0000099,សាប៊ូលាងមុខសាគូរ៉ា,CITRA SAKURA FAIR FC FOAM 4X6X50G,Facial foam,,,4x6x50g,facial foam,bottle,bottle,consumer health,No,VAT,No,Yes,0,5500,,Available,1
+,DKSH0000100,រ៉ូលអនម៉ាកអង់សង់ទ័រ,ENCHANTEUR ROLL ON DEODORANT ENTICING ,Roll On,,,50ml,roll on,bottle,bottle,consumer health,No,VAT,No,Yes,0,12000,,Available,1
+,DKSH0000101,រ៉ូលអនម៉ាកអង់សង់ទ័រ,ENCHANTEUR ROLL ON DEODORANT ROMATIC ,Roll On,,,50ml,roll on,bottle,bottle,consumer health,No,VAT,No,Yes,0,10500,,Available,1
+,DKSH0000102,រ៉ូលអនម៉ាកអង់សង់ទ័រ,ENCHANTEUR ROLL ON DEODORANT ALLURING ,Roll On,,,50ml,roll on,bottle,bottle,consumer health,No,VAT,No,Yes,0,10500,,Available,1
+,DKSH0000103,រ៉ូលអនម៉ាកអង់សង់ទ័រ,ENCH.WH ANTI-PERSP DEO CHARM 50ML,Roll On,,,50ml,roll on,bottle,bottle,consumer health,No,VAT,No,Yes,0,10500,,Available,1
+,DKSH0000104,សាប៊ូកក់សក់ម៉ាកអង់សង់ទ័រ ចំណុះ៦៥០ក្រាម,ENCHANTEUR MOISTURE ENRICHED SHAMPOO CHARMING 650G,Shampoo,,,650g,shampoo,bottle,bottle,consumer health,No,VAT,No,Yes,0,30000,,Available,1
+,DKSH0000105,សាប៊ូកក់សក់រ៉ូម៉ាណូ ចំណុះ១៨០មល,ROMANO DELUXE SHAMPOO FORCE 180ML ,Shampoo,,,180ml,shampoo,bottle,bottle,consumer health,No,VAT,No,Yes,0,11500,,Available,1
+,DKSH0000106,សាប៊ូកក់សក់រ៉ូម៉ាណូ ចំណុះ១៨០មល,ROMANO SHAMPOO CLASSIC 180ML,Shampoo,,,180ml,shampoo,bottle,bottle,consumer health,No,VAT,No,Yes,0,11500,,Available,1
+,DKSH0000107,សាប៊ូកក់សក់រ៉ូម៉ាណូ ចំណុះ៣៨០ក្រាម,ROMANO DELUXE SHAMPOO CLASSIC 380G,Shampoo,,,380g,shampoo,bottle,bottle,consumer health,No,VAT,No,Yes,0,16000,,Available,1
+,DKSH0000108,ស្ព្រាយបាញ់ខ្លួននារីម៉ាកនីវាចំណុះ១៥០ម.ល,ND EXTRA WHITE FEMALE SPRAY 150ML,Female Spray,,,150ml,female spray,bottle,bottle,consumer health,No,VAT,No,Yes,0,13000,,Available,1
+,DKSH0000109,ស្ព្រាយបាញ់ខ្លួននារីម៉ាកនីវាចំណុះ១៥០ម.ល,NV BLACK &WHITE PURE FEMALE SPRAY 150ML,Female Spray,,,150ml,female spray,bottle,bottle,consumer health,No,VAT,No,Yes,0,13000,,Available,1
+,DKSH0000110,ស្ព្រាយបាញ់ខ្លួននារីម៉ាកនីវាចំណុះ១៥០ម.ល,NIVEA PEARL & BAEUTY FEMALE SPRAY 150ML,Female Spray,,,150ml,female spray,bottle,bottle,consumer health,No,VAT,No,Yes,0,13000,,Available,1
+,DKSH0000111,ស្ព្រាយបាញ់ខ្លួនបុរសម៉ាកនីវាចំណុះ១៥០ម.ល,NV SILVER MALE SPRAY 150ML,Male Spray,,,150ml,male spray,bottle,bottle,consumer health,No,VAT,No,Yes,0,13000,,Available,1
+,DKSH0000112,ស្ព្រាយបាញ់ខ្លួនបុរសម៉ាកនីវាចំណុះ១៥០ម.ល,NV BLACK AND WHITE MALE SPRAY 150ML,Male Spray,,,150ml,male spray,bottle,bottle,consumer health,No,VAT,No,Yes,0,13000,,Available,1
+,DKSH0000113,ស្ព្រាយបាញ់ខ្លួនបុរសម៉ាកនីវាចំណុះ១៥០ម.ល,NIVEA MEN DEEP DRY SPRAY 150ML,Male Spray,,,150ml,male spray,bottle,bottle,consumer health,No,VAT,No,Yes,0,13000,,Available,1

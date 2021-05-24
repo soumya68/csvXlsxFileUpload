@@ -13,7 +13,6 @@ module.exports = (app) => {
             callback(null, DIR)
         },
         filename: function (req, file, callback) {
-
             // MAKING DATE PART FOR FILE NAME
             var date = new Date();
             // var dateStr =
@@ -44,7 +43,6 @@ module.exports = (app) => {
         storage: storage,
         limits: { fileSize: 1000000 }, // File size must be below 1 MB
         fileFilter: (req, file, cb) => {
-            console.log(file)
             // FILE TYPE ONLY CSV OR XLSX IS ALLOWED
             if (file.mimetype == "text/csv" || file.mimetype == "application/vnd.ms-excel"
                 || file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
@@ -95,7 +93,7 @@ module.exports = (app) => {
                 } = req.body
                 const fileData = {
                     fileName: req.file.filename,
-                    userId: new ObjectID(userId),
+                    userId: userId,
                     supplierCode: supplierCode,
                     supplierName: supplierName,
                     isoCountryCode: isoCountryCode,
@@ -289,9 +287,7 @@ module.exports = (app) => {
                                         });
                                 }
                             })
-                        /////////
                     }
-                    ////
                 }).catch(err => {
                     return res.status(500).json({ message: 'Error while uploading file', error: err });
                 });

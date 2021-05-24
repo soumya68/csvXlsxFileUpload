@@ -44,6 +44,10 @@ connectDB(function (err) {
   }
 })
 app.get('/', (req, res) => {
+
+ 
+
+
   res.send('Welcome to Unicef API!')
 })
 /*Incudes all API routes*/
@@ -55,6 +59,7 @@ app.listen(process.env.PORT || PORT, () => {
 //"mongodb+srv://soumya:12345@cluster0.iocs1.mongodb.net/Unicef"
 //"mongodb+srv://test:test@1234@cluster0.etzfb.mongodb.net/test"
 //"mongodb+srv://kunalsolace:Kunal2021@reach52dev.038mt.mongodb.net/r52Master"
+//"mongodb://r52admin:P%40ssword1%21-UAT@35.154.125.38:27017/r52Master?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false"
 
 
 

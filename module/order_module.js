@@ -57,6 +57,7 @@ module.exports = function () {
                                                     },
                                                 )
                                                     .then(result => {
+                                                        console.log(totalEarnedPoints,totalRedeemedPoints)
                                                         // CHECK IF IS THERE ANY totalEarnedPoints OR totalRedeemedPoints 
                                                         if (totalEarnedPoints > 0 || totalRedeemedPoints > 0) {
                                                             // IF  totalEarnedPoints IS AVAILABLE
@@ -84,6 +85,7 @@ module.exports = function () {
                                                                     pointsEarnedCalculation: true
                                                                 }
                                                             }
+                                                            
                                                             const ponitDetails = new pointsAudit(pointData);
                                                             // SAVE POINTS DETAILS IN POINTSAUDIT COLLECTION 
                                                             ponitDetails.save().then(response => {
@@ -148,14 +150,18 @@ module.exports = function () {
                 totalAvailablePoints = 0;
                 discountAmount = 0.00;
                 earnedPointsExpiryDate = new Date();
+                var renamedCountry = countryCode.toUpperCase();
                 //  if (pointDetails[countryCode].earned.minimumOrderPrice <= finalPrice) {
                 var products = productDetails
                 var index = 0;
                 var productData = function (doc) {
                     var singleProductId = doc.medicationId
+                    console.log(doc.pointsAccumulation)
                     if (doc.pointsAccumulation) {
-                        var productPrice = doc.price
-                        totalEarnedPoints = parseFloat(totalEarnedPoints) + Math.round(((parseFloat(pointDetails[countryCode].earned.numberOfPoints) / parseFloat(pointDetails[countryCode].earned.amountSpent)) * parseFloat(productPrice)))
+                        var productPrice = doc.price.toString()
+                        console.log(productPrice)
+                        totalEarnedPoints = parseFloat(totalEarnedPoints) + Math.round(((parseFloat(pointDetails[renamedCountry].earned.numberOfPoints) / parseFloat(pointDetails[renamedCountry].earned.amountSpent)) * parseFloat(productPrice)))
+                        console.log(totalEarnedPoints,parseFloat(pointDetails[renamedCountry].earned.numberOfPoints),pointDetails[renamedCountry].earned.amountSpent,parseFloat(productPrice))
                     }
                     index++;
                     if (index < products.length) {
@@ -165,12 +171,12 @@ module.exports = function () {
                         //  if (pointDetails[countryCode].redemption.minimumOrderPrice <= finalPrice) {
                         if (redeemedPoints > 0) {
                             totalRedeemedPoints = redeemedPoints
-                            discountAmount = ((parseFloat(pointDetails[countryCode].redemption.currencyValue).toFixed(2) / parseInt(pointDetails[countryCode].redemption.numberOfPoints)) * parseInt(redeemedPoints))
+                            discountAmount = ((parseFloat(pointDetails[renamedCountry].redemption.currencyValue).toFixed(2) / parseInt(pointDetails[renamedCountry].redemption.numberOfPoints)) * parseInt(redeemedPoints))
                             totalPrice = parseFloat(totalPrice) - parseFloat(discountAmount)
                             totalAvailablePoints = parseFloat(totalAvailablePoints) - parseFloat(redeemedPoints)
                         }
                         //   }
-                        var days = pointDetails[countryCode].earnedPointsExpiryDays
+                        var days = pointDetails[renamedCountry].earnedPointsExpiryDays
                         earnedPointsExpiryDate.setDate(earnedPointsExpiryDate.getDate() + days);
                         callBack(false, totalEarnedPoints, earnedPointsExpiryDate, totalPrice, totalRedeemedPoints, discountAmount)
                     }
@@ -268,7 +274,7 @@ module.exports = function () {
                         result.map(ele => {
                             var orderId = ele._id;
                             var redeemedPoints = 0;
-                            var countryCode = ele.isoCurrency;
+                            var countryCode = ele.isoCountry;
                             var renamedCountry = countryCode.toUpperCase();
                             var pointSource = 'order'
                             orderModule.cronCreatePointsDetails(orderId, redeemedPoints, pointSource, renamedCountry, function (err, res) {
@@ -277,21 +283,6 @@ module.exports = function () {
                                 else {
                                 }
                             })
-                            /*  let auditdata = pointsAudit.findOneAndUpdate({ residentId: ele.residentId },
-                               { $set: { isActive: false,isLapsed : true} },
-                               { new: true }).then(data=>{
-                                   let points = auditdata.availablePoints
-                                   let residentdata = residents.findOneAndUpdate({ _id: ele.residentId },
-                                     { $set: {availablePoints: points } },
-                                     { new: true }).then(data=>{
-                                       callbackfn(null, data);
-                                     }).catch(err => {
-                                       callbackfn(true, "err");
-                                   });
-                                   callbackfn(null, data);
-                               }).catch(err => {
-                                   callbackfn(true, "Error");
-                               }); */
                         })
                     }
                     else {

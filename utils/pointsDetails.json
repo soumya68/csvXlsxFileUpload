@@ -14,7 +14,7 @@
     },
     "earnedPointsExpiryDays": 90
   },
-  "KHR": {
+  "KHM": {
     "countryName": "Cambodia",
     "countryCurrency": "KHR",
     "redemption": {
@@ -29,18 +29,18 @@
     },
     "earnedPointsExpiryDays": 90
   },
-  "PHP": {
+  "PHL": {
     "countryName": "Philippines",
     "countryCurrency": "PHP",
     "redemption": {
       "numberOfPoints": 100,
       "currencyValue": 1,
-      "minimumOrderPrice": 100
+      "minimumOrderPrice": 10
     },
     "earned": {
       "numberOfPoints": 1,
-      "amountSpent": 100,
-      "minimumOrderPrice": 100
+      "amountSpent": 10,
+      "minimumOrderPrice": 10
     },
     "earnedPointsExpiryDays": 60
   }

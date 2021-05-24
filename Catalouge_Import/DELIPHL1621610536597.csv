@@ -1,0 +1,80 @@
+r52 Catalogue Number,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,PointsAccumulation
+We will create this,DELI0000001,Colgate,Toothpaste,,,N/A,sachet,22g,22g,consumer health,No,VAT,No,Yes,12,8,,Available,1
+,DELI0000002,Colgate,Toothbrush,,,N/A,pc,1pc,1pc,consumer health,No,VAT,No,Yes,12,20,,Available,1
+,DELI0000003,Palmolive (Green: Active Nourishment),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000004,Palmolive ( Violet: Silky Staright),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000005,Palmolive (White: Brilliant Shine),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000006,Pantene (Pink),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000007,Pantene (Violet),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000008,Head & Shoulders (Pink: Smooth and Silky),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000009,Head & Shoulders (Green: Cool Menthol),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000010,Clear (Pink),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000011,Clear (Blue),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000012,Sunsilk (Green: Strong and Long),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,5,,Available,1
+,DELI0000013,Sunsilk (Pink: Smooth and Manageable),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,5,,Available,1
+,DELI0000014,Sunsilk (Orange),Shampoo,,,N/A,sachet,15 ml,15 ml,consumer health,No,VAT,No,Yes,12,5,,Available,1
+,DELI0000015,Safeguard 60g (White),Bath Soap,,,N/A,sachet,60g,60g,consumer health,No,VAT,No,Yes,12,19,,Available,1
+,DELI0000016,Safeguard 60g (Pink),Bath Soap,,,N/A,sachet,60g,60g,consumer health,No,VAT,No,Yes,12,19,,Available,1
+,DELI0000017,Safeguard 60g (Arctic Ocean Fresh),Bath Soap,,,N/A,sachet,60g,60g,consumer health,No,VAT,No,Yes,12,19,,Available,1
+,DELI0000018,Safeguard 60g (Violet),Bath Soap,,,N/A,sachet,60g,60g,consumer health,No,VAT,No,Yes,12,19,,Available,1
+,DELI0000019,Safeguard 60g (Yellow),Bath Soap,,,N/A,sachet,60g,60g,consumer health,No,VAT,No,Yes,12,19,,Available,1
+,DELI0000020,Safeguard  (Regular) (Violet),Bath Soap,,,N/A,boxed,130 g,130 g,consumer health,No,VAT,No,Yes,12,33,,Available,1
+,DELI0000021,Safeguard  (Regular) (Green),Bath Soap,,,N/A,boxed,130 g,130 g,consumer health,No,VAT,No,Yes,12,33,,Available,1
+,DELI0000022,Safeguard  (Regular) (White),Bath Soap,,,N/A,boxed,130 g,130 g,consumer health,No,VAT,No,Yes,12,33,,Available,1
+,DELI0000023,Safeguard (Family) (White),Bath Soap,,,N/A,boxed,130 g,130 g,consumer health,No,VAT,No,Yes,12,43,,Available,1
+,DELI0000024,Silka Papaya,Bath Soap,,,N/A,boxed,90 g,90 g,consumer health,No,VAT,No,Yes,12,35,,Available,1
+,DELI0000025,Creamsilk (Blue: Damage Control),Conditioner,,,N/A,sachet,12 ml,12 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000026,Creamsilk (Green: Hairfall Defense),Conditioner,,,N/A,sachet,12 ml,12 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000027,Creamsilk (Pink: Standout Straight),Conditioner,,,N/A,sachet,12 ml,12 ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000028,Creamsilk Keratin,Conditioner,,,N/A,sachet,12 ml,12 ml,consumer health,No,VAT,No,Yes,12,8,,Available,1
+,DELI0000029,Rexona (Blue),Deodorant,,,N/A,sachet,3 ml,3 ml,consumer health,No,VAT,No,Yes,12,8,,Available,1
+,DELI0000030,Rexona (Pink),Deodorant,,,N/A,sachet,3 ml,3 ml,consumer health,No,VAT,No,Yes,12,8,,Available,1
+,DELI0000031,Rexona (Violet),Deodorant,,,N/A,sachet,3 ml,3 ml,consumer health,No,VAT,No,Yes,12,8,,Available,1
+,DELI0000032,Lampein (Small),Diaper,,,N/A,pack,4's,4's,consumer health,No,VAT,No,Yes,12,25,,Available,1
+,DELI0000033,Lampein (Medium),Diaper,,,N/A,pack,4's,4's,consumer health,No,VAT,No,Yes,12,28,,Available,1
+,DELI0000034,Lampein (Large),Diaper,,,N/A,pack,4's,4's,consumer health,No,VAT,No,Yes,12,32,,Available,1
+,DELI0000035,Lampein (XL),Diaper,,,N/A,pack,4's,4's,consumer health,No,VAT,No,Yes,12,42,,Available,1
+,DELI0000036,Johnson's,Baby Powder,,,N/A,sifter top container,50 g,50 g,consumer health,No,VAT,No,Yes,12,28,,Available,1
+,DELI0000037,Sisters (Light Green),Feminine Pads,,,N/A,pack,1 pack,1 pack,consumer health,No,VAT,No,Yes,12,21,,Available,1
+,DELI0000038,Sisters (Dark Green),Feminine Pads,,,N/A,pack,1 pack,1 pack,consumer health,No,VAT,No,Yes,12,26,,Available,1
+,DELI0000039,Sisters (Pink),Feminine Pads,,,N/A,pack,1 pack,1 pack,consumer health,No,VAT,No,Yes,12,23,,Available,1
+,DELI0000040,Sisters (Blue),Feminine Pads,,,N/A,pack,1 pack,1 pack,consumer health,No,VAT,No,Yes,12,27,,Available,1
+,DELI0000041,Sisters (Violet),Feminine Pads,,,N/A,pack,1 pack,1 pack,consumer health,No,VAT,No,Yes,12,29,,Available,1
+,DELI0000042,Sisters (1),Pantyliner,,,N/A,pack,8s,8s,consumer health,No,VAT,No,Yes,12,10,,Available,1
+,DELI0000043,Sisters (2),Pantyliner,,,N/A,pack,12s,12s,consumer health,No,VAT,No,Yes,12,22,,Available,1
+,DELI0000044,Sisters (3),Pantyliner,,,N/A,pack,20s,20s,consumer health,No,VAT,No,Yes,12,32,,Available,1
+,DELI0000045,Femme Toilet paper,Toilet paper,,,N/A,Roll,per piece,per piece,consumer health,No,VAT,No,Yes,12,10,,Available,1
+,DELI0000046,Champion (Blue),Detergent,,,N/A,Bar,long bar,long bar,consumer health,No,VAT,No,Yes,12,23,,Available,1
+,DELI0000047,Champion (Puti),Laundry Soap,,,N/A,Bar,long bar,long bar,consumer health,No,VAT,No,Yes,12,23,,Available,1
+,DELI0000048,Champion (Pink) w/fabcon,Laundry Soap,,,N/A,Bar,long bar,long bar,consumer health,No,VAT,No,Yes,12,25,,Available,1
+,DELI0000049,Surf (Green),Laundry Soap,,,N/A,Bar,long bar,long bar,consumer health,No,VAT,No,Yes,12,22,,Available,1
+,DELI0000050,Surf (Pink),Laundry Soap,,,N/A,Bar,long bar,long bar,consumer health,No,VAT,No,Yes,12,24,,Available,1
+,DELI0000051,Speed (Batik),Laundry Soap,,,N/A,Bar,long bar,long bar,consumer health,No,VAT,No,Yes,12,23,,Available,1
+,DELI0000052,Pride (Blue),Laundry Soap,,,N/A,Bar,long bar,long bar,consumer health,No,VAT,No,Yes,12,20,,Available,1
+,DELI0000053,Pride (White),Laundry Soap,,,N/A,Bar,long bar,long bar,consumer health,No,VAT,No,Yes,12,20,,Available,1
+,DELI0000054,Surf (Cherry Blossom),Laundry Soap,,,N/A,Powder,65g,65g,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000055,Surf (Blossom Fresh),Laundry Soap,,,N/A,Powder,65g,65g,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000056,Surf (Sun Fresh),Laundry Soap,,,N/A,Powder,65g,65g,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000057,Surf (Kalamansi),Laundry Soap,,,N/A,Powder,65g,65g,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000058,Surf (Purple Blooms),Laundry Soap,,,N/A,Powder,65g,65g,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000059,Ariel (Single) (Violet),Laundry Soap,,,N/A,Powder,65g,65g,consumer health,No,VAT,No,Yes,12,8.5,,Available,1
+,DELI0000060,Ariel (Single) (Blue),Laundry Soap,,,N/A,Powder,65g,65g,consumer health,No,VAT,No,Yes,12,8.5,,Available,1
+,DELI0000061,Ariel (Single) (Green),Laundry Soap,,,N/A,Powder,65g,65g,consumer health,No,VAT,No,Yes,12,8.5,,Available,1
+,DELI0000062,Ariel (Twin),Laundry Soap,,,N/A,Powder,45g,45g,consumer health,No,VAT,No,Yes,12,12,,Available,1
+,DELI0000063,Breeze (Twin) (Rose Gold),Laundry Soap,,,N/A,Powder,70g,70g,consumer health,No,VAT,No,Yes,12,12,,Available,1
+,DELI0000064,Smart (Lemon),Dishwashing Soap,,,N/A,Paste,200g,200g,consumer health,No,VAT,No,Yes,12,25,,Available,1
+,DELI0000065,Smart (Lemon),Dishwashing Soap,,,N/A,Paste,400g,400g,consumer health,No,VAT,No,Yes,12,45,,Available,1
+,DELI0000066,Green Cross,Rubbing Alcohol,,,N/A,bottle,150,150,consumer health,No,VAT,No,Yes,12,40,,Available,1
+,DELI0000067,Green Cross,Rubbing Alcohol,,,N/A,bottle,250 ml,250 ml,consumer health,No,VAT,No,Yes,12,55,,Available,1
+,DELI0000068,Baygon,Katol,,,N/A,box,1 box,1 box,consumer health,No,VAT,No,Yes,12,19,,Available,1
+,DELI0000069,Lion-Tiger,Katol,,,N/A,box,1 box,1 box,consumer health,No,VAT,No,Yes,12,19,,Available,1
+,DELI0000070,Zonrox,Bleach,,,N/A,bottle,120 mL,120 mL,consumer health,No,VAT,No,Yes,12,10,,Available,1
+,DELI0000071,Zonrox,Bleach,,,N/A,bottle,250 ml,250 ml,consumer health,No,VAT,No,Yes,12,18,,Available,1
+,DELI0000072,Zonrox,Bleach,,,N/A,bottle,500 ml,500 ml,consumer health,No,VAT,No,Yes,12,28,,Available,1
+,DELI0000073,Zonrox,Bleach,,,N/A,bottle,1 L,1 L,consumer health,No,VAT,No,Yes,12,45,,Available,1
+,DELI0000074,Downy ,Fabric conditioner,,,N/A,Sachet,40ml,40ml,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000075,Wings,Powder detergent,,,N/A,Sachet,52 g,52 g,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000076,Calla,Powder detergent,,,N/A,Sachet,45 g,45 g,consumer health,No,VAT,No,Yes,12,6,,Available,1
+,DELI0000077,Dove Pink,Bath Soap,,,N/A,boxed,135g,135g,consumer health,No,VAT,No,Yes,12,48,,Available,1
+,DELI0000078,Dove Original,Bath Soap,,,N/A,boxed,135g,135g,consumer health,No,VAT,No,Yes,12,48,,Available,1
+,DELI0000079,Dove,Shampoo,,,N/A,Sachet,10 mL,10 mL,consumer health,No,VAT,No,Yes,12,6,,Available,1

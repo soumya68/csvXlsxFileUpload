@@ -22,18 +22,6 @@ module.exports = (app) => {
                 res.status(400).json({ status: false, message: "supplierCode parameter is missing" });
                 return;
             }
-            // if (!req.body.address) {
-            //     res.status(400).json({ status: false, message: "address parameter is missing" });
-            //     return;
-            // }
-            if (!req.body.email) {
-                res.status(400).json({ status: false, message: "email parameter is missing" });
-                return;
-            }
-            if (!req.body.phone) {
-                res.status(400).json({ status: false, message: "phone parameter is missing" });
-                return;
-            }
             const supplierData = {
                 supplierName:
                 {
@@ -41,7 +29,7 @@ module.exports = (app) => {
                 },
                 //supplierName: req.body.supplierName,
                 supplierCode: req.body.supplierCode,
-                isoCountry: req.body.isoCountry,
+                isoCountry: req.body.isoCountry.toUpperCase(),
                 catalogTags: req.body.catalogTags,
                 contact: {
                     address: {
@@ -50,7 +38,7 @@ module.exports = (app) => {
                         city: req.body.city,
                         country: req.body.country,
                         district: req.body.district,
-                        isoCountry: req.body.isoCountry,
+                        isoCountry: req.body.isoCountry.toUpperCase(),
                         postalCode: req.body.postalCode,
                         directions: req.body.directions,
                         landmark: req.body.landmark,

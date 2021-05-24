@@ -43,17 +43,17 @@ var catalougeSchema = new mongoose.Schema(
             min: 6,
             trim: true,
         },
-        //packSizeUnit IS ADDED AS PER UPLOAD SHEET
+
         packSizeUnit: {
             type: String,
             default: '0'
         },
-        //requireRx IS ADDED AS PER UPLOAD SHEET
+
         requireRx: {
             type: String,
             default: 'No'
         },
-        //pricePerPack IS ADDED AS PER UPLOAD SHEET
+
         pricePerPack: {
             type: mongoose.Decimal128,
             default: 0.00
@@ -62,7 +62,7 @@ var catalougeSchema = new mongoose.Schema(
             type: mongoose.Decimal128,
             default: 0.00
         },
-        ////////////////////////////////////
+
         pointsAccumulation: {
             type: Boolean,
             required: true,
@@ -73,10 +73,10 @@ var catalougeSchema = new mongoose.Schema(
             type: String,
             default: '0000'
         },
+
         brandName: {
-            eng: {
-                type: String
-            }
+            type: Object,
+            default: {}
         },
         catalogTags: {
             type: Array,
@@ -189,7 +189,7 @@ var catalougeSchema = new mongoose.Schema(
             required: true,
         },
         tax: {
-            //////// name IS ADDED AS PER UPLOAD SHEET
+
             category: {
                 type: String,
                 default: '',
@@ -200,7 +200,7 @@ var catalougeSchema = new mongoose.Schema(
                 min: 6,
                 default: false,
             },
-            //////// IsTaxExempt IS ADDED AS PER UPLOAD SHEET
+
             IsTaxExempt: {
                 type: Boolean,
                 require: true,
@@ -234,8 +234,8 @@ var catalougeSchema = new mongoose.Schema(
             }
         },
         usdPrice: {
-            type: Number,
-            default: 0
+            type: mongoose.Decimal128,
+            default: 0.00
         }
     },
     {

@@ -2,6 +2,7 @@
   "version": "v1",
   "name": "development",
   "PORT": 4000,
-  "MONGODB_URI": "mongodb+srv://kunalsolace:Kunal2021@reach52dev.038mt.mongodb.net/r52Master",
+  "MONGODB_URI":"mongodb+srv://soumya:12345@cluster0.iocs1.mongodb.net/Unicef",
   "JWT_SECRET": "topSECRET!"
 }
+

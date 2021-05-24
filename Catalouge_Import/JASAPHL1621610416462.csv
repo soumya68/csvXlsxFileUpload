@@ -1,0 +1,1097 @@
+r52 Catalogue Number,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,RX - JOSEF,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,PointsAccumulation
+We will create this,JS0001,2M BLEND COFFEE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,19.5,PHL-jasac,Available,0
+,JS0002,2M PLUS JUICE 10'S,,,,,,10`S,10`S,consumer health,No,,VAT,No,Yes,12,18,PHL-jasac,Available,0
+,JS0003,ACALKA TABS 30S,,,,,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,16.65,PHL-jasac,Available,0
+,JS0004,ACETYLCYSTEINE 200MG POWDER,,,,200MG,,200MG,200MG,medication,Yes,,VAT,No,Yes,12,13,PHL-jasac,Available,0
+,JS0005,ACETYLSTEINE 600MG POWDER FOR ORAL SOL,,,,600MG,,600MG,600MG,medication,Yes,,VAT,No,Yes,12,25,PHL-jasac,Available,0
+,JS0006,ACICLOVIR 4OOMG 100`S TAB,,,,400MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0007,ACICLOVIR 800 MG TABLET,,,,800MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,29.25,PHL-jasac,Available,0
+,JS0008,ACIETE DE ALCAMPORADO 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,39.35,PHL-jasac,Available,0
+,JS0009,ACIETE DE ALCAMPORADO 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,8.9,PHL-jasac,Available,0
+,JS0010,ACIETE DE ALCAMPORADO 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,12.35,PHL-jasac,Available,0
+,JS0011,ACIETE DE ALCAMPORADO 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,18.75,PHL-jasac,Available,0
+,JS0012,ACIETE DE MANZANILLA 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0013,ACIETE DEMANZANILLA 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,39.35,PHL-jasac,Available,0
+,JS0014,ACIETE DEMANZANILLA 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,15.3,PHL-jasac,Available,0
+,JS0015,ACIETE DEMANZANILLA 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,21.85,PHL-jasac,Available,0
+,JS0016,ACTIVENT SYR 60ML,,,,,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,80,PHL-jasac,Available,0
+,JS0017,ADVIL 100MG/5ML 60ML SUSP,,,,100MG/5ML,,60ML,60ML,medication,No,,VAT,No,Yes,12,85,PHL-jasac,Available,0
+,JS0018,ADVIL 200MG CAPSULES 100`S,,,,200MG,,100`S,100`S,medication,No,,VAT,No,Yes,12,8.2,PHL-jasac,Available,0
+,JS0019,AEROVENT NEBULE,,,,,,-,-,medication,Yes,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0020,ALAXAN FR CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,7.65,PHL-jasac,Available,0
+,JS0021,ALAXAN TABLETS 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,7.75,PHL-jasac,Available,0
+,JS0022,ALLERKID 2.5MG/ML 10ML DROPS,,,,2.5MG/ML,,10ML,10ML,medication,No,,VAT,No,Yes,12,151.85,PHL-jasac,Available,0
+,JS0023,ALLERKID 5MG/5ML 30ML SUSPENSION,,,,5MG/5ML,,30ML,30ML,medication,No,,VAT,No,Yes,12,139,PHL-jasac,Available,0
+,JS0024,ALLERKID 5MG/5ML 60ML SUSPENSION,,,,5MG/5ML,,60ML,60ML,medication,No,,VAT,No,Yes,12,249.7,PHL-jasac,Available,0
+,JS0025,ALLERTA TABLET 50'S,,,,,,50`S,50`S,medication,No,,VAT,No,Yes,12,21.5,PHL-jasac,Available,0
+,JS0026,ALLOPURINOL 300NG TABLET 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,3.35,PHL-jasac,Available,0
+,JS0027,ALLOPURINOL100NG TABLET 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0028,ALLUM (SHELOGEL) 200MG TAB`S 100`S,,,,200MG,,100`S,100`S,medication,No,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0029,ALNIX 5 MG SY 30ML,,,,5MG,,30ML,30ML,medication,Yes,,VAT,No,Yes,12,160,PHL-jasac,Available,0
+,JS0030,ALNIX 5 MG SY 60ML,,,,5MG,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,259.5,PHL-jasac,Available,0
+,JS0031,ALNIX DROPS 10ML,,,,,,10ML,10ML,medication,Yes,,VAT,No,Yes,12,180.85,PHL-jasac,Available,0
+,JS0032,ALUMAG (GELMALICID) 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0033,ALU-MAG CHL 120ML SUSP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,30,PHL-jasac,Available,0
+,JS0034,ALU-MAG CHL 60ML SUSP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,20,PHL-jasac,Available,0
+,JS0035,ALVEDON500MG TABLETS 250`S,,,,,,250`S,250`S,medication,No,,VAT,No,Yes,12,3.35,PHL-jasac,Available,0
+,JS0036,AMBROXOL 15MG/5ML 60ML SYRUP,,,,15MG/5ML,,60ML,60ML,medication,No,,VAT,No,Yes,12,20.4,PHL-jasac,Available,0
+,JS0037,AMBROXOL 30MG TABLETS 100`S,,,,30MG,,100`S,100`S,medication,No,,VAT,No,Yes,12,0.9,PHL-jasac,Available,0
+,JS0038,AMBROXOL 30MG/5ML 60ML SYRUP,,,,30MG/5ML,,60ML,60ML,medication,No,,VAT,No,Yes,12,24.6,PHL-jasac,Available,0
+,JS0039,AMBROXOL 75MG CAP,,,,75MG,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,8.5,PHL-jasac,Available,0
+,JS0040,AMBROXOL DROPS15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,18.55,PHL-jasac,Available,0
+,JS0041,AMINO VITA TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,13.75,PHL-jasac,Available,0
+,JS0042,AMINOBRAIN TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,14.25,PHL-jasac,Available,0
+,JS0043,AMLOBES 5MG TAB 100'S,,,,5MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0044,AMLODIPINE (AMLOTHIX 10MG) TABLET,,,,10MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,2,PHL-jasac,Available,0
+,JS0045,AMLODIPINE (AMLOTHIX 5MG) TABLET,,,,5MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1.35,PHL-jasac,Available,0
+,JS0046,AMLODIPINE (BLOCAPAST 5MG) TABLETS,,,,5MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,0.85,PHL-jasac,Available,0
+,JS0047,AMLODIPINE (BLOCAPAST FORTE 10MG) TABLETS,,,,10MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1.15,PHL-jasac,Available,0
+,JS0048,AMLODIPINE (DIADIPINE 10MG) TABLET,,,,10MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1.2,PHL-jasac,Available,0
+,JS0049,AMLODIPINE (DIADIPINE 5MG) TABLET,,,,5MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1,PHL-jasac,Available,0
+,JS0050,AMLODIPINE(AMLOREX 5MG) TABLETS,,,,5MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1.3,PHL-jasac,Available,0
+,JS0051,AMLODIPINE(NORVATROL 10MG) TABLETS,,,,10MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1.55,PHL-jasac,Available,0
+,JS0052,AMLODIPINE(NORVATROL 5MG) TABLETS,,,,5MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1.2,PHL-jasac,Available,0
+,JS0053,AMOXICILLIN 125MG/5ML 60ML SUSPENSION,,,,125MG / 5ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,24.5,PHL-jasac,Available,0
+,JS0054,AMOXICILLIN 15ML DROPS,,,,15ML,,15ML,15ML,medication,Yes,Yes,VAT,No,Yes,12,20.55,PHL-jasac,Available,0
+,JS0055,AMOXICILLIN 250MG  CAPSULE,,,,250MG,,Per Capsule,Per Capsule,medication,Yes,Yes,VAT,No,Yes,12,1.8,PHL-jasac,Available,0
+,JS0056,AMOXICILLIN 250MG/5ML 60ML SUSPENSION,,,,250MG / 5ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,26,PHL-jasac,Available,0
+,JS0057,AMOXICILLIN 500MG CAPSULE,,,,500MG,,Per Capsule,Per Capsule,medication,Yes,Yes,VAT,No,Yes,12,2,PHL-jasac,Available,0
+,JS0058,AMPALAYA PLUS CAPSULES 90`S,,,,,,90`S,90`S,medication,No,,VAT,No,Yes,12,7.45,PHL-jasac,Available,0
+,JS0059,ANSIMAR 400MG TABLETS 50`S,,,,400MG,,50`S,50`S,medication,Yes,,VAT,No,Yes,12,38,PHL-jasac,Available,0
+,JS0060,ANTAMIN 4MG TABLETS 100`S,,,,4MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,5.65,PHL-jasac,Available,0
+,JS0061,APPEBON KID 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,169,PHL-jasac,Available,0
+,JS0062,APPEBON KID 250ML SYRUP,,,,,,250ML,250ML,medication,No,,VAT,No,Yes,12,316,PHL-jasac,Available,0
+,JS0063,APPEBON KID 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,101.35,PHL-jasac,Available,0
+,JS0064,APPEBON W/ IRON 120ML SYRUP,,,,,,120ML,120ML,medication,Yes,,VAT,No,Yes,12,461.4,PHL-jasac,Available,0
+,JS0065,APPEBON W/ IRON CAPSULES 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,19.4,PHL-jasac,Available,0
+,JS0066,APPEBON WITH IRON 60ML,,,,,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,254.5,PHL-jasac,Available,0
+,JS0067,APPETASON CAP 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,11.3,PHL-jasac,Available,0
+,JS0068,APPETREX CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0069,ARCOXIA 120MG TAB 30'S,,,,120MG,,30`S,30`S,medication,Yes,Yes,VAT,No,Yes,12,80.25,PHL-jasac,Available,0
+,JS0070,ARCOXIA 60MG TAB`S 30`S,,,,60MG,,30`S,30`S,medication,Yes,Yes,VAT,No,Yes,12,58.65,PHL-jasac,Available,0
+,JS0071,ARCOXIA 90MG TAB 30`S,,,,90MG,,30`S,30`S,medication,Yes,Yes,VAT,No,Yes,12,64.5,PHL-jasac,Available,0
+,JS0072,ASCOF 300MG/120ML (STRAWBERRY),,,,300MG/120ML,,120ML,120ML,medication,No,,VAT,No,Yes,12,140,PHL-jasac,Available,0
+,JS0073,ASCOF 300MG/120ML SYRUP (PONKAN),,,,300MG/120ML,,120ML,120ML,medication,No,,VAT,No,Yes,12,140,PHL-jasac,Available,0
+,JS0074,ASCOF 300MG/60ML SYRUP (PONKAN),,,,300MG/60ML,,60ML,60ML,medication,No,,VAT,No,Yes,12,98,PHL-jasac,Available,0
+,JS0075,ASCOF 300MG/60ML SYRUP (STRAWBERRY),,,,300MG/60ML,,60ML,60ML,medication,No,,VAT,No,Yes,12,98,PHL-jasac,Available,0
+,JS0076,ASCOF FORTE 600MG 120ML MENTHOL,,,,600MG,,120ML,120ML,medication,No,,VAT,No,Yes,12,178.8,PHL-jasac,Available,0
+,JS0077,ASCOF FORTE 600MG 120ML SUGAR FREE,,,,600MG,,120ML,120ML,medication,No,,VAT,No,Yes,12,167.5,PHL-jasac,Available,0
+,JS0078,ASCOF FORTE 600MG 60ML MENTHOL SYRUP,,,,600MG,,60ML,60ML,medication,No,,VAT,No,Yes,12,128.55,PHL-jasac,Available,0
+,JS0079,ASCOF FORTE 600MG 60ML SUGAR FREE,,,,600MG,,60ML,60ML,medication,No,,VAT,No,Yes,12,116.85,PHL-jasac,Available,0
+,JS0080,ASCOF FORTE CAP 120`S,,,,,,120`S,120`S,medication,No,,VAT,No,Yes,12,7.9,PHL-jasac,Available,0
+,JS0081,ASCOF FORTE TAB 120`S,,,,,,120`S,120`S,medication,No,,VAT,No,Yes,12,5.15,PHL-jasac,Available,0
+,JS0082,ASCORBIC 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,50,PHL-jasac,Available,0
+,JS0083,ASCORBIC 500MG TABLETS,,,,500MG,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,1.95,PHL-jasac,Available,0
+,JS0084,ASCORBIC 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,31.5,PHL-jasac,Available,0
+,JS0085,ASCORBIC ACID + ZINC CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,6,PHL-jasac,Available,0
+,JS0086,ASCORBIC ACID 15ML DROPS,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,21.35,PHL-jasac,Available,0
+,JS0087,ASCORBIC W/ZINC 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,40.25,PHL-jasac,Available,0
+,JS0088,ASFRENON 2MG/5ML 60ML SYRUP,,,,2MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,82.4,PHL-jasac,Available,0
+,JS0089,ASFRENON GF 120ML SYRUP,,,,,,120ML,120ML,medication,Yes,,VAT,No,Yes,12,175,PHL-jasac,Available,0
+,JS0090,ASFRENON GF 60ML SYRUP,,,,,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,97.4,PHL-jasac,Available,0
+,JS0091,ASMACAIRE 1MG/ NEBULE,,,,1MG,,-,-,medication,Yes,,VAT,No,Yes,12,25.2,PHL-jasac,Available,0
+,JS0092,ASMACAIRE 2MG 60ML SYRUP,,,,2MG,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,83.2,PHL-jasac,Available,0
+,JS0093,ASMACAIRE ACTUATION INH 100MCG,,,,,,100MCG,100MCG,medication,Yes,,VAT,No,Yes,12,312,PHL-jasac,Available,0
+,JS0094,ASMALIN NEBULE,,,,,,-,-,medication,Yes,,VAT,No,Yes,12,25.75,PHL-jasac,Available,0
+,JS0095,ASMAVENT NEB,,,,,,Nebule,Nebule,medication,Yes,,VAT,No,Yes,12,90,PHL-jasac,Available,0
+,JS0096,ASPEC EC,,,,,,EC,EC,medication,Yes,,VAT,No,Yes,12,2.85,PHL-jasac,Available,0
+,JS0097,ASPILETS EC 80MG 150`S,,,,80MG,,150`S,150`S,medication,Yes,,VAT,No,Yes,12,3.15,PHL-jasac,Available,0
+,JS0098,ASPIRIN 80MG TABLET,,,,80MG,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0099,ASPIRIN ASPILETS 80MGN TABLETS 500`S,,,,80MG,,500`S,500`S,medication,Yes,,VAT,No,Yes,12,3.15,PHL-jasac,Available,0
+,JS0100,ATENOLOL 50MG TABLET,,,,50MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,3.2,PHL-jasac,Available,0
+,JS0101,ATENOLOL100MG TABLET,,,,100MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,3.45,PHL-jasac,Available,0
+,JS0102,ATORVASTATIN  20MG 100`S,,,,20MG,Tablet,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,6.95,PHL-jasac,Available,0
+,JS0103,ATORVASTATIN 10MG TAB,,,,10MG,Tablet,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,3.35,PHL-jasac,Available,0
+,JS0104,ATORVASTATIN 40MG TABLETS,,,,40MG,Tablet,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,8.95,PHL-jasac,Available,0
+,JS0105,ATORVASTATIN 80MG TABLET 100'S,,,,80MG,Tablet,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,14.9,PHL-jasac,Available,0
+,JS0106,AZITHROMYCIN 200MG SUSP 15ML,,,,200MG,,15ML,15ML,medication,Yes,Yes,VAT,No,Yes,12,230,PHL-jasac,Available,0
+,JS0107,AZITHROMYCIN 200MG/5ML 22.5ML,,,,200MG / 5ML,,2.5ML,2.5ML,medication,Yes,Yes,VAT,No,Yes,12,356.85,PHL-jasac,Available,0
+,JS0108,AZITHROMYCIN 500MG TAB,,,,500MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,30.8,PHL-jasac,Available,0
+,JS0109,BACTIDOL 120ML + LISTERINE ZERO 80ML,,,,,,80ML,80ML,medication,No,,VAT,No,Yes,12,177,PHL-jasac,Available,0
+,JS0110,BACTIDOL GAR 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,166.05,PHL-jasac,Available,0
+,JS0111,BACTIDOL GARGLE  60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,94,PHL-jasac,Available,0
+,JS0112,BACTROBAN CREAM,,,,,,Cream,Cream,medication,Yes,Yes,VAT,No,Yes,12,299.75,PHL-jasac,Available,0
+,JS0113,BACTROBAN OINT,,,,,,-,-,medication,Yes,Yes,VAT,No,Yes,12,299.75,PHL-jasac,Available,0
+,JS0114,BALANYOS (PASSI) 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,110,PHL-jasac,Available,0
+,JS0115,BALANYOS (PASSI) 500ML,,,,,,500ML,500ML,medication,No,,VAT,No,Yes,12,425,PHL-jasac,Available,0
+,JS0116,BALANYOS 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,55,PHL-jasac,Available,0
+,JS0117,BALSAMO 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,22.5,PHL-jasac,Available,0
+,JS0118,BALSAMO 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,12,PHL-jasac,Available,0
+,JS0119,BALSAMO 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,11.5,PHL-jasac,Available,0
+,JS0120,BALSAMO 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,15.5,PHL-jasac,Available,0
+,JS0121,BALSEM LANG 20G,,,,,,20G,20G,medication,No,,VAT,No,Yes,12,63,PHL-jasac,Available,0
+,JS0122,BAND-AID PLASTER,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,1.7,PHL-jasac,Available,0
+,JS0123,BEAR BRAND 150G,,,,,,150G,150G,consumer health,No,,VAT,No,Yes,12,57,PHL-jasac,Available,0
+,JS0124,BEAR BRAND 320GRMS,,,,,,320G,320G,consumer health,No,,VAT,No,Yes,12,105.82,PHL-jasac,Available,0
+,JS0125,BEAR BRAND ADULT PLUS 300G,,,,,,300G,300G,consumer health,No,,VAT,No,Yes,12,131,PHL-jasac,Available,0
+,JS0126,BEAR BRAND CHOCO MILK 29G,,,,,,29G,29G,consumer health,No,,VAT,No,Yes,12,12,PHL-jasac,Available,0
+,JS0127,BENADRYL AH 25MG CAPSULE,,,,25MG,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,18.25,PHL-jasac,Available,0
+,JS0128,BENTYL TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,16.8,PHL-jasac,Available,0
+,JS0129,BESTCAFFE 8 IN 1 COFFEE MIX,,,,,,Per setchet,Per setchet,consumer health,No,,VAT,No,Yes,12,13.1,PHL-jasac,Available,0
+,JS0130,BETADINE FEMME WASH 50ML,,,,,,50ML,50ML,consumer health,No,,VAT,No,Yes,12,107,PHL-jasac,Available,0
+,JS0131,BETADINE FEMMENINE WASH 25ML,,,,,,25ML,25ML,consumer health,No,,VAT,No,Yes,12,63.25,PHL-jasac,Available,0
+,JS0132,BETADINE GARGLE 120ML,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,158,PHL-jasac,Available,0
+,JS0133,BETADINE GARGLE 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,96,PHL-jasac,Available,0
+,JS0134,BETADINE SOL 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,204.75,PHL-jasac,Available,0
+,JS0135,BETADINE SOL 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,58,PHL-jasac,Available,0
+,JS0136,BETADINE SOL 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,137.5,PHL-jasac,Available,0
+,JS0137,BETADINE SOL 7.5ML,,,,,,7.5ML,7.5ML,medication,No,,VAT,No,Yes,12,35,PHL-jasac,Available,0
+,JS0138,BETAHISTINE 16MG  TAB 100`S,,,,16MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,10.95,PHL-jasac,Available,0
+,JS0139,BETAHISTINE 8MG  TAB 100`S,,,,8MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,7.9,PHL-jasac,Available,0
+,JS0140,BETAHISTINE HCL 24MG TABLET,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,15.75,PHL-jasac,Available,0
+,JS0141,BETNOVATE CREAM 5GRMS,,,,,,Cream,Cream,medication,Yes,,VAT,No,Yes,12,300,PHL-jasac,Available,0
+,JS0142,BIGUIRLAI TEA,,,,,,Per satchet,Per satchet,consumer health,No,,VAT,No,Yes,12,6.85,PHL-jasac,Available,0
+,JS0143,BIODERM OINTMENT 15G,,,,,,15G,15G,medication,No,,VAT,No,Yes,12,36.45,PHL-jasac,Available,0
+,JS0144,BIODERM OINTMENT 5G,,,,,,5G,5G,medication,No,,VAT,No,Yes,12,22,PHL-jasac,Available,0
+,JS0145,BIOFLU SUSP 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,117,PHL-jasac,Available,0
+,JS0146,BIOFLU TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,7.25,PHL-jasac,Available,0
+,JS0147,BIOGESIC 100MG/ML 15ML DROPS ORANGE,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,65.5,PHL-jasac,Available,0
+,JS0148,BIOGESIC 100MG/ML 15ML DROPS STRAWBERRY,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,66.1,PHL-jasac,Available,0
+,JS0149,BIOGESIC 120MG/5ML ORANGE 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,78.85,PHL-jasac,Available,0
+,JS0150,BIOGESIC 120MG/5ML STRAWBERRY 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,78.85,PHL-jasac,Available,0
+,JS0151,BIOGESIC 250MG/5ML ORANGE 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,124,PHL-jasac,Available,0
+,JS0152,BIOGESIC 250MG/5ML STRAWBERRY 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,124,PHL-jasac,Available,0
+,JS0153,BIOGESIC 500MG TABLETS 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,3.6,PHL-jasac,Available,0
+,JS0154,BIOTERMIN AS 120ML,,,,,,120ML,120ML,medication,Yes,,VAT,No,Yes,12,175,PHL-jasac,Available,0
+,JS0155,BIOTERMIN AS 60ML,,,,,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,115.5,PHL-jasac,Available,0
+,JS0156,BISACODYL 5MG TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,1.45,PHL-jasac,Available,0
+,JS0157,BISACODYL(DULCOLAX )5MG TAB 120'S,,,,,,120`S,120`S,medication,No,,VAT,No,Yes,12,20.6,PHL-jasac,Available,0
+,JS0158,BL CREAM 7G,,,,,,Cream,Cream,medication,No,,VAT,No,Yes,12,36.9,PHL-jasac,Available,0
+,JS0159,BL SOAP 115 GRMS,,,,,,115G,115G,consumer health,No,,VAT,No,Yes,12,45.5,PHL-jasac,Available,0
+,JS0160,BLUE CALCIUM,,,,,,-,-,medication,No,,VAT,No,Yes,12,12.5,PHL-jasac,Available,0
+,JS0161,BONAMINE 12.5MG TABLETS 120`S PEDIA,,,,,,120`S,120`S,medication,No,,VAT,No,Yes,12,9.95,PHL-jasac,Available,0
+,JS0162,BONAMINE 25MG  ADULT TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,12.5,PHL-jasac,Available,0
+,JS0163,BRONCHOFEN 5MG SYR 60ML,,,,,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,94,PHL-jasac,Available,0
+,JS0164,BRONCHOFEN DRPS 15ML,,,,,,15ML,15ML,medication,Yes,,VAT,No,Yes,12,77.5,PHL-jasac,Available,0
+,JS0165,BUDESONIDE 250MCG NEBULE,,,,250MCG,,-,-,medication,Yes,Yes,VAT,No,Yes,12,49.5,PHL-jasac,Available,0
+,JS0166,BUSCOPAN 10MG TAB 120`S,,,,,,120`S,120`S,medication,No,,VAT,No,Yes,12,23.85,PHL-jasac,Available,0
+,JS0167,BUSCOPAN PLUS 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,30.9,PHL-jasac,Available,0
+,JS0168,BUSCOPAN VENUS 10MG  100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,27.55,PHL-jasac,Available,0
+,JS0169,BUSOG LUSOG MILKY YUMMY 28G,,,,,,28G,28G,consumer health,No,,VAT,No,Yes,12,6.5,PHL-jasac,Available,0
+,JS0170,C 24/7 CAPSULE 30'S,,,,,,30`S,30`S,medication,No,,VAT,No,Yes,12,41.25,PHL-jasac,Available,0
+,JS0171,CALCIBLOC 10MG CAPLETS 100`S,,,,10MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,24.65,PHL-jasac,Available,0
+,JS0172,CALCIBLOC OD 30MG TAB 50`S,,,,30MG,,50`S,50`S,medication,Yes,,VAT,No,Yes,12,34.8,PHL-jasac,Available,0
+,JS0173,CALCIGARD 10MG CAPS100`S,,,,10MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,4.6,PHL-jasac,Available,0
+,JS0174,CALCIGARD 5MG CAPS 100`S,,,,5MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,2.7,PHL-jasac,Available,0
+,JS0175,CALCIUM CARBONATE 1250MG,,,,,,250MG,250MG,medication,No,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0176,CALCIUM CARBONATE 500MG TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,1.45,PHL-jasac,Available,0
+,JS0177,CALMOSEPTIN CREAM,,,,,,Cream,Cream,medication,No,,VAT,No,Yes,12,35.8,PHL-jasac,Available,0
+,JS0178,CALPOL 100MG/ML 10ML DROPS  ORANGE,,,,,,10ML,10ML,medication,No,,VAT,No,Yes,12,63,PHL-jasac,Available,0
+,JS0179,CALPOL 100MG/ML 10ML DROPS  STRAWBERRY,,,,,,10ML,10ML,medication,No,,VAT,No,Yes,12,61.4,PHL-jasac,Available,0
+,JS0180,CALPOL 120MG/5ML SYRUP 60ML  ORANGE,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,94.5,PHL-jasac,Available,0
+,JS0181,CALPOL 120MG/5ML SYRUP 60ML  STRAWBERRY,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,94.5,PHL-jasac,Available,0
+,JS0182,CALPOL 2-6 YRS SYRUP 120ML STRAWBERRY,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,159,PHL-jasac,Available,0
+,JS0183,CALPOL 6PLUS 250MG/60ML SYRUP  ORANGE,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,135.95,PHL-jasac,Available,0
+,JS0184,CALPOL 6PLUS 250MG/60ML SYRUP STRAWBERRY,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,135.95,PHL-jasac,Available,0
+,JS0185,CALTRATE PLUS TAB 168`S,,,,,,168`S,168`S,medication,No,,VAT,No,Yes,12,7.85,PHL-jasac,Available,0
+,JS0186,CALVIT GOLD TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,8.5,PHL-jasac,Available,0
+,JS0187,CALVIT TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,8.35,PHL-jasac,Available,0
+,JS0188,CANESTEN CREAM 3G,,,,,,Cream,Cream,medication,No,,VAT,No,Yes,12,108.45,PHL-jasac,Available,0
+,JS0189,CANESTENE CREAM 5G,,,,,,Cream,Cream,medication,No,,VAT,No,Yes,12,174,PHL-jasac,Available,0
+,JS0190,CAPTOPRIL  25MG TABLET,,,,25MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1.2,PHL-jasac,Available,0
+,JS0191,CARBOCISTIENE 100MG/5ML 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,23,PHL-jasac,Available,0
+,JS0192,CARBOCISTIENE 125MG/5ML 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,23,PHL-jasac,Available,0
+,JS0193,CARBOCISTIENE 250MG/5ML 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,24,PHL-jasac,Available,0
+,JS0194,CARBOCISTIENE 50MG/ML 15ML DROPS,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,22.5,PHL-jasac,Available,0
+,JS0195,CARBOCISTINE 500MG CAP,,,,,,500MG,500MG,medication,No,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0196,CARDIOSEL 100MG TAB`S 100`S,,,,100MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,6.7,PHL-jasac,Available,0
+,JS0197,CARDIOSEL 50MG TAB`S 100`S,,,,50MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,4,PHL-jasac,Available,0
+,JS0198,CARDIPRES 25MG TAB 30'S,,,,25MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,19.5,PHL-jasac,Available,0
+,JS0199,CARVEDILOL 25MG TABLET,,,,25MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,6.6,PHL-jasac,Available,0
+,JS0200,CARVEDILOL 6.25MG TABLET,,,,6.25MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,6.65,PHL-jasac,Available,0
+,JS0201,CASINO 250ML MILD FRAGRANCE,,,,,,250ML,250ML,consumer health,No,,VAT,No,Yes,12,35,PHL-jasac,Available,0
+,JS0202,CASINO ACL 70% 150ML REGULAR,,,,,,150ML,150ML,consumer health,No,,VAT,No,Yes,12,32.2,PHL-jasac,Available,0
+,JS0203,CASINO ALC 70% 250ML REGULAR,,,,,,250ML,250ML,consumer health,No,,VAT,No,Yes,12,36.5,PHL-jasac,Available,0
+,JS0204,CASINO ALC 70% 500ML REGULAR,,,,,,500ML,500ML,consumer health,No,,VAT,No,Yes,12,81.2,PHL-jasac,Available,0
+,JS0205,CASINO ALC 70% 60ML REGULAR,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,18.25,PHL-jasac,Available,0
+,JS0206,CASINO ALC ACTIVE 150ML,,,,,,150ML,150ML,consumer health,No,,VAT,No,Yes,12,29,PHL-jasac,Available,0
+,JS0207,CASINO ALC ACTIVE 250ML,,,,,,250ML,250ML,consumer health,No,,VAT,No,Yes,12,40,PHL-jasac,Available,0
+,JS0208,CASINO ALC ACTIVE 500ML,,,,,,500ML,500ML,consumer health,No,,VAT,No,Yes,12,68,PHL-jasac,Available,0
+,JS0209,CASINO ALC ACTIVE 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,18.8,PHL-jasac,Available,0
+,JS0210,CASINO ALC FEMME 15O ML,,,,,,15O ML,15O ML,consumer health,No,,VAT,No,Yes,12,32.95,PHL-jasac,Available,0
+,JS0211,CASINO ALC FEMME 250ML,,,,,,250ML,250ML,consumer health,No,,VAT,No,Yes,12,38,PHL-jasac,Available,0
+,JS0212,CASINO ALC FEMME 500ML,,,,,,500ML,500ML,consumer health,No,,VAT,No,Yes,12,67.8,PHL-jasac,Available,0
+,JS0213,CASINO ALC FEMME 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,22,PHL-jasac,Available,0
+,JS0214,CASINO ETHYL ALCOHOL 1GALLON MILD,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,483,PHL-jasac,Available,0
+,JS0215,CASINO FEMME DUAL 150ML,,,,,,150ML,150ML,consumer health,No,,VAT,No,Yes,12,28,PHL-jasac,Available,0
+,JS0216,CASINO FEMME DUAL 250ML,,,,,,250ML,250ML,consumer health,No,,VAT,No,Yes,12,49.85,PHL-jasac,Available,0
+,JS0217,CASINO FEMME DUAL 500ML,,,,,,500ML,500ML,consumer health,No,,VAT,No,Yes,12,68,PHL-jasac,Available,0
+,JS0218,CASINO FEMME DUAL 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,22.05,PHL-jasac,Available,0
+,JS0219,CATAPRES 150MCG TAB 100`S,,,,150MCG,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,48.5,PHL-jasac,Available,0
+,JS0220,CATAPRES 75MCG TAB 100`S,,,,75MCG,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,32,PHL-jasac,Available,0
+,JS0221,CEBO DE MACHO 12G,,,,,,12G,12G,medication,No,,VAT,No,Yes,12,22,PHL-jasac,Available,0
+,JS0222,CEBO DE MACHO 5GRMS,,,,,,5G,5G,medication,No,,VAT,No,Yes,12,16.5,PHL-jasac,Available,0
+,JS0223,CECON 500MG TAB`S 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,8.7,PHL-jasac,Available,0
+,JS0224,CECON JR 100MG TAB`S 30`S,,,,,,30`S,30`S,medication,No,,VAT,No,Yes,12,4.1,PHL-jasac,Available,0
+,JS0225,CEELIN 120ML SYRUP,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,118.3,PHL-jasac,Available,0
+,JS0226,CEELIN 15ML DROPS,,,,,,15ML,15ML,consumer health,No,,VAT,No,Yes,12,70,PHL-jasac,Available,0
+,JS0227,CEELIN 250ML SYRUP,,,,,,250ML,250ML,consumer health,No,,VAT,No,Yes,12,215,PHL-jasac,Available,0
+,JS0228,CEELIN 30ML DROPS,,,,,,30ML,30ML,consumer health,No,,VAT,No,Yes,12,128.5,PHL-jasac,Available,0
+,JS0229,CEELIN 500ML SYRUP,,,,,,500ML,500ML,consumer health,No,,VAT,No,Yes,12,400.55,PHL-jasac,Available,0
+,JS0230,CEELIN 60ML SYRUP,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,55.75,PHL-jasac,Available,0
+,JS0231,CEELIN C PLUS 120ML SYRUP,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,138.45,PHL-jasac,Available,0
+,JS0232,CEELIN C PLUS 250ML SYRUP,,,,,,250ML,250ML,consumer health,No,,VAT,No,Yes,12,255,PHL-jasac,Available,0
+,JS0233,CEELIN C PLUS 60ML SYRUP,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,75.65,PHL-jasac,Available,0
+,JS0234,CEELIN CHEWABLE TABLETS 30`S,,,,,,30`S,30`S,consumer health,No,,VAT,No,Yes,12,120,PHL-jasac,Available,0
+,JS0235,CEELIN CHEWABLE TABLETS 60`S,,,,,,60`S,60`S,consumer health,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0236,CEELIN PLUS 15ML DROPS,,,,,,15ML,15ML,consumer health,No,,VAT,No,Yes,12,83.5,PHL-jasac,Available,0
+,JS0237,CEELIN PLUS 3OML DROPS,,,,,,30ML,30ML,consumer health,No,,VAT,No,Yes,12,145.95,PHL-jasac,Available,0
+,JS0238,CEELIN PLUS CHEW 100'S,,,,,,100`S,100`S,consumer health,No,,VAT,No,Yes,12,5.9,PHL-jasac,Available,0
+,JS0239,CEETAB DAILY 500MG TABLET,,,,,,Per Tab,Per Tab,consumer health,No,,VAT,No,Yes,12,2.2,PHL-jasac,Available,0
+,JS0240,CEETAB PREMIUM CAPSULE,,,,,,Per Capsule,Per Capsule,consumer health,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0241,CEFACLOR 125MG/5ML 60ML SUSP,,,,125MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,134.25,PHL-jasac,Available,0
+,JS0242,CEFACLOR 250MG/5ML 60ML SUSP,,,,250MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,174.5,PHL-jasac,Available,0
+,JS0243,CEFACLOR 50MG DROPS,,,,50MG,,50MG,50MG,medication,Yes,,VAT,No,Yes,12,78.9,PHL-jasac,Available,0
+,JS0244,CEFALEXIN 100MG DROPS,,,,100MG,,100MG,100MG,medication,Yes,Yes,VAT,No,Yes,12,25,PHL-jasac,Available,0
+,JS0245,CEFALEXIN 125MG/5ML 60ML SUSPENSION,,,,125MG / 5ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,25.65,PHL-jasac,Available,0
+,JS0246,CEFALEXIN 250MG/5ML 60ML SUSPENSION,,,,250MG / 5ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,37,PHL-jasac,Available,0
+,JS0247,CEFALEXINE 250MG CAPSULES 100`S,,,,250MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,2.5,PHL-jasac,Available,0
+,JS0248,CEFALEXINE 500MG CAPSULES 100`S,,,,500MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,4.15,PHL-jasac,Available,0
+,JS0249,CEFIXIME 100MG 60ML SUSPENSION,,,,100MG,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,253.5,PHL-jasac,Available,0
+,JS0250,CEFIXIME 200MG CAPSULE,,,,200MG,,Per Capsule,Per Capsule,medication,Yes,Yes,VAT,No,Yes,12,17.8,PHL-jasac,Available,0
+,JS0251,CEFIXIME DROPS 15ML,,,,,,15ML,15ML,medication,Yes,Yes,VAT,No,Yes,12,125,PHL-jasac,Available,0
+,JS0252,CEFIXIME DROPS 30ML,,,,,,30ML,30ML,medication,Yes,Yes,VAT,No,Yes,12,125,PHL-jasac,Available,0
+,JS0253,CEFIXIME1OOMG 30ML,,,,1OOMG,,30ML,30ML,medication,Yes,,VAT,No,Yes,12,125,PHL-jasac,Available,0
+,JS0254,CEFUPHIL 250MG 50ML SUSP,,,,250MG,,50ML,50ML,medication,Yes,,VAT,No,Yes,12,450,PHL-jasac,Available,0
+,JS0255,CEFUROXIME 125MG 50ML SUSPENSION,,,,125MG,,50ML,50ML,medication,Yes,Yes,VAT,No,Yes,12,225,PHL-jasac,Available,0
+,JS0256,CEFUROXIME 250MG 50ML SUSPENSION,,,,250MG,,50ML,50ML,medication,Yes,Yes,VAT,No,Yes,12,292,PHL-jasac,Available,0
+,JS0257,CEFUROXIME 5OOMG TAB,,,,500MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,25.6,PHL-jasac,Available,0
+,JS0258,CELECOXIB 200MG TABLET,,,,200MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0259,CELERPLEX CAPSULE,,,,,,Per Capsule,Per Capsule,consumer health,No,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0260,CELESTAMINE 250MCG 30ML,,,,250MCG,,30ML,30ML,medication,Yes,,VAT,No,Yes,12,274.9,PHL-jasac,Available,0
+,JS0261,CELESTAMINE TABLETS,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,23,PHL-jasac,Available,0
+,JS0262,CENTRUM ADVANCE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0263,CENTRUM SILVER ADVANCE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,12.5,PHL-jasac,Available,0
+,JS0264,CENTRUM TAB 100`S,,,,,,100`S,100`S,consumer health,No,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0265,CETIRIZINE  10MG TABS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,1.2,PHL-jasac,Available,0
+,JS0266,CETIRIZINE 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,42,PHL-jasac,Available,0
+,JS0267,CETIRIZINE DROPS 10ML,,,,,,10ML,10ML,medication,No,,VAT,No,Yes,12,35.6,PHL-jasac,Available,0
+,JS0268,CHERIFER 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,157.5,PHL-jasac,Available,0
+,JS0269,CHERIFER 240ML SYRUP,,,,,,240ML,240ML,medication,No,,VAT,No,Yes,12,294,PHL-jasac,Available,0
+,JS0270,CHERIFER DROPS 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,84.3,PHL-jasac,Available,0
+,JS0271,CHERIFER DROPS 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,151.4,PHL-jasac,Available,0
+,JS0272,CHERIFER FORTE 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,181.65,PHL-jasac,Available,0
+,JS0273,CHERIFER FORTE SYRUP 240ML,,,,,,240ML,240ML,medication,No,,VAT,No,Yes,12,320.25,PHL-jasac,Available,0
+,JS0274,CHERIFER FORTE WITH ZINC 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,188,PHL-jasac,Available,0
+,JS0275,CHERIFER FORTE WITH ZINC 240ML,,,,,,240ML,240ML,medication,No,,VAT,No,Yes,12,325,PHL-jasac,Available,0
+,JS0276,CHERIFER PGM CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,17.45,PHL-jasac,Available,0
+,JS0277,CHERIFER PGM W/ZINC CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,19.2,PHL-jasac,Available,0
+,JS0278,CHERIFER WITH ZINC 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,168,PHL-jasac,Available,0
+,JS0279,CHERIFER WITH ZINC 240ML SYRUP,,,,,,240ML,240ML,medication,No,,VAT,No,Yes,12,299.25,PHL-jasac,Available,0
+,JS0280,CHLORAMPHENICOL 500MG CAP,,,,500MG,,500MG,500MG,medication,Yes,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0281,CHLORPHENAMINE MALEATE 4MG TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,0.45,PHL-jasac,Available,0
+,JS0282,CHLORPHENAMINE MALEATE 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,18.7,PHL-jasac,Available,0
+,JS0283,CINNARIZINE 25MG TABLET,,,,25MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1.45,PHL-jasac,Available,0
+,JS0284,CIPROFLOXACIN 500MG TABLET,,,,500MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,3.95,PHL-jasac,Available,0
+,JS0285,CITICOLIN 1G CAPSULE,,,,1G,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,72,PHL-jasac,Available,0
+,JS0286,CITICOLIN 500MG TABLET,,,,500MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,39.7,PHL-jasac,Available,0
+,JS0287,CLARITHROMYCIN 125MG 60ML SUSPENSION,,,,125MG,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,200,PHL-jasac,Available,0
+,JS0288,CLARITHROMYCIN 250MG 60ML SUSPENSION,,,,250MG,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,400,PHL-jasac,Available,0
+,JS0289,CLARITHROMYCIN 500MG TABLET,,,,500MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,17.1,PHL-jasac,Available,0
+,JS0290,CLINDAMCIN 300MG CAPSULES 100`S,,,,300MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,6.6,PHL-jasac,Available,0
+,JS0291,CLINDAMYCIN 150MG CAPSULE,,,,150MG,,Per Capsule,Per Capsule,medication,Yes,Yes,VAT,No,Yes,12,2.7,PHL-jasac,Available,0
+,JS0292,CLINICA DTX 500MGMG CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,13.1,PHL-jasac,Available,0
+,JS0293,CLOBETASOL PROPIONATE CREAM 10G,,,,,,Cream,Cream,medication,Yes,,VAT,No,Yes,12,73,PHL-jasac,Available,0
+,JS0294,CLOBETASOL PROPIONATE CREAM 30G,,,,,,Cream,Cream,medication,Yes,,VAT,No,Yes,12,97,PHL-jasac,Available,0
+,JS0295,CLONIDINE 150MG TABLET,,,,150MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,6.65,PHL-jasac,Available,0
+,JS0296,CLONIDINE 75MG TABLET,,,,75MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,12.9,PHL-jasac,Available,0
+,JS0297,CLOPIDOGREL 75MG TABLET,,,,75MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,5.95,PHL-jasac,Available,0
+,JS0298,CLOTRIMAZOLE 10MG/G(1%) CREAM 10G,,,,10MG/G(1%) CREAM,,10MG,10MG,medication,Yes,,VAT,No,Yes,12,60,PHL-jasac,Available,0
+,JS0299,CLOXACILLIN 125MG/5ML 60ML SUSPENSION,,,,125MG / 5 ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,26,PHL-jasac,Available,0
+,JS0300,CLOXACILLIN 250MG TABLET,,,,250MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,2.5,PHL-jasac,Available,0
+,JS0301,CLOXACILLIN 250MG/5ML 60ML SUSPENSION,,,,250MG / 5 ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,50.55,PHL-jasac,Available,0
+,JS0302,CLOXACILLIN 500MG CAPSULE,,,,500MG,,Per Capsule,Per Capsule,medication,Yes,Yes,VAT,No,Yes,12,3.5,PHL-jasac,Available,0
+,JS0303,CLUSIVOL 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,137.5,PHL-jasac,Available,0
+,JS0304,CLUSIVOL 250ML SYRUP,,,,,,250ML,250ML,medication,No,,VAT,No,Yes,12,246,PHL-jasac,Available,0
+,JS0305,CLUSIVOL 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,81.9,PHL-jasac,Available,0
+,JS0306,CLUSIVOL CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,6.65,PHL-jasac,Available,0
+,JS0307,CLUSIVOL OB TABLETS 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,7.75,PHL-jasac,Available,0
+,JS0308,CO-ALEVA 50'S,,,,,,50`S,50`S,medication,Yes,,VAT,No,Yes,12,36.4,PHL-jasac,Available,0
+,JS0309,CO-AMOXICALAV 625MG TAB,,,,625MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,19.85,PHL-jasac,Available,0
+,JS0310,CO-AMOXICLAV  250MG 60ML SUSPENSION,,,,250MG,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,187.5,PHL-jasac,Available,0
+,JS0311,CO-AMOXICLAV 1 G TABLET,,,,1G,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,40,PHL-jasac,Available,0
+,JS0312,CO-AMOXICLAV 125MG 60MLSUSPENSION,,,,125MG,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,157.25,PHL-jasac,Available,0
+,JS0313,CO-AMOXICLAV 457MG 70ML SUSPENSION,,,,457MG,,70ML,70ML,medication,Yes,Yes,VAT,No,Yes,12,293.9,PHL-jasac,Available,0
+,JS0314,COBRA VINE 120ML -SC,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,83,PHL-jasac,Available,0
+,JS0315,COLCHICINE TABS 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,0,PHL-jasac,Available,0
+,JS0316,COLCHICINE(GENERICS) 100'S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,3.45,PHL-jasac,Available,0
+,JS0317,CONZACE CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,12,PHL-jasac,Available,0
+,JS0318,COTENACE 100'S TAB (LOSARTAN),,,,100'S,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,2.35,PHL-jasac,Available,0
+,JS0319,COTRIMOXAZOLE 200MG/5ML 60ML SUSPENSION,,,,ZERO,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,24,PHL-jasac,Available,0
+,JS0320,COTRIMOXAZOLE 400MG/5ML 60ML SUSPENSION,,,,400MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,28.35,PHL-jasac,Available,0
+,JS0321,COTRIMOXAZOLE 800MG TABLETS 100`S,,,,800MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,2.45,PHL-jasac,Available,0
+,JS0322,COTTON 10GRMS,,,,,,10G,10G,medication,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0323,COVERSYL 5MG TAB 30`S,,,,5MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,31.95,PHL-jasac,Available,0
+,JS0324,DAFLON 500MG TAB 30`S,,,,500MG,,30`S,30`S,medication,Yes,Yes,VAT,No,Yes,12,44.65,PHL-jasac,Available,0
+,JS0325,DECILONE FORTE TAB 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,29.5,PHL-jasac,Available,0
+,JS0326,DECOLGEN FORTE TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,5.75,PHL-jasac,Available,0
+,JS0327,DECOLGEN NON DROWSE TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,6.25,PHL-jasac,Available,0
+,JS0328,DECOLSIN REFORMULATED CAPSULES,,,,,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,10.75,PHL-jasac,Available,0
+,JS0329,DENTAL ANESTHESIA,,,,,,-,-,medication,Yes,,VAT,No,Yes,12,30,PHL-jasac,Available,0
+,JS0330,DENTAL NEEDLE SHORT,,,,,,-,-,medication,No,,VAT,No,Yes,12,5.5,PHL-jasac,Available,0
+,JS0331,DEQUADIN CITRUS FLAVOR,,,,,,-,-,medication,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0332,DEQUADIN ORANGE FLAVOR,,,,,,-,-,medication,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0333,DERMALIN WHITFIELD OINT 30G,,,,,,-,-,medication,No,,VAT,No,Yes,12,91.6,PHL-jasac,Available,0
+,JS0334,DERMOVATE 500CG/CREAM 5G,,,,500CG/CREAM,,Cream,Cream,medication,Yes,,VAT,No,Yes,12,300,PHL-jasac,Available,0
+,JS0335,DERMOVATE 500MCG/ OINT 5G,,,,500MCG/ OINT,,Cream,Cream,medication,Yes,,VAT,No,Yes,12,300,PHL-jasac,Available,0
+,JS0336,DIAMICRON 80MG TAB 100`S,,,,80MG,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,9.9,PHL-jasac,Available,0
+,JS0337,DIAMICRON MR 60MG 60`S TAB,,,,60MG,,60`S,60`S,medication,Yes,Yes,VAT,No,Yes,12,27.95,PHL-jasac,Available,0
+,JS0338,DIANORM 80MG TAB,,,,80MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,8,PHL-jasac,Available,0
+,JS0339,DIATABS 2MG CAPSULES 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,7.25,PHL-jasac,Available,0
+,JS0340,DIAVIT PLUS 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,26.85,PHL-jasac,Available,0
+,JS0341,DICLOFENAC 50MG (VOREN),,,,,,50MG,50MG,medication,Yes,,VAT,No,Yes,12,3.55,PHL-jasac,Available,0
+,JS0342,DICLOFENAC 50MG TABLETS 100`S,,,,50MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,1,PHL-jasac,Available,0
+,JS0343,DICYCLOVERINE 10MG TABLETS 100`S,,,,10MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,0.5,PHL-jasac,Available,0
+,JS0344,DICYCLOVERINE 10MG/5ML 60ML SYRUP,,,,10MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,20.85,PHL-jasac,Available,0
+,JS0345,DIFENAX50MG TAB100,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,5.85,PHL-jasac,Available,0
+,JS0346,DIFFLAM LOZENGES TABLETS 16`S,,,,,,16`S,16`S,medication,No,,VAT,No,Yes,12,33.5,PHL-jasac,Available,0
+,JS0347,DIFFLAM ORANGE LOZENGES ORANGE,,,,,,-,-,medication,No,,VAT,No,Yes,12,32.5,PHL-jasac,Available,0
+,JS0348,DIGITAL THERMOMETER,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,105,PHL-jasac,Available,0
+,JS0349,DIGOXIN 250MCG TABLET,,,,250MCG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,4.75,PHL-jasac,Available,0
+,JS0350,DILATAIR 400MG TABLET 30'S,,,,400MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,22,PHL-jasac,Available,0
+,JS0351,DILTIAZEM 30MG TAB,,,,30MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,3,PHL-jasac,Available,0
+,JS0352,DILTIAZEM 60MG TABLET,,,,60MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0353,DIOSMIN + HESPERIDIN 450MG?50MG TABLET,,,,450MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,27.1,PHL-jasac,Available,0
+,JS0354,DIPHENDRAMINE HCL 50MG CAPSULES (DM),,,,50MG,,CAP,CAP,medication,Yes,,VAT,No,Yes,12,1.25,PHL-jasac,Available,0
+,JS0355,DIPHENHYDRAMINE HCL 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,21.4,PHL-jasac,Available,0
+,JS0356,DISPOSABLE GLOVES,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,5.6,PHL-jasac,Available,0
+,JS0357,DISUDRIN 10ML DROPS,,,,,,10ML,10ML,medication,No,,VAT,No,Yes,12,109.4,PHL-jasac,Available,0
+,JS0358,DISUDRIN 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,110,PHL-jasac,Available,0
+,JS0359,DOCTRICEE CAPSULE 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,6.8,PHL-jasac,Available,0
+,JS0360,DOCTRICEE SYRUP 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,160,PHL-jasac,Available,0
+,JS0361,DOKTOR PINOY C CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,6.25,PHL-jasac,Available,0
+,JS0362,DOLAN FORTE 200MG 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,132.45,PHL-jasac,Available,0
+,JS0363,DOLAN FP 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,84.15,PHL-jasac,Available,0
+,JS0364,DOLAN FP DROP 100MG 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,78.05,PHL-jasac,Available,0
+,JS0365,DOLCET 375MG TAB 50`S,,,,375MG,,50`S,50`S,medication,Yes,,VAT,No,Yes,12,53.95,PHL-jasac,Available,0
+,JS0366,DOLFENAL 250MG TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,14.75,PHL-jasac,Available,0
+,JS0367,DOLFENAL 500MG TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,28.45,PHL-jasac,Available,0
+,JS0368,DOLO-NEUROBION CAP 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,25.25,PHL-jasac,Available,0
+,JS0369,DOMPERIDONE SYRUP 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,67.1,PHL-jasac,Available,0
+,JS0370,DOMPERIDONE 10MG TAB 100`S,,,,10MG,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,2,PHL-jasac,Available,0
+,JS0371,DOXOFYLLINE 400MG TABLET,,,,400MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0372,DOXYCYCLINE 100MG CAPSULES 100`S,,,,100MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,2.1,PHL-jasac,Available,0
+,JS0373,DR PINOY SQUALENE CAP,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,13,PHL-jasac,Available,0
+,JS0374,DRAGON BALM 20GRMS,,,,,,-,-,medication,No,,VAT,No,Yes,12,28.35,PHL-jasac,Available,0
+,JS0375,DRAPOLENE CREAM 55G,,,,,,Cream,Cream,medication,No,,VAT,No,Yes,12,299,PHL-jasac,Available,0
+,JS0376,DUAVENT 5 20`S,,,,,,20`S,20`S,medication,Yes,,VAT,No,Yes,12,38.5,PHL-jasac,Available,0
+,JS0377,DULCOLAX SUPP ADULT,,,,,,-,-,medication,No,,VAT,No,Yes,12,54.45,PHL-jasac,Available,0
+,JS0378,DULCOLAX SUPP PEDIA,,,,,,-,-,medication,No,,VAT,No,Yes,12,26.5,PHL-jasac,Available,0
+,JS0379,EFFI RELAXING OIL ROLL-ON 3ML,,,,,,3ML,3ML,consumer health,No,,VAT,No,Yes,12,49.25,PHL-jasac,Available,0
+,JS0380,EFFI RELAXING OIL ROLL-ON 6ML,,,,,,6ML,6ML,consumer health,No,,VAT,No,Yes,12,79.35,PHL-jasac,Available,0
+,JS0381,EFFICASCENT OIL 100ML EXTRA STRENGTH,,,,,,100ML,100ML,consumer health,No,,VAT,No,Yes,12,111,PHL-jasac,Available,0
+,JS0382,EFFICASCENT OIL 100ML REGULAR,,,,,,100ML,100ML,consumer health,No,,VAT,No,Yes,12,90,PHL-jasac,Available,0
+,JS0383,EFFICASCENT OIL 235ML EXTRA STRENGTH,,,,,,235ML,235ML,consumer health,No,,VAT,No,Yes,12,245,PHL-jasac,Available,0
+,JS0384,EFFICASCENT OIL 235ML REGULAR,,,,,,235ML,235ML,consumer health,No,,VAT,No,Yes,12,193.5,PHL-jasac,Available,0
+,JS0385,EFFICASCENT OIL 25ML EXTRA STRENGTH,,,,,,25ML,25ML,consumer health,No,,VAT,No,Yes,12,31.6,PHL-jasac,Available,0
+,JS0386,EFFICASCENT OIL 25ML EXTREME,,,,,,25ML,25ML,consumer health,No,,VAT,No,Yes,12,38.55,PHL-jasac,Available,0
+,JS0387,EFFICASCENT OIL 25ML REGULAR,,,,,,25ML,25ML,consumer health,No,,VAT,No,Yes,12,25.6,PHL-jasac,Available,0
+,JS0388,EFFICASCENT OIL 50ML EXTRA STRENGTH,,,,,,50ML,50ML,consumer health,No,,VAT,No,Yes,12,60.85,PHL-jasac,Available,0
+,JS0389,EFFICASCENT OIL 50ML EXTREME,,,,,,50ML,50ML,consumer health,No,,VAT,No,Yes,12,74,PHL-jasac,Available,0
+,JS0390,EFFICASCENT OIL 50ML REGULAR,,,,,,50ML,50ML,consumer health,No,,VAT,No,Yes,12,47.75,PHL-jasac,Available,0
+,JS0391,EFFICASCENT OINTMENT 10G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,23.1,PHL-jasac,Available,0
+,JS0392,EFFICASCENT OINTMENT 5GM,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,14.7,PHL-jasac,Available,0
+,JS0393,ELASTIC BANDAGE 3X5,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,39.4,PHL-jasac,Available,0
+,JS0394,ELASTIC BANDAGE 4X5,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,35,PHL-jasac,Available,0
+,JS0395,ELTROXIN 100MG TABS,,,,100MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,11.25,PHL-jasac,Available,0
+,JS0396,ELTROXIN 50MG TABS,,,,50MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,6.25,PHL-jasac,Available,0
+,JS0397,ENALAPRIL 10MG TAB`S 100`S,,,,10MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,5.85,PHL-jasac,Available,0
+,JS0398,ENALAPRIL 5MG TABLET 100`S,,,,5MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,4.25,PHL-jasac,Available,0
+,JS0399,ENERVON C 120ML SYRUP,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,128.25,PHL-jasac,Available,0
+,JS0400,ENERVON C 250ML SYRUP,,,,,,250ML,250ML,consumer health,No,,VAT,No,Yes,12,239.5,PHL-jasac,Available,0
+,JS0401,ENERVON C 60ML SYRUP,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,66.6,PHL-jasac,Available,0
+,JS0402,ENERVON C FLEX TABLETS 100`S,,,,,,100`S,100`S,consumer health,No,,VAT,No,Yes,12,6.25,PHL-jasac,Available,0
+,JS0403,ENERVON C TABLETS 30`S,,,,,,30`S,30`S,consumer health,No,,VAT,No,Yes,12,188.5,PHL-jasac,Available,0
+,JS0404,EQUINOX ALKALINE CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,18.5,PHL-jasac,Available,0
+,JS0405,ERCEFLORA NEB 10`S,,,,,,10`S,10`S,medication,Yes,Yes,VAT,No,Yes,12,37.5,PHL-jasac,Available,0
+,JS0406,ERYTHROMYCIN 500MG (TROMXENE)TABS 100`S,,,,500MG ,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,4.9,PHL-jasac,Available,0
+,JS0407,ERYTHROMYCIN 60ML,,,,,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,54.8,PHL-jasac,Available,0
+,JS0408,ESOMEPRAZOLE 40MG CAPSULE,,,,40MG,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,11.9,PHL-jasac,Available,0
+,JS0409,ESSENTIALE FORTE CAPSULES 50`S,,,,,,50`S,50`S,medication,No,,VAT,No,Yes,12,32.5,PHL-jasac,Available,0
+,JS0410,ESSENTIALE SN-PHOS 30`S,,,,,,30`S,30`S,medication,No,,VAT,No,Yes,12,10.2,PHL-jasac,Available,0
+,JS0411,ETORICOXIB 120MG TABLET,,,,120MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,17.9,PHL-jasac,Available,0
+,JS0412,ETORICOXIB 60MG TABLET 30'S,,,,60MG,,30`S,30`S,medication,Yes,Yes,VAT,No,Yes,12,13.95,PHL-jasac,Available,0
+,JS0413,ETORICOXIB 90MG TABLET,,,,90MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0414,EURIVIT 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,49.3,PHL-jasac,Available,0
+,JS0415,EURIVIT 250ML SYRUP,,,,,,250ML,250ML,medication,No,,VAT,No,Yes,12,102.75,PHL-jasac,Available,0
+,JS0416,EURIVIT 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,28.9,PHL-jasac,Available,0
+,JS0417,EURIVIT DROPS,,,,,,-,-,medication,No,,VAT,No,Yes,12,20,PHL-jasac,Available,0
+,JS0418,EURIVIT TAB 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,2.85,PHL-jasac,Available,0
+,JS0419,EVERGREEN HERBAL CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,14.7,PHL-jasac,Available,0
+,JS0420,EVERWHITE WHITENING SOAP,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,94.5,PHL-jasac,Available,0
+,JS0421,EYE MO BLUE 7.5ML,,,,,,7.5ML,7.5ML,consumer health,No,,VAT,No,Yes,12,106,PHL-jasac,Available,0
+,JS0422,EYE MO RED 7.5ML,,,,,,7.5ML,7.5ML,consumer health,No,,VAT,No,Yes,12,99.75,PHL-jasac,Available,0
+,JS0423,EYEBERRY CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,17,PHL-jasac,Available,0
+,JS0424,E-ZINC 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,97.5,PHL-jasac,Available,0
+,JS0425,E-ZINC DROPS,,,,,,-,-,medication,No,,VAT,No,Yes,12,91.5,PHL-jasac,Available,0
+,JS0426,FACE MASK 50`S,,,,,,50`S,50`S,consumer health,No,,VAT,No,Yes,12,4,PHL-jasac,Available,0
+,JS0427,FACEMASK CLOTH,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,30,PHL-jasac,Available,0
+,JS0428,FACEMASK HEAL AS ONE WHITE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,55,PHL-jasac,Available,0
+,JS0429,FACEMASK WITH TURB,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,75,PHL-jasac,Available,0
+,JS0430,FAMILY ALCOHOL 180ML,,,,,,180ML,180ML,consumer health,No,,VAT,No,Yes,12,29.5,PHL-jasac,Available,0
+,JS0431,FAMILY ALCOHOL 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0432,FAMILY ALCOHOL W/ MOISTURIZER 150ML,,,,,,150ML,150ML,consumer health,No,,VAT,No,Yes,12,30,PHL-jasac,Available,0
+,JS0433,FAMILY ALCOHOL W/ MOISTURIZER 500ML,,,,,,500ML,500ML,consumer health,No,,VAT,No,Yes,12,68,PHL-jasac,Available,0
+,JS0434,FAMILY COTTON BALLS 300'S,,,,,,300`S,300`S,consumer health,No,,VAT,No,Yes,12,72,PHL-jasac,Available,0
+,JS0435,FAMILY ISOPROPYL 1GALLON ALCOHOL,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,483,PHL-jasac,Available,0
+,JS0436,FARLIN COTTON BUDS 50TIPS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,9,PHL-jasac,Available,0
+,JS0437,FEBUXOSTAT 40MG TABLET,,,,40MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,18.5,PHL-jasac,Available,0
+,JS0438,FELODIPINE 5MG TABLET,,,,5MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,5.45,PHL-jasac,Available,0
+,JS0439,FENOFIBRATE 200MG CAPSULE,,,,200MG,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,9.35,PHL-jasac,Available,0
+,JS0440,FENOGAL 160MG CAP 30'S,,,,160MG,,160MG,160MG,medication,Yes,,VAT,No,Yes,12,36.5,PHL-jasac,Available,0
+,JS0441,FEOFER CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,8.95,PHL-jasac,Available,0
+,JS0442,FERLIN 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,270,PHL-jasac,Available,0
+,JS0443,FERLIN 15ML DROPS,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,108,PHL-jasac,Available,0
+,JS0444,FERN ACTIVE 500MG CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,12.5,PHL-jasac,Available,0
+,JS0445,FERN C 500MG CAP,,,,,,500MG,500MG,medication,No,,VAT,No,Yes,12,6.8,PHL-jasac,Available,0
+,JS0446,FERN C 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,68,PHL-jasac,Available,0
+,JS0447,FERNC 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,129.15,PHL-jasac,Available,0
+,JS0448,FERN-D 100IU SOFTGEL 60'S,,,,,,60`S,60`S,medication,No,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0449,FERROUS 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,19.5,PHL-jasac,Available,0
+,JS0450,FERROUS DROPS 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,20.85,PHL-jasac,Available,0
+,JS0451,FERROUS SULFATE 325MG TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0452,FINASTERIDE 5MG ( GENERIC) TABLET,,,,5MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,11.6,PHL-jasac,Available,0
+,JS0453,FINASTERIDE 5MG TABLET,,,,5MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,42.15,PHL-jasac,Available,0
+,JS0454,FISH LIVER OIL 300'S,,,,,,300`S,300`S,consumer health,No,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0455,FIXCOM 3 TABLETS 80`S,,,,,,80`S,80`S,medication,Yes,,VAT,No,Yes,12,10.5,PHL-jasac,Available,0
+,JS0456,FIXCOM 4 TABLETS 80`S,,,,,,80`S,80`S,medication,Yes,,VAT,No,Yes,12,10.65,PHL-jasac,Available,0
+,JS0457,FLAGYL 125MG 60ML,,,,125MG,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,99.75,PHL-jasac,Available,0
+,JS0458,FLAGYL TAB`S 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,28.45,PHL-jasac,Available,0
+,JS0459,FLANAX 275MG TABLETS 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,11.4,PHL-jasac,Available,0
+,JS0460,FLANAX 550MG TABLETS 250`S,,,,FORALIVIT,,250`S,250`S,medication,Yes,,VAT,No,Yes,12,23.25,PHL-jasac,Available,0
+,JS0461,FLUIMUCIL 100MG GRNS 30`S,,,,100MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,12.6,PHL-jasac,Available,0
+,JS0462,FLUIMUCIL 200MG GRNS 30`S,,,,200MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,16.6,PHL-jasac,Available,0
+,JS0463,FLUIMUCIL 600MG TAB 10`S,,,,600MG,,10`S,10`S,medication,Yes,,VAT,No,Yes,12,36.6,PHL-jasac,Available,0
+,JS0464,FOLIC ACID 5MG (FOLA) CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,2.85,PHL-jasac,Available,0
+,JS0465,FOLITECT CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,10.8,PHL-jasac,Available,0
+,JS0466,FORALIVIT CAP,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,2.45,PHL-jasac,Available,0
+,JS0467,FORTI D CAP`S 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,6.2,PHL-jasac,Available,0
+,JS0468,FORTIPLEX TABLET 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,15.9,PHL-jasac,Available,0
+,JS0469,FOSKINA B OINTMENT,,,,,,-,-,medication,No,,VAT,No,Yes,12,451.5,PHL-jasac,Available,0
+,JS0470,FUN G 40 G,,,,,,-,-,medication,No,,VAT,No,Yes,12,23.75,PHL-jasac,Available,0
+,JS0471,FUN G 75G,,,,,,-,-,medication,No,,VAT,No,Yes,12,52,PHL-jasac,Available,0
+,JS0472,FUNGISOL 4ML,,,,,,4ML,4ML,medication,Yes,,VAT,No,Yes,12,157.5,PHL-jasac,Available,0
+,JS0473,FUNGISOL 8ML,,,,,,8ML,8ML,medication,Yes,,VAT,No,Yes,12,225,PHL-jasac,Available,0
+,JS0474,FUROSEMIDE 20MG TAB,,,,20MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,0.7,PHL-jasac,Available,0
+,JS0475,FUROSEMIDE 40MG TAB,,,,40MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,0.9,PHL-jasac,Available,0
+,JS0476,GARLIC OIL 200'S,,,,,,200`S,200`S,consumer health,No,,VAT,No,Yes,12,2.7,PHL-jasac,Available,0
+,JS0477,GAUZE BANDAGE 3X10,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,21,PHL-jasac,Available,0
+,JS0478,GAUZE BANDAGE 3X3,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,4.1,PHL-jasac,Available,0
+,JS0479,GAUZE BANDAGE 4X10,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,25.1,PHL-jasac,Available,0
+,JS0480,GAUZE BANDAGE2X10,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,20,PHL-jasac,Available,0
+,JS0481,GAUZE PAD 5'S,,,,,,5`S,5`S,consumer health,No,,VAT,No,Yes,12,15.5,PHL-jasac,Available,0
+,JS0482,GAVISCON DOUBLE ACTION 10ML,,,,,,10ML,10ML,consumer health,No,,VAT,No,Yes,12,28.3,PHL-jasac,Available,0
+,JS0483,GAVISCON DOUBLE ACTION TABLET,,,,,,Per Tab,Per Tab,consumer health,No,,VAT,No,Yes,12,16.8,PHL-jasac,Available,0
+,JS0484,GAVISCON SACHET,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,26,PHL-jasac,Available,0
+,JS0485,GAVISCON TAB 96`S,,,,,,96`S,96`S,consumer health,No,,VAT,No,Yes,12,13.8,PHL-jasac,Available,0
+,JS0486,GLIBENCLAMIDE 5MG TAB 100`S,,,,5MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,0.95,PHL-jasac,Available,0
+,JS0487,GLICLAZIDE 30MG TABLET,,,,30MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,4.9,PHL-jasac,Available,0
+,JS0488,GLICLAZIDE 60MG TABLET,,,,60MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,7.5,PHL-jasac,Available,0
+,JS0489,GLICLAZIDE(ZEBET 80MG) TAB 100`S,,,,80MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,3.1,PHL-jasac,Available,0
+,JS0490,GLIMEPERIDE 2MG(TRIMEP-2) TAB 30`S,,,,2MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,3.5,PHL-jasac,Available,0
+,JS0491,GLUBITOR 80MG TAB,,,,80MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,8.45,PHL-jasac,Available,0
+,JS0492,GLUBITOR OD 30MG TABS,,,,30MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,8.1,PHL-jasac,Available,0
+,JS0493,GLUMET 500MG TAB,,,,500MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,8.8,PHL-jasac,Available,0
+,JS0494,GLUMET XR 500MG TAB 100`S,,,,500MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,10.45,PHL-jasac,Available,0
+,JS0495,GROWEE 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,150,PHL-jasac,Available,0
+,JS0496,GROWEE 15ML DROPS,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,82,PHL-jasac,Available,0
+,JS0497,GROWEE 250ML SYRUP,,,,,,250ML,250ML,medication,No,,VAT,No,Yes,12,286.25,PHL-jasac,Available,0
+,JS0498,GUAIFENESIN 100MG/5ML 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,17.85,PHL-jasac,Available,0
+,JS0499,GUAVA SOAP W/ TEA TREE OIL 100G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,94.5,PHL-jasac,Available,0
+,JS0500,GUYABANO TEA 50`S,,,,,,50`S,50`S,consumer health,No,,VAT,No,Yes,12,8.2,PHL-jasac,Available,0
+,JS0501,HEMARATE FA TAB`S 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,21.95,PHL-jasac,Available,0
+,JS0502,HEMARATE TAB 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,23.6,PHL-jasac,Available,0
+,JS0503,HEMOSTAN 500MG CAP,,,,500MG,,500MG,500MG,medication,Yes,,VAT,No,Yes,12,32.95,PHL-jasac,Available,0
+,JS0504,HERACLENE 1MG CAP,,,,1MG,,E 1MG,E 1MG,medication,Yes,,VAT,No,Yes,12,18,PHL-jasac,Available,0
+,JS0505,HERBYCIN SYR 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,136,PHL-jasac,Available,0
+,JS0506,HERBYCIN SYRUP 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,96.6,PHL-jasac,Available,0
+,JS0507,HIVENT 2.5ML 5 30`S,,,,2.5ML,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0508,HYCID 20MG,,,,20MG,,20MG,20MG,medication,Yes,,VAT,No,Yes,12,3.65,PHL-jasac,Available,0
+,JS0509,HYCID 40MG,,,,40MG,,40MG,40MG,medication,Yes,,VAT,No,Yes,12,11.45,PHL-jasac,Available,0
+,JS0510,HYDRITE GRAN  BANANA,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,14.45,PHL-jasac,Available,0
+,JS0511,HYDRITE GRAN. APPLE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0512,HYDROGEN PEROXIDE 3% 120ML,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,24.5,PHL-jasac,Available,0
+,JS0513,HYDROGEN PEROXIDE 3% 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,19.5,PHL-jasac,Available,0
+,JS0514,HYDROXYZINE 25MG TABLET 100'S,,,,25MG,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,23.95,PHL-jasac,Available,0
+,JS0515,HYOSCINE TAB,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,6.8,PHL-jasac,Available,0
+,JS0516,IBERET FOLIC 500MG,,,,,,500MG,500MG,medication,No,,VAT,No,Yes,12,26.4,PHL-jasac,Available,0
+,JS0517,IBERET.ACTIVE500MG 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,28.25,PHL-jasac,Available,0
+,JS0518,IBUPROFEN 200MG + PARACETAMOL 325MG TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,2,PHL-jasac,Available,0
+,JS0519,IBUPROFEN 200MG 60ML SUSP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,62.3,PHL-jasac,Available,0
+,JS0520,IBUPROFEN 400 MG TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,1.1,PHL-jasac,Available,0
+,JS0521,IBUPROFEN CAP 200MG,,,,,,200MG,200MG,medication,No,,VAT,No,Yes,12,0.75,PHL-jasac,Available,0
+,JS0522,IMAX 500MG CAP,,,,500MG,,500MG,500MG,medication,Yes,,VAT,No,Yes,12,6.5,PHL-jasac,Available,0
+,JS0523,IMDUR 60MG TAB,,,,60MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,49.5,PHL-jasac,Available,0
+,JS0524,IMEFER CAPSULES 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,7.6,PHL-jasac,Available,0
+,JS0525,IMMUNOSIN 250MG/5ML 60ML SYRUP,,,,250MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,210,PHL-jasac,Available,0
+,JS0526,IMMUNPRO TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,7.8,PHL-jasac,Available,0
+,JS0527,IMODIUM 2MG CAPSULES 200`S,,,,,,200`S,200`S,medication,No,,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0528,IRBESARTAN 150MG TABLET,,,,150MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,9.5,PHL-jasac,Available,0
+,JS0529,IRBESARTAN 300MG TABLET,,,,300MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,13.65,PHL-jasac,Available,0
+,JS0530,ISMN 60MG TAB`S,,,,60MG,,60MG,60MG,medication,Yes,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0531,JAGA CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,15.85,PHL-jasac,Available,0
+,JS0532,KATIALIS 15G,,,,,,-,-,medication,No,,VAT,No,Yes,12,35.5,PHL-jasac,Available,0
+,JS0533,KATIALIS 30G,,,,,,-,-,medication,No,,VAT,No,Yes,12,67.9,PHL-jasac,Available,0
+,JS0534,KATIALIS 5G,,,,,,-,-,medication,No,,VAT,No,Yes,12,22.95,PHL-jasac,Available,0
+,JS0535,KATIALIS SOAP 90G,,,,,,-,-,medication,No,,VAT,No,Yes,12,55,PHL-jasac,Available,0
+,JS0536,KATINKO 10G,,,,,,-,-,medication,No,,VAT,No,Yes,12,33,PHL-jasac,Available,0
+,JS0537,KATINKO 30G,,,,,,-,-,medication,No,,VAT,No,Yes,12,71.3,PHL-jasac,Available,0
+,JS0538,KETOANALOGUES ESSENTIAL AMINO ACIDS TABLET,,,,,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,21.5,PHL-jasac,Available,0
+,JS0539,KETOBEST TAB`S 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,25.2,PHL-jasac,Available,0
+,JS0540,KETOCONAZOLE 20MG/G CREAM 15GRMS,,,,20MG/G,,20MG,20MG,medication,Yes,,VAT,No,Yes,12,78,PHL-jasac,Available,0
+,JS0541,KETOCONAZOLE CREAM 5G,,,,,,Cream,Cream,medication,Yes,,VAT,No,Yes,12,75,PHL-jasac,Available,0
+,JS0542,KETOPROFEN 50MG CAPSULE,,,,50MG,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,1.8,PHL-jasac,Available,0
+,JS0543,KETOSTERIL 600MG TABLETS 100`S,,,,600MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,43,PHL-jasac,Available,0
+,JS0544,KIDDIELETS TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,2.35,PHL-jasac,Available,0
+,JS0545,K-MAX PLUS 550MG CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0546,KOI CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,12,PHL-jasac,Available,0
+,JS0547,KOOL FEEVER INFANT,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,51,PHL-jasac,Available,0
+,JS0548,KOOL FEVER ADULT,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,53.55,PHL-jasac,Available,0
+,JS0549,KOOL FEVER KIDS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,54.6,PHL-jasac,Available,0
+,JS0550,KOPIKO BLANKA TWIN PACK 52G,,,,,,-,-,medication,No,,VAT,No,Yes,12,9.43,PHL-jasac,Available,0
+,JS0551,KREMIL S CHEWABLE TABLETS 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,7.35,PHL-jasac,Available,0
+,JS0552,KREMIL-S ADVANCE 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,19.75,PHL-jasac,Available,0
+,JS0553,LACIPIL 4MG TABLET,,,,4MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,37.85,PHL-jasac,Available,0
+,JS0554,LACTACYD BLUE 60ML(BABY BATH),,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,73,PHL-jasac,Available,0
+,JS0555,LACTACYD FEM W 60ML(PINK),,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,65,PHL-jasac,Available,0
+,JS0556,LANOXIN,,,,,,,,medication,Yes,,VAT,No,Yes,12,5.45,PHL-jasac,Available,0
+,JS0557,LANZOPRAZOLE 30MG TAB,,,,30MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0558,LE MINERALE 600ML,,,,,,600ML,600ML,medication,No,,VAT,No,Yes,12,13.35,PHL-jasac,Available,0
+,JS0559,LECIT E CAPS 50S,,,,,,50`S,50`S,medication,No,,VAT,No,Yes,12,9.45,PHL-jasac,Available,0
+,JS0560,LEVOCETIRIZINE  10MG 30'S,,,,10MG,,10MG,10MG,medication,Yes,,VAT,No,Yes,12,6.15,PHL-jasac,Available,0
+,JS0561,LEVOFLOXACIN 500MG TAB,,,,500MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,9.3,PHL-jasac,Available,0
+,JS0562,LEVOFLOXACIN 750MG,,,,750MG,,750MG,750MG,medication,Yes,Yes,VAT,No,Yes,12,42.5,PHL-jasac,Available,0
+,JS0563,LEVOTHYROXINE SODIUM 50MCG TABLET,,,,50MCG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,4.05,PHL-jasac,Available,0
+,JS0564,LIFE C CAPSULE 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,6.3,PHL-jasac,Available,0
+,JS0565,LIFE EXTENSION ( LE COFFEE) 25G,,,,,,,,medication,No,,VAT,No,Yes,12,19.4,PHL-jasac,Available,0
+,JS0566,LIFE EXTENSION VITAMIN D3,,,,,,,,medication,No,,VAT,No,Yes,12,9.5,PHL-jasac,Available,0
+,JS0567,LILAC LACTO 120ML,,,,120ML,,120ML,120ML,medication,Yes,,VAT,No,Yes,12,271.4,PHL-jasac,Available,0
+,JS0568,LILAC LACTO 60ML,,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,159,PHL-jasac,Available,0
+,JS0569,LIVEN COFFEE BURN 20'S,,,,,,20`S,20`S,consumer health,No,,VAT,No,Yes,12,24,PHL-jasac,Available,0
+,JS0570,LIVEN COFFEE CAPPUCCINO 20'S,,,,,,20`S,20`S,consumer health,No,,VAT,No,Yes,12,18.5,PHL-jasac,Available,0
+,JS0571,LIVEN COFFEE LATTE 20'S,,,,,,20`S,20`S,consumer health,No,,VAT,No,Yes,12,18.5,PHL-jasac,Available,0
+,JS0572,LIVEN COFFEE ORIGINAL 20'S,,,,,,20`S,20`S,consumer health,No,,VAT,No,Yes,12,18.5,PHL-jasac,Available,0
+,JS0573,LIVEN COFFEE SUGAR FREE 20'S,,,,,,20`S,20`S,consumer health,No,,VAT,No,Yes,12,20,PHL-jasac,Available,0
+,JS0574,LIVER AID CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,18.65,PHL-jasac,Available,0
+,JS0575,LIVER GOLD-F,,,,,,,,medication,No,,VAT,No,Yes,12,13.2,PHL-jasac,Available,0
+,JS0576,LIVERMATE DS,,,,,,,,medication,No,,VAT,No,Yes,12,21.5,PHL-jasac,Available,0
+,JS0577,LIVERMIN CAPSULES 60`S,,,,,,60`S,60`S,medication,No,,VAT,No,Yes,12,30,PHL-jasac,Available,0
+,JS0578,LIVOLIN CAP`S 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,26.8,PHL-jasac,Available,0
+,JS0579,LOLA REMEDIOS 15ML/SACHET,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,9.95,PHL-jasac,Available,0
+,JS0580,LOMOTIL TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,10.2,PHL-jasac,Available,0
+,JS0581,LOPERAMIDE 2MG (LOPRAN) CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,0.8,PHL-jasac,Available,0
+,JS0582,LORATADINE (PREVAHIST) 10MG TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,3.45,PHL-jasac,Available,0
+,JS0583,LOSARTAN 100MG(NATRAZOL) TABLET,,,,100MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,3.5,PHL-jasac,Available,0
+,JS0584,LOSARTAN 50MG( ANGEL) TABLET,,,,50MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,2.45,PHL-jasac,Available,0
+,JS0585,LOSARTAN 50MG(NATRAZOL) TABLET,,,,50MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,2.45,PHL-jasac,Available,0
+,JS0586,LOSARTAN+HCTZ  100MG TAB,,,,100MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,10.95,PHL-jasac,Available,0
+,JS0587,LOSARTAN+HCTZ 50MG/12.5 TAB 100`S,,,,50MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,3.7,PHL-jasac,Available,0
+,JS0588,MAALOX PLUS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,11.9,PHL-jasac,Available,0
+,JS0589,MAALOX TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,9.5,PHL-jasac,Available,0
+,JS0590,MACROBEE W/ IRON 60'S,,,,,,60`S,60`S,medication,No,,VAT,No,Yes,12,12.85,PHL-jasac,Available,0
+,JS0591,MACROBEE W/ LYSINE 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,175.7,PHL-jasac,Available,0
+,JS0592,MACROBEE WITH IRON FORTE TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,14.35,PHL-jasac,Available,0
+,JS0593,MANGGOSTEEN BLACK COFFEE 2G,,,,,,Per satchet,Per satchet,consumer health,No,,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0594,MANGGOSTEEN CHOCO 12'S,,,,,,12`S,12`S,consumer health,No,,VAT,No,Yes,12,19,PHL-jasac,Available,0
+,JS0595,MANGGOSTEEN GREEN COFFEE LIGHTS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0596,MANGGOSTEEN GREEN COFFEE STRONG,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0597,MANGOSTEEN CAP 60`S,,,,,,60`S,60`S,consumer health,No,,VAT,No,Yes,12,9.9,PHL-jasac,Available,0
+,JS0598,MANGOSTEEN SOAP,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,100,PHL-jasac,Available,0
+,JS0599,MANGOSTEN TEA DR. ALFRED 20`S,,,,,,20`S,20`S,consumer health,No,,VAT,No,Yes,12,18.7,PHL-jasac,Available,0
+,JS0600,MAXVIT CAPSULE 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,13,PHL-jasac,Available,0
+,JS0601,MEBENDAZOLE 500MG TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,3.5,PHL-jasac,Available,0
+,JS0602,MEBENDAZOLE SYRUP 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,33.55,PHL-jasac,Available,0
+,JS0603,MEDICOL ADVANCE 200MG CAP 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,5.75,PHL-jasac,Available,0
+,JS0604,MEDICOL ADVANCE 400MG CAP 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,10.55,PHL-jasac,Available,0
+,JS0605,MEFENAMIC 250MG CAPSULE 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,1,PHL-jasac,Available,0
+,JS0606,MEFENAMIC 500MG CAPSULE 100'S,,,,500MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0607,MEFENAMIC 500MG TABLET 100`S,,,,500MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0608,MEFENAMIC 50MG/5ML 60MLL SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,24.65,PHL-jasac,Available,0
+,JS0609,MEGANERV 300MG CAPSULES,,,,300MG,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,20.6,PHL-jasac,Available,0
+,JS0610,MEGANERVE E 60'S,,,,,,60`S,60`S,medication,Yes,,VAT,No,Yes,12,13.7,PHL-jasac,Available,0
+,JS0611,MEGANERVE FA,,,,,,-,-,medication,Yes,,VAT,No,Yes,12,13.8,PHL-jasac,Available,0
+,JS0612,MELOXICAM 15MG (MELOX-15) 30'S,,,,15MG,,15MG,15MG,medication,Yes,,VAT,No,Yes,12,2.85,PHL-jasac,Available,0
+,JS0613,MEMORY PLUS GOLD CAPS 30`S,,,,,,30`S,30`S,medication,No,,VAT,No,Yes,12,16.5,PHL-jasac,Available,0
+,JS0614,MEMORY PLUS PLAIN 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,268,PHL-jasac,Available,0
+,JS0615,MEMORY PLUS PLAIN 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,138,PHL-jasac,Available,0
+,JS0616,MEMORY PLUS PREMIUM 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,286,PHL-jasac,Available,0
+,JS0617,MEMORY PLUS PREMIUM 60 ML,,,,,,60 ML,60 ML,medication,No,,VAT,No,Yes,12,152.25,PHL-jasac,Available,0
+,JS0618,MENADIONE (DRUGMAKERS)TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,1,PHL-jasac,Available,0
+,JS0619,MEPTIN 5MG/ML 60ML SYRUP,,,,5MG/ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,222.6,PHL-jasac,Available,0
+,JS0620,METFORMIN TAB ( FORMET ),,,,,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,0.9,PHL-jasac,Available,0
+,JS0621,METFORMIN( ADIAC ) 500MG TAB,,,,500MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,0.85,PHL-jasac,Available,0
+,JS0622,METFORMIN(SAPHORMIN)500MG TABLET,,,,500MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1,PHL-jasac,Available,0
+,JS0623,METOCARD  50MG TABLETS 100`S,,,,50MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,1.2,PHL-jasac,Available,0
+,JS0624,METOCARD 100MG TABLETS,,,,100Mg,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1.95,PHL-jasac,Available,0
+,JS0625,METOPROLOL 100MG TABLET,,,,100MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,2.1,PHL-jasac,Available,0
+,JS0626,METOPROLOL 50MG TABLET,,,,50MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1.15,PHL-jasac,Available,0
+,JS0627,METOPROLOL(PROLOL)100MG TAB,,,,100MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,2.1,PHL-jasac,Available,0
+,JS0628,METOPROLOL(PROLOL)50MG TABLET,,,,50MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1.2,PHL-jasac,Available,0
+,JS0629,METRONIDAZOLE (FLAGEX) 125MG/5ML 60ML SYR,,,,125MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,26.47,PHL-jasac,Available,0
+,JS0630,METRONIDAZOLE TABLET,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1.4,PHL-jasac,Available,0
+,JS0631,MICARDIS 40  TABLETS 30`S,,,,,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,25,PHL-jasac,Available,0
+,JS0632,MICARDIS 40MG PLUS TABLETS 30'S,,,,40MG ,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,25,PHL-jasac,Available,0
+,JS0633,MICARDIS 80 PLUS TABLETS 30`S,,,,,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,42.05,PHL-jasac,Available,0
+,JS0634,MICARDIS 80MGTABLETS 30`S,,,,80MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,42.05,PHL-jasac,Available,0
+,JS0635,MINERAL OIL 120ML,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,49,PHL-jasac,Available,0
+,JS0636,MINERAL OIL 30ML,,,,,,30ML,30ML,consumer health,No,,VAT,No,Yes,12,13.1,PHL-jasac,Available,0
+,JS0637,MINERAL OIL 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,24,PHL-jasac,Available,0
+,JS0638,MINERAL WATER  330ML,,,,,,330ML,330ML,consumer health,No,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0639,MINERAL WATER 500ML,,,,,,500ML,500ML,consumer health,No,,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0640,MING AMPALAYA CAPSULES,,,,,,Per Capsule,Per Capsule,consumer health,No,,VAT,No,Yes,12,6.6,PHL-jasac,Available,0
+,JS0641,MING EVENING PRIMEROSE 500MG 30'S,,,,,,500MG,500MG,consumer health,No,,VAT,No,Yes,12,8.4,PHL-jasac,Available,0
+,JS0642,MING FISH LIVER OIL CAP 36`S,,,,,,36`S,36`S,consumer health,No,,VAT,No,Yes,12,4,PHL-jasac,Available,0
+,JS0643,MING GRAPE SEED CAPSULES 30`S,,,,,,30`S,30`S,consumer health,No,,VAT,No,Yes,12,8.4,PHL-jasac,Available,0
+,JS0644,MING GREEN TEA CANDY 120G 25`S,,,,,,25`S,25`S,consumer health,No,,VAT,No,Yes,12,2.9,PHL-jasac,Available,0
+,JS0645,MINGS GARLIC 36`S,,,,,,36`S,36`S,consumer health,No,,VAT,No,Yes,12,3.5,PHL-jasac,Available,0
+,JS0646,MINGS GINKO BILOBA 30'S,,,,,,30`S,30`S,consumer health,No,,VAT,No,Yes,12,8.4,PHL-jasac,Available,0
+,JS0647,MINI NEBULIZER,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,1130,PHL-jasac,Available,0
+,JS0648,MINYAK GANDAPURA WINTERGREEN OIL 30ML,,,,,,30ML,30ML,consumer health,No,,VAT,No,Yes,12,60,PHL-jasac,Available,0
+,JS0649,MINYAK GANDAPURA WNTERGREEN OIL 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,99.75,PHL-jasac,Available,0
+,JS0650,MOLVITE OB TAB 60`S,,,,,,60`S,60`S,medication,No,,VAT,No,Yes,12,9.85,PHL-jasac,Available,0
+,JS0651,MOLVITE W/IRON 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,204,PHL-jasac,Available,0
+,JS0652,MONTELUKAST 10MG (AUROHEX),,,,10MG,,10MG,10MG,medication,Yes,,VAT,No,Yes,12,8.6,PHL-jasac,Available,0
+,JS0653,MONTELUKAST 4MG (AUROHEX),,,,4MG,,T 4MG,T 4MG,medication,Yes,,VAT,No,Yes,12,7.5,PHL-jasac,Available,0
+,JS0654,MONTELUKAST 5MG(MONTESUR-5),,,,5MG,,T 5MG,T 5MG,medication,Yes,,VAT,No,Yes,12,7.5,PHL-jasac,Available,0
+,JS0655,MORIAMIN CAPSULE,,,,,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,12.5,PHL-jasac,Available,0
+,JS0656,MOSEGOR VITA CAPSULES 500`S,,,,,,500`S,500`S,medication,Yes,,VAT,No,Yes,12,45,PHL-jasac,Available,0
+,JS0657,MOSVIT ELITE CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,14.45,PHL-jasac,Available,0
+,JS0658,MOSVIT TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,13.75,PHL-jasac,Available,0
+,JS0659,MOTILIUM TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,30,PHL-jasac,Available,0
+,JS0660,MOUTH SORE SOLUTION 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,35,PHL-jasac,Available,0
+,JS0661,MUCONASE NASAL SPRAY,,,,,,-,-,medication,No,,VAT,No,Yes,12,93.5,PHL-jasac,Available,0
+,JS0662,MUCOSOLVAN 15MG/5ML 60ML SYRUP,,,,15MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,131.25,PHL-jasac,Available,0
+,JS0663,MUCOSOLVAN 15MG120ML SYRUP,,,,15MG,,120ML,120ML,medication,Yes,,VAT,No,Yes,12,162,PHL-jasac,Available,0
+,JS0664,MUCOSOLVAN 30MG ADULT 125ML,,,,30MG,,125ML,125ML,medication,Yes,,VAT,No,Yes,12,310.6,PHL-jasac,Available,0
+,JS0665,MUCOSOLVAN 30MG TAB,,,,30MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,15.25,PHL-jasac,Available,0
+,JS0666,MUCOSOLVAN 30MG/5ML 60ML SYRUP,,,,30MG/5ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,172,PHL-jasac,Available,0
+,JS0667,MUCOSOLVAN 6MG DROPS,,,,6MG,,N 6MG,N 6MG,medication,Yes,,VAT,No,Yes,12,125,PHL-jasac,Available,0
+,JS0668,MULTIGROW CAPSULE,,,,CAPSULE,,Per Capsule,Per Capsule,medication,No,Yes,VAT,No,Yes,12,2.45,PHL-jasac,Available,0
+,JS0669,MULTIRON 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,0,PHL-jasac,Available,0
+,JS0670,MULTIVITAMINS  CAPSULE 100'S,,,,,,100`S,100`S,consumer health,No,,VAT,No,Yes,12,1.05,PHL-jasac,Available,0
+,JS0671,MULTIVITAMINS + IRON 120ML,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,50,PHL-jasac,Available,0
+,JS0672,MULTIVITAMINS + IRON 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,35.1,PHL-jasac,Available,0
+,JS0673,MULTIVITAMINS + IRON CAPSULE,,,,,,Per Capsule,Per Capsule,consumer health,No,,VAT,No,Yes,12,2,PHL-jasac,Available,0
+,JS0674,MULTIVITAMINS + IRON DROPS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,44.5,PHL-jasac,Available,0
+,JS0675,MULTIVITAMINS 120ML SYRUP,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,34,PHL-jasac,Available,0
+,JS0676,MULTIVITAMINS 60ML SYRUP,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,23.25,PHL-jasac,Available,0
+,JS0677,MULTIVITAMINS DROPS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,20,PHL-jasac,Available,0
+,JS0678,MUPIROCIN  OINTMENT,,,,,,-,-,medication,Yes,Yes,VAT,No,Yes,12,150.7,PHL-jasac,Available,0
+,JS0679,MX3 CAPSULES 60`S,,,,,,60`S,60`S,consumer health,No,,VAT,No,Yes,12,15.85,PHL-jasac,Available,0
+,JS0680,MX3 COFFEE 10`S,,,,,,10`S,10`S,consumer health,No,,VAT,No,Yes,12,16.8,PHL-jasac,Available,0
+,JS0681,MX3 TEA 20`S,,,,,,20`S,20`S,consumer health,No,,VAT,No,Yes,12,31.75,PHL-jasac,Available,0
+,JS0682,MYRA 300 I.U CAPSULES 30`S,,,,,,30`S,30`S,medication,No,,VAT,No,Yes,12,8.34,PHL-jasac,Available,0
+,JS0683,MYRA ULTIMATE CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,18.9,PHL-jasac,Available,0
+,JS0684,MYRA-E 400 I.U. CAPSULES 100,S,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,PHL-jasac,,0
+,JS0685,MYRIN P FORTE TABLETS 80`S,,,,,,80`S,80`S,medication,Yes,,VAT,No,Yes,12,15.5,PHL-jasac,Available,0
+,JS0686,MYRIN PLAIN  TABLETS 80`S,,,,,,80`S,80`S,medication,Yes,,VAT,No,Yes,12,13.15,PHL-jasac,Available,0
+,JS0687,NAFARIN A TAB 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,6.6,PHL-jasac,Available,0
+,JS0688,NAPROXEN 500MG TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,7.85,PHL-jasac,Available,0
+,JS0689,NASATAPP 15ML DROPS,,,,15ML,,15ML,15ML,medication,Yes,,VAT,No,Yes,12,98.2,PHL-jasac,Available,0
+,JS0690,NASATAPP 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,98,PHL-jasac,Available,0
+,JS0691,NASATAPP TAB 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,7.85,PHL-jasac,Available,0
+,JS0692,NASATHERA 25MG CAP 100'S,,,,25MG,,25MG,25MG,medication,Yes,,VAT,No,Yes,12,5.1,PHL-jasac,Available,0
+,JS0693,NATRASOL 100MG TAB,,,,100MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,3.5,PHL-jasac,Available,0
+,JS0694,NATRASOL 50MG TAB,,,,50MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,2.45,PHL-jasac,Available,0
+,JS0695,NATRAVOX 228.5MG/5ML 70ML,,,,228.5MG/5ML,,70ML,70ML,medication,Yes,,VAT,No,Yes,12,213,PHL-jasac,Available,0
+,JS0696,NATRAVOX 642.9MG/5ML 70ML,,,,642.9MG/5ML,,70ML,70ML,medication,Yes,,VAT,No,Yes,12,350,PHL-jasac,Available,0
+,JS0697,NBW5  COLLAGEN-C CAPSULE,,,,,,Per Capsule,Per Capsule,consumer health,No,,VAT,No,Yes,12,9.9,PHL-jasac,Available,0
+,JS0698,NBW5 COFFEE 10'S,,,,,,10`S,10`S,consumer health,No,,VAT,No,Yes,12,21.6,PHL-jasac,Available,0
+,JS0699,NBW5 HERBAL RUB,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,96,PHL-jasac,Available,0
+,JS0700,NBW5 PROBIOTIC ENZYMES 1L,,,,,,1L,1L,consumer health,No,,VAT,No,Yes,12,1518,PHL-jasac,Available,0
+,JS0701,NBW5 SOAP 135G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,114,PHL-jasac,Available,0
+,JS0702,NC FEMININE WASH200ML,,,,,,200ML,200ML,consumer health,No,,VAT,No,Yes,12,312.5,PHL-jasac,Available,0
+,JS0703,NC MASCULINE WASH 200ML,,,,,,200ML,200ML,consumer health,No,,VAT,No,Yes,12,312.5,PHL-jasac,Available,0
+,JS0704,NC OXYGEN BAR 135G,,,,,,,,consumer health,No,,VAT,No,Yes,12,187.5,PHL-jasac,Available,0
+,JS0705,NC WHITENING BAR 135G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,187.5,PHL-jasac,Available,0
+,JS0706,NEBKIT W/MASK ADULT,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,81.25,PHL-jasac,Available,0
+,JS0707,NEBKIT W/MASK PEDIA,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,81.25,PHL-jasac,Available,0
+,JS0708,NEO PYRAZON  50MGTAB 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,21.28,PHL-jasac,Available,0
+,JS0709,NEOBLOC 100MG TAB 100'S,,,,100MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,6.7,PHL-jasac,Available,0
+,JS0710,NEOBLOC 50MG TABLETS 100`S,,,,50MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,4,PHL-jasac,Available,0
+,JS0711,NEOFORM 500MG TABLETS`100`S,,,,500MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,3.5,PHL-jasac,Available,0
+,JS0712,NEOZEP 10ML DROPS,,,,,,10ML,10ML,medication,No,,VAT,No,Yes,12,92.9,PHL-jasac,Available,0
+,JS0713,NEOZEP 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,92.9,PHL-jasac,Available,0
+,JS0714,NEOZEP FORTE TAB 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,4.75,PHL-jasac,Available,0
+,JS0715,NEOZEP NO DROWSE TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,5.5,PHL-jasac,Available,0
+,JS0716,NEOZEP NON DROWSE 5+1,,,,,,-,-,medication,No,,VAT,No,Yes,12,27.5,PHL-jasac,Available,0
+,JS0717,NEOZEP NON DROWSE 8+2,,,,,,-,-,medication,No,,VAT,No,Yes,12,44,PHL-jasac,Available,0
+,JS0718,NERVILAN TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,11.95,PHL-jasac,Available,0
+,JS0719,NESCAFE ORIGINAL 20GRMS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,5.22,PHL-jasac,Available,0
+,JS0720,NESCAFE STICK 2GRMS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,1.94,PHL-jasac,Available,0
+,JS0721,NEUROBEXOL CAP 100.S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,2.5,PHL-jasac,Available,0
+,JS0722,NEUROBION PLAIN TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,19.5,PHL-jasac,Available,0
+,JS0723,NEUROGEN-E TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,13.45,PHL-jasac,Available,0
+,JS0724,NEXTGEN BEAUTY SOAP PACKAGE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,300,PHL-jasac,Available,0
+,JS0725,NEXTGEN GLUTATHIONE BEAUTY SOAP,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,70,PHL-jasac,Available,0
+,JS0726,NEXTGEN GOLDEN OIL 30ML,,,,,,30ML,30ML,consumer health,No,,VAT,No,Yes,12,1980,PHL-jasac,Available,0
+,JS0727,NEXTGEN KOJIC BEAUTY SOAP,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,70,PHL-jasac,Available,0
+,JS0728,NEXTGEN PAPAYA BEAUTY SOAP,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,70,PHL-jasac,Available,0
+,JS0729,NEXTGEN RAPIDCARE 60GRMS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,220,PHL-jasac,Available,0
+,JS0730,NEXTGEN SPIRULINA TABLET,,,,,,Per Tab,Per Tab,consumer health,No,,VAT,No,Yes,12,8,PHL-jasac,Available,0
+,JS0731,NIZORAL CREAM 3.5GRMS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,147,PHL-jasac,Available,0
+,JS0732,NIZORAL REAM 5GRM,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,197,PHL-jasac,Available,0
+,JS0733,NIZORAL SHAMPOO 6ML,,,,,,6ML,6ML,consumer health,No,,VAT,No,Yes,12,44.75,PHL-jasac,Available,0
+,JS0734,NORGESIC FORTE TABLETS 100`S,,,,,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,36,PHL-jasac,Available,0
+,JS0735,NORGESIC PLAIN TABLETS 100`S,,,,,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,21.25,PHL-jasac,Available,0
+,JS0736,NUTRAM 325MG TAB,,,,325MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,36.8,PHL-jasac,Available,0
+,JS0737,NUTRICAP 100'S CAPSULE,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,12.75,PHL-jasac,Available,0
+,JS0738,NUTRILIN 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,171,PHL-jasac,Available,0
+,JS0739,NUTRILIN 15ML DROPS,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,78.9,PHL-jasac,Available,0
+,JS0740,NUTRILIN 30ML DROPS,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,117.3,PHL-jasac,Available,0
+,JS0741,NUTRILLIN 250ML SYRUP,,,,,,250ML,250ML,medication,No,,VAT,No,Yes,12,308.85,PHL-jasac,Available,0
+,JS0742,NUTROPLEX 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,149,PHL-jasac,Available,0
+,JS0743,NUTROPLEX 250ML SYRUP,,,,,,250ML,250ML,medication,No,,VAT,No,Yes,12,251,PHL-jasac,Available,0
+,JS0744,NUTROPLEX 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,80.1,PHL-jasac,Available,0
+,JS0745,NYSTATIN ORAL DROPS(NYSTRIN),,,,,Oral Drops,-,-,medication,Yes,Yes,VAT,No,Yes,12,165,PHL-jasac,Available,0
+,JS0746,OFLOXACIN 200MG TAB,,,,200MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,3,PHL-jasac,Available,0
+,JS0747,OFLOXACIN 400MG TAB,,,,400MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,6,PHL-jasac,Available,0
+,JS0748,OIL OF EUCALYPTUS 10ML,,,,,,10ML,10ML,consumer health,No,,VAT,No,Yes,12,22.75,PHL-jasac,Available,0
+,JS0749,OIL OF WINTER GREEN 30ML,,,,,,30ML,30ML,consumer health,No,,VAT,No,Yes,12,15.75,PHL-jasac,Available,0
+,JS0750,OIL OF WINTER GREEN 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,28.5,PHL-jasac,Available,0
+,JS0751,OIL OF WINTERGREEN 120ML,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,52.5,PHL-jasac,Available,0
+,JS0752,OMEGA ADVANCE SPRAY 50ML,,,,,,50ML,50ML,consumer health,No,,VAT,No,Yes,12,82,PHL-jasac,Available,0
+,JS0753,OMEGA PK 120ML,,,,,,120ML,120ML,consumer health,No,,VAT,No,Yes,12,107.5,PHL-jasac,Available,0
+,JS0754,OMEGA PK 15ML,,,,,,15ML,15ML,consumer health,No,,VAT,No,Yes,12,19.5,PHL-jasac,Available,0
+,JS0755,OMEGA PK 30ML,,,,,,30ML,30ML,consumer health,No,,VAT,No,Yes,12,32,PHL-jasac,Available,0
+,JS0756,OMEGA PK 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,59,PHL-jasac,Available,0
+,JS0757,OMEGA SOAP 45G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,193,PHL-jasac,Available,0
+,JS0758,OMEPRAZOLE 20MG(FLAZOMEL),,,,20MG,,20MG,20MG,medication,Yes,Yes,VAT,No,Yes,12,3.8,PHL-jasac,Available,0
+,JS0759,OMEPRAZOLE 40MG TABLET,,,,40MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,8.9,PHL-jasac,Available,0
+,JS0760,OPTIEN CAPSULES 50`S,,,,,,50`S,50`S,medication,No,,VAT,No,Yes,12,30,PHL-jasac,Available,0
+,JS0761,"ORS 25""S",,,,,,25`S,25`S,medication,No,,VAT,No,Yes,12,4.35,PHL-jasac,Available,0
+,JS0762,P.T.U TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,9.6,PHL-jasac,Available,0
+,JS0763,PANTOPRAZOLE 40MG,,,,40MG,,40MG,40MG,medication,Yes,Yes,VAT,No,Yes,12,9.75,PHL-jasac,Available,0
+,JS0764,PANYAWAN PLUS CAPSULE 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,12.5,PHL-jasac,Available,0
+,JS0765,PAPAYA WOMEN,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,44.1,PHL-jasac,Available,0
+,JS0766,PARACETAMOL 500MG TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,0.65,PHL-jasac,Available,0
+,JS0767,PARACETAMOL DROPS,,,,,,-,-,medication,No,,VAT,No,Yes,12,24,PHL-jasac,Available,0
+,JS0768,PARACETAMOL TRAMADOL TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,6.6,PHL-jasac,Available,0
+,JS0769,PARACETAMOL(MYREMOL 125MG) SYRUP,,,,,,125MG,125MG,medication,No,,VAT,No,Yes,12,29.5,PHL-jasac,Available,0
+,JS0770,PARACETAMOL(MYREMOL 250MG) SYRUP,,,,,,250MG,250MG,medication,No,,VAT,No,Yes,12,31.5,PHL-jasac,Available,0
+,JS0771,PASSI HERBAL VAPORUB,,,,,,-,-,medication,No,,VAT,No,Yes,12,35,PHL-jasac,Available,0
+,JS0772,PASSI NATURE LOTION 100ML,,,,,,100ML,100ML,medication,No,,VAT,No,Yes,12,56.7,PHL-jasac,Available,0
+,JS0773,PAU DE ARCO CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,16,PHL-jasac,Available,0
+,JS0774,PAU LINIMENT 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,73.7,PHL-jasac,Available,0
+,JS0775,PAU LINIMENT OIL 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,120.95,PHL-jasac,Available,0
+,JS0776,PAU LITO 10ML,,,,,,10ML,10ML,medication,No,,VAT,No,Yes,12,22,PHL-jasac,Available,0
+,JS0777,PAU MASAJE CLASSIC,,,,,,-,-,medication,No,,VAT,No,Yes,12,68.5,PHL-jasac,Available,0
+,JS0778,PAU MASAJE FLORAL,,,,,,-,-,medication,No,,VAT,No,Yes,12,66.6,PHL-jasac,Available,0
+,JS0779,PAU MASAJE ORANGE,,,,,,-,-,medication,No,,VAT,No,Yes,12,66.6,PHL-jasac,Available,0
+,JS0780,PAU MASAJE PEPPERMINT,,,,,,-,-,medication,No,,VAT,No,Yes,12,74.6,PHL-jasac,Available,0
+,JS0781,PEDZINC PLUS 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,127,PHL-jasac,Available,0
+,JS0782,PEDZINC PLUS DRPS 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,136.5,PHL-jasac,Available,0
+,JS0783,PEI PA KOA CANDY 24'S,,,,,,24`S,24`S,consumer health,No,,VAT,No,Yes,12,3.2,PHL-jasac,Available,0
+,JS0784,PETROLEUM JELLY 100G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,71.4,PHL-jasac,Available,0
+,JS0785,PETROLEUM JELLY 20G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,26.75,PHL-jasac,Available,0
+,JS0786,PETROLEUM JELLY 50G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,47.25,PHL-jasac,Available,0
+,JS0787,PHAREX B COMPLEX  TABLETS 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,3.65,PHL-jasac,Available,0
+,JS0788,PHARMATON CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,27.05,PHL-jasac,Available,0
+,JS0789,PHARMATON ESSENTIAL CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,24,PHL-jasac,Available,0
+,JS0790,PHENYLPROPANOLAMINE  DROPS,,,,,,-,-,medication,Yes,,VAT,No,Yes,12,18.7,PHL-jasac,Available,0
+,JS0791,PHENYLPROPANOLAMINE 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,21.75,PHL-jasac,Available,0
+,JS0792,PHYSIOGEL  DERMO CLEANSER 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,100,PHL-jasac,Available,0
+,JS0793,PHYSIOGEL MOISTURE THERAPY 10ML,,,,,,10ML,10ML,consumer health,No,,VAT,No,Yes,12,50,PHL-jasac,Available,0
+,JS0794,PHYSIOGEL MOISTURE THERAPY LOTION 10ML,,,,,,10ML,10ML,consumer health,No,,VAT,No,Yes,12,45,PHL-jasac,Available,0
+,JS0795,PIOGLITAONE 15MG TAB,,,,15MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,4.2,PHL-jasac,Available,0
+,JS0796,PIOGLITZONE 30MG 50`S(PIOSTAL),,,,30MG,,50`S,50`S,medication,Yes,,VAT,No,Yes,12,7.25,PHL-jasac,Available,0
+,JS0797,PLACENTA CLASSIC 135G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,93.25,PHL-jasac,Available,0
+,JS0798,PLACENTA CLASSIC 90G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,63.5,PHL-jasac,Available,0
+,JS0799,PLACENTA WHITE 135G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,93.25,PHL-jasac,Available,0
+,JS0800,PLACENTA WHITE 90G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,66.3,PHL-jasac,Available,0
+,JS0802,PLEMEX ADULT 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,169,PHL-jasac,Available,0
+,JS0803,PLEMEX ADULT 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,126,PHL-jasac,Available,0
+,JS0804,PLEMEX CAP 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,7.05,PHL-jasac,Available,0
+,JS0805,PLEMEX KIDZ 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,140,PHL-jasac,Available,0
+,JS0806,PLEMEX KIDZ 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,107.1,PHL-jasac,Available,0
+,JS0807,POLIDENT CREAM 20G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,129.6,PHL-jasac,Available,0
+,JS0808,POLIDENT CREAM 40G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,232,PHL-jasac,Available,0
+,JS0809,POLIDENT CREAM 60G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,323.4,PHL-jasac,Available,0
+,JS0810,POLIDENT CREAM 60G FLAVOUR FREE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,323.4,PHL-jasac,Available,0
+,JS0811,POLIDENT DENTURE ADHESIVE CREAM 15G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,92,PHL-jasac,Available,0
+,JS0812,POLIDENT DENTURE CLEANSER TABLET,,,,,,Per Tab,Per Tab,consumer health,No,,VAT,No,Yes,12,12.32,PHL-jasac,Available,0
+,JS0813,POLYNERV E W/ LECITHIN TABLET,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,26.15,PHL-jasac,Available,0
+,JS0814,POLYNERV FORTE TAB 100'S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,30,PHL-jasac,Available,0
+,JS0815,POLYNERVE 1000 TAB,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,24.05,PHL-jasac,Available,0
+,JS0816,POLYNERVE 120ML SYRUP,,,,120ML,,120ML,120ML,medication,Yes,,VAT,No,Yes,12,185.95,PHL-jasac,Available,0
+,JS0817,POLYNERVE 500MG TAB,,,,500MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,34.5,PHL-jasac,Available,0
+,JS0818,PONSTAN 500MG TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,36.6,PHL-jasac,Available,0
+,JS0819,PONSTAN SF 250MG CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,16.35,PHL-jasac,Available,0
+,JS0820,PONSTAN SF 500MG CAPSULES,,,,500MG,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,38,PHL-jasac,Available,0
+,JS0821,POTASSIUM CITRATE 1.080G (10MEQ),,,,,,-,-,medication,Yes,,VAT,No,Yes,12,7.3,PHL-jasac,Available,0
+,JS0822,POTENCEE 500MG SF TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,5.75,PHL-jasac,Available,0
+,JS0823,POTENCEE FORTE 1G TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,9.95,PHL-jasac,Available,0
+,JS0824,POTENCEE GUMMIES,,,,,,-,-,medication,No,,VAT,No,Yes,12,175,PHL-jasac,Available,0
+,JS0825,POTENCEE SUGAR COATED TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,6,PHL-jasac,Available,0
+,JS0826,POVIDONE IODINE 10% 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,62,PHL-jasac,Available,0
+,JS0827,POVIDONE IODINE 10% 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,12.85,PHL-jasac,Available,0
+,JS0828,POVIDONE IODINE 10% 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,20,PHL-jasac,Available,0
+,JS0829,POVIDONE IODINE 10% 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,35,PHL-jasac,Available,0
+,JS0830,PP ALAXAN FR 5+1,,,,,,-,-,medication,No,,VAT,No,Yes,12,38.25,PHL-jasac,Available,0
+,JS0831,PP ALAXAN FR CAPSULE 4+1,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,31.25,PHL-jasac,Available,0
+,JS0832,PP BIOFLU 5+1,,,,,,-,-,medication,No,,VAT,No,Yes,12,36.25,PHL-jasac,Available,0
+,JS0833,PP BIOFLU 7+1,,,,,,-,-,medication,No,,VAT,No,Yes,12,51.45,PHL-jasac,Available,0
+,JS0834,PP BIOGESIC 8+2 TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,28.8,PHL-jasac,Available,0
+,JS0835,PP CEETAB TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,30.25,PHL-jasac,Available,0
+,JS0836,PP CONZACE 9+1,,,,,,-,-,medication,No,,VAT,No,Yes,12,108,PHL-jasac,Available,0
+,JS0837,PP DECOLGEN FORTE 5 + 1,,,,,,-,-,medication,No,,VAT,No,Yes,12,28.75,PHL-jasac,Available,0
+,JS0838,PP DIATABS 5+1 TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,36.25,PHL-jasac,Available,0
+,JS0839,PP ENERVON 9+1,,,,,,-,-,medication,No,,VAT,No,Yes,12,56.25,PHL-jasac,Available,0
+,JS0840,PP ENERVON FLEX 11 + 1,,,,,,-,-,medication,No,,VAT,No,Yes,12,66,PHL-jasac,Available,0
+,JS0841,PP KIDDILETS 17+3,,,,,,-,-,medication,No,,VAT,No,Yes,12,39.95,PHL-jasac,Available,0
+,JS0842,PP KREMIL S 5+1,,,,,,-,-,medication,No,,VAT,No,Yes,12,31.75,PHL-jasac,Available,0
+,JS0843,PP MEDICOL 400MG 4+1,,,,,,400MG,400MG,medication,No,,VAT,No,Yes,12,42.2,PHL-jasac,Available,0
+,JS0844,PP MEDICOL 8+2,,,,,,-,-,medication,No,,VAT,No,Yes,12,46,PHL-jasac,Available,0
+,JS0845,PP NAFARIN-A 8+2 TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,54,PHL-jasac,Available,0
+,JS0846,PP NEOZEP TABLET 8+2,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,38.4,PHL-jasac,Available,0
+,JS0847,PP NEUROGEN E 7+1 TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,94.15,PHL-jasac,Available,0
+,JS0848,PP PHAREX B COMPLEX 17+3 TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,66.3,PHL-jasac,Available,0
+,JS0849,PP REVICON FLEX 7+1,,,,,,-,-,medication,No,,VAT,No,Yes,12,33.25,PHL-jasac,Available,0
+,JS0850,PP REXIDOL  8+2 TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,38,PHL-jasac,Available,0
+,JS0851,PP REXIDOL 4+1 TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,19,PHL-jasac,Available,0
+,JS0852,PP SOLMUX 8+2 CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,80,PHL-jasac,Available,0
+,JS0853,PP SOLMUX CAPSULE 7+3,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,70,PHL-jasac,Available,0
+,JS0854,PP TUSERAN 5+1 CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,48,PHL-jasac,Available,0
+,JS0855,PRED 10 100'S,,,,,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,5.5,PHL-jasac,Available,0
+,JS0856,PREDNISONE 10MG 60ML SYRUP,,,,10MG,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,124.05,PHL-jasac,Available,0
+,JS0857,PREDNISONE 10MG TAB,,,,10MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,3.05,PHL-jasac,Available,0
+,JS0858,PREDNISONE 5MG TABLETS,,,,5MG,,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,0.85,PHL-jasac,Available,0
+,JS0859,PREGNANCY TEST,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,19.1,PHL-jasac,Available,0
+,JS0860,PRITOR 40MG TAB 28'S,,,,40MG,,28`S,28`S,medication,Yes,,VAT,No,Yes,12,25,PHL-jasac,Available,0
+,JS0861,PROLIX 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,144,PHL-jasac,Available,0
+,JS0862,PROLIX TAB,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,7.25,PHL-jasac,Available,0
+,JS0863,PROPAN CAPSULES 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,20.5,PHL-jasac,Available,0
+,JS0864,PROPAN SYRUP 120ML(APPETITE STIMULANT),,,,120ML,,120ML,120ML,medication,Yes,,VAT,No,Yes,12,418.6,PHL-jasac,Available,0
+,JS0865,PROPAN SYRUP 60ML(APPETITE STIMULANT),,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,220,PHL-jasac,Available,0
+,JS0866,PROPAN TLC 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,183.75,PHL-jasac,Available,0
+,JS0867,PROPAN TLC 250ML SYRUP,,,,,,250ML,250ML,medication,No,,VAT,No,Yes,12,304.5,PHL-jasac,Available,0
+,JS0868,PROPAN TLC 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,111,PHL-jasac,Available,0
+,JS0869,PROPAN TLC DROPS,,,,,,-,-,medication,No,,VAT,No,Yes,12,84,PHL-jasac,Available,0
+,JS0870,PROPRANOLOL 10MG TAB,,,,10MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1.5,PHL-jasac,Available,0
+,JS0871,PROPRANOLOL 40MG TAB,,,,40MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1.6,PHL-jasac,Available,0
+,JS0872,PROVASC 10MG TAB,,,,10MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,18,PHL-jasac,Available,0
+,JS0873,PROVASC 5MG TAB,,,,5MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,13.6,PHL-jasac,Available,0
+,JS0874,PULMOXCEL 2MG TAB 100`S,,,,2MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,2.15,PHL-jasac,Available,0
+,JS0875,PURE C,,,,,,-,-,medication,No,,VAT,No,Yes,12,7.45,PHL-jasac,Available,0
+,JS0876,RANITIDINE 150MG TABLET,,,,150MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,1.65,PHL-jasac,Available,0
+,JS0877,RANITIDINE 300MG TABLET,,,,300MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,2.8,PHL-jasac,Available,0
+,JS0878,REGERON E 100'S,,,,100'S,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,18.65,PHL-jasac,Available,0
+,JS0881,RENOGUARD TAB 100'S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,36,PHL-jasac,Available,0
+,JS0882,RESPOSAL NEBULE,,,,NEBULE,,NEBULE,NEBULE,medication,Yes,Yes,VAT,No,Yes,12,7.5,PHL-jasac,Available,0
+,JS0883,RESTIME 40MG  CHEWABLE TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,7.5,PHL-jasac,Available,0
+,JS0884,RESTIME 40MG/ML DROPS,,,,,,DROPS,DROPS,medication,No,,VAT,No,Yes,12,98.15,PHL-jasac,Available,0
+,JS0885,REVICON FLEX 100S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,4.75,PHL-jasac,Available,0
+,JS0886,REVICON FLEX WITH COFFEE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,57.6,PHL-jasac,Available,0
+,JS0887,REVICON FORTE TABLETS 30`S,,,,,,30`S,30`S,consumer health,No,,VAT,No,Yes,12,144,PHL-jasac,Available,0
+,JS0888,REXIDOL 600MG TABLETS,,,,600MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,4.75,PHL-jasac,Available,0
+,JS0889,RHP CHOCO & HERBS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,13.1,PHL-jasac,Available,0
+,JS0890,"RHP COFFEE & HERBS 12""S",,,,,,12`S,12`S,consumer health,No,,VAT,No,Yes,12,13.1,PHL-jasac,Available,0
+,JS0891,RHP SKIN DISEASE 10G,,,,,,-,-,medication,No,,VAT,No,Yes,12,31.5,PHL-jasac,Available,0
+,JS0892,RISEK 20MG TAB 14'S,,,,20MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,33.5,PHL-jasac,Available,0
+,JS0893,RLR SQUALENE CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,13.15,PHL-jasac,Available,0
+,JS0894,ROBITUSSIN DM 120ML SYRUP,,,,120ML,,120ML,120ML,medication,Yes,Yes,VAT,No,Yes,12,164.85,PHL-jasac,Available,0
+,JS0895,ROBITUSSIN DM 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,105,PHL-jasac,Available,0
+,JS0896,ROBITUSSIN EXPT. 120ML SYRUP,,,,120ML,,120ML,120ML,medication,Yes,Yes,VAT,No,Yes,12,123.9,PHL-jasac,Available,0
+,JS0897,ROBITUSSIN EXPT. 60ML SYR,,,,60ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,84,PHL-jasac,Available,0
+,JS0898,ROBITUSSIN GEL,,,,,,GEL,GEL,medication,Yes,Yes,VAT,No,Yes,12,11.75,PHL-jasac,Available,0
+,JS0899,ROBUST 2`S TAB`S,,,,,,2`S,2`S,medication,No,,VAT,No,Yes,12,68,PHL-jasac,Available,0
+,JS0900,ROBUST EXTREME 400MG,,,,,,400MG,400MG,medication,No,,VAT,No,Yes,12,146.25,PHL-jasac,Available,0
+,JS0901,ROGIN E CAPSULES,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,23.75,PHL-jasac,Available,0
+,JS0902,ROSUVASTATIN 10MG TABLET,,,,10MG,Tablet,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,9.5,PHL-jasac,Available,0
+,JS0903,ROSUVASTATIN CALCIUM 20MG TAB,,,,20MG,Tablet,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,11.25,PHL-jasac,Available,0
+,JS0904,SALBU + GUAIFENESIN 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,22,PHL-jasac,Available,0
+,JS0905,SALBU + GUAIFENESIN CAPSULE 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,2,PHL-jasac,Available,0
+,JS0906,SALBU + IPATROPIUM NEBULE,,,,,,-,-,medication,Yes,,VAT,No,Yes,12,24,PHL-jasac,Available,0
+,JS0907,SALBUMEX 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,92,PHL-jasac,Available,0
+,JS0908,SALBUMEX CAPSULE 100'S,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,9,PHL-jasac,Available,0
+,JS0909,SALBUTAMOL 2MG TABLETS 100`S,,,,2MG,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,0.5,PHL-jasac,Available,0
+,JS0910,SALBUTAMOL 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,18.9,PHL-jasac,Available,0
+,JS0911,SALICYLIC ACID 5% 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0912,SALICYLIC ACID 5% 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,15.3,PHL-jasac,Available,0
+,JS0913,SALICYLIC ACID 5% 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,25,PHL-jasac,Available,0
+,JS0914,SALINASE 30ML DROPS,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,77.7,PHL-jasac,Available,0
+,JS0915,SALONPAS PATCH,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,51.3,PHL-jasac,Available,0
+,JS0916,SAMBONG RELEAF FORTE 60`S,,,,,,60`S,60`S,medication,No,,VAT,No,Yes,12,8,PHL-jasac,Available,0
+,JS0917,SANGOBION CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,22.15,PHL-jasac,Available,0
+,JS0918,SANITARY BALM 10G,,,,,,-,-,medication,No,,VAT,No,Yes,12,23.3,PHL-jasac,Available,0
+,JS0919,SANITARY BALM BIG 20G,,,,,,-,-,medication,No,,VAT,No,Yes,12,34.95,PHL-jasac,Available,0
+,JS0920,SC BANABA CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,4,PHL-jasac,Available,0
+,JS0921,SC DULAW CAPS,,,,,,-,-,medication,No,,VAT,No,Yes,12,4.1,PHL-jasac,Available,0
+,JS0922,SC KUMINTANG,,,,,,-,-,medication,No,,VAT,No,Yes,12,5.45,PHL-jasac,Available,0
+,JS0923,SC MALUNGGAY,,,,,,-,-,medication,No,,VAT,No,Yes,12,4.1,PHL-jasac,Available,0
+,JS0924,SC MIAGUS CAP 50`S,,,,,,50`S,50`S,medication,No,,VAT,No,Yes,12,5.45,PHL-jasac,Available,0
+,JS0925,SILGRAM 750MG TABS (SULTAMICILLIN),,,,750MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,45,PHL-jasac,Available,0
+,JS0926,SILVER SULFADIAZINE 10MG CREAM 25G,,,,10MG,,10MG,10MG,medication,Yes,,VAT,No,Yes,12,134.75,PHL-jasac,Available,0
+,JS0927,SIMECO TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,5.5,PHL-jasac,Available,0
+,JS0928,SIMVASTATIN 10MG TABLETS,,,,10MG,Tablet,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,1.8,PHL-jasac,Available,0
+,JS0929,SIMVASTATIN 20MG TABLETS,,,,20MG,Tablet,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,2.3,PHL-jasac,Available,0
+,JS0930,SIMVASTATIN 40MG TAB,,,,40MG,Tablet,Per Tab,Per Tab,medication,Yes,Yes,VAT,No,Yes,12,5.2,PHL-jasac,Available,0
+,JS0931,SINECOD FORTE 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,256.7,PHL-jasac,Available,0
+,JS0932,SINECOD FORTE TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,21.65,PHL-jasac,Available,0
+,JS0933,SINUPRET FORTE 20'S TABLET,,,,,,20`S,20`S,medication,Yes,Yes,VAT,No,Yes,12,16.75,PHL-jasac,Available,0
+,JS0934,SINUPRET TAB`S 100,,,,,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,11.35,PHL-jasac,Available,0
+,JS0936,SKELAN FORTE TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,18.25,PHL-jasac,Available,0
+,JS0937,SODIUM ASCORBATE CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS0938,SODIUM ASCORBATE WITH ZINC CAPSULE,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,6.5,PHL-jasac,Available,0
+,JS0939,SOLMUX 40MG/ML 15ML DROPS,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,96.3,PHL-jasac,Available,0
+,JS0940,SOLMUX BRONCHO 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,128.7,PHL-jasac,Available,0
+,JS0941,SOLMUX BRONCHO CAPSULES,,,,,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,11.9,PHL-jasac,Available,0
+,JS0942,SOLMUX FORTE 500MG CAPSULES,,,,,,Per Capsule,Per Capsule,medication,No,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0943,SOLMUX FORTE 500MG/5ML 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,119.25,PHL-jasac,Available,0
+,JS0944,SOLMUX PDIA 100MG/5ML 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,97.4,PHL-jasac,Available,0
+,JS0945,SOLMUX PDIA 200MG/5ML 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,157,PHL-jasac,Available,0
+,JS0946,SOLMUX PDIA 200MG/5ML 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,102.7,PHL-jasac,Available,0
+,JS0947,SORBIFER DURULES 100`S,,,,,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,11.3,PHL-jasac,Available,0
+,JS0948,SPECIMEN CAP,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0949,STERILE GAUZE 4 X 4 100`S,,,,,,100`S,100`S,consumer health,No,,VAT,No,Yes,12,4.75,PHL-jasac,Available,0
+,JS0950,STREPSILS  COOL,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,62.9,PHL-jasac,Available,0
+,JS0951,STREPSILS CHESTY COUGH,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,53.5,PHL-jasac,Available,0
+,JS0952,STREPSILS COOL SENSATION 2'S,,,,,,2`S,2`S,consumer health,No,,VAT,No,Yes,12,15,PHL-jasac,Available,0
+,JS0953,STREPSILS DRY COUGH,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,53.5,PHL-jasac,Available,0
+,JS0954,STREPSILS EXTRA STRONG,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,55.35,PHL-jasac,Available,0
+,JS0955,STREPSILS HONEY & LEMON,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,62.9,PHL-jasac,Available,0
+,JS0956,STREPSILS ORANGE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,62.9,PHL-jasac,Available,0
+,JS0957,STREPSILS ORANGE 2'S,,,,,,2`S,2`S,consumer health,No,,VAT,No,Yes,12,14,PHL-jasac,Available,0
+,JS0958,STREPSILS REGULAR,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,62.9,PHL-jasac,Available,0
+,JS0959,STREPSLS SUGARFREE,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,52.5,PHL-jasac,Available,0
+,JS0960,STRESSSTABS 600 TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,10.7,PHL-jasac,Available,0
+,JS0961,SULFUR SOAP 135G(DR. S. WONG'S),,,,,,-,-,consumer health,No,,VAT,No,Yes,12,57,PHL-jasac,Available,0
+,JS0962,SULFUR SOAP 80GRMS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,35.8,PHL-jasac,Available,0
+,JS0963,SULFUR SOAP W/ MOISTURIZER 135G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,51.75,PHL-jasac,Available,0
+,JS0964,SULFUR SOAP W/MOIST 80G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,38.9,PHL-jasac,Available,0
+,JS0965,SUMAPEN 250MG CAPSULES 100`S,,,,250MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,10.9,PHL-jasac,Available,0
+,JS0966,SUMAPEN 500MG CAPSULES 100`S,,,,500MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,16,PHL-jasac,Available,0
+,JS0967,SUPER MORINGA  60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,142.8,PHL-jasac,Available,0
+,JS0968,SUPER MORINGGA 7 IN 1 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,109.2,PHL-jasac,Available,0
+,JS0969,SUPERFIBER 10'S SACHET,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,81.6,PHL-jasac,Available,0
+,JS0970,SUPRANEURON TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,19.4,PHL-jasac,Available,0
+,JS0971,SURGICAL GLOVES 61/2,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,13.75,PHL-jasac,Available,0
+,JS0972,SURGICAL GLOVES 7.5,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,13.75,PHL-jasac,Available,0
+,JS0973,SURGICAL TAPE 1/2 INCH,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,27.4,PHL-jasac,Available,0
+,JS0974,SURGICAL TAPE 1INCH,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,42,PHL-jasac,Available,0
+,JS0975,SYMDEX 325MG/25MG TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,2.45,PHL-jasac,Available,0
+,JS0976,SYMDEX D FORTE 500MG TABLET,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,3.4,PHL-jasac,Available,0
+,JS0977,SYMDEX D SYRUP 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,53.9,PHL-jasac,Available,0
+,JS0978,SYNALAR OTIC SOLUTION 5ML,,,,,,5ML,5ML,medication,Yes,,VAT,No,Yes,12,300,PHL-jasac,Available,0
+,JS0979,TAMSULOSIN 200MCG 100'S,,,,200MCG,,-,-,medication,Yes,,VAT,No,Yes,12,12.05,PHL-jasac,Available,0
+,JS0980,TAMSULOSIN 400MCG TAB 100'S,,,,400MCG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,13.35,PHL-jasac,Available,0
+,JS0981,TASCIT 10 MEQ TABLET,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,17.5,PHL-jasac,Available,0
+,JS0982,TASCIT 15 MEQ TABLET,,,,,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,26.4,PHL-jasac,Available,0
+,JS0983,TAWAS PERFUME,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,9.95,PHL-jasac,Available,0
+,JS0984,TAWAS POWDER 50G RED UNSCENTED,,,,,Powder,50G,50G,consumer health,No,,VAT,No,Yes,12,10,PHL-jasac,Available,0
+,JS0985,TAWAS POWDER 50G YELLOW SCENTED,,,,,Powder,50G,50G,consumer health,No,,VAT,No,Yes,12,11,PHL-jasac,Available,0
+,JS0986,TELMISARTAN 40MG TABLET,,,,40MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,5.3,PHL-jasac,Available,0
+,JS0987,TEMPRA 100MG/ML 15ML DROPS GRAPES,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,78,PHL-jasac,Available,0
+,JS0988,TEMPRA 100MG/ML 15ML DROPS ORANGE,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,78,PHL-jasac,Available,0
+,JS0989,TEMPRA 120MG BUBBLEGUM 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,94,PHL-jasac,Available,0
+,JS0990,TEMPRA 120MG ORANGE 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,157.7,PHL-jasac,Available,0
+,JS0991,TEMPRA 120MG ORANGE SYRUP 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,94,PHL-jasac,Available,0
+,JS0992,TEMPRA 120MG STRAWBERRY 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,94,PHL-jasac,Available,0
+,JS0993,TEMPRA 250MG BUBBLEGUM 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,134.75,PHL-jasac,Available,0
+,JS0994,TEMPRA 250MG ORANGE 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,140,PHL-jasac,Available,0
+,JS0995,TEMPRA 250MG STRAWBERRY 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,142.8,PHL-jasac,Available,0
+,JS0996,TEMPRA 325MG TABLETS 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,3.6,PHL-jasac,Available,0
+,JS0997,TEMPRA FORTE 250MG 120ML ORANGE,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,230,PHL-jasac,Available,0
+,JS0998,TEMPRA FORTE 500MG TABLETS 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,4,PHL-jasac,Available,0
+,JS0999,TERRAFERRON CAPSULES 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,7.35,PHL-jasac,Available,0
+,JS1000,THERABLOC 100MG TABLETS 60`S,,,,100MG,,60`S,60`S,medication,Yes,,VAT,No,Yes,12,17.1,PHL-jasac,Available,0
+,JS1001,THERABLOC 25MG TABLETS 60'S,,,,25MG,,60`S,60`S,medication,Yes,,VAT,No,Yes,12,8.2,PHL-jasac,Available,0
+,JS1002,THERABLOC 50MG TABLETS 60`S,,,,50MG,,60`S,60`S,medication,Yes,,VAT,No,Yes,12,11.5,PHL-jasac,Available,0
+,JS1003,TIDE POWDER W/ DOWNY 50GX96,,,,,Powder,50G,50G,consumer health,No,,VAT,No,Yes,12,6,PHL-jasac,Available,0
+,JS1004,TIKITIKI PLUS 15ML DROPS,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,49.95,PHL-jasac,Available,0
+,JS1005,TIKITIKI PLUS 30ML DROPS,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,78,PHL-jasac,Available,0
+,JS1006,TIKITIKI STAR 120ML SYRUP,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,110.4,PHL-jasac,Available,0
+,JS1007,TIKITIKI STAR 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,59.6,PHL-jasac,Available,0
+,JS1008,TINCTURA ARNICA 120ML,,,,,,120ML,120ML,medication,No,,VAT,No,Yes,12,28.45,PHL-jasac,Available,0
+,JS1009,TINCTURA ARNICA 1L,,,,,,1L,1L,medication,No,,VAT,No,Yes,12,195,PHL-jasac,Available,0
+,JS1010,TINCTURA ARNICA 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,11.2,PHL-jasac,Available,0
+,JS1011,TINCTURA ARNICA 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,17,PHL-jasac,Available,0
+,JS1012,TMZ MR 30'S TAB,,,,,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,18.9,PHL-jasac,Available,0
+,JS1013,TOBRAMYCIN EYE DROPS 5ML,,,,,,5ML,5ML,medication,Yes,,VAT,No,Yes,12,193.75,PHL-jasac,Available,0
+,JS1014,TOLAK ANGIN 15ML,,,,,,15ML,15ML,medication,No,,VAT,No,Yes,12,11.3,PHL-jasac,Available,0
+,JS1015,TOOTHACHE DROPS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,16.65,PHL-jasac,Available,0
+,JS1016,TORO VITS FOR MEN CAP,,,,,,-,-,medication,No,,VAT,No,Yes,12,50,PHL-jasac,Available,0
+,JS1017,TOVIT 60ML SYRUP,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,0,PHL-jasac,Available,0
+,JS1018,TOZAM 50MG/5MG TABLET,,,,50MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,22.5,PHL-jasac,Available,0
+,JS1019,TRAMADOL 50MG CAPSULES 100'S,,,,50MG,,Per Capsule,Per Capsule,medication,Yes,,VAT,No,Yes,12,2,PHL-jasac,Available,0
+,JS1020,TRANEXAMIC 500MG CAPSULES 100`S VONWELTH,,,,500MG,,100`S,100`S,medication,Yes,,VAT,No,Yes,12,7,PHL-jasac,Available,0
+,JS1021,TRANSPORE 1 INCH 3M,,,,,,-,-,medication,No,,VAT,No,Yes,12,73.25,PHL-jasac,Available,0
+,JS1022,TRANSPORE 1/2 INCH,,,,,,-,-,medication,No,,VAT,No,Yes,12,36.25,PHL-jasac,Available,0
+,JS1023,"TRIMETAZIDINE 35MG (METACARD MR 35MG)100,S",,,,35MG ,,35MG,35MG,medication,Yes,,VAT,No,Yes,12,9,PHL-jasac,Available,0
+,JS1024,TROMBOCIL 50MG TAB,,,,50MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,19.5,PHL-jasac,Available,0
+,JS1025,TROSYD 3.5G,,,,,,-,-,medication,Yes,,VAT,No,Yes,12,140,PHL-jasac,Available,0
+,JS1026,TRYME MR 35MG TAB,,,,35MG,,Per Tab,Per Tab,medication,Yes,,VAT,No,Yes,12,0,PHL-jasac,Available,0
+,JS1027,TUSERAN FORTE CAPSULES 500`S,,,,,,500`S,500`S,medication,No,,VAT,No,Yes,12,9,PHL-jasac,Available,0
+,JS1028,TUSERAN NIGHT SYRUP 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,115,PHL-jasac,Available,0
+,JS1029,TWYNSTA 40/5MG 30`S,,,,,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,39.25,PHL-jasac,Available,0
+,JS1030,TWYNSTA 40MG/10MG 30`S,,,,40MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,39.15,PHL-jasac,Available,0
+,JS1031,TWYNSTA 80/10MG 30`S,,,,,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,56.8,PHL-jasac,Available,0
+,JS1032,TWYNSTA 80/5MG 30`S,,,,,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,54.85,PHL-jasac,Available,0
+,JS1033,UBUNTU SALABAT,,,,,,-,-,medication,No,,VAT,No,Yes,12,48,PHL-jasac,Available,0
+,JS1034,UH DERMALIN BURN OINTMENT 15G,,,,,,-,-,medication,No,,VAT,No,Yes,12,86.75,PHL-jasac,Available,0
+,JS1035,UH WHITFIELD DERMALIN  OINTMENT 15G,,,,,,-,-,medication,No,,VAT,No,Yes,12,86.75,PHL-jasac,Available,0
+,JS1036,UL ASCORBIC ACID 500MG TABLETS 100`S,,,,,,100`S,100`S,medication,No,,VAT,No,Yes,12,221.99,PHL-jasac,Available,0
+,JS1037,UL CALACTATE 325MG TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,89.1,PHL-jasac,Available,0
+,JS1038,UL CALACTATE 650MG TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,146.4,PHL-jasac,Available,0
+,JS1039,UL FERROUS SULFATE 325MG TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,133.95,PHL-jasac,Available,0
+,JS1040,UL MULTI B TAB,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,4.4,PHL-jasac,Available,0
+,JS1041,UL SOD BICARBONATE 325MG TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,57.45,PHL-jasac,Available,0
+,JS1042,UL SOD BICARBONATE 650MG TABLETS,,,,,,Per Tab,Per Tab,medication,No,,VAT,No,Yes,12,90,PHL-jasac,Available,0
+,JS1043,UL SULFUR OINTMENT 15G,,,,,,-,-,medication,No,,VAT,No,Yes,12,67.7,PHL-jasac,Available,0
+,JS1044,VALUESCENT 100ML PLAIN,,,,,,100ML,100ML,medication,No,,VAT,No,Yes,12,79,PHL-jasac,Available,0
+,JS1045,VALUESCENT 50ML PLAIN,,,,,,50ML,50ML,medication,No,,VAT,No,Yes,12,42.8,PHL-jasac,Available,0
+,JS1046,VALUESCENT ES 100ML,,,,,,100ML,100ML,medication,No,,VAT,No,Yes,12,97.35,PHL-jasac,Available,0
+,JS1047,VALUESCENT ES 50ML,,,,,,50ML,50ML,medication,No,,VAT,No,Yes,12,55,PHL-jasac,Available,0
+,JS1048,VAPORIN 10ML REFRESHING OIL,,,,,,10ML,10ML,medication,No,,VAT,No,Yes,12,120,PHL-jasac,Available,0
+,JS1049,VASALAT 10MG TABLETS 30`S,,,,10MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,21.25,PHL-jasac,Available,0
+,JS1050,VASALAT 5MG TABLETS 30'S,,,,5MG,,30`S,30`S,medication,Yes,,VAT,No,Yes,12,12.8,PHL-jasac,Available,0
+,JS1051,VENTAR NEB SOL 15ML,,,,,,15ML,15ML,medication,Yes,,VAT,No,Yes,12,70,PHL-jasac,Available,0
+,JS1052,VENTAR NEB SOLUTION 30ML,,,,,,30ML,30ML,medication,Yes,,VAT,No,Yes,12,125,PHL-jasac,Available,0
+,JS1053,VENTAR SYRUP 60ML,,,,60ML,,60ML,60ML,medication,Yes,,VAT,No,Yes,12,57.5,PHL-jasac,Available,0
+,JS1054,VENTAR TAB 2MG,,,,2MG,,B 2MG,B 2MG,medication,Yes,,VAT,No,Yes,12,2.2,PHL-jasac,Available,0
+,JS1055,VENTOLIN 2MG TABLETS 100`S,,,,2MG,,100`S,100`S,medication,Yes,Yes,VAT,No,Yes,12,8.85,PHL-jasac,Available,0
+,JS1056,VENTOLIN EXPT. 120ML SYRUP,,,,120ML,,120ML,120ML,medication,Yes,Yes,VAT,No,Yes,12,237.8,PHL-jasac,Available,0
+,JS1057,VENTOLIN EXPT. 60ML SYRUP,,,,60ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,147,PHL-jasac,Available,0
+,JS1058,VENTOLIN INHALER 100MCG NON-CFC 200 ACTUATION,,,,100MCG,,-,-,medication,Yes,Yes,VAT,No,Yes,12,434.4,PHL-jasac,Available,0
+,JS1059,VENTOLIN NEB,,,,,,-,-,medication,Yes,Yes,VAT,No,Yes,12,37.95,PHL-jasac,Available,0
+,JS1060,VENTOLIN ROTACAP,,,,,,-,-,medication,Yes,Yes,VAT,No,Yes,12,8.4,PHL-jasac,Available,0
+,JS1061,VENTOLIN SYRUP 60ML,,,,60ML,,60ML,60ML,medication,Yes,Yes,VAT,No,Yes,12,138.4,PHL-jasac,Available,0
+,JS1062,VERSANT XR 5MG 100'S,,,,5MG,,R 5MG,R 5MG,medication,Yes,,VAT,No,Yes,12,16.3,PHL-jasac,Available,0
+,JS1063,VESTAR 35MG TAB`S 60`S,,,,35MG,,60`S,60`S,medication,Yes,,VAT,No,Yes,12,20.45,PHL-jasac,Available,0
+,JS1064,VICKS BABY RUB 20G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,87.2,PHL-jasac,Available,0
+,JS1065,VICKS BABY RUB 50G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,182.5,PHL-jasac,Available,0
+,JS1066,VICKS BABY RUB 8G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,44.95,PHL-jasac,Available,0
+,JS1067,VICKS FORMULA 44 100ML,,,,,,100ML,100ML,consumer health,No,,VAT,No,Yes,12,130.55,PHL-jasac,Available,0
+,JS1068,VICKS FORMULA 44 54ML,,,,,,54ML,54ML,consumer health,No,,VAT,No,Yes,12,93.35,PHL-jasac,Available,0
+,JS1069,VICKS INHALER,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,71.9,PHL-jasac,Available,0
+,JS1070,VICKS VAPORUB 10G,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,45.9,PHL-jasac,Available,0
+,JS1071,VICKS VAPORUB 25G JAR,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,89.9,PHL-jasac,Available,0
+,JS1072,VICKS VAPORUB 50G JAR,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,148,PHL-jasac,Available,0
+,JS1073,VICKS VAPORUB 5G 60`S,,,,,,60`S,60`S,consumer health,No,,VAT,No,Yes,12,25.4,PHL-jasac,Available,0
+,JS1074,VIGOR ACE CAPSULES 75`S,,,,,,75`S,75`S,medication,No,,VAT,No,Yes,12,19,PHL-jasac,Available,0
+,JS1075,VIRLIX TABLET 50'S,,,,,,50`S,50`S,medication,No,,VAT,No,Yes,12,25.75,PHL-jasac,Available,0
+,JS1076,VISINE RED 6ML,,,,,,6ML,6ML,medication,No,,VAT,No,Yes,12,80,PHL-jasac,Available,0
+,JS1077,VISINE REFRESH 6ML,,,,,,6ML,6ML,medication,No,,VAT,No,Yes,12,88,PHL-jasac,Available,0
+,JS1078,VITAMIN C + B-COMPLEX CAPSULE,,,,,,Per Capsule,Per Capsule,consumer health,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS1079,VITAMIN E GEL,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,5.45,PHL-jasac,Available,0
+,JS1080,VITAMINS B COMPLEX CAPSULE 300MG,,,,,,Per Capsule,Per Capsule,consumer health,No,,VAT,No,Yes,12,5.25,PHL-jasac,Available,0
+,JS1081,VITAMINS B COMPLEX TABLET,,,,,,Per Tab,Per Tab,consumer health,No,,VAT,No,Yes,12,1.35,PHL-jasac,Available,0
+,JS1082,WATSONAL CASTORIA 30ML,,,,,,30ML,30ML,medication,No,,VAT,No,Yes,12,115.5,PHL-jasac,Available,0
+,JS1083,WHITE FLOWER # 1 20ML,,,,,,20ML,20ML,consumer health,No,,VAT,No,Yes,12,242,PHL-jasac,Available,0
+,JS1084,WHITE FLOWER # 4 2.5ML,,,,,,2.5ML,2.5ML,consumer health,No,,VAT,No,Yes,12,47,PHL-jasac,Available,0
+,JS1085,WHITE FLOWER # 5 1.5ML,,,,,,1.5ML,1.5ML,consumer health,No,,VAT,No,Yes,12,38.4,PHL-jasac,Available,0
+,JS1086,WHITE FLOWER #2 10ML,,,,,,10ML,10ML,consumer health,No,,VAT,No,Yes,12,151,PHL-jasac,Available,0
+,JS1087,WHP COTTONY EXTRA LONG 31CM,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,9,PHL-jasac,Available,0
+,JS1088,WHP DRI-WEAVE COVER SACHET PACK W/WINGS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS1089,WHP LONG HEAVY FLOW W/WINGS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,9,PHL-jasac,Available,0
+,JS1090,WHP SOFT COT COVER SACHET PACK W/ WINGS,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,5,PHL-jasac,Available,0
+,JS1091,WOODS LOZENGES HONEY LEMON,,,,,,-,-,consumer health,No,,VAT,No,Yes,12,35,PHL-jasac,Available,0
+,JS1092,XANTHONBE SOAP 135G,,,,,,135G,135G,consumer health,No,,VAT,No,Yes,12,156.45,PHL-jasac,Available,0
+,JS1093,XANTHONE PLUS 100'S,,,,,,100`S,100`S,consumer health,No,,VAT,No,Yes,12,12.05,PHL-jasac,Available,0
+,JS1094,XANTHONE PLUS COFFEE MIX 21G,,,,,,21G,21G,consumer health,No,,VAT,No,Yes,12,16,PHL-jasac,Available,0
+,JS1095,XANTHONE PLUS GOLD CAPSULE,,,,,,Per Capsule,Per Capsule,consumer health,No,,VAT,No,Yes,12,12.6,PHL-jasac,Available,0
+,JS1096,XANTHONE PLUS HERBAL OIL 60ML,,,,,,60ML,60ML,consumer health,No,,VAT,No,Yes,12,136.5,PHL-jasac,Available,0
+,JS1097,XYLOGEL ORAL GEL 25G,,,,,,25G,25G,medication,No,,VAT,No,Yes,12,165,PHL-jasac,Available,0
+,JS1098,ZINC SULFATE 55MG/5ML 60ML,,,,,,60ML,60ML,medication,No,,VAT,No,Yes,12,52.05,PHL-jasac,Available,0
+,JS1099,ZINC SULFATE DROPS,,,,,,-,-,medication,No,,VAT,No,Yes,12,54.8,PHL-jasac,Available,0
+,JS1100,ZYKAST TABS 30'S,,,,,,30`S,30`S,medication,Yes,Yes,VAT,No,Yes,12,29.7,PHL-jasac,Available,0

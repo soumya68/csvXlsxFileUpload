@@ -1,6 +1,4 @@
 var mongoose = require("mongoose");
-const validator = require("validator");
-const autoIncrement = require('mongoose-auto-increment');
 var supplierSchema = new mongoose.Schema(
     {
         _partition: {

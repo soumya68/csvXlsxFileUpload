@@ -34,22 +34,22 @@ module.exports = function () {
         //Start of File Row Validation
         excelValidation: function (data, callBack) {
             try {
-             //   console.log(data)
+              
                 // CHECK IF THESE FIELDS ARE EMPTY OR NOT 
                 if (
                     !data.SupplierUniqueCatalogueNumber
                     || !data.BrandName
                     // || !data.Dosage
                     //|| !data.SupplierName
-                    || !data.PackSize
-                    || !data.PackSizeUnits
-                    || !data.ProductType
-                    || !data.RequiresRx
-                    || !data.TaxName
-                    || !data.IsTaxExempt
-                    || !data.IsTaxIncluded
-                    || !data.TaxPercent
-                    || !data.PricePerPackage
+                    //|| !data.PackSize
+                    // || !data.PackSizeUnits
+                    // || !data.ProductType
+                    // || !data.RequiresRx
+                    // || !data.TaxName
+                    // || !data.IsTaxExempt
+                    // || !data.IsTaxIncluded
+                    // || !data.TaxPercent
+                    // || !data.PricePerPackage
                     || !data.Status
                     || !data.PointsAccumulation.toString()
                     // || !data.Manufacturer
@@ -232,9 +232,11 @@ module.exports = function () {
             supplierName,
             isoCountryCode, userId, version, supplierCode, filepath, totalEntryCount, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
+                var prescriptionRequired = false
+                var PricePerPackage = 0
+                var isoCurrency = ""
                 var isIncluded
                 var IsTaxExempt
-                // var r52CatNo = crypto.randomBytes(6).toString('hex')
                 var r52CatNo;
                 rows = []
                 rawDocuments = []
@@ -274,6 +276,37 @@ module.exports = function () {
                                                     else {
                                                         IsTaxExempt = false
                                                     }
+                                                    if (row.RequiresRx == 'Yes' || row.RequiresRx == 1) {
+                                                        prescriptionRequired = true
+                                                    }
+                                                    if (parseFloat(row.PricePerPackage).toFixed(2) == 'NaN') {
+                                                        PricePerPackage = parseFloat(PricePerPackage).toFixed(2)
+                                                    }
+                                                    else {
+                                                        PricePerPackage = parseFloat(row.PricePerPackage).toFixed(2)
+                                                    }
+                                                    var customBrandName = {}
+                                                    customBrandName.eng = row.BrandName == null ? "NA" : row.BrandName
+                                                    if (row.BrandNameAsLocal) {
+                                                        if (isoCountryCode == "IND" && row.BrandNameAsLocal !== "") {
+                                                            customBrandName.hindi = row.BrandNameAsLocal
+                                                        }
+                                                        if (isoCountryCode == "PHL" && row.BrandNameAsLocal !== "") {
+                                                            customBrandName.hil = row.BrandNameAsLocal
+                                                        }
+                                                        if (isoCountryCode == "KHM" && row.BrandNameAsLocal !== "") {
+                                                            customBrandName.khm = row.BrandNameAsLocal
+                                                        }
+                                                    }
+                                                    if (isoCountryCode == "IND") {
+                                                        isoCurrency = "INR"
+                                                    }
+                                                    if (isoCountryCode == "PHL") {
+                                                        isoCurrency = "PHP"
+                                                    }
+                                                    if (isoCountryCode == "KHM") {
+                                                        isoCurrency = "KHR"
+                                                    }
                                                     // MAKE A MEDICATION DATA OBJECT 
                                                     const medicationData = {
                                                         information: {
@@ -295,13 +328,12 @@ module.exports = function () {
                                                             "eng": "NA"
                                                         },
                                                         isoCountry: isoCountryCode,
+                                                        isoCurrency: isoCurrency,
                                                         supplierCode: supplierCode,
                                                         r52SupplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
                                                         suppCatNo: row.SupplierUniqueCatalogueNumber,
-                                                        brandName: {
-                                                            eng: row.BrandName == null ? "NA" : row.BrandName
-                                                        },
+                                                        brandName: customBrandName,
                                                         genericName: {
                                                             eng: row.Generic == null ? "NA" : row.Generic
                                                         },
@@ -325,8 +357,8 @@ module.exports = function () {
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
-                                                        price: parseFloat(row.PricePerPackage).toFixed(2),
+                                                        pricePerPack: PricePerPackage,
+                                                        price: PricePerPackage,
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
@@ -335,8 +367,9 @@ module.exports = function () {
                                                         //     "eng": row.SupplierName
                                                         // },
                                                         supplierName: {
-                                                            "eng": supplierName
+                                                            eng: supplierName
                                                         },
+                                                        prescriptionRequired: prescriptionRequired,
                                                         createdBy: {
                                                             userId: userId,
                                                             utcDatetime: new Date()
@@ -368,6 +401,7 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
+                                                              
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -375,7 +409,42 @@ module.exports = function () {
                                                 else {
                                                     // IF DUPLICATE DATA FOUND
                                                     // MAKE MEDICATION DATA OBJECT FOR UPDATE DATA IN COLLECTION
+                                                    var customBrandName = {}
+                                                    customBrandName.eng = row.BrandName == null ? "NA" : row.BrandName
+                                                    if (row.BrandNameAsLocal) {
+                                                        if (isoCountryCode == "IND" && row.BrandNameAsLocal !== "") {
+                                                            customBrandName.hindi = row.BrandNameAsLocal
+                                                        }
+                                                        if (isoCountryCode == "PHL" && row.BrandNameAsLocal !== "") {
+                                                            customBrandName.hil = row.BrandNameAsLocal
+                                                        }
+                                                        if (isoCountryCode == "KHM" && row.BrandNameAsLocal !== "") {
+                                                            customBrandName.khm = row.BrandNameAsLocal
+                                                        }
+                                                    }
+                                                    if (isoCountryCode == "IND") {
+                                                        isoCurrency = "INR"
+                                                    }
+                                                    if (isoCountryCode == "PHL") {
+                                                        isoCurrency = "PHP"
+                                                    }
+                                                    if (isoCountryCode == "KHM") {
+                                                        isoCurrency = "KHR"
+                                                    }
+                                                    // brandName: {
+                                                    //     eng: row.BrandName == null ? "NA" : row.BrandName
+                                                    // },
+                                                    if (row.RequiresRx == 'Yes' || row.RequiresRx == 1) {
+                                                        prescriptionRequired = true
+                                                    }
+                                                    if (parseFloat(row.PricePerPackage).toFixed(2) == 'NaN') {
+                                                        PricePerPackage = parseFloat(PricePerPackage).toFixed(2)
+                                                    }
+                                                    else {
+                                                        PricePerPackage = parseFloat(row.PricePerPackage).toFixed(2)
+                                                    }
                                                     const medicationUpdateData = {
+                                                        brandName: customBrandName,
                                                         information: {
                                                             "eng": "NA"
                                                         },
@@ -395,13 +464,11 @@ module.exports = function () {
                                                             "eng": "NA"
                                                         },
                                                         isoCountry: isoCountryCode,
+                                                        isoCurrency: isoCurrency,
                                                         supplierCode: supplierCode,
                                                         r52SupplierCode: supplierCode,
                                                         r52CatNo: r52CatNo,
                                                         suppCatNo: row.SupplierUniqueCatalogueNumber,
-                                                        brandName: {
-                                                            eng: row.BrandName == null ? "NA" : row.BrandName
-                                                        },
                                                         genericName: {
                                                             eng: row.Generic == null ? "NA" : row.Generic
                                                         },
@@ -425,8 +492,8 @@ module.exports = function () {
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
-                                                        pricePerPack: parseFloat(row.PricePerPackage).toFixed(2),
-                                                        price: parseFloat(row.PricePerPackage).toFixed(2),
+                                                        pricePerPack: PricePerPackage,
+                                                        price: PricePerPackage,
                                                         catalogTags: [row.CatalogTag],
                                                         status: row.Status,
                                                         pointsAccumulation: row.PointsAccumulation,
@@ -437,6 +504,7 @@ module.exports = function () {
                                                         supplierName: {
                                                             "eng": supplierName
                                                         },
+                                                        prescriptionRequired: prescriptionRequired,
                                                         metaData: {
                                                             updatedBy: userId,
                                                             version: version
@@ -465,6 +533,7 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
+                                                              
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -483,12 +552,13 @@ module.exports = function () {
                                                 // IF MORE DATA AVAILABLE THEN CALL AGAIN INSERTDATA FUNCTION
                                                 insertData(rows[index]);
                                             } else {
-                                                // IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
+                                                //   IF NO MORE DATA IN FILE THE INSERT BULK DATA IN MEDICATION COLLECTION
                                                 medications.insertMany(rawDocuments)
                                                     .then(function (mongooseDocuments) {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     })
                                                     .catch(function (err) {
+                                                       
                                                         callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     });
                                             }
@@ -508,6 +578,7 @@ module.exports = function () {
                         }
                     })
             } catch (e) {
+              
                 callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
             }
         },

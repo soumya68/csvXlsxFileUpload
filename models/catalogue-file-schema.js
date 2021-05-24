@@ -1,5 +1,4 @@
 var mongoose = require("mongoose");
-const validator = require("validator");
 var catalogueFileStatusSchema = new mongoose.Schema(
     {
         fileName: {
