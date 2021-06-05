@@ -6,7 +6,7 @@ module.exports = (app) => {
     //Params:orderId,redeemedPoints,countryCode,pointSource
     app.post('/api/processorder', function (req, res) {
         try {
-            console.log(req.body)
+          
             if (!req.body.orderId) {
                 res.status(400).json({ status: false, message: "orderId parameter is missing" });
                 return;

@@ -57,7 +57,7 @@ module.exports = function () {
                                                     },
                                                 )
                                                     .then(result => {
-                                                        console.log(totalEarnedPoints,totalRedeemedPoints)
+                                                       
                                                         // CHECK IF IS THERE ANY totalEarnedPoints OR totalRedeemedPoints 
                                                         if (totalEarnedPoints > 0 || totalRedeemedPoints > 0) {
                                                             // IF  totalEarnedPoints IS AVAILABLE
@@ -156,12 +156,12 @@ module.exports = function () {
                 var index = 0;
                 var productData = function (doc) {
                     var singleProductId = doc.medicationId
-                    console.log(doc.pointsAccumulation)
+                  
                     if (doc.pointsAccumulation) {
                         var productPrice = doc.price.toString()
-                        console.log(productPrice)
+                      
                         totalEarnedPoints = parseFloat(totalEarnedPoints) + Math.round(((parseFloat(pointDetails[renamedCountry].earned.numberOfPoints) / parseFloat(pointDetails[renamedCountry].earned.amountSpent)) * parseFloat(productPrice)))
-                        console.log(totalEarnedPoints,parseFloat(pointDetails[renamedCountry].earned.numberOfPoints),pointDetails[renamedCountry].earned.amountSpent,parseFloat(productPrice))
+                      
                     }
                     index++;
                     if (index < products.length) {
