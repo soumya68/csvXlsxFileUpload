@@ -147,12 +147,8 @@ module.exports = function () {
                     var startOfToday = new Date();
                     var lastDataId
                     startOfToday.setHours(0, 0, 0, 0);  // SETTING START OF THE DAY TO MIDNIGHT
-                    console.log('startOfToday', startOfToday)
-
-
                     var index = 0;
                     var checkData = async function (doc) {
-
                         var idString = doc._id.toString()
                         // FIND OUT TOTAL EARNED POINTS WHICH ARE GOING TO BE EXPIRED ON SAME DAY OF THIS RESIDENT BY RESIDENT ID
                         var pointsData = await pointsAudit.aggregate([{
@@ -166,12 +162,10 @@ module.exports = function () {
                             $group:
                                 { _id: null, totalEarnedPoints: { $sum: "$earnedPoints" } }
                         }])
-                        console.log('pointsData', pointsData)
                         // FIND OUT LASTEST POINT DATA OF THIS RESIDENT FROM POINTSAUDIT COLLECTION TO UPDATE LATEST AVAILABLE POINTS 
                         let pointsAllData = await pointsAudit.find({
                             residentId: doc._id,
                         }).sort({ _id: -1 }).limit(1)
-                        console.log('pointsData2', pointsAllData)
                         // IF ANY POINTS DATA FOUND OF THIS PERTICULAR RESIDENT
                         if (pointsData.length > 0) {
                             // TOTAL EARNED POINT OF THIS RESIDENT
@@ -190,7 +184,6 @@ module.exports = function () {
                                 $group:
                                     { _id: null, totalRedeemedPoints: { $sum: "$redeemedPoints" } }
                             }])
-                            console.log('todayPointsData',todayPointsData)
                             // CHECK IF ANY TODAY REDEM POINT FOUND
                             if (todayPointsData.length > 0) {
                                 // TOTAL REDEMMED POINT OF TODAY
@@ -198,12 +191,8 @@ module.exports = function () {
                             }
                             // GET UDATED POINTS AFTER SUBTRACTING TODAY TOTAL REDEMED POINTS WITH EXPIREDDATE TOTAL EARNED POINTS
                             updatedPoints = totalEarnedPoints - totalRedeemedPoints
-                            console.log('totalEarnedPoints',totalEarnedPoints)
-                            console.log('totalRedeemedPoints',totalRedeemedPoints)
-                            console.log('updatedPoints',updatedPoints)
                             // UPDATING AVAILABLE PONTS OF RESIDENTS COLLECTION BY SUBTRACTING UPDATED POINTS FROM LATEST AVAILABLE POINTS OF THIS RESINDENT IN RESIDENT COLLECTION
                             availablePoints = parseInt(doc.availablePoints) - updatedPoints
-                            console.log('availablePoints',availablePoints)
                             // UPDATE LATEST AVAILABLE POINTS AT LATEST RECORD OF RESIDENT AT POINTSAUDIT COLLECTION
                             var updatedLastPointsAudit = await pointsAudit.updateOne({
                                 _id: lastDataId
@@ -215,10 +204,9 @@ module.exports = function () {
                                 console.log(err)
                             })
                             // UPDATE LATEST AVAILABLE POINTS IN RESIDENT COLLECTION OF THAT RESIDENT ID
-                            var updatedResidents = await residents.updateOne({ _id:idString }, {
+                            var updatedResidents = await residents.updateOne({ _id: idString }, {
                                 $set: { availablePoints: availablePoints }
                             })
-                            console.log('updatedResidents',updatedResidents)
                             // UPDATE ALL EXPIRED POINTS RECORD MAKE IT ACTIVE FALSE & LAPSE TRUE FOR MAKING IT EXPIRED
                             var updatedPointsAudit = await pointsAudit.updateMany({
                                 residentId: idString,

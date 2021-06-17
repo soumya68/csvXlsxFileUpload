@@ -1,16 +1,26 @@
 const mongoose = require("mongoose");
-const config = require("config");
+require('dotenv').config()
+console.log('process.env.NODE_ENV',process.env.NODE_ENV)
 
 const connectDB = async (callback) => {
   try {
-   
-    const conn = await mongoose.connect(config.get("MONGODB_URI"), {
+  //  console.log(config.get())
+    var env = process.env.NODE_ENV || 'development';
+    var url = null
+    if (env === 'development' || env === 'test') {
+      url = process.env.DEV_URL
+    }
+    else {
+      url = process.env.PROD_URL
+    }
+    // console.log('url',url)
+    const conn = await mongoose.connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false,
     });
-    
+
     callback(false)
     console.info(`Database connected: ${conn.connection.host}`);
   } catch (error) {

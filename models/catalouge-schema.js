@@ -21,6 +21,7 @@ var catalougeSchema = new mongoose.Schema(
         },
         manufacturer: {
             type: String,
+            default: ""
         },
         packUnit: {
             type: String,

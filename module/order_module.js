@@ -57,7 +57,6 @@ module.exports = function () {
                                                     },
                                                 )
                                                     .then(result => {
-                                                       
                                                         // CHECK IF IS THERE ANY totalEarnedPoints OR totalRedeemedPoints 
                                                         if (totalEarnedPoints > 0 || totalRedeemedPoints > 0) {
                                                             // IF  totalEarnedPoints IS AVAILABLE
@@ -85,7 +84,6 @@ module.exports = function () {
                                                                     pointsEarnedCalculation: true
                                                                 }
                                                             }
-                                                            
                                                             const ponitDetails = new pointsAudit(pointData);
                                                             // SAVE POINTS DETAILS IN POINTSAUDIT COLLECTION 
                                                             ponitDetails.save().then(response => {
@@ -156,12 +154,9 @@ module.exports = function () {
                 var index = 0;
                 var productData = function (doc) {
                     var singleProductId = doc.medicationId
-                  
                     if (doc.pointsAccumulation) {
                         var productPrice = doc.price.toString()
-                      
                         totalEarnedPoints = parseFloat(totalEarnedPoints) + Math.round(((parseFloat(pointDetails[renamedCountry].earned.numberOfPoints) / parseFloat(pointDetails[renamedCountry].earned.amountSpent)) * parseFloat(productPrice)))
-                      
                     }
                     index++;
                     if (index < products.length) {

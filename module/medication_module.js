@@ -34,7 +34,6 @@ module.exports = function () {
         //Start of File Row Validation
         excelValidation: function (data, callBack) {
             try {
-              
                 // CHECK IF THESE FIELDS ARE EMPTY OR NOT 
                 if (
                     !data.SupplierUniqueCatalogueNumber
@@ -234,6 +233,7 @@ module.exports = function () {
             try {
                 var prescriptionRequired = false
                 var PricePerPackage = 0
+                var taxPercentage = 0
                 var isoCurrency = ""
                 var isIncluded
                 var IsTaxExempt
@@ -284,6 +284,12 @@ module.exports = function () {
                                                     }
                                                     else {
                                                         PricePerPackage = parseFloat(row.PricePerPackage).toFixed(2)
+                                                    }
+                                                    if (parseFloat(row.TaxPercent).toFixed(2) == 'NaN') {
+                                                        taxPercentage = parseFloat(taxPercentage).toFixed(2)
+                                                    }
+                                                    else {
+                                                        taxPercentage = parseFloat(row.TaxPercent).toFixed(2)
                                                     }
                                                     var customBrandName = {}
                                                     customBrandName.eng = row.BrandName == null ? "NA" : row.BrandName
@@ -353,7 +359,7 @@ module.exports = function () {
                                                             name: row.TaxName,
                                                             category: row.TaxName,
                                                             isIncluded: isIncluded,
-                                                            percentage: row.TaxPercent,
+                                                            percentage: taxPercentage,
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
@@ -401,7 +407,6 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
-                                                              
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -467,7 +472,6 @@ module.exports = function () {
                                                         isoCurrency: isoCurrency,
                                                         supplierCode: supplierCode,
                                                         r52SupplierCode: supplierCode,
-                                                        r52CatNo: r52CatNo,
                                                         suppCatNo: row.SupplierUniqueCatalogueNumber,
                                                         genericName: {
                                                             eng: row.Generic == null ? "NA" : row.Generic
@@ -488,7 +492,7 @@ module.exports = function () {
                                                             name: row.TaxName,
                                                             category: row.TaxName,
                                                             isIncluded: isIncluded,
-                                                            percentage: row.TaxPercent,
+                                                            percentage: taxPercentage,
                                                             type: row.TaxName,
                                                             IsTaxExempt: IsTaxExempt
                                                         },
@@ -533,7 +537,6 @@ module.exports = function () {
                                                                 callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             })
                                                             .catch(function (err) {
-                                                              
                                                                 callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                             });
                                                     }
@@ -558,7 +561,6 @@ module.exports = function () {
                                                         callBack(false, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     })
                                                     .catch(function (err) {
-                                                       
                                                         callBack(true, rows.length, correctEntryCount, invalidDatas, duplicateData);
                                                     });
                                             }
@@ -578,7 +580,6 @@ module.exports = function () {
                         }
                     })
             } catch (e) {
-              
                 callBack(true, totalEntryCount, correctEntryCount, invalidDatas, duplicateData);
             }
         },
@@ -588,6 +589,7 @@ module.exports = function () {
             supplierName,
             isoCountry, userId, version, supplierCode, filepath, correctEntryCount, invalidDatas, duplicateData, callBack) {
             try {
+                var taxPercentage = 0
                 var isIncluded
                 var IsTaxExempt
                 var r52CatNo = 0
@@ -696,7 +698,7 @@ module.exports = function () {
                                                             name: doc[12],
                                                             category: doc[12],
                                                             isIncluded: isIncluded,
-                                                            percentage: doc[15],
+                                                            percentage: parseFloat(doc[15]).toFixed(2),
                                                             type: doc[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },
@@ -793,7 +795,7 @@ module.exports = function () {
                                                             name: doc[12],
                                                             category: doc[12],
                                                             isIncluded: isIncluded,
-                                                            percentage: doc[15],
+                                                            percentage: parseFloat(doc[15]).toFixed(2),
                                                             type: doc[12],
                                                             IsTaxExempt: IsTaxExempt
                                                         },

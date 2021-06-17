@@ -68,7 +68,6 @@ module.exports = (app) => {
                     if (error & result == null) {
                         res.status(500).json({
                             status: false,
-                            // message: Object.keys(errData.errors)[0],
                             message: message,
                             supplierId: null,
                             errData: errData.errors
@@ -77,18 +76,15 @@ module.exports = (app) => {
                     else if (error && result) {
                         res.status(500).json({
                             status: false,
-                            // message: Object.keys(errData.errors)[0],
                             message: message,
                             supplierId: null,
-                            errData: null
                         })
                     }
                     else {
                         res.status(200).json({
                             status: true,
                             message: message,
-                            supplierId: result.supplierId,
-                            errData: null
+                            supplierId: result._id,
                         })
                     }
                 })
@@ -148,6 +144,14 @@ module.exports = (app) => {
                         })
                     }
                     else {
+                        if (!result) {
+                            res.status(200).json({
+                                status: false,
+                                message: message,
+                                data: result
+                            })
+                            return
+                        }
                         res.status(200).json({
                             status: true,
                             message: message,

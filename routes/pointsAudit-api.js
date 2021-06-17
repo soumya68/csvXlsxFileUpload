@@ -84,7 +84,7 @@ module.exports = (app) => {
             pointsModule.userRedeemPoints(req.body.residentId, req.body.redeemedPoints,
                 function (error, message) {
                     if (error) {
-                        res.status(500).json({
+                        res.status(200).json({
                             status: false,
                             message: message,
                         })
@@ -136,7 +136,7 @@ module.exports = (app) => {
                         pointsModule.userRedeemPointsEligibility(residentId, redeemPoints,
                             function (err, status, message) {
                                 if (err) {
-                                    res.status(500).json({
+                                    res.status(200).json({
                                         status: false,
                                         message: message,
                                         currencyValue: currencyValue,
