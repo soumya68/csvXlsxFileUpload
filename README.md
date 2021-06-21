@@ -46,9 +46,13 @@ There are many ways of hosting the API but for the sake of simplicity, lets take
 
 ## Tests
 Stpes on how to run the tests will be added once the tests are ready in the repo.
-
+1.Run command npm test
+2.it will test all apis & throw errors from apis as respected to api functionality
 ## How to use?
 Steps will be added here
+1.Set up database url in .env file 
+2.run npm start , it will show connected port & database connection status & database name
+3.We need ResidentUser & OrderMedicine collection in Mongo DB as per schema
 
 ### Who do I talk to? ###
 
