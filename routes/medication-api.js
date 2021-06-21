@@ -44,12 +44,14 @@ module.exports = (app) => {
         limits: { fileSize: 1000000 }, // File size must be below 1 MB
         fileFilter: (req, file, cb) => {
             // FILE TYPE ONLY CSV OR XLSX IS ALLOWED
-            if (file.mimetype == "text/csv" || file.mimetype == "application/vnd.ms-excel"
-                || file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+            if (file.mimetype == "text/csv"
+                // || file.mimetype == "application/vnd.ms-excel"
+                // || file.mimetype == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            ) {
                 cb(null, true);
             } else {
                 cb(null, false);
-                return cb(new Error('Only .xlsx, .csv format!'));
+                return cb(new Error('Only .csv format is allowed!'));
             }
         }
     });
