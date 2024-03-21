@@ -4,8 +4,6 @@ var os = require("os-utils");
 require("dotenv").config();
 const bodyParser = require("body-parser");
 const connectDB = require("./database/mongoose");
-// const configDetails = require('./config/config.json')
-// const PORT = configDetails.development.PORT
 var cors = require("cors");
 const corsOpts = {
   origin: "*",
