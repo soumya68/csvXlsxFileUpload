@@ -14,25 +14,45 @@ const cron = require("node-cron");
 // Start of Database insert work
 exports.dataBaseWork = async (rows) => {
   try {
+    let catagoryInfoId = null;
+    let carrierInfoId = null;
     for (const row of rows) {
       // INSERT AGENT DATA
       const agentData = new Agent({
-        agentName: row.agentName,
+        agentName: row.agent,
       });
-      const insertAgentData = await agentData.save(agentData);
+      await agentData.save(agentData);
+
+      // CHECK DUPLICATE COMPANY NAME
+      let CarrierInfo = await Carrier.find({ companyName: row.company_name });
 
       // INSERT CARRIER DATA
-      const carrierData = new Carrier({
-        companyName: row.company_name,
-      });
-      const insertCareerData = await carrierData.save(carrierData);
+      if (CarrierInfo.length == 0) {
+        const carrierData = new Carrier({
+          companyName: row.company_name,
+        });
 
-      // INSERT CATAGORY DATA
-      const catagoryData = new Catagory({
+        const insertCareerData = await carrierData.save(carrierData);
+        carrierInfoId = insertCareerData._id;
+      } else {
+        carrierInfoId = CarrierInfo[0]._id;
+      }
+
+      // CHECK DUPLICATE CATAGORY NAME
+      let catagoryInfo = await Catagory.find({
         catagoryName: row.category_name,
       });
-      const insertCatagoryData = await catagoryData.save(catagoryData);
 
+      if (catagoryInfo.length == 0) {
+        // INSERT CATAGORY DATA
+        const catagoryData = new Catagory({
+          catagoryName: row.category_name,
+        });
+        const insertCatagoryData = await catagoryData.save(catagoryData);
+        catagoryInfoId = insertCatagoryData._id;
+      } else {
+        catagoryInfoId = catagoryInfo[0]._id;
+      }
       // INSERT USER DATA
       const userData = new User({
         firstName: row.firstname,
@@ -52,18 +72,18 @@ exports.dataBaseWork = async (rows) => {
         accountName: row.account_name,
         userId: insertUserData._id,
       });
-      const insertUserAccountData = await userAccountData.save(userAccountData);
+      await userAccountData.save(userAccountData);
 
       // INSERT POLICY INFO DATA
       const policyInfoData = new PolicyInfo({
         policyNumber: row.policy_number,
         policyStartDate: new Date(row.policy_start_date),
         policyEndDate: new Date(row.policy_end_date),
-        policyCatagory: insertCatagoryData._id,
-        companyCollectionId: carrierData._id,
+        policyCatagory: catagoryInfoId,
+        companyCollectionId: carrierInfoId,
         userId: insertUserData._id,
       });
-      const insertPolicyInfoData = await policyInfoData.save(policyInfoData);
+      await policyInfoData.save(policyInfoData);
     }
   } catch (e) {
     return { status: false, message: e };
@@ -106,6 +126,9 @@ exports.xlsxUpload = async (filepath) => {
     return new Promise((resolve) => {
       readXlsxFile(fs.createReadStream(filepath), { sheet: 1 }).then(
         async (rows) => {
+          rows.shift();
+          let catagoryInfoId = null;
+          let carrierInfoId = null;
           // CHECK IF FILE/ROW HAS DATA OR NOT
           if (rows.length !== 0) {
             // DATA INSERTING WORK
@@ -117,22 +140,45 @@ exports.xlsxUpload = async (filepath) => {
               });
               await agentData.save(agentData);
 
-              // INSERT CARRIER DATA
-              const carrierData = new Carrier({
+              // CHECK DUPLICATE COMPANY NAME
+              let CarrierInfo = await Carrier.find({
                 companyName: row[8],
               });
-              await carrierData.save(carrierData);
 
-              // INSERT CATAGORY DATA
-              const catagoryData = new Catagory({
+              // INSERT CARRIER DATA
+              if (CarrierInfo.length == 0) {
+                const carrierData = new Carrier({
+                  companyName: row[8],
+                });
+
+                const insertCareerData = await carrierData.save(carrierData);
+                carrierInfoId = insertCareerData._id;
+              } else {
+                carrierInfoId = CarrierInfo[0]._id;
+              }
+
+              // CHECK DUPLICATE CATAGORY NAME
+              let catagoryInfo = await Catagory.find({
                 catagoryName: row[9],
               });
-              const insertCatagoryData = await catagoryData.save(catagoryData);
+
+              if (catagoryInfo.length == 0) {
+                // INSERT CATAGORY DATA
+                const catagoryData = new Catagory({
+                  catagoryName: row[9],
+                });
+                const insertCatagoryData = await catagoryData.save(
+                  catagoryData
+                );
+                catagoryInfoId = insertCatagoryData._id;
+              } else {
+                catagoryInfoId = catagoryInfo[0]._id;
+              }
 
               // INSERT USER DATA
               const userData = new User({
                 firstName: row[16],
-                dob: row[23],
+                dob: new Date(row[23]),
                 address: row[20],
                 phoneNumber: row[19],
                 state: row[21],
@@ -155,8 +201,8 @@ exports.xlsxUpload = async (filepath) => {
                 policyNumber: row[4],
                 policyStartDate: row[10],
                 policyEndDate: row[11],
-                policyCatagory: insertCatagoryData._id,
-                companyCollectionId: carrierData._id,
+                policyCatagory: catagoryInfoId,
+                companyCollectionId: carrierInfoId,
                 userId: insertUserData._id,
               });
               await policyInfoData.save(policyInfoData);

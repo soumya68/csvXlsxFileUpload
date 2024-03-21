@@ -2,8 +2,7 @@ var mongoose = require("mongoose");
 var agentSchema = new mongoose.Schema(
   {
     agentName: {
-      type: String,
-      default: "Soumya"
+      type: String
     },
   },
   {
