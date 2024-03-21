@@ -1,4 +1,3 @@
 {
-    "SUCCESSDIR":"Catalouge_Import/",
-    "FAILUERDIR":"Failure_Catalogue/"
+    "DIR":"Csv_Import/"
 }

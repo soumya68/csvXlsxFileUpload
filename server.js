@@ -1,64 +1,61 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-require('dotenv').config()
-////////////
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const swaggerDocument = YAML.load('./swagger.yaml');
-//////////
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-const bodyParser = require('body-parser');
-const connectDB = require('./database/mongoose');
+var os = require("os-utils");
+require("dotenv").config();
+const bodyParser = require("body-parser");
+const connectDB = require("./database/mongoose");
 // const configDetails = require('./config/config.json')
 // const PORT = configDetails.development.PORT
-var cors = require('cors')
-var cronJob = require('./cronjob/cron-job')
+var cors = require("cors");
 const corsOpts = {
-  origin: '*',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type',],
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
 };
 app.use(cors(corsOpts));
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000;
 /*middlewares*/
-app.use(bodyParser.json({
-  limit: '150mb',
-  verify: (req, res, buf) => { req.rawBody = buf; }
-}));
-app.use(bodyParser.urlencoded({ limit: '150mb', extended: true }));
+app.use(
+  bodyParser.json({
+    limit: "150mb",
+    verify: (req, res, buf) => {
+      req.rawBody = buf;
+    },
+  })
+);
+app.use(bodyParser.urlencoded({ limit: "150mb", extended: true }));
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
   next();
 });
 //mongodb connection using mongoose
-connectDB(function (err) {
-  if (err) {
-    console.log("err")
-  }
-  else {
-    // TO RUN CRON JOB ONLY AFTER DATABASE CONNECTION DONE
-    cronJob.startCrons()
-    console.log("Database connection success")
-  }
-})
+connectDB();
+console.log(process.env.CPUUTILIZATIONCHECKTIME);
 
-app.get('/', (req, res) => {
-  res.send('Welcome to Unicef API!')
-})
+// CPU UTILIZATION & RESTART OF SERVER
+setInterval(function () {
+  os.cpuUsage(function (result) {
+    console.log("CPU Usage (%): " + result);
+    if (result > parseInt(process.env.CPULOAD)) {
+      console.log("restart due to high cpu usage");
+      process.exit();
+    }
+  });
+}, parseInt(process.env.CPUUTILIZATIONCHECKTIME));
+
+app.get("/", (req, res) => {
+  res.send("Welcome to Task API!");
+});
 /*Incudes all API routes*/
-require('./routes/index')(app, connectDB);
+require("./routes/index")(app, connectDB);
 /*Listen express server on port*/
 app.listen(PORT, () => {
   console.info(`Server is running on port.... ${PORT}`);
 });
 
-module.exports = app
-//"mongodb+srv://soumya:12345@cluster0.iocs1.mongodb.net/Unicef"
-//"mongodb+srv://test:test@1234@cluster0.etzfb.mongodb.net/test"
-//"mongodb+srv://kunalsolace:Kunal2021@reach52dev.038mt.mongodb.net/r52Master"
-//"mongodb://r52admin:P%40ssword1%21-UAT@35.154.125.38:27017/r52Master?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=false"
-//"mongodb+srv://reach52Uat:M8yDEmU5AsXXWWCe@uatindiamaster.sh1fo.mongodb.net/reach52"
-
-
+module.exports = app;

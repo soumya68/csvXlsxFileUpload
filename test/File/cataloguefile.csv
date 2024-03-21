@@ -1,4 +1,0 @@
-r52 Catalogue Number,SupplierUniqueCatalogueNumber,BrandName,Generic,Manufacturer,Description,Dosage,Form,PackSize,PackSizeUnits,ProductType,RequiresRx,TaxName,IsTaxExempt,IsTaxIncluded,TaxPercent,PricePerPackage,CatalogTag,Status,PointsAccumulation
-We will create this,REACH520000001,Lumify,Ultrasound Scan,,,,,,,consumer health,Yes,VAT,No,Yes,0,450,,Available,1
-,REACH520000002,INSUGET-N,Ultrasound Scan,,,,,,,consumer health,Yes,VAT,No,Yes,0,180,,Available,1
-,REACH520000003,Padayon 2-week payment,Program Payment,,,,,,,consumer health,Yes,VAT,No,Yes,0,169,,Available,1
